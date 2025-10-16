@@ -10,6 +10,6 @@ public class CouchGameEditorTarget : TargetRules
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_5;
-		ExtraModuleNames.Add("CouchGame");
+		ExtraModuleNames.AddRange(new string[] { "CouchGame", "LocalMultiplayer" });
 	}
 }

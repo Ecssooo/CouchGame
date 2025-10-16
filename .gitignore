@@ -71,7 +71,6 @@ Saved/*
 # Compiled source files for the engine to use
 Intermediate/*
 Plugins/**/Intermediate/*
-
 # Cache files for the editor to use
 DerivedDataCache/*
 
@@ -80,3 +79,4 @@ Binaries/Win64/*
 !Binaries/Win64/CouchGameEditor.target
 !Binaries/Win64/UnrealEditor.modules
 !Binaries/Win64/UnrealEditor-CouchGame.dll
+!Binaries/Win64/UnrealEditor-LocalMultiplayer.dll
