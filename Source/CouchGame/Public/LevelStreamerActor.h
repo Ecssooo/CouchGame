@@ -6,6 +6,45 @@
 #include "GameFramework/Actor.h"
 #include "LevelStreamerActor.generated.h"
 
+UENUM(BlueprintType)
+enum class ELevelDir : uint8
+{
+	Up UMETA(DisplayName="Up"),
+	Down UMETA(DisplayName="Down"),
+	Left UMETA(DisplayName="Left"),
+	Right UMETA(DisplayName="Right")
+};
+
+USTRUCT(BlueprintType)
+struct FLevelNeighbors
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName Up;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName Down;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName Left;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName Right;
+
+	FName Get(ELevelDir Dir) const
+	{
+		switch (Dir)
+		{
+		case ELevelDir::Up: return Up;
+		case ELevelDir::Down: return Down;
+		case ELevelDir::Left: return Left;
+		case ELevelDir::Right: return Right;
+		default: return NAME_None;
+		}
+	}
+};
+
 UCLASS()
 class COUCHGAME_API ALevelStreamerActor : public AActor
 {
@@ -15,7 +54,7 @@ public:
 	// Sets default values for this actor's properties
 	ALevelStreamerActor();
 
-	//tableau qui contient tout les levels renseigner en brut dans le bp_levelStreamerActor présent dans la scéne main
+	//tableau qui contient tout les levels renseigner en brut dans le bp_levelStreamerActor prï¿½sent dans la scï¿½ne main
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level Streaming")
 	TArray<FName> LevelSequence;
 
@@ -24,10 +63,17 @@ public:
 	FName CurrentLevel;
 
 	//valeur en int qui donne le niveau actuel ou se trouve le joueur
-	int32 CurrentLevelIndex;
+	int32 CurrentLevelIndex = 0;
 
-	//Stocke temporairement le nom du prochain niveau à charger
+	//Stocke temporairement le nom du prochain niveau ï¿½ charger
 	FName NextLevel;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level Streaming")
+	FName StartingLevel;
+
+	// crÃ© un tableau d'adjacence
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Level Streaming")
+	TMap<FName, FLevelNeighbors> Adjacency;
 
 protected:
 	// Called when the game starts or when spawned
@@ -37,15 +83,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	//fonction qui change les levels à la suite dans un ordre
+	//fonction qui change les levels ï¿½ la suite dans un ordre
 	UFUNCTION(BlueprintCallable, Category = "Level Streaming")
 	void SwitchToNextLevel();
 
-	//fonction qui change le level à un level spécific
+	//fonction qui change le level ï¿½ un level spï¿½cific
 	UFUNCTION(BlueprintCallable, Category = "Level Streaming")
 	void SwitchToSpecificLevel(FName NewLevelName);
 
-	//quand l'ancien niveau est déchargé on appel cette fonction
+	//quand l'ancien niveau est dï¿½chargï¿½ on appel cette fonction
 	UFUNCTION()
 	void OnLevelUnloaded();
 
@@ -56,4 +102,7 @@ public:
 	//quand le level est charger on appel cette fonction
 	UFUNCTION()
 	void OnLevelLoaded();
+
+	UFUNCTION(BlueprintCallable, Category="Level Streaming")
+	FName GetNeighborLevel(FName FromLevel, ELevelDir Dir) const;
 };

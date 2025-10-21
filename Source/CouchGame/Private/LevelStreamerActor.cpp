@@ -5,96 +5,109 @@
 #include "Kismet/GameplayStatics.h"
 #include "Engine/LevelStreaming.h"
 
+
 // Sets default values
 ALevelStreamerActor::ALevelStreamerActor()
 {
-    // Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-    PrimaryActorTick.bCanEverTick = true;
-    CurrentLevelIndex = -1; // pour commencer à -1
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+	CurrentLevelIndex = -1; // pour commencer ï¿½ -1
 }
 
 // Called when the game starts or when spawned
 void ALevelStreamerActor::BeginPlay()
 {
-    Super::BeginPlay();
+	Super::BeginPlay();
+	if (CurrentLevelIndex >= 0 && CurrentLevelIndex < 6)
+	{
+		SwitchToSpecificLevel(StartingLevel);
+	}
 }
 
 // Called every frame
 void ALevelStreamerActor::Tick(float DeltaTime)
 {
-    Super::Tick(DeltaTime);
+	Super::Tick(DeltaTime);
 }
 
 void ALevelStreamerActor::SwitchToNextLevel()
 {
-    // Sécurité : si le tableau est vide, on ne fait rien.
-    if (LevelSequence.IsEmpty())
-    {
-        UE_LOG(LogTemp, Warning, TEXT("tableau vide."));
-        return;
-    }
+	// Sï¿½curitï¿½ : si le tableau est vide, on ne fait rien.
+	if (LevelSequence.IsEmpty())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("tableau vide."));
+		return;
+	}
 
-    // 1. On passe à l'index suivant. // vu que on commence à -1 pas là 0
-    CurrentLevelIndex++;
+	// 1. On passe ï¿½ l'index suivant. // vu que on commence ï¿½ -1 pas lï¿½ 0
+	CurrentLevelIndex++;
 
-    // 2. Si on dépasse la fin du tableau, on revient au début. C'est la boucle !
-    if (CurrentLevelIndex >= LevelSequence.Num())
-    {
-        CurrentLevelIndex = 0;
-    }
+	// 2. Si on dï¿½passe la fin du tableau, on revient au dï¿½but. C'est la boucle !
+	if (CurrentLevelIndex >= LevelSequence.Num())
+	{
+		CurrentLevelIndex = 0;
+	}
 
-    // 3. On charge le niveau correspondant à notre nouvel index.
-    SwitchToSpecificLevel(LevelSequence[CurrentLevelIndex]);
+	// 3. On charge le niveau correspondant ï¿½ notre nouvel index.
+	SwitchToSpecificLevel(LevelSequence[CurrentLevelIndex]);
 }
 
 void ALevelStreamerActor::SwitchToSpecificLevel(FName NewLevelName)
 {
-    if (NewLevelName == CurrentLevel || NewLevelName.IsNone())
-        return;
+	if (NewLevelName == CurrentLevel || NewLevelName.IsNone())
+		return;
 
-    if (!CurrentLevel.IsNone()) //vérifie si le joueur est déjà sur un level 
-    {
-        FLatentActionInfo LatentInfo;
-        LatentInfo.CallbackTarget = this;
-        LatentInfo.ExecutionFunction = FName("OnLevelUnloaded"); // callback
-        LatentInfo.Linkage = 0;
-        LatentInfo.UUID = __LINE__;
+	if (!CurrentLevel.IsNone()) //vï¿½rifie si le joueur est dï¿½jï¿½ sur un level 
+	{
+		FLatentActionInfo LatentInfo;
+		LatentInfo.CallbackTarget = this;
+		LatentInfo.ExecutionFunction = FName("OnLevelUnloaded"); // callback
+		LatentInfo.Linkage = 0;
+		LatentInfo.UUID = __LINE__;
 
-        // Décharge l'ancien niveau, et appelle OnLevelUnloaded() quand fini
-        UGameplayStatics::UnloadStreamLevel(this, CurrentLevel, LatentInfo, false);
+		// Dï¿½charge l'ancien niveau, et appelle OnLevelUnloaded() quand fini
+		UGameplayStatics::UnloadStreamLevel(this, CurrentLevel, LatentInfo, false);
 
-        // Stocke temporairement le nom du prochain niveau à charger
-        NextLevel = NewLevelName;
-    }
-    else
-    {
-        LoadLevel(NewLevelName); //si il est pas sur un level je charge directement pas besoin de décharger
-    }
+		// Stocke temporairement le nom du prochain niveau ï¿½ charger
+		NextLevel = NewLevelName;
+	}
+	else
+	{
+		LoadLevel(NewLevelName); //si il est pas sur un level je charge directement pas besoin de dï¿½charger
+	}
 }
 
-//quand le level est déchargé
+//quand le level est dï¿½chargï¿½
 void ALevelStreamerActor::OnLevelUnloaded()
 {
-    UE_LOG(LogTemp, Warning, TEXT("Ancien niveau déchargé, on charge %s"), *NextLevel.ToString());
-    LoadLevel(NextLevel);//quand le level est déchargé je charge le prochain level
+	UE_LOG(LogTemp, Warning, TEXT("Ancien niveau dï¿½chargï¿½, on charge %s"), *NextLevel.ToString());
+	LoadLevel(NextLevel); //quand le level est dï¿½chargï¿½ je charge le prochain level
 }
 
 //charger le level
 void ALevelStreamerActor::LoadLevel(FName NewLevelName)
 {
-    FLatentActionInfo LatentInfo;
-    LatentInfo.CallbackTarget = this;
-    LatentInfo.ExecutionFunction = FName("OnLevelLoaded"); // callback
-    LatentInfo.Linkage = 0;
-    LatentInfo.UUID = __LINE__;
+	FLatentActionInfo LatentInfo;
+	LatentInfo.CallbackTarget = this;
+	LatentInfo.ExecutionFunction = FName("OnLevelLoaded"); // callback
+	LatentInfo.Linkage = 0;
+	LatentInfo.UUID = __LINE__;
 
-    UGameplayStatics::LoadStreamLevel(this, NewLevelName, true, false, LatentInfo);
-    CurrentLevel = NewLevelName;
+	UGameplayStatics::LoadStreamLevel(this, NewLevelName, true, false, LatentInfo);
+	CurrentLevel = NewLevelName;
 }
 
-//quand le level est chargé
+//quand le level est chargï¿½
 void ALevelStreamerActor::OnLevelLoaded()
 {
-    UE_LOG(LogTemp, Warning, TEXT("Niveau %s chargé avec succès."), *CurrentLevel.ToString());
+	UE_LOG(LogTemp, Warning, TEXT("Niveau %s chargï¿½ avec succï¿½s."), *CurrentLevel.ToString());
 }
 
+FName ALevelStreamerActor::GetNeighborLevel(FName FromLevel, ELevelDir Dir) const
+{
+	if (const FLevelNeighbors* Neigh = Adjacency.Find(FromLevel))
+	{
+		return Neigh->Get(Dir);
+	}
+	return NAME_None;
+}
