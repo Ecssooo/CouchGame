@@ -23,6 +23,12 @@ void UTPManager::BeginPlay()
 	}
 }
 
+void UTPManager::UnloadLevel()
+{
+	LevelStreamer->UnloadActualLevel();
+}
+
+
 void UTPManager::TrySwitch(ELevelDir Dir)
 {
 	if (!LevelStreamer)
@@ -43,7 +49,7 @@ void UTPManager::TrySwitch(ELevelDir Dir)
 	LevelStreamer->SwitchToSpecificLevel(Target);
 }
 
-void UTPManager::OnUpPressed()    { TrySwitch(ELevelDir::Up); }
-void UTPManager::OnDownPressed()  { TrySwitch(ELevelDir::Down); }
-void UTPManager::OnLeftPressed()  { TrySwitch(ELevelDir::Left); }
+void UTPManager::OnUpPressed() { TrySwitch(ELevelDir::Up); }
+void UTPManager::OnDownPressed() { TrySwitch(ELevelDir::Down); }
+void UTPManager::OnLeftPressed() { TrySwitch(ELevelDir::Left); }
 void UTPManager::OnRightPressed() { TrySwitch(ELevelDir::Right); }

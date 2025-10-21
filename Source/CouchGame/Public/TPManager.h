@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "LevelStreamerActor.h" 
+#include "LevelStreamerActor.h"
 #include "TPManager.generated.h"
 
 class ALevelStreamerActor;
@@ -23,7 +23,10 @@ protected:
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="TPManager")
 	ALevelStreamerActor* LevelStreamer = nullptr;
-	
+
+	UFUNCTION(BlueprintCallable, Category="TPManager|Level")
+	void UnloadLevel();
+
 	/** Appelé quand on appuie sur la touche "Haut" */
 	UFUNCTION(BlueprintCallable, Category="TPManager|Input")
 	void OnUpPressed();
@@ -39,7 +42,7 @@ public:
 	/** Appelé quand on appuie sur la touche "Droite" */
 	UFUNCTION(BlueprintCallable, Category="TPManager|Input")
 	void OnRightPressed();
-	
+
 private:
 	void TrySwitch(ELevelDir Dir);
 };

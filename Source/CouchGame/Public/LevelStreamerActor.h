@@ -87,6 +87,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Level Streaming")
 	void SwitchToNextLevel();
 
+	UFUNCTION(BlueprintCallable, Category = "Level Streaming")
+	void UnloadActualLevel();
+
 	//fonction qui change le level � un level sp�cific
 	UFUNCTION(BlueprintCallable, Category = "Level Streaming")
 	void SwitchToSpecificLevel(FName NewLevelName);

@@ -2,6 +2,8 @@
 
 
 #include "LevelStreamerActor.h"
+
+#include "MeshPaintVisualize.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/LevelStreaming.h"
 
@@ -18,10 +20,7 @@ ALevelStreamerActor::ALevelStreamerActor()
 void ALevelStreamerActor::BeginPlay()
 {
 	Super::BeginPlay();
-	if (CurrentLevelIndex >= 0 && CurrentLevelIndex < 6)
-	{
-		SwitchToSpecificLevel(StartingLevel);
-	}
+	SwitchToSpecificLevel(StartingLevel);
 }
 
 // Called every frame
@@ -52,29 +51,45 @@ void ALevelStreamerActor::SwitchToNextLevel()
 	SwitchToSpecificLevel(LevelSequence[CurrentLevelIndex]);
 }
 
+void ALevelStreamerActor::UnloadActualLevel()
+{
+	FLatentActionInfo LatentInfo;
+	LatentInfo.CallbackTarget = this;
+	// LatentInfo.ExecutionFunction = FName("OnLevelUnloaded"); // callback
+	LatentInfo.Linkage = 0;
+	LatentInfo.UUID = __LINE__;
+
+	UGameplayStatics::UnloadStreamLevel(this, CurrentLevel, LatentInfo, false);
+}
+
 void ALevelStreamerActor::SwitchToSpecificLevel(FName NewLevelName)
 {
-	if (NewLevelName == CurrentLevel || NewLevelName.IsNone())
-		return;
+	NextLevel = NewLevelName;
+	LoadLevel(NewLevelName); //si il est pas sur un level je charge directement pas besoin de d�charger
+	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, TEXT("Load level"));
 
-	if (!CurrentLevel.IsNone()) //v�rifie si le joueur est d�j� sur un level 
-	{
-		FLatentActionInfo LatentInfo;
-		LatentInfo.CallbackTarget = this;
-		LatentInfo.ExecutionFunction = FName("OnLevelUnloaded"); // callback
-		LatentInfo.Linkage = 0;
-		LatentInfo.UUID = __LINE__;
-
-		// D�charge l'ancien niveau, et appelle OnLevelUnloaded() quand fini
-		UGameplayStatics::UnloadStreamLevel(this, CurrentLevel, LatentInfo, false);
-
-		// Stocke temporairement le nom du prochain niveau � charger
-		NextLevel = NewLevelName;
-	}
-	else
-	{
-		LoadLevel(NewLevelName); //si il est pas sur un level je charge directement pas besoin de d�charger
-	}
+	// if (NewLevelName == CurrentLevel || NewLevelName.IsNone())
+	// 	return;
+	//
+	// if (!CurrentLevel.IsNone()) //v�rifie si le joueur est d�j� sur un level 
+	// {
+	// 	FLatentActionInfo LatentInfo;
+	// 	LatentInfo.CallbackTarget = this;
+	// 	LatentInfo.ExecutionFunction = FName("OnLevelUnloaded"); // callback
+	// 	LatentInfo.Linkage = 0;
+	// 	LatentInfo.UUID = __LINE__;
+	//
+	// 	// D�charge l'ancien niveau, et appelle OnLevelUnloaded() quand fini
+	// 	UGameplayStatics::UnloadStreamLevel(this, CurrentLevel, LatentInfo, false);
+	//
+	// 	// Stocke temporairement le nom du prochain niveau � charger
+	// 	NextLevel = NewLevelName;
+	// }
+	// else
+	// {
+	// 	LoadLevel(NewLevelName); //si il est pas sur un level je charge directement pas besoin de d�charger
+	// 	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, TEXT("Load level"));
+	// }
 }
 
 //quand le level est d�charg�
