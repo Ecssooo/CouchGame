@@ -6,6 +6,7 @@
 #include "UObject/Interface.h"
 #include "Grabbable.generated.h"
 
+class ACharacterPlayer;
 // This class does not need to be modified.
 UINTERFACE()
 class UGrabbable : public UInterface
@@ -22,6 +23,5 @@ class COUCHGAME_API IGrabbable
 
 public:
 	UFUNCTION(BlueprintNativeEvent)
-	//Add player in paramter
-	void Grab();
+	void Grab(ACharacterPlayer* Player);
 };
