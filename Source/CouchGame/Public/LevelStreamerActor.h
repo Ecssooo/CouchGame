@@ -83,10 +83,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	//fonction qui change les levels � la suite dans un ordre
-	UFUNCTION(BlueprintCallable, Category = "Level Streaming")
-	void SwitchToNextLevel();
-
 	UFUNCTION(BlueprintCallable, Category = "Level Streaming")
 	void UnloadActualLevel();
 
