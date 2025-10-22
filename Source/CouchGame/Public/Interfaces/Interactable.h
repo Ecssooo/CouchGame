@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
 #include "Interactable.generated.h"
+class ACharacterPlayer;
 
 // This class does not need to be modified.
 UINTERFACE()
@@ -22,6 +23,5 @@ class COUCHGAME_API IInteractable
 
 public:
 	UFUNCTION(BlueprintNativeEvent)
-	//Add player in parameter
-	void Interact();
+	void Interact(ACharacterPlayer* Player);
 };
