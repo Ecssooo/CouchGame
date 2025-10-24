@@ -7,12 +7,11 @@
 #include "LocalMultiplayerSettings.h"
 #include "Kismet/GameplayStatics.h"
 
-void ULocalMultiplayerSubsystem::CreateAndInitPlayers(ELocalMultiplayerInputMappingType MappingType)
+void ULocalMultiplayerSubsystem::CreateAndInitPlayers(ELocalMultiplayerInputMappingType MappingType) const
 {
 	const ULocalMultiplayerSettings* Settings = GetDefault<ULocalMultiplayerSettings>();
 	if (!Settings) return;
-	
-	for (int i = 0; i < Settings->GetNbKeyboardProfiles(); i++)
+	for (int i = 0; i < Settings->NbMaxGamepads; i++)
 	{
 		UGameplayStatics::CreatePlayer(GetWorld(),i);
 	}

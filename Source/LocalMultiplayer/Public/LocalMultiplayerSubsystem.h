@@ -16,7 +16,7 @@ class LOCALMULTIPLAYER_API ULocalMultiplayerSubsystem : public UGameInstanceSubs
 
 public:
 	UFUNCTION(BlueprintCallable)
-	void CreateAndInitPlayers(ELocalMultiplayerInputMappingType MappingType);
+	void CreateAndInitPlayers(ELocalMultiplayerInputMappingType MappingType) const;
 
 	int GetAssignedPlayerIndexFromKeyboardProfileIndex(int KeyboardProfileIndex) const;
 
