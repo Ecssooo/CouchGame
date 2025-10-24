@@ -14,10 +14,39 @@ ALevelStreamerActor::ALevelStreamerActor()
 	CurrentLevelIndex = -1; // pour commencer � -1
 }
 
-// Called when the game starts or when spawned
 void ALevelStreamerActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// Init une bonne fois
+	switch (StartFace)
+	{
+	case EStartFace::Top: CubeBasis.Forward = FVector::ForwardVector;
+		CubeBasis.Right = FVector::RightVector;
+		CubeBasis.Up = FVector::UpVector;
+		break;
+	case EStartFace::Bottom: CubeBasis.Forward = FVector::ForwardVector;
+		CubeBasis.Right = FVector::RightVector;
+		CubeBasis.Up = -FVector::UpVector;
+		break;
+	case EStartFace::North: CubeBasis.Forward = FVector::UpVector;
+		CubeBasis.Right = FVector::RightVector;
+		CubeBasis.Up = -FVector::ForwardVector;
+		break;
+	case EStartFace::South: CubeBasis.Forward = -FVector::UpVector;
+		CubeBasis.Right = FVector::RightVector;
+		CubeBasis.Up = FVector::ForwardVector;
+		break;
+	case EStartFace::West: CubeBasis.Forward = FVector::ForwardVector;
+		CubeBasis.Right = FVector::UpVector;
+		CubeBasis.Up = -FVector::RightVector;
+		break;
+	case EStartFace::East: CubeBasis.Forward = FVector::ForwardVector;
+		CubeBasis.Right = -FVector::UpVector;
+		CubeBasis.Up = FVector::RightVector;
+		break;
+	}
+
 	SwitchToSpecificLevel(StartingLevel);
 }
 
@@ -51,6 +80,38 @@ void ALevelStreamerActor::OnLevelUnloaded()
 	UE_LOG(LogTemp, Warning, TEXT("Ancien niveau d�charg�, on charge %s"), *NextLevel.ToString());
 }
 
+// mettre la bonne rotation de al face chargé
+void ALevelStreamerActor::RotateLevel()
+{
+	// Récupère le ULevel chargé correspondant à CurrentLevel
+	ULevel* LoadedLevel = nullptr;
+	for (ULevelStreaming* LS : GetWorld()->GetStreamingLevels())
+	{
+		if (LS && LS->GetWorldAssetPackageFName() == CurrentLevel)
+		{
+			LoadedLevel = LS->GetLoadedLevel();
+			break;
+		}
+	}
+	if (!LoadedLevel) return;
+
+	// Trouve l’actor pivot de CETTE face
+	TArray<AActor*> Found;
+	UGameplayStatics::GetAllActorsWithTag(GetWorld(), FName("ParentTag"), Found);
+	for (AActor* A : Found)
+	{
+		if (A && A->GetLevel() == LoadedLevel)
+		{
+			const FRotator FaceRot = GetCurrentFaceRotation(); // <- ta rotation cible
+			A->SetActorRotation(FaceRot);
+			// (optionnel) A->SetActorLocation(CubeCenter + CubeBasis.Up * HalfSize);
+			break;
+		}
+	}
+
+	// UE_LOG(LogTemp, Warning, TEXT("Actuel Rotation %d"), GetCurrentFaceRotation());
+}
+
 //charger le level
 void ALevelStreamerActor::LoadLevel(FName NewLevelName)
 {
@@ -68,6 +129,7 @@ void ALevelStreamerActor::LoadLevel(FName NewLevelName)
 void ALevelStreamerActor::OnLevelLoaded()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Niveau %s charg� avec succ�s."), *CurrentLevel.ToString());
+	RotateLevel();
 }
 
 FName ALevelStreamerActor::GetNeighborLevel(FName FromLevel, ELevelDir Dir) const
