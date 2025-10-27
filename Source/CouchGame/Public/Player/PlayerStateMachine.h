@@ -37,10 +37,10 @@ public:
 
     // debug
     UPROPERTY(EditAnywhere, Category="Debug")
-    bool bPrintStateChanges = true;
+    bool IsPrintStateChanges = true;
 
     UPROPERTY(EditAnywhere, Category="Debug")
-    bool bVerboseLogs = true;
+    bool IsVerboseLogs = true;
 
 private:
     void CacheStatesOnOwner();
