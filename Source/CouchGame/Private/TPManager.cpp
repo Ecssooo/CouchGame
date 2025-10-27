@@ -46,7 +46,7 @@ void UTPManager::TrySwitch(ELevelDir Dir)
 		return;
 	}
 
-	LevelStreamer->CubeBasis.Roll(Dir);
+	LevelStreamer->CubeBasis.Turn(Dir);
 	LevelStreamer->SwitchToSpecificLevel(Target);
 }
 

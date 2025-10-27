@@ -52,36 +52,41 @@ USTRUCT(BlueprintType)
 struct FCubeBasis
 {
 	GENERATED_BODY()
-	FVector Forward = FVector::ForwardVector; // X
-	FVector Right = FVector::RightVector; // Y
-	FVector Up = FVector::UpVector; // Z
 
-	void Roll(ELevelDir Dir)
+	float YawDeg = 0.f;
+
+	void Turn(ELevelDir Dir)
 	{
-		const FVector F = Forward, R = Right, U = Up;
 		switch (Dir)
 		{
-		case ELevelDir::Up: Forward = U;
-			Up = -F;
-			break; // autour de Right -90°
-		case ELevelDir::Down: Forward = -U;
-			Up = F;
-			break; // autour de Right +90°
-		case ELevelDir::Left: Right = U;
-			Up = -R;
-			break; // autour de Forward +90°
-		case ELevelDir::Right: Right = -U;
-			Up = R;
-			break; // autour de Forward -90°
-		default: break;
+		case ELevelDir::Up:
+			break;
+
+		case ELevelDir::Down:
+			break;
+
+		case ELevelDir::Left:
+			YawDeg += 90.f;
+			break;
+
+		case ELevelDir::Right:
+			YawDeg -= 90.f;
+			break;
+		default:
+			break;
 		}
+
+		// normalise pour rester entre 0 et 360
+		if (YawDeg >= 360.f) YawDeg -= 360.f;
+		if (YawDeg < 0.f) YawDeg += 360.f;
 	}
 
 	FRotator AsRotator() const
 	{
-		return FRotationMatrix::MakeFromXZ(Forward, Up).Rotator();
+		return FRotator(0.f, YawDeg, 0.f);
 	}
 };
+
 
 UCLASS()
 class COUCHGAME_API ALevelStreamerActor : public AActor
@@ -151,8 +156,4 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	FRotator GetCurrentFaceRotation() const { return CubeBasis.AsRotator(); }
-
-
-	UPROPERTY(EditAnywhere, Category="Level Streaming")
-	EStartFace StartFace = EStartFace::Top;
 };
