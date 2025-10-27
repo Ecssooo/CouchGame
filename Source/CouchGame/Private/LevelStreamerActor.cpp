@@ -14,10 +14,11 @@ ALevelStreamerActor::ALevelStreamerActor()
 	CurrentLevelIndex = -1; // pour commencer � -1
 }
 
-// Called when the game starts or when spawned
 void ALevelStreamerActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+
 	SwitchToSpecificLevel(StartingLevel);
 }
 
@@ -51,6 +52,22 @@ void ALevelStreamerActor::OnLevelUnloaded()
 	UE_LOG(LogTemp, Warning, TEXT("Ancien niveau d�charg�, on charge %s"), *NextLevel.ToString());
 }
 
+// mettre la bonne rotation de al face chargé
+void ALevelStreamerActor::RotateLevel()
+{
+	const FRotator FaceRot = GetCurrentFaceRotation();
+
+	TArray<AActor*> Found;
+	UGameplayStatics::GetAllActorsWithTag(GetWorld(), FName("ParentTag"), Found);
+
+	for (AActor* A : Found)
+	{
+		A->SetActorRotation(FaceRot);
+		break;
+	}
+}
+
+
 //charger le level
 void ALevelStreamerActor::LoadLevel(FName NewLevelName)
 {
@@ -68,6 +85,7 @@ void ALevelStreamerActor::LoadLevel(FName NewLevelName)
 void ALevelStreamerActor::OnLevelLoaded()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Niveau %s charg� avec succ�s."), *CurrentLevel.ToString());
+	RotateLevel();
 }
 
 FName ALevelStreamerActor::GetNeighborLevel(FName FromLevel, ELevelDir Dir) const

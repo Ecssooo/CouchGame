@@ -45,6 +45,49 @@ struct FLevelNeighbors
 	}
 };
 
+UENUM(BlueprintType)
+enum class EStartFace : uint8 { Top, Bottom, North, South, West, East };
+
+USTRUCT(BlueprintType)
+struct FCubeBasis
+{
+	GENERATED_BODY()
+
+	float YawDeg = 0.f;
+
+	void Turn(ELevelDir Dir)
+	{
+		switch (Dir)
+		{
+		case ELevelDir::Up:
+			break;
+
+		case ELevelDir::Down:
+			break;
+
+		case ELevelDir::Left:
+			YawDeg += 90.f;
+			break;
+
+		case ELevelDir::Right:
+			YawDeg -= 90.f;
+			break;
+		default:
+			break;
+		}
+
+		// normalise pour rester entre 0 et 360
+		if (YawDeg >= 360.f) YawDeg -= 360.f;
+		if (YawDeg < 0.f) YawDeg += 360.f;
+	}
+
+	FRotator AsRotator() const
+	{
+		return FRotator(0.f, YawDeg, 0.f);
+	}
+};
+
+
 UCLASS()
 class COUCHGAME_API ALevelStreamerActor : public AActor
 {
@@ -102,6 +145,15 @@ public:
 	UFUNCTION()
 	void OnLevelLoaded();
 
+	UFUNCTION()
+	void RotateLevel();
+
 	UFUNCTION(BlueprintCallable, Category="Level Streaming")
 	FName GetNeighborLevel(FName FromLevel, ELevelDir Dir) const;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FCubeBasis CubeBasis;
+
+	UFUNCTION(BlueprintCallable)
+	FRotator GetCurrentFaceRotation() const { return CubeBasis.AsRotator(); }
 };
