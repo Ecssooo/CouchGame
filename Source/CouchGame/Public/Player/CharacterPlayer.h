@@ -9,7 +9,7 @@ class UInputMappingContext;
 class UInputAction;
 class UPlayerStateMachine;
 
-UCLASS()
+UCLASS(Blueprintable)
 class COUCHGAME_API ACharacterPlayer : public ACharacter
 {
 	GENERATED_BODY()
