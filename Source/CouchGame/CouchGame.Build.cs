@@ -8,7 +8,7 @@ public class CouchGame : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "LocalMultiplayer" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "LocalMultiplayer", "DeveloperSettings" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
