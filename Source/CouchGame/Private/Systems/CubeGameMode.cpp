@@ -72,7 +72,7 @@ void ACubeGameMode::SpawnCharacterAtBeginPlay()
 		if (!InputSubsystem)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Input subsystem not found"))
-			return;	
+			continue;	
 		}
 		
 		InputSubsystem->AddMappingContext(Settings->GamepadProfileData.IMCInGame,0);
