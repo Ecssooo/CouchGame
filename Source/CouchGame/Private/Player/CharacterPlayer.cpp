@@ -19,14 +19,16 @@ void ACharacterPlayer::OnJumpTriggered(const FInputActionValue&)
 	if (StateMachine) { StateMachine->ChangeState(EPlayerStateID::Jump); }
 }
 
-void ACharacterPlayer::OnInteractTriggered(const FInputActionValue&)
-{
-	IsWantsInteract = true;
-}
-
 void ACharacterPlayer::OnJumpInput()
 {
 	IsWantsJump = true;
 	if (StateMachine) { StateMachine->ChangeState(EPlayerStateID::Jump); }
 }
+
+void ACharacterPlayer::OnInteractTriggered(const FInputActionValue&)
+{
+	IsWantsInteract = true;
+}
+
+
 

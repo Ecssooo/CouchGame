@@ -2,20 +2,26 @@
 #include "Player/CharacterPlayer.h"
 #include "Player/PlayerStateMachine.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Systems/CharacterSettings.h"
+
 
 void UPlayerWalkState::OnEnter(UPlayerStateMachine* InSM)
 {
+	const UCharacterSettings* Settings = GetDefault<UCharacterSettings>();
+	
 	if (auto* P = GetPlayer())
 	{
-		SmoothedMaxSpeed = P->GetCharacterMovement()->GetLastUpdateVelocity().Size2D();
-		P->GetCharacterMovement()->GroundFriction = 2.0f;
-		P->GetCharacterMovement()->BrakingFriction = 1.0f;
-		P->GetCharacterMovement()->BrakingDecelerationWalking = 700.0f;
+		float WalkSmooth = Settings->RunSmoothedMaxSpeed;
+		WalkSmooth = P->GetCharacterMovement()->GetLastUpdateVelocity().Size2D();
+		P->GetCharacterMovement()->GroundFriction = Settings->WalkGroundFriction;
+		P->GetCharacterMovement()->BrakingFriction = Settings->WalkBrakingFriction;
+		P->GetCharacterMovement()->BrakingDecelerationWalking = Settings->WalkBrakingDecelerationWalking;
 	}
 }
 
 void UPlayerWalkState::OnTick(UPlayerStateMachine* InSM, float DeltaTime)
 {
+	const UCharacterSettings* Settings = GetDefault<UCharacterSettings>();
 	if (auto* P = GetPlayer())
 	{
 		if (!P->GetCharacterMovement()->IsMovingOnGround())
@@ -23,7 +29,7 @@ void UPlayerWalkState::OnTick(UPlayerStateMachine* InSM, float DeltaTime)
 			InSM->ChangeState(EPlayerStateID::Fall);
 			return;
 		}
-		const bool bHasMove = !P->PlayerMoveInput.IsNearlyZero(P->MoveDeadZone);
+		const bool bHasMove = !P->PlayerMoveInput.IsNearlyZero(Settings->MoveDeadZone);
 		if (!bHasMove)
 		{
 			InSM->ChangeState(EPlayerStateID::Idle);
@@ -34,8 +40,11 @@ void UPlayerWalkState::OnTick(UPlayerStateMachine* InSM, float DeltaTime)
 			InSM->ChangeState(EPlayerStateID::Run);
 			return;
 		}
-		const float Target = P->WalkSpeed;
-		SmoothedMaxSpeed = FMath::FInterpTo(SmoothedMaxSpeed, Target, DeltaTime, AccelInterpSpeed);
-		P->GetCharacterMovement()->MaxWalkSpeed = SmoothedMaxSpeed;
+
+		float WalkSmooth = Settings->RunSmoothedMaxSpeed;
+		const float Target = Settings->WalkSpeed;
+		WalkSmooth = FMath::FInterpTo(Settings->WalkSmoothedMaxSpeed, Target, DeltaTime, Settings->WalkAccelInterpSpeed);
+		P->GetCharacterMovement()->MaxWalkSpeed = WalkSmooth;
+		
 	}
 }
