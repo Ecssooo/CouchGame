@@ -41,7 +41,7 @@ void UPlayerRunState::OnTick(UPlayerStateMachine* InSM, float DeltaTime)
 		}
 		float RunSmooth = Settings->RunSmoothedMaxSpeed;  
 		const float Target = Settings->RunSpeed;
-		RunSmooth = FMath::FInterpTo(Settings->RunSmoothedMaxSpeed, Target, DeltaTime, Settings->RunAccelInterpSpeed);
+		RunSmooth = FMath::FInterpTo(RunSmooth, Target, DeltaTime, RunSmooth);
 		P->GetCharacterMovement()->MaxWalkSpeed = RunSmooth;
 	}
 }
