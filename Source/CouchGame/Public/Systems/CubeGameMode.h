@@ -36,7 +36,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void TeleportCharacterOut();
 	UFUNCTION(BlueprintCallable)
-	void SpawnCharacterInStreamedLevel();
+	void SpawnCharacterInStreamedLevel(ELevelDir dir);
 
 protected:
 	void FindMainCharacterSpawners(TArray<AMainCharacterSpawner*>& MainCharacterSpawners);

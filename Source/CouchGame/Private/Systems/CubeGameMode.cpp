@@ -88,7 +88,7 @@ void ACubeGameMode::TeleportCharacterOut()
 	}
 }
 
-void ACubeGameMode::SpawnCharacterInStreamedLevel()
+void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 {
 	FindStreamedCharacterSpawners(StreamedCharacterSpawners);
 
