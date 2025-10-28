@@ -14,6 +14,6 @@ protected:
 	virtual void OnTick(UPlayerStateMachine* InSM, float DeltaTime) override;
 
 private:
-	bool bJumpLaunched = false;
-	bool bLeftGround = false;
+	bool IsJumpLaunched = false;
+	bool IsLeftGround = false;
 };

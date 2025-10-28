@@ -13,7 +13,4 @@ protected:
 	virtual void OnEnter(UPlayerStateMachine* InSM) override;
 	virtual void OnTick(UPlayerStateMachine* InSM, float DeltaTime) override;
 
-private:
-	float SmoothedMaxSpeed = 0.f;
-	float AccelInterpSpeed = 5.0f;
 };
