@@ -6,6 +6,8 @@
 #include "Systems/PlayerSpawner.h"
 #include "StreamedCharacterSpawner.generated.h"
 
+enum class ELevelDir : uint8;
+
 UCLASS(Blueprintable)
 class COUCHGAME_API AStreamedCharacterSpawner : public APlayerSpawner
 {
@@ -14,7 +16,8 @@ class COUCHGAME_API AStreamedCharacterSpawner : public APlayerSpawner
 public:
 	// Sets default values for this actor's properties
 	AStreamedCharacterSpawner();
-	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	ELevelDir SpawnerDirection;
 
 protected:
 	// Called when the game starts or when spawned
