@@ -55,9 +55,8 @@ void ACubeGameMode::SpawnCharacterAtBeginPlay()
 		);
 		
 		if (!NewCharacter) continue;
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White,
- TEXT("Character Created"));
-		//NewCharacter->AutoPossessPlayer = CharacterSpawner->Input;
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, TEXT("Character Created"));
+
 		LocalPlayer->Possess(NewCharacter);
 		Players.Add(NewCharacter);
 
@@ -83,8 +82,14 @@ void ACubeGameMode::TeleportCharacterOut()
 {
 	for (AMainTeleporterOut* Teleporter : MainTeleportersOut)
 	{
+		if(!Teleporter)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("TeleportersOut is null"));
+			continue;
+		}
 		ACharacterPlayer* CharacterToTP = Players[Teleporter->PlayerIndex];
 		CharacterToTP->SetActorLocation(Teleporter->GetActorLocation());
+		UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to Teleporter : %d"), Teleporter->PlayerIndex,Teleporter->PlayerIndex);
 	}
 }
 
@@ -94,8 +99,13 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 	
 	for (AStreamedCharacterSpawner* CharacterSpawner : StreamedCharacterSpawners)
 	{
+		if (!CharacterSpawner)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("StreamedCharacterSpawners is null"));
+		}
 		ACharacterPlayer* CharacterToSpawn = Players[CharacterSpawner->PlayerIndex];
 		CharacterToSpawn->SetActorLocation(CharacterSpawner->GetActorLocation());
+		UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to CharacterSpawner : %d"), CharacterSpawner->PlayerIndex, CharacterSpawner->PlayerIndex);
 	}
 }
 #pragma endregion
@@ -103,6 +113,7 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 #pragma region Find Spawners
 void ACubeGameMode::FindMainCharacterSpawners(TArray<AMainCharacterSpawner*>& InMainCharacterSpawners)
 {
+	InMainCharacterSpawners.Empty();
 	TArray<AActor*> FoundActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AMainCharacterSpawner::StaticClass(), FoundActors);
 
@@ -110,7 +121,7 @@ void ACubeGameMode::FindMainCharacterSpawners(TArray<AMainCharacterSpawner*>& In
 	{
 		if (actor)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Actor find : %s"), *actor->GetName());
+			// UE_LOG(LogTemp, Warning, TEXT("Actor find : %s"), *actor->GetName());
 			InMainCharacterSpawners.Add(Cast<AMainCharacterSpawner>(actor));
 		}
 	}
@@ -118,12 +129,13 @@ void ACubeGameMode::FindMainCharacterSpawners(TArray<AMainCharacterSpawner*>& In
 	{
 		AMainCharacterSpawner* temp = InMainCharacterSpawners[0];
 		InMainCharacterSpawners[0] = InMainCharacterSpawners[1];  
-		InMainCharacterSpawners[1] = temp;  
+		InMainCharacterSpawners[1] = temp; 
 	}
 }
 
 void ACubeGameMode::FindMainTeleporterOut(TArray<AMainTeleporterOut*>& InMainTeleportersOut)
 {
+	InMainTeleportersOut.Empty();
 	TArray<AActor*> FoundActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AMainTeleporterOut::StaticClass(), FoundActors);
 
@@ -135,6 +147,7 @@ void ACubeGameMode::FindMainTeleporterOut(TArray<AMainTeleporterOut*>& InMainTel
 
 void ACubeGameMode::FindStreamedCharacterSpawners(TArray<AStreamedCharacterSpawner*>& InStreamedCharacterSpawners)
 {
+	InStreamedCharacterSpawners.Empty();
 	TArray<AActor*> FoundActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AStreamedCharacterSpawner::StaticClass(), FoundActors);
 
