@@ -91,7 +91,7 @@ void ACubeGameMode::TeleportCharacterOut()
 void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 {
 	FindStreamedCharacterSpawners(StreamedCharacterSpawners);
-
+	
 	for (AStreamedCharacterSpawner* CharacterSpawner : StreamedCharacterSpawners)
 	{
 		ACharacterPlayer* CharacterToSpawn = Players[CharacterSpawner->PlayerIndex];
@@ -129,7 +129,7 @@ void ACubeGameMode::FindMainTeleporterOut(TArray<AMainTeleporterOut*>& InMainTel
 
 	for (AActor* actor : FoundActors)
 	{
-		InMainTeleportersOut.Add(Cast<AMainTeleporterOut>(AMainTeleporterOut::StaticClass()));
+		InMainTeleportersOut.Add(Cast<AMainTeleporterOut>(actor));
 	}
 }
 
@@ -140,7 +140,7 @@ void ACubeGameMode::FindStreamedCharacterSpawners(TArray<AStreamedCharacterSpawn
 
 	for (AActor* actor : FoundActors)
 	{
-		InStreamedCharacterSpawners.Add(Cast<AStreamedCharacterSpawner>(AStreamedCharacterSpawner::StaticClass()));
+		InStreamedCharacterSpawners.Add(Cast<AStreamedCharacterSpawner>(actor));
 	}
 }
 #pragma endregion
