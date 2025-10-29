@@ -103,9 +103,12 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("StreamedCharacterSpawners is null"));
 		}
-		ACharacterPlayer* CharacterToSpawn = Players[CharacterSpawner->PlayerIndex];
-		CharacterToSpawn->SetActorLocation(CharacterSpawner->GetActorLocation());
-		UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to CharacterSpawner : %d"), CharacterSpawner->PlayerIndex, CharacterSpawner->PlayerIndex);
+		if (CharacterSpawner->SpawnerDirection == dir)
+		{
+			ACharacterPlayer* CharacterToSpawn = Players[CharacterSpawner->PlayerIndex];
+			CharacterToSpawn->SetActorLocation(CharacterSpawner->GetActorLocation());
+			UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to CharacterSpawner : %d"), CharacterSpawner->PlayerIndex, CharacterSpawner->PlayerIndex);
+		}
 	}
 }
 #pragma endregion
