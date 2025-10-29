@@ -66,11 +66,11 @@ struct FCubeBasis
 			break;
 
 		case ELevelDir::Left:
-			YawDeg += 90.f;
+			// YawDeg -= 90.f;
 			break;
 
 		case ELevelDir::Right:
-			YawDeg -= 90.f;
+			// YawDeg += 90.f;
 			break;
 		default:
 			break;
