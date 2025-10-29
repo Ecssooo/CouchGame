@@ -36,18 +36,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Input")
 	void ConsumeInteract() { IsWantsInteract = false; }
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Move")
-	float WalkSpeed = 300.f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Move")
-	float RunSpeed = 600.f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Move")
-	float JumpPower = 420.f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Move")
-	float MoveDeadZone = 0.10f;
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="State")
 	UPlayerStateMachine* StateMachine = nullptr;
 
