@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Components/ArrowComponent.h"
 #include "LevelStreamerActor.generated.h"
 
 UENUM(BlueprintType)
@@ -19,6 +20,9 @@ USTRUCT(BlueprintType)
 struct FLevelNeighbors
 {
 	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	AActor* Arrow;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName Up;
@@ -153,6 +157,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	FCubeBasis CubeBasis;
+
+	UPROPERTY()
+	mutable FName CurrentLevelName;
 
 	UFUNCTION(BlueprintCallable)
 	FRotator GetCurrentFaceRotation() const { return CubeBasis.AsRotator(); }
