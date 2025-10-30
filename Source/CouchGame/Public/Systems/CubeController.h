@@ -27,5 +27,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintCallable, Category="Rotation")
+	static void AddRotationQuat(AActor* Target, float Pitch, float Yaw, float Roll, bool bLocal = true);
+
 	
 };

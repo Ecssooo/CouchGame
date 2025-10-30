@@ -24,3 +24,29 @@ void ACubeController::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
+void ACubeController::AddRotationQuat(AActor* Target, float Pitch, float Yaw, float Roll, bool bLocal)
+{
+	if (!Target) return;
+
+	// Rotation actuelle
+	const FQuat CurrentQuat = Target->GetActorQuat();
+
+	// Crée un quaternion à partir de la rotation demandée (en degrés)
+	const FRotator DeltaRot(Pitch, Yaw, Roll);
+	const FQuat DeltaQuat = FQuat(DeltaRot);
+
+	FQuat NewQuat;
+
+	if (bLocal)
+	{
+		// Tourne autour des axes LOCAUX
+		NewQuat = DeltaQuat * CurrentQuat;
+	}
+	else
+	{
+		// Tourne autour des axes MONDE
+		NewQuat = CurrentQuat * DeltaQuat;
+	}
+
+	Target->SetActorRotation(NewQuat);
+}
