@@ -29,6 +29,8 @@ void ACharacterPlayer::OnJumpTriggered(const FInputActionValue&)
 
 void ACharacterPlayer::OnJumpInput()
 {
+	UE_LOG(LogTemp, Warning, TEXT("IA_Jump on %s (PC=%s)"),
+	*GetName(), GetController() ? *GetController()->GetName() : TEXT("None"));
 	IsWantsJump = true;
 	if (StateMachine) { StateMachine->ChangeState(EPlayerStateID::Jump); }
 }

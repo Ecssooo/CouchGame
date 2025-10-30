@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "CharacterPlayer.h"
 #include "Components/ActorComponent.h"
 #include "PlayerStateID.h"
 #include "PlayerStateMachine.generated.h"
@@ -34,6 +35,8 @@ public:
 
     UPROPERTY(EditAnywhere, Category="States")
     EPlayerStateID InitialState = EPlayerStateID::Idle;
+
+
 
     // debug
     UPROPERTY(EditAnywhere, Category="Debug")
