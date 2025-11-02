@@ -4,8 +4,6 @@
 #include "Systems/CubeGameMode.h"
 
 #include "EnhancedInputSubsystems.h"
-#include "LocalMultiplayerSettings.h"
-#include "LocalMultiplayerSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "Player/CharacterPlayer.h"
 #include "Systems/CharacterSettings.h"
@@ -27,7 +25,7 @@ void ACubeGameMode::BeginPlay()
 #pragma region Manage players
 void ACubeGameMode::SpawnCharacterAtBeginPlay()
 {
-	const ULocalMultiplayerSettings* Settings = GetDefault<ULocalMultiplayerSettings>();
+	const UCharacterSettings* Settings = GetDefault<UCharacterSettings>();
 	for (AMainCharacterSpawner* CharacterSpawner : MainCharacterSpawners)
 	{
 		if (CharacterSpawner == nullptr)
@@ -71,10 +69,19 @@ void ACubeGameMode::SpawnCharacterAtBeginPlay()
 		if (!InputSubsystem)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Input subsystem not found"))
+			
 			continue;	
 		}
-		
-		InputSubsystem->AddMappingContext(Settings->GamepadProfileData.IMCInGame,0);
+		if (Settings->UsKeyboardControl)
+		{
+			InputSubsystem->AddMappingContext(GetKeyboardProfile(CharacterSpawner->PlayerIndex),0);
+			UE_LOG(LogTemp, Warning, TEXT("LocalPlayer : %d, Add keyboard IMC : %d"), LocalPlayer->GetLocalPlayer()->GetControllerId(), CharacterSpawner->PlayerIndex);
+		}
+		else
+		{
+			InputSubsystem->AddMappingContext(Settings->IMCInGame.IMCGamePad,0);
+			UE_LOG(LogTemp, Warning, TEXT("Add GamePad IMC : %d"), CharacterSpawner->PlayerIndex);
+		}
 	}
 }
 
@@ -175,6 +182,21 @@ TSubclassOf<ACharacterPlayer> ACubeGameMode::GetCharacterClass(int PlayerIndex)
 		return Settings->CharacterPlayer1;
 	case 1:
 		return Settings->CharacterPlayer2;
+	default:
+		return nullptr;
+	}
+}
+
+UInputMappingContext* ACubeGameMode::GetKeyboardProfile(int PlayerIndex)
+{
+	const UCharacterSettings* Settings = GetDefault<UCharacterSettings>();
+		
+	switch (PlayerIndex)
+	{
+	case 0:
+		return Settings->IMCInGame.IMCKeyboardP1;
+	case 1:
+		return Settings->IMCInGame.IMCKeyboardP2;
 	default:
 		return nullptr;
 	}

@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameViewportClient.h"
-#include "LocalMultiplayerGameViewportClient.generated.h"
+#include "LocalMultiplayerViewPort.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class LOCALMULTIPLAYER_API ULocalMultiplayerGameViewportClient : public UGameViewportClient
+class COUCHGAME_API ULocalMultiplayerViewPort : public UGameViewportClient
 {
 	GENERATED_BODY()
-
+	
 public:
 	virtual void PostInitProperties() override;
 

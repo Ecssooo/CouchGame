@@ -6,6 +6,31 @@
 #include "Engine/DeveloperSettings.h"
 #include "CharacterSettings.generated.h"
 
+class UInputMappingContext;
+
+USTRUCT()
+struct FLocalMultiplayerProfile
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UInputMappingContext> IMCGamePad;
+
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UInputMappingContext> IMCKeyboardP1;
+	
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UInputMappingContext> IMCKeyboardP2;
+	
+	int GetPlayerIndexFromKey(const FKey& Key) const;
+};
+
+
+
+
+
+
 class ACharacterPlayer;
 /**
  * 
@@ -16,6 +41,12 @@ class COUCHGAME_API UCharacterSettings : public UDeveloperSettings
 	GENERATED_BODY()
 	
 public:
+	UPROPERTY(Config, EditAnywhere, Category="LocalMultiplayer")
+	bool UsKeyboardControl;
+	
+	UPROPERTY(Config, EditAnywhere, Category="LocalMultiplayer")
+	FLocalMultiplayerProfile IMCInGame;
+	
 	UPROPERTY(Config, EditAnywhere, Category="Character class")
 	TSubclassOf<ACharacterPlayer> CharacterPlayer1;
 	
