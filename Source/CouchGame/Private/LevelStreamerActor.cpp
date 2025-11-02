@@ -14,10 +14,11 @@ ALevelStreamerActor::ALevelStreamerActor()
 	CurrentLevelIndex = -1; // pour commencer � -1
 }
 
-// Called when the game starts or when spawned
 void ALevelStreamerActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	CurrentLevelName = StartingLevel;
 	SwitchToSpecificLevel(StartingLevel);
 }
 
@@ -51,6 +52,46 @@ void ALevelStreamerActor::OnLevelUnloaded()
 	UE_LOG(LogTemp, Warning, TEXT("Ancien niveau d�charg�, on charge %s"), *NextLevel.ToString());
 }
 
+// mettre la bonne rotation de al face chargé
+void ALevelStreamerActor::RotateLevel()
+{
+	FLevelNeighbors* Neigh = Adjacency.Find(CurrentLevelName);
+	if (!Neigh)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("RotateLevel: no adjacency data for %s"), *CurrentLevelName.ToString());
+		return;
+	}
+
+	if (!Neigh->Arrow)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("RotateLevel: no Arrow set for %s"), *CurrentLevelName.ToString());
+		return;
+	}
+
+	const FVector ArrowForwardWS = Neigh->Arrow->GetActorRotation().Vector();
+	FRotator ArrowRot = Neigh->Arrow->GetActorRotation();
+
+	ArrowRot.Pitch = 0.f;
+	ArrowRot.Roll  = 0.f;
+
+	TArray<AActor*> Found;
+	UGameplayStatics::GetAllActorsWithTag(GetWorld(), FName("ParentTag"), Found);
+
+	for (AActor* A : Found)
+	{
+		if (!A) continue;
+
+		FRotator FaceRot = A->GetActorRotation();
+		FaceRot.Yaw = ArrowRot.Yaw;
+		FaceRot.Pitch = 0.f;
+		FaceRot.Roll = 0.f;
+
+		A->SetActorRotation(FaceRot);
+		break;
+	}
+}
+
+
 //charger le level
 void ALevelStreamerActor::LoadLevel(FName NewLevelName)
 {
@@ -68,12 +109,14 @@ void ALevelStreamerActor::LoadLevel(FName NewLevelName)
 void ALevelStreamerActor::OnLevelLoaded()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Niveau %s charg� avec succ�s."), *CurrentLevel.ToString());
+	RotateLevel();
 }
 
 FName ALevelStreamerActor::GetNeighborLevel(FName FromLevel, ELevelDir Dir) const
 {
 	if (const FLevelNeighbors* Neigh = Adjacency.Find(FromLevel))
 	{
+		CurrentLevelName = Neigh->Get(Dir);
 		return Neigh->Get(Dir);
 	}
 	return NAME_None;

@@ -2,65 +2,49 @@
 #include "Player/CharacterPlayer.h"
 #include "Player/PlayerStateMachine.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Systems/CharacterSettings.h"
+
 
 void UPlayerWalkState::OnEnter(UPlayerStateMachine* InSM)
 {
+	const UCharacterSettings* Settings = GetDefault<UCharacterSettings>();
+	
 	if (auto* P = GetPlayer())
 	{
-		//lissage
-		SmoothedMaxSpeed = P->GetCharacterMovement()->GetLastUpdateVelocity().Size2D();
-
-
-		// feeling doux
-		P->GetCharacterMovement()->GroundFriction = 2.0f;
-		P->GetCharacterMovement()->BrakingFriction = 1.0f;
-		P->GetCharacterMovement()->BrakingDecelerationWalking = 700.0f;
+		float WalkSmooth = Settings->RunSmoothedMaxSpeed;
+		WalkSmooth = P->GetCharacterMovement()->GetLastUpdateVelocity().Size2D();
+		P->GetCharacterMovement()->GroundFriction = Settings->WalkGroundFriction;
+		P->GetCharacterMovement()->BrakingFriction = Settings->WalkBrakingFriction;
+		P->GetCharacterMovement()->BrakingDecelerationWalking = Settings->WalkBrakingDecelerationWalking;
 	}
 }
 
 void UPlayerWalkState::OnTick(UPlayerStateMachine* InSM, float DeltaTime)
 {
+	const UCharacterSettings* Settings = GetDefault<UCharacterSettings>();
 	if (auto* P = GetPlayer())
 	{
-		// Priorité
 		if (!P->GetCharacterMovement()->IsMovingOnGround())
 		{
 			InSM->ChangeState(EPlayerStateID::Fall);
 			return;
 		}
-
-		if (P->bWantsJump)
-		{
-			P->Jump();
-			P->ConsumeJump();
-			InSM->ChangeState(EPlayerStateID::Jump);
-			return;
-		}
-
-		if (P->bWantsInteract)
-		{
-			P->ConsumeInteract();
-			InSM->ChangeState(EPlayerStateID::Interact);
-			return;
-		}
-
-		// Walk -> Idle/Run
-		constexpr float DeadZone = 0.10f;
-		const bool bHasMove = !P->PlayerMoveInput.IsNearlyZero(DeadZone);
+		const bool bHasMove = !P->PlayerMoveInput.IsNearlyZero(Settings->MoveDeadZone);
 		if (!bHasMove)
 		{
 			InSM->ChangeState(EPlayerStateID::Idle);
 			return;
 		}
-		if (P->bRunPressed)
+		if (P->IsRunPressed)
 		{
 			InSM->ChangeState(EPlayerStateID::Run);
 			return;
 		}
 
-		// Lissage
-		const float Target = P->WalkSpeed;
-		SmoothedMaxSpeed = FMath::FInterpTo(SmoothedMaxSpeed, Target, DeltaTime, AccelInterpSpeed);
-		P->GetCharacterMovement()->MaxWalkSpeed = SmoothedMaxSpeed;
+		float WalkSmooth = Settings->WalkSmoothedMaxSpeed;
+		const float Target = Settings->WalkSpeed;
+		WalkSmooth = FMath::FInterpTo(WalkSmooth, Target, DeltaTime, WalkSmooth);
+		P->GetCharacterMovement()->MaxWalkSpeed = WalkSmooth;
+		
 	}
 }

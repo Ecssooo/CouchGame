@@ -1,25 +1,19 @@
 #pragma once
-
-#include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
+#include "PlayerBaseState.h"
 #include "PlayerJumpState.generated.h"
 
-
-UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class COUCHGAME_API UPlayerJumpState : public UActorComponent
+UCLASS(ClassGroup=(States), meta=(BlueprintSpawnableComponent))
+class COUCHGAME_API UPlayerJumpState : public UPlayerBaseState
 {
 	GENERATED_BODY()
-
 public:
-
-	UPlayerJumpState();
+	virtual EPlayerStateID GetStateID() const override { return EPlayerStateID::Jump; }
 
 protected:
+	virtual void OnEnter(UPlayerStateMachine* InSM) override;
+	virtual void OnTick(UPlayerStateMachine* InSM, float DeltaTime) override;
 
-	virtual void BeginPlay() override;
-
-public:
-
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
-	                           FActorComponentTickFunction* ThisTickFunction) override;
+private:
+	bool IsJumpLaunched = false;
+	bool IsLeftGround = false;
 };

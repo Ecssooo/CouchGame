@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "CharacterPlayer.h"
 #include "Components/ActorComponent.h"
 #include "PlayerStateID.h"
 #include "PlayerStateMachine.generated.h"
@@ -35,12 +36,14 @@ public:
     UPROPERTY(EditAnywhere, Category="States")
     EPlayerStateID InitialState = EPlayerStateID::Idle;
 
+
+
     // debug
     UPROPERTY(EditAnywhere, Category="Debug")
-    bool bPrintStateChanges = true;
+    bool IsPrintStateChanges = true;
 
     UPROPERTY(EditAnywhere, Category="Debug")
-    bool bVerboseLogs = true;
+    bool IsVerboseLogs = true;
 
 private:
     void CacheStatesOnOwner();
