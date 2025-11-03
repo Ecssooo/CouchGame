@@ -6,6 +6,9 @@
 #include "GameFramework/Actor.h"
 #include "CubeController.generated.h"
 
+enum class ELevelDir : uint8;
+class UTPManager;
+
 UCLASS()
 class COUCHGAME_API ACubeController : public AActor
 {
@@ -19,16 +22,30 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	// UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	// List<AActor*> Arrow;
-	
+	UPROPERTY(EditAnywhere)
+	float AnimationDuration = 1.f;
 
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION(BlueprintCallable, Category="Rotation")
-	static void AddRotationQuat(AActor* Target, float Pitch, float Yaw, float Roll, bool bLocal = true);
+	UPROPERTY()
+	TObjectPtr<UTPManager> TPManager;
 
-	
+	UFUNCTION(BlueprintCallable)
+	void StartRotationQuat(ELevelDir StartDir, ELevelDir EndDir);
+
+private :
+	bool IsRotating = false;
+	float Elapsed;
+
+	FQuat StartQuat;
+	FQuat TargetQuat;
+	FQuat CurrentRotationQuat;
+
+	ELevelDir CurrentStartLevelDir;
+	ELevelDir CurrentEndLevelDir;
+
+	void RotateStepAxis(float DeltaTime);
+	static FVector AxisUnitVector(EAxis::Type Axis);
 };

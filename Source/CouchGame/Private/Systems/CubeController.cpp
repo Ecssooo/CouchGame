@@ -2,6 +2,11 @@
 
 
 #include "Systems/CubeController.h"
+#include "LevelStreamerActor.h"
+#include "TPManager.h"
+
+#include "Kismet/KismetMaterialLibrary.h"
+#include "Kismet/KismetMathLibrary.h"
 
 
 // Sets default values
@@ -9,44 +14,75 @@ ACubeController::ACubeController()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	TPManager = CreateDefaultSubobject<UTPManager>(TEXT("TPManager"));
 }
 
 // Called when the game starts or when spawned
 void ACubeController::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	CurrentRotationQuat = FQuat::Identity;
 }
 
 // Called every frame
 void ACubeController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	RotateStepAxis(DeltaTime);
 }
 
-void ACubeController::AddRotationQuat(AActor* Target, float Pitch, float Yaw, float Roll, bool bLocal)
+void ACubeController::RotateStepAxis(float DeltaTime)
 {
-	if (!Target) return;
+	if (!IsRotating) return;
 
-	// Rotation actuelle
-	const FQuat CurrentQuat = Target->GetActorQuat();
+	Elapsed += DeltaTime;
+	float Alpha = Elapsed / AnimationDuration;
+	Alpha = FMath::Clamp(Alpha, 0, 1);
 
-	// Crée un quaternion à partir de la rotation demandée (en degrés)
-	const FRotator DeltaRot(Pitch, Yaw, Roll);
-	const FQuat DeltaQuat = FQuat(DeltaRot);
+	CurrentRotationQuat = FQuat::Slerp(StartQuat, TargetQuat, Alpha);
+	SetActorRotation(CurrentRotationQuat);
 
-	FQuat NewQuat;
-
-	if (bLocal)
+	if (Elapsed > AnimationDuration)
 	{
-		// Tourne autour des axes LOCAUX
-		NewQuat = DeltaQuat * CurrentQuat;
+		UE_LOG(LogTemp, Warning, TEXT("Animation termine"));
+		IsRotating = false;
+		CurrentRotationQuat = TargetQuat;
+		SetActorRotation(CurrentRotationQuat);
+
+		TPManager->TrySwitch(CurrentStartLevelDir, CurrentEndLevelDir);
 	}
-	else
+}
+
+void ACubeController::StartRotationQuat(ELevelDir StartDir, ELevelDir EndDir)
+{
+	IsRotating = true;
+	Elapsed = 0.f;
+
+	TPManager->UnloadLevel();
+
+	FQuat DeltaRotationQuat;
+	switch (StartDir)
 	{
-		// Tourne autour des axes MONDE
-		NewQuat = CurrentQuat * DeltaQuat;
+	case ELevelDir::Up:
+		DeltaRotationQuat = FQuat::MakeFromEuler(FVector(0.0f, 90.0f, 0.0f));
+		break;
+	case ELevelDir::Down:
+		DeltaRotationQuat = FQuat::MakeFromEuler(FVector(0.0f, -90.0f, 0.0f));
+		break;
+	case ELevelDir::Left:
+		DeltaRotationQuat = FQuat::MakeFromEuler(FVector(90.0f, 0.0f, 0.0f));
+		break;
+	case ELevelDir::Right:
+		DeltaRotationQuat = FQuat::MakeFromEuler(FVector(-90.0f, 0.0f, 0.0f));
+		break;
 	}
 
-	Target->SetActorRotation(NewQuat);
+	CurrentStartLevelDir = StartDir;
+	CurrentEndLevelDir = EndDir;
+
+	StartQuat = CurrentRotationQuat;
+	TargetQuat = DeltaRotationQuat * CurrentRotationQuat;
 }

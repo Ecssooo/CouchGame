@@ -13,7 +13,8 @@ enum class ELevelDir : uint8
 	Up UMETA(DisplayName="Up"),
 	Down UMETA(DisplayName="Down"),
 	Left UMETA(DisplayName="Left"),
-	Right UMETA(DisplayName="Right")
+	Right UMETA(DisplayName="Right"),
+	None UMETA(DisplayName="None")
 };
 
 USTRUCT(BlueprintType)
@@ -52,45 +53,46 @@ struct FLevelNeighbors
 UENUM(BlueprintType)
 enum class EStartFace : uint8 { Top, Bottom, North, South, West, East };
 
-USTRUCT(BlueprintType)
-struct FCubeBasis
-{
-	GENERATED_BODY()
+// USTRUCT(BlueprintType)
+// struct FCubeBasis
+// {
+// 	GENERATED_BODY()
+//
+// 	float YawDeg = 0.f;
+//
+// 	void Turn(ELevelDir Dir)
+// 	{
+// 		switch (Dir)
+// 		{
+// 		case ELevelDir::Up:
+// 			break;
+//
+// 		case ELevelDir::Down:
+// 			break;
+//
+// 		case ELevelDir::Left:
+// 			// YawDeg -= 90.f;
+// 			break;
+//
+// 		case ELevelDir::Right:
+// 			// YawDeg += 90.f;
+// 			break;
+// 		default:
+// 			break;
+// 		}
+//
+// 		// normalise pour rester entre 0 et 360
+// 		if (YawDeg >= 360.f) YawDeg -= 360.f;
+// 		if (YawDeg < 0.f) YawDeg += 360.f;
+// 	}
+//
+// 	FRotator AsRotator() const
+// 	{
+// 		return FRotator(0.f, YawDeg, 0.f);
+// 	}
+// };
 
-	float YawDeg = 0.f;
-
-	void Turn(ELevelDir Dir)
-	{
-		switch (Dir)
-		{
-		case ELevelDir::Up:
-			break;
-
-		case ELevelDir::Down:
-			break;
-
-		case ELevelDir::Left:
-			// YawDeg -= 90.f;
-			break;
-
-		case ELevelDir::Right:
-			// YawDeg += 90.f;
-			break;
-		default:
-			break;
-		}
-
-		// normalise pour rester entre 0 et 360
-		if (YawDeg >= 360.f) YawDeg -= 360.f;
-		if (YawDeg < 0.f) YawDeg += 360.f;
-	}
-
-	FRotator AsRotator() const
-	{
-		return FRotator(0.f, YawDeg, 0.f);
-	}
-};
-
+class ACubeGameMode;
 
 UCLASS()
 class COUCHGAME_API ALevelStreamerActor : public AActor
@@ -135,7 +137,7 @@ public:
 
 	//fonction qui change le level � un level sp�cific
 	UFUNCTION(BlueprintCallable, Category = "Level Streaming")
-	void SwitchToSpecificLevel(FName NewLevelName);
+	void SwitchToSpecificLevel(FName NewLevelName, ELevelDir Dir);
 
 	//quand l'ancien niveau est d�charg� on appel cette fonction
 	UFUNCTION()
@@ -155,12 +157,19 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Level Streaming")
 	FName GetNeighborLevel(FName FromLevel, ELevelDir Dir) const;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	FCubeBasis CubeBasis;
+	// UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	// FCubeBasis CubeBasis;
 
 	UPROPERTY()
 	mutable FName CurrentLevelName;
 
-	UFUNCTION(BlueprintCallable)
-	FRotator GetCurrentFaceRotation() const { return CubeBasis.AsRotator(); }
+	UPROPERTY()
+	TObjectPtr<ACubeGameMode> GameMode;
+
+	// UFUNCTION
+	// (BlueprintCallable)
+	// FRotator GetCurrentFaceRotation() const { return CubeBasis.AsRotator(); }
+
+private :
+	ELevelDir TmpLevelDir;
 };
