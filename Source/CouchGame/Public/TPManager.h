@@ -27,22 +27,22 @@ public:
 	UFUNCTION(BlueprintCallable, Category="TPManager|Level")
 	void UnloadLevel();
 
-	/** Appelé quand on appuie sur la touche "Haut" */
-	UFUNCTION(BlueprintCallable, Category="TPManager|Input")
-	void OnUpPressed();
+	// /** Appelé quand on appuie sur la touche "Haut" */
+	// UFUNCTION(BlueprintCallable, Category="TPManager|Input")
+	// void OnUpPressed();
+	//
+	// /** Appelé quand on appuie sur la touche "Bas" */
+	// UFUNCTION(BlueprintCallable, Category="TPManager|Input")
+	// void OnDownPressed();
+	//
+	// /** Appelé quand on appuie sur la touche "Gauche" */
+	// UFUNCTION(BlueprintCallable, Category="TPManager|Input")
+	// void OnLeftPressed();
+	//
+	// /** Appelé quand on appuie sur la touche "Droite" */
+	// UFUNCTION(BlueprintCallable, Category="TPManager|Input")
+	// void OnRightPressed();
 
-	/** Appelé quand on appuie sur la touche "Bas" */
-	UFUNCTION(BlueprintCallable, Category="TPManager|Input")
-	void OnDownPressed();
-
-	/** Appelé quand on appuie sur la touche "Gauche" */
-	UFUNCTION(BlueprintCallable, Category="TPManager|Input")
-	void OnLeftPressed();
-
-	/** Appelé quand on appuie sur la touche "Droite" */
-	UFUNCTION(BlueprintCallable, Category="TPManager|Input")
-	void OnRightPressed();
-
-private:
-	void TrySwitch(ELevelDir Dir);
+	UFUNCTION(BlueprintCallable)
+	void TrySwitch(ELevelDir DirectionDir, ELevelDir EndDirection);
 };

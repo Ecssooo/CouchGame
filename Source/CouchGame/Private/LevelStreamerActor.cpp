@@ -4,6 +4,10 @@
 #include "LevelStreamerActor.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/LevelStreaming.h"
+#include "Systems/ArrowHelper.h"
+#include "Systems/CubeGameMode.h"
+#include "Systems/CubeController.h"
+#include "Components/ArrowComponent.h"
 
 
 // Sets default values
@@ -19,7 +23,8 @@ void ALevelStreamerActor::BeginPlay()
 	Super::BeginPlay();
 
 	CurrentLevelName = StartingLevel;
-	SwitchToSpecificLevel(StartingLevel);
+	SwitchToSpecificLevel(StartingLevel, ELevelDir::None);
+	GameMode = Cast<ACubeGameMode>(GetWorld()->GetAuthGameMode());
 }
 
 // Called every frame
@@ -39,17 +44,18 @@ void ALevelStreamerActor::UnloadActualLevel()
 	UGameplayStatics::UnloadStreamLevel(this, CurrentLevel, LatentInfo, false);
 }
 
-void ALevelStreamerActor::SwitchToSpecificLevel(FName NewLevelName)
+void ALevelStreamerActor::SwitchToSpecificLevel(FName NewLevelName, ELevelDir Dir)
 {
 	NextLevel = NewLevelName;
-	LoadLevel(NewLevelName); //si il est pas sur un level je charge directement pas besoin de d�charger
+	TmpLevelDir = Dir;
+	LoadLevel(NewLevelName);
 	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, TEXT("Load level"));
 }
 
 //quand le level est d�charg�
 void ALevelStreamerActor::OnLevelUnloaded()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Ancien niveau d�charg�, on charge %s"), *NextLevel.ToString());
+	UE_LOG(LogTemp, Warning, TEXT("Ancien niveau decharge, on charge %s"), *NextLevel.ToString());
 }
 
 // mettre la bonne rotation de al face chargé
@@ -62,17 +68,11 @@ void ALevelStreamerActor::RotateLevel()
 		return;
 	}
 
-	if (!Neigh->Arrow)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("RotateLevel: no Arrow set for %s"), *CurrentLevelName.ToString());
-		return;
-	}
 
-	const FVector ArrowForwardWS = Neigh->Arrow->GetActorRotation().Vector();
-	FRotator ArrowRot = Neigh->Arrow->GetActorRotation();
+	AArrowHelper* ArrowHelper = CubeController->GetArrow(Neigh->ArrowIndex);
+	FRotator ArrowRot = ArrowHelper->Arrow->GetComponentRotation();
+	const float DesiredYaw = FRotator::NormalizeAxis(ArrowRot.Yaw);
 
-	ArrowRot.Pitch = 0.f;
-	ArrowRot.Roll  = 0.f;
 
 	TArray<AActor*> Found;
 	UGameplayStatics::GetAllActorsWithTag(GetWorld(), FName("ParentTag"), Found);
@@ -81,12 +81,14 @@ void ALevelStreamerActor::RotateLevel()
 	{
 		if (!A) continue;
 
-		FRotator FaceRot = A->GetActorRotation();
-		FaceRot.Yaw = ArrowRot.Yaw;
+		FRotator FaceRot = FRotator::ZeroRotator;
+		FaceRot.Yaw = DesiredYaw;
 		FaceRot.Pitch = 0.f;
 		FaceRot.Roll = 0.f;
 
 		A->SetActorRotation(FaceRot);
+
+		UE_LOG(LogTemp, Log, TEXT("RotateLevel: set %s yaw=%.1f"), *A->GetName(), FaceRot.Yaw);
 		break;
 	}
 }
@@ -105,11 +107,13 @@ void ALevelStreamerActor::LoadLevel(FName NewLevelName)
 	CurrentLevel = NewLevelName;
 }
 
-//quand le level est charg�
+//quand le level est charge
 void ALevelStreamerActor::OnLevelLoaded()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Niveau %s charg� avec succ�s."), *CurrentLevel.ToString());
+	UE_LOG(LogTemp, Warning, TEXT("Niveau %s charge avec succes."), *CurrentLevel.ToString());
 	RotateLevel();
+	if (TmpLevelDir != ELevelDir::None)
+		GameMode->SpawnCharacterInStreamedLevel(TmpLevelDir);
 }
 
 FName ALevelStreamerActor::GetNeighborLevel(FName FromLevel, ELevelDir Dir) const
@@ -120,4 +124,15 @@ FName ALevelStreamerActor::GetNeighborLevel(FName FromLevel, ELevelDir Dir) cons
 		return Neigh->Get(Dir);
 	}
 	return NAME_None;
+}
+
+int ALevelStreamerActor::GetArrowIndex()
+{
+	FLevelNeighbors* Neigh = Adjacency.Find(CurrentLevelName);
+	if (!Neigh)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("RotateLevel: no adjacency data for %s"), *CurrentLevelName.ToString());
+		return -1;
+	}
+	return Neigh->ArrowIndex;
 }

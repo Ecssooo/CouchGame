@@ -6,6 +6,11 @@
 #include "GameFramework/Actor.h"
 #include "CubeController.generated.h"
 
+enum class ELevelDir : uint8;
+class UTPManager;
+class AArrowHelper;
+class ALevelStreamerActor;
+
 UCLASS()
 class COUCHGAME_API ACubeController : public AActor
 {
@@ -19,16 +24,48 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	// UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	// List<AActor*> Arrow;
-	
+	UPROPERTY(EditAnywhere)
+	float AnimationDuration = 1.f;
 
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UFUNCTION(BlueprintCallable, Category="Rotation")
-	static void AddRotationQuat(AActor* Target, float Pitch, float Yaw, float Roll, bool bLocal = true);
+	UPROPERTY()
+	TObjectPtr<UTPManager> TPManager;
 
-	
+	UFUNCTION(BlueprintCallable)
+	void StartRotationQuat(ELevelDir StartDir, ELevelDir EndDir);
+
+	UFUNCTION(BlueprintCallable)
+	AArrowHelper* GetArrow(int Index);
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, meta=(AllowPrivateAccess="true"))
+	TArray<TObjectPtr<AArrowHelper>> ArrowHelpers;
+
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<ALevelStreamerActor> LevelStreamerActor;
+
+	UFUNCTION()
+	ELevelDir GetDirectionFromArrow(const UArrowComponent* Arrow);
+
+	UFUNCTION()
+	ELevelDir GetNewStartDir(ELevelDir StartDir, ELevelDir ArrowDir);
+
+private :
+	bool IsRotating = false;
+	float Elapsed;
+
+	FQuat StartQuat;
+	FQuat TargetQuat;
+	FQuat CurrentRotationQuat;
+
+	ELevelDir CurrentStartLevelDir;
+	ELevelDir CurrentStartTPLevelDir;
+	ELevelDir CurrentEndLevelDir;
+
+	void CollectArrowHelpers();
+
+	void RotateStepAxis(float DeltaTime);
+	static FVector AxisUnitVector(EAxis::Type Axis);
 };
