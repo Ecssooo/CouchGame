@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Components/ArrowComponent.h"
 #include "LevelStreamerActor.generated.h"
 
 UENUM(BlueprintType)
@@ -66,32 +65,31 @@ public:
 	// Sets default values for this actor's properties
 	ALevelStreamerActor();
 
-	//tableau qui contient tout les levels renseigner en brut dans le bp_levelStreamerActor pr�sent dans la sc�ne main
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level Streaming")
 	TArray<FName> LevelSequence;
 
-	//valeur qui donne le niveau actuel ou se trouve le joueur
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level Streaming")
 	FName CurrentLevel;
 
-	//valeur en int qui donne le niveau actuel ou se trouve le joueur
 	int32 CurrentLevelIndex = 0;
 
-	//Stocke temporairement le nom du prochain niveau � charger
 	FName NextLevel;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level Streaming")
 	FName StartingLevel;
 
-	// cré un tableau d'adjacence
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Level Streaming")
 	TMap<FName, FLevelNeighbors> Adjacency;
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	UPROPERTY()
+	mutable FName CurrentLevelName;
 
-public:
+	UPROPERTY()
+	TObjectPtr<ACubeGameMode> GameMode;
+
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<ACubeController> CubeController;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -120,17 +118,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Level Streaming")
 	FName GetNeighborLevel(FName FromLevel, ELevelDir Dir) const;
 
-	UPROPERTY()
-	mutable FName CurrentLevelName;
-
-	UPROPERTY()
-	TObjectPtr<ACubeGameMode> GameMode;
-
 	UFUNCTION()
 	int GetArrowIndex();
 
-	UPROPERTY(EditAnywhere)
-	TObjectPtr<ACubeController> CubeController;
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
 private :
 	ELevelDir TmpLevelDir;

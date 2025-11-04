@@ -4,10 +4,10 @@
 #include "LevelStreamerActor.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/LevelStreaming.h"
-#include "Kismet/KismetMathLibrary.h"
 #include "Systems/ArrowHelper.h"
 #include "Systems/CubeGameMode.h"
 #include "Systems/CubeController.h"
+#include "Components/ArrowComponent.h"
 
 
 // Sets default values
@@ -55,7 +55,7 @@ void ALevelStreamerActor::SwitchToSpecificLevel(FName NewLevelName, ELevelDir Di
 //quand le level est d�charg�
 void ALevelStreamerActor::OnLevelUnloaded()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Ancien niveau d�charg�, on charge %s"), *NextLevel.ToString());
+	UE_LOG(LogTemp, Warning, TEXT("Ancien niveau decharge, on charge %s"), *NextLevel.ToString());
 }
 
 // mettre la bonne rotation de al face chargé
@@ -107,12 +107,11 @@ void ALevelStreamerActor::LoadLevel(FName NewLevelName)
 	CurrentLevel = NewLevelName;
 }
 
-//quand le level est charg�
+//quand le level est charge
 void ALevelStreamerActor::OnLevelLoaded()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Niveau %s charg� avec succ�s."), *CurrentLevel.ToString());
+	UE_LOG(LogTemp, Warning, TEXT("Niveau %s charge avec succes."), *CurrentLevel.ToString());
 	RotateLevel();
-	// placer joueur
 	if (TmpLevelDir != ELevelDir::None)
 		GameMode->SpawnCharacterInStreamedLevel(TmpLevelDir);
 }
@@ -135,6 +134,5 @@ int ALevelStreamerActor::GetArrowIndex()
 		UE_LOG(LogTemp, Warning, TEXT("RotateLevel: no adjacency data for %s"), *CurrentLevelName.ToString());
 		return -1;
 	}
-
 	return Neigh->ArrowIndex;
 }

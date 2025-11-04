@@ -5,9 +5,7 @@
 #include "Systems/ArrowHelper.h"
 #include "LevelStreamerActor.h"
 #include "TPManager.h"
-
-#include "Kismet/KismetMaterialLibrary.h"
-#include "Kismet/KismetMathLibrary.h"
+#include "Components/ArrowComponent.h"
 
 
 // Sets default values
@@ -48,7 +46,7 @@ void ACubeController::RotateStepAxis(float DeltaTime)
 
 	if (Elapsed > AnimationDuration)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Animation termine"));
+		UE_LOG(LogTemp, Log, TEXT("Animation termine"));
 		IsRotating = false;
 		CurrentRotationQuat = TargetQuat;
 		SetActorRotation(CurrentRotationQuat);
@@ -70,6 +68,7 @@ void ACubeController::StartRotationQuat(ELevelDir StartDir, ELevelDir EndDir)
 
 	UE_LOG(LogTemp, Log, TEXT("StartDir = %d, ArrowDir = %d, NewStartDir = %d"), (uint8)StartDir, (uint8)ArrowDir,
 	       (uint8)GetNewStartDir(StartDir, ArrowDir));
+
 	CurrentStartTPLevelDir = GetNewStartDir(StartDir, ArrowDir);
 
 	FQuat DeltaRotationQuat;
@@ -132,8 +131,6 @@ void ACubeController::CollectArrowHelpers()
 
 AArrowHelper* ACubeController::GetArrow(int Index)
 {
-	UE_LOG(LogTemp, Log, TEXT("In GetArrow Index = %d"), Index);
-	UE_LOG(LogTemp, Log, TEXT("In GetArrow ArrowHelpers.Num() = %d"), ArrowHelpers.Num());
 	if (Index < 0 || Index >= ArrowHelpers.Num())
 	{
 		return nullptr;
@@ -145,18 +142,20 @@ ELevelDir ACubeController::GetDirectionFromArrow(const UArrowComponent* Arrow)
 {
 	if (!Arrow) return ELevelDir::None;
 
+	// recuperer le Yaw de la face
 	const float Yaw = FRotator::NormalizeAxis(Arrow->GetComponentRotation().Yaw);
 
 	const int32 Step = FMath::RoundToInt(Yaw / 90.f); // -> -2, -1, 0, 1, 2
 
 	switch ((Step % 4 + 4) % 4) // normalise dans {0,1,2,3}
 	{
-	case 0: return ELevelDir::Up; // ~0°
-	case 1: return ELevelDir::Right; // ~+90°
-	case 2: return ELevelDir::Down; // ~±180°
-	case 3: return ELevelDir::Left; // ~-90°
+	case 0: return ELevelDir::Up;
+	case 1: return ELevelDir::Right;
+	case 2: return ELevelDir::Down;
+	case 3: return ELevelDir::Left;
+	default:
+		return ELevelDir::None;
 	}
-	return ELevelDir::None;
 }
 
 ELevelDir ACubeController::GetNewStartDir(ELevelDir StartDir, ELevelDir ArrowDir)
