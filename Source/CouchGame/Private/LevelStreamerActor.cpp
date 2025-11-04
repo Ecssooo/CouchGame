@@ -4,7 +4,10 @@
 #include "LevelStreamerActor.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/LevelStreaming.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "Systems/ArrowHelper.h"
 #include "Systems/CubeGameMode.h"
+#include "Systems/CubeController.h"
 
 
 // Sets default values
@@ -65,17 +68,11 @@ void ALevelStreamerActor::RotateLevel()
 		return;
 	}
 
-	if (!Neigh->Arrow)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("RotateLevel: no Arrow set for %s"), *CurrentLevelName.ToString());
-		return;
-	}
 
-	const FVector ArrowForwardWS = Neigh->Arrow->GetActorRotation().Vector();
-	FRotator ArrowRot = Neigh->Arrow->GetActorRotation();
+	AArrowHelper* ArrowHelper = CubeController->GetArrow(Neigh->ArrowIndex);
+	FRotator ArrowRot = ArrowHelper->Arrow->GetComponentRotation();
+	const float DesiredYaw = FRotator::NormalizeAxis(ArrowRot.Yaw);
 
-	ArrowRot.Pitch = 0.f;
-	ArrowRot.Roll = 0.f;
 
 	TArray<AActor*> Found;
 	UGameplayStatics::GetAllActorsWithTag(GetWorld(), FName("ParentTag"), Found);
@@ -84,12 +81,14 @@ void ALevelStreamerActor::RotateLevel()
 	{
 		if (!A) continue;
 
-		FRotator FaceRot = A->GetActorRotation();
-		FaceRot.Yaw = ArrowRot.Yaw;
+		FRotator FaceRot = FRotator::ZeroRotator;
+		FaceRot.Yaw = DesiredYaw;
 		FaceRot.Pitch = 0.f;
 		FaceRot.Roll = 0.f;
 
 		A->SetActorRotation(FaceRot);
+
+		UE_LOG(LogTemp, Log, TEXT("RotateLevel: set %s yaw=%.1f"), *A->GetName(), FaceRot.Yaw);
 		break;
 	}
 }
@@ -126,4 +125,16 @@ FName ALevelStreamerActor::GetNeighborLevel(FName FromLevel, ELevelDir Dir) cons
 		return Neigh->Get(Dir);
 	}
 	return NAME_None;
+}
+
+int ALevelStreamerActor::GetArrowIndex()
+{
+	FLevelNeighbors* Neigh = Adjacency.Find(CurrentLevelName);
+	if (!Neigh)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("RotateLevel: no adjacency data for %s"), *CurrentLevelName.ToString());
+		return -1;
+	}
+
+	return Neigh->ArrowIndex;
 }

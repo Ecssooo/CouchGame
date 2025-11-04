@@ -8,6 +8,8 @@
 
 enum class ELevelDir : uint8;
 class UTPManager;
+class AArrowHelper;
+class ALevelStreamerActor;
 
 UCLASS()
 class COUCHGAME_API ACubeController : public AActor
@@ -35,6 +37,21 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void StartRotationQuat(ELevelDir StartDir, ELevelDir EndDir);
 
+	UFUNCTION(BlueprintCallable)
+	AArrowHelper* GetArrow(int Index);
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, meta=(AllowPrivateAccess="true"))
+	TArray<TObjectPtr<AArrowHelper>> ArrowHelpers;
+
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<ALevelStreamerActor> LevelStreamerActor;
+
+	UFUNCTION()
+	ELevelDir GetDirectionFromArrow(const UArrowComponent* Arrow);
+
+	UFUNCTION()
+	ELevelDir GetNewStartDir(ELevelDir StartDir, ELevelDir ArrowDir);
+
 private :
 	bool IsRotating = false;
 	float Elapsed;
@@ -44,7 +61,10 @@ private :
 	FQuat CurrentRotationQuat;
 
 	ELevelDir CurrentStartLevelDir;
+	ELevelDir CurrentStartTPLevelDir;
 	ELevelDir CurrentEndLevelDir;
+
+	void CollectArrowHelpers();
 
 	void RotateStepAxis(float DeltaTime);
 	static FVector AxisUnitVector(EAxis::Type Axis);
