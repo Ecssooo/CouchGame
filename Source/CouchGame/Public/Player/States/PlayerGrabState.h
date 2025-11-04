@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Player/PlayerBaseState.h"
 #include "Components/ActorComponent.h"
 #include "PlayerGrabState.generated.h"
 

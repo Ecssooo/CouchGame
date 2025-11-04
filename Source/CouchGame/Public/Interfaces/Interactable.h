@@ -8,7 +8,7 @@
 class ACharacterPlayer;
 
 // This class does not need to be modified.
-UINTERFACE()
+UINTERFACE(Blueprintable)
 class UInteractable : public UInterface
 {
 	GENERATED_BODY()
@@ -22,6 +22,47 @@ class COUCHGAME_API IInteractable
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintNativeEvent)
-	void Interact(ACharacterPlayer* Player);
+	//<summary>Start interact</summary>
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	void StartInteract(ACharacterPlayer* Player);
+
+	//<summary>End interact</summary>
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	void EndInteract(ACharacterPlayer* Player);
+	
+	//<summary>Input : Start interaction</summary>
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	void OnStartInteract(ACharacterPlayer* Player);
+
+	//<summary>During interaction </summary>
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void OnInteract(ACharacterPlayer* Player);
+
+	//<summary>Interact completed</summary>
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void OnEndInteract(ACharacterPlayer* Player);
+	
+	//<summary>Get parent to lock player</summary>
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	UStaticMeshComponent* GetPlayerLockParent();
+
+	//<summary>Get the teleporter to go out the interaction</summar>
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	USceneComponent* GetUnlockTP();
+	
+	//<summary>Player is lockable</summary>
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	bool LockedPlayer();
+	
+	//<summary>Player is locked</summary>
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	bool IsPlayerLocked();
+
+	//<summary>Get the player lock in the interaction</summary>
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	ACharacterPlayer* GetCharacterInInteract();
+
+	//<summary>Set the player lock in the interaction</summary>
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	void SetCharacterInInteract(ACharacterPlayer* Player);
 };

@@ -2,9 +2,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
-#include "PlayerStateID.h"
 #include "CharacterPlayer.generated.h"
 
+class IInteractable;
 class UInputMappingContext;
 class UInputAction;
 class UPlayerStateMachine;
@@ -42,6 +42,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Input")
 	void OnJumpInput();
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TObjectPtr<AActor> InteractableActor;
+
+	UFUNCTION()
+	void StopVelocity();
+	
 protected:
 
 	void OnJumpTriggered(const FInputActionValue&);

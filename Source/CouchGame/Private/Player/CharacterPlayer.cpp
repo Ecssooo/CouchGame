@@ -21,6 +21,11 @@ void ACharacterPlayer::BeginPlay()
 	Move->RotationRate = FRotator(0.f, 720.f, 0.f);
 }
 
+void ACharacterPlayer::StopVelocity()
+{
+	this->GetMovementComponent()->Velocity = FVector::Zero();
+}
+
 void ACharacterPlayer::OnJumpTriggered(const FInputActionValue&)
 {
 	IsWantsJump = true;

@@ -25,7 +25,6 @@ bool ULocalMultiplayerViewPort::InputKey(const FInputKeyEventArgs& EventArgs)
 	{
 		//GetPlayerIndexFromKey
 		int PlayerIndex = CharacterSettings->IMCInGame.GetPlayerIndexFromKey(EventArgs.Key);
-		UE_LOG(LogTemp, Log, TEXT("Input Player index : %d"), PlayerIndex);
 		if (PlayerIndex == -1) return false;
 		
 		//GetPlayer
@@ -49,7 +48,6 @@ bool ULocalMultiplayerViewPort::InputAxis(const FInputKeyEventArgs& Args)
 	{
 		//GetPlayerIndexFromKey
 		int PlayerIndex = CharacterSettings->IMCInGame.GetPlayerIndexFromKey(Args.Key);
-		UE_LOG(LogTemp, Log, TEXT("Axis Input Player index : %d"), PlayerIndex);
 		if (PlayerIndex == -1) return false;
 		
 		//GetPlayer
