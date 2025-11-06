@@ -18,17 +18,24 @@ void UPlayerInteractState::OnEnter(UPlayerStateMachine* InSM)
 	if (!InteractableActor) return;
 	if (!InteractableActor->Implements<UInteractable>()) return;
 	
-	IInteractable::Execute_StartInteract(InteractableActor, Player);
 	if(IInteractable::Execute_LockedPlayer(InteractableActor))
 	{
-		UStaticMeshComponent* socket = IInteractable::Execute_GetPlayerLockParent(InteractableActor);
-		if (!socket) return;
-		Player->StopVelocity();
-		Player->AttachToComponent(socket, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-		IInteractable::Execute_SetCharacterInInteract(InteractableActor, Player);
-		Player->InteractableActor = InteractableActor;
+		if (!IInteractable::Execute_IsPlayerLocked(InteractableActor))
+		{
+			IInteractable::Execute_StartInteract(InteractableActor, Player);
+			UStaticMeshComponent* socket = IInteractable::Execute_GetPlayerLockParent(InteractableActor);
+			if (!socket) return;
+			Player->StopVelocity();
+			Player->AttachToComponent(socket, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+			IInteractable::Execute_SetCharacterInInteract(InteractableActor, Player);
+			Player->InteractableActor = InteractableActor;
+		}else
+		{
+			Player->StateMachine->ChangeState(EPlayerStateID::Idle);
+		}
 	}else
 	{
+		IInteractable::Execute_StartInteract(InteractableActor, Player);
 		Player->StateMachine->ChangeState(EPlayerStateID::Idle);
 	}
 }
@@ -38,16 +45,23 @@ void UPlayerInteractState::OnExit(UPlayerStateMachine* InSM)
 	Super::OnExit(InSM);
 	ACharacterPlayer* Player = GetPlayer();
 	if (!Player) return;
-	if (!Player->InteractableActor) return;
-	if (!Player->InteractableActor->Implements<UInteractable>()) return;
+	AActor* InteractableActor = Player->InteractableActor;
+	if (!InteractableActor) return;
+	if (!InteractableActor->Implements<UInteractable>()) return;
 	
-	IInteractable::Execute_EndInteract(Player->InteractableActor, Player);
-	if (IInteractable::Execute_LockedPlayer(Player->InteractableActor))
+	if (IInteractable::Execute_LockedPlayer(InteractableActor))
 	{
-		if (Player != IInteractable::Execute_GetCharacterInInteract(Player->InteractableActor)) return;
-		
-		Player->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
-		Player->SetActorLocation(IInteractable::Execute_GetUnlockTP(Player->InteractableActor)->GetComponentLocation());
-		IInteractable::Execute_SetCharacterInInteract(Player->InteractableActor, nullptr);
+		if (!IInteractable::Execute_IsPlayerLocked(InteractableActor))
+		{
+			IInteractable::Execute_EndInteract(InteractableActor, Player);
+			if (Player != IInteractable::Execute_GetCharacterInInteract(InteractableActor)) return;
+			Player->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+			USceneComponent* unlockTP = IInteractable::Execute_GetUnlockTP(InteractableActor);
+			bool PlayerHasMove = Player->SetActorLocation(unlockTP->GetComponentLocation(), false, nullptr, ETeleportType::TeleportPhysics);
+			IInteractable::Execute_SetCharacterInInteract(InteractableActor, nullptr);
+		}
+	}else
+	{
+		IInteractable::Execute_EndInteract(InteractableActor, Player);
 	}
 } 

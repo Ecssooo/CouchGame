@@ -6,6 +6,7 @@
 #include "UObject/Interface.h"
 #include "Interactable.generated.h"
 class ACharacterPlayer;
+class UUserWidget;
 
 // This class does not need to be modified.
 UINTERFACE(Blueprintable)
@@ -65,4 +66,7 @@ public:
 	//<summary>Set the player lock in the interaction</summary>
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
 	void SetCharacterInInteract(ACharacterPlayer* Player);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	TSubclassOf<UUserWidget> GetInteractWidget();
 };

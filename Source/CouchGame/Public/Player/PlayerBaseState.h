@@ -16,6 +16,8 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere)
     bool CanMove;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    bool CanJump;
     
     virtual EPlayerStateID GetStateID() const PURE_VIRTUAL(UPlayerBaseState::GetStateID, return EPlayerStateID::Idle;);
 
