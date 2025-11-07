@@ -42,9 +42,23 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Input")
 	void OnJumpInput();
 
+
+	//Interact / Grab Interface
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TObjectPtr<AActor> InteractableActor;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TObjectPtr<AActor> GrabbableActor;
+
+	UPROPERTY(BlueprintReadWrite)
+	UStaticMeshComponent* GrabParent;
+	
+	UFUNCTION(BlueprintCallable)
+	void SetGrabParent(UStaticMeshComponent* StaticMesh);
+
+	UFUNCTION(BlueprintCallable)
+	UStaticMeshComponent* GetGrabParent();
+	
 	UFUNCTION()
 	void StopVelocity();
 	

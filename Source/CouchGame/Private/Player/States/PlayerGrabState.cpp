@@ -1,28 +1,40 @@
 #include "Player/States/PlayerGrabState.h"
 
+#include "Interfaces/Grabbable.h"
+#include "Player/CharacterPlayer.h"
 
 
-UPlayerGrabState::UPlayerGrabState()
+EPlayerStateID UPlayerGrabState::GetStateID() const
 {
-
-	PrimaryComponentTick.bCanEverTick = true;
-
-}
-
-
-
-void UPlayerGrabState::BeginPlay()
-{
-	Super::BeginPlay();
-	
+	return EPlayerStateID::Grab;
 	
 }
 
-
-void UPlayerGrabState::TickComponent(float DeltaTime, ELevelTick TickType,
-                                     FActorComponentTickFunction* ThisTickFunction)
+void UPlayerGrabState::OnEnter(UPlayerStateMachine* InSM)
 {
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	
+	Super::OnEnter(InSM);
+	ACharacterPlayer* Player = GetPlayer();
+	AActor* GrabbableActor = Player->GrabbableActor;
+	if (!GrabbableActor) return;
+	if (!GrabbableActor->Implements<UGrabbable>()) return;
+
+	if (!Player->GetGrabParent()) return;
+	IGrabbable::Execute_OnGrab(GrabbableActor, Player);
+	GrabbableActor->AttachToComponent(Player->GetGrabParent(), FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+	//GrabbableActor->SetActorLocation(Player->GetGrabParent()->GetRelativeLocation());
+	Player->GrabbableActor = GrabbableActor;
 }
+
+void UPlayerGrabState::OnExit(UPlayerStateMachine* InSM)
+{
+	Super::OnExit(InSM);
+	
+	ACharacterPlayer* Player = GetPlayer();
+	AActor* GrabbableActor = Player->GrabbableActor;
+	if (!GrabbableActor) return;
+	if (!GrabbableActor->Implements<UGrabbable>()) return;
+
+	GrabbableActor->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+}
+
 
