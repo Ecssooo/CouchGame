@@ -13,10 +13,15 @@ class COUCHGAME_API UPlayerBaseState : public UActorComponent
     GENERATED_BODY()
 public:
     UPlayerBaseState();
-
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    bool CanMove;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    bool CanJump;
+    
     virtual EPlayerStateID GetStateID() const PURE_VIRTUAL(UPlayerBaseState::GetStateID, return EPlayerStateID::Idle;);
 
-    void EnterState(UPlayerStateMachine* InSM);
+    virtual void EnterState(UPlayerStateMachine* InSM);
     void ExitState(UPlayerStateMachine* InSM);
     void TickState(UPlayerStateMachine* InSM, float DeltaTime);
 

@@ -21,6 +21,23 @@ void ACharacterPlayer::BeginPlay()
 	Move->RotationRate = FRotator(0.f, 720.f, 0.f);
 }
 
+
+void ACharacterPlayer::SetGrabParent(UStaticMeshComponent* StaticMesh)
+{
+	if (!StaticMesh) return;
+	GrabParent = StaticMesh;
+}
+
+UStaticMeshComponent* ACharacterPlayer::GetGrabParent()
+{
+	return GrabParent;
+}
+
+void ACharacterPlayer::StopVelocity()
+{
+	this->GetMovementComponent()->Velocity = FVector::Zero();
+}
+
 void ACharacterPlayer::OnJumpTriggered(const FInputActionValue&)
 {
 	IsWantsJump = true;

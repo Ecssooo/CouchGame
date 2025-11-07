@@ -1,25 +1,26 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Player/PlayerBaseState.h"
 #include "Components/ActorComponent.h"
-#include "PlayerGrabState.generated.h"
+#include "PlayerTeleportState.generated.h"
 
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class COUCHGAME_API UPlayerGrabState : public UActorComponent
+class COUCHGAME_API UPlayerTeleportState : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:
-
-	UPlayerGrabState();
+	
+	UPlayerTeleportState();
 
 protected:
 
 	virtual void BeginPlay() override;
 
 public:
-	// Called every frame
+
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 	                           FActorComponentTickFunction* ThisTickFunction) override;
 };
