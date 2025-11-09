@@ -43,6 +43,7 @@ void ACubeController::RotateStepAxis(float DeltaTime)
 
 	CurrentRotationQuat = FQuat::Slerp(StartQuat, TargetQuat, Alpha);
 	SetActorRotation(CurrentRotationQuat);
+	ActorCubeMinimap->SetActorRotation(CurrentRotationQuat);
 
 	if (Elapsed > AnimationDuration)
 	{

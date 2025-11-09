@@ -34,6 +34,9 @@ public:
 	UPROPERTY()
 	TObjectPtr<UTPManager> TPManager;
 
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<AActor> ActorCubeMinimap;
+
 	UFUNCTION(BlueprintCallable)
 	void StartRotationQuat(ELevelDir StartDir, ELevelDir EndDir);
 
