@@ -24,4 +24,5 @@ class COUCHGAME_API IInteractable
 public:
 	UFUNCTION(BlueprintNativeEvent)
 	void Interact(ACharacterPlayer* Player);
+	//Pour un commit test
 };
