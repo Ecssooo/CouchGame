@@ -7,7 +7,7 @@
 #include "Interactable.generated.h"
 class ACharacterPlayer;
 class UUserWidget;
-
+enum class EInputID : uint8;
 // This class does not need to be modified.
 UINTERFACE(Blueprintable)
 class UInteractable : public UInterface
@@ -33,15 +33,15 @@ public:
 	
 	//<summary>Input : Start interaction</summary>
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
-	void OnStartInteract(ACharacterPlayer* Player);
+	void OnStartInteract(ACharacterPlayer* Player, EInputID InputID);
 
 	//<summary>During interaction </summary>
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	void OnInteract(ACharacterPlayer* Player);
+	void OnInteract(ACharacterPlayer* Player, EInputID InputID);
 
 	//<summary>Interact completed</summary>
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	void OnEndInteract(ACharacterPlayer* Player);
+	void OnEndInteract(ACharacterPlayer* Player, EInputID InputID);
 	
 	//<summary>Get parent to lock player</summary>
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
