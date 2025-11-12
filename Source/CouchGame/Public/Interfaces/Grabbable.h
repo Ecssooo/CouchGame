@@ -27,4 +27,7 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void OnDrop(ACharacterPlayer* Player);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	bool GetIsGrabbed();
 };
