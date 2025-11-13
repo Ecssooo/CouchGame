@@ -78,7 +78,7 @@ void ACubeGameMode::SpawnCharacterAtBeginPlay()
 			UE_LOG(LogTemp, Warning, TEXT("LocalPlayer : %d, Add keyboard IMC : %d"), LocalPlayer->GetLocalPlayer()->GetControllerId(), CharacterSpawner->PlayerIndex);
 		}
 		else
-		{
+		{	
 			InputSubsystem->AddMappingContext(Settings->IMCInGame.IMCGamePad,0);
 			UE_LOG(LogTemp, Warning, TEXT("Add GamePad IMC : %d"), CharacterSpawner->PlayerIndex);
 		}
