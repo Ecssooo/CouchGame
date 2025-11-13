@@ -51,7 +51,7 @@ void UPlayerInteractState::OnExit(UPlayerStateMachine* InSM)
 	
 	if (IInteractable::Execute_LockedPlayer(InteractableActor))
 	{
-		if (!IInteractable::Execute_IsPlayerLocked(InteractableActor))
+		if (IInteractable::Execute_IsPlayerLocked(InteractableActor))
 		{
 			IInteractable::Execute_EndInteract(InteractableActor, Player);
 			if (Player != IInteractable::Execute_GetCharacterInInteract(InteractableActor)) return;
