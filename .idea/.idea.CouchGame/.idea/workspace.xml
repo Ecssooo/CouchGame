@@ -23,21 +23,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Levels/GP/Alex_Test.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabObject.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabObject.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabSocket.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabSocket.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Toupie/BP_NewSpin.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Toupie/BP_NewSpin.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Player/BP_CharacterPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Player/BP_CharacterPlayer.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Cube/Cube_Alpha.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Cube/Cube_Alpha.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Cube/Cube_RGB.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Cube/Cube_RGB.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerGrabState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerGrabState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerInteractState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerInteractState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +85,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Player",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "E:/IIM/Game/A3/Unreal/CouchGame/CouchGame.sln",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
