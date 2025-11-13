@@ -34,6 +34,7 @@ void UPlayerGrabState::OnExit(UPlayerStateMachine* InSM)
 	if (!GrabbableActor) return;
 	if (!GrabbableActor->Implements<UGrabbable>()) return;
 
+	IGrabbable::Execute_OnDrop(GrabbableActor, Player);
 	GrabbableActor->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 }
 

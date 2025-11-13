@@ -24,11 +24,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/Levels/GP/Alex_Test.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabTest.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabTest.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Grabbable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Grabbable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabObject.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabObject.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabSocket.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabSocket.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Toupie/BP_NewSpin.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Toupie/BP_NewSpin.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Player/BP_CharacterPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Player/BP_CharacterPlayer.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Cube/Cube_Alpha.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Cube/Cube_Alpha.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Cube/Cube_RGB.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Cube/Cube_RGB.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerGrabState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerGrabState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerInteractState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerInteractState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,21 +54,31 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://2" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Plugins/Animation/RigLogic/Source/RigLogicLib/Public/pma/utils/ManagedInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/Blutility/Public/EditorUtilitySubsystem.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/Kismet/Private/UserDefinedEnumEditor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/CoreUObject/Private/UObject/ScriptCore.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/CoreUObject/Private/UObject/WeakObjectPtr.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/CoreUObject/Public/UObject/Object.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/Engine/GameEngine.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/GameFramework/GameModeBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/Kismet/GameplayStatics.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/Kismet/KismetSystemLibrary.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/GameplayTasks/Classes/GameplayTask.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/CouchGame/UHT/Interactable.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/CouchGame/UHT/LevelStreamerActor.gen.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/CouchGame/Private/Systems/ArrowHelper.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Private/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Private/TPManager.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/CouchGame/Public/Systems/ArrowHelper.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Public/Systems/CubeController.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Public/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Public/TPManager.h" root0="FORCE_HIGHLIGHTING" />
@@ -74,24 +92,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C/C++ Project.CouchGame.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Player&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/IIM/Game/A3/Unreal/CouchGame/CouchGame.sln&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.General&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ Project.CouchGame.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Player",
+    "last_opened_file_path": "E:/IIM/Game/A3/Unreal/CouchGame/CouchGame.sln",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.General",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C/C++ Project.CouchGame">
     <configuration name="CouchGame" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -283,8 +301,7 @@
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="CppProject">
-        <watch expression="IInteractable::Execute_GetCharacterInInteract(Player-&gt;InteractableActor)" />
-        <watch expression="unlockTP-&gt;GetComponentLocation()" />
+        <watch expression="IInteractable::Execute_IsPlayerLocked(InteractableActor)" />
       </configuration>
     </watches-manager>
   </component>
