@@ -2,6 +2,7 @@
 
 #include "Interfaces/Grabbable.h"
 #include "Player/CharacterPlayer.h"
+#include "Player/PlayerStateMachine.h"
 
 
 EPlayerStateID UPlayerGrabState::GetStateID() const
@@ -17,12 +18,18 @@ void UPlayerGrabState::OnEnter(UPlayerStateMachine* InSM)
 	AActor* GrabbableActor = Player->GrabbableActor;
 	if (!GrabbableActor) return;
 	if (!GrabbableActor->Implements<UGrabbable>()) return;
-
-	if (!Player->GetGrabParent()) return;
-	IGrabbable::Execute_OnGrab(GrabbableActor, Player);
-	GrabbableActor->AttachToComponent(Player->GetGrabParent(), FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-	//GrabbableActor->SetActorLocation(Player->GetGrabParent()->GetRelativeLocation());
-	Player->GrabbableActor = GrabbableActor;
+	
+	if (!IGrabbable::Execute_GetIsInSocket(GrabbableActor))
+	{
+		if (!Player->GetGrabParent()) return;
+		IGrabbable::Execute_OnGrab(GrabbableActor, Player);
+		GrabbableActor->AttachToComponent(Player->GetGrabParent(), FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+		//GrabbableActor->SetActorLocation(Player->GetGrabParent()->GetRelativeLocation());
+		Player->GrabbableActor = GrabbableActor;
+	}else
+	{
+		Player->StateMachine->ChangeState(EPlayerStateID::Idle);
+	}
 }
 
 void UPlayerGrabState::OnExit(UPlayerStateMachine* InSM)

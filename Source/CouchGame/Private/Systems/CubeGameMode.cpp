@@ -4,6 +4,7 @@
 #include "Systems/CubeGameMode.h"
 
 #include "EnhancedInputSubsystems.h"
+#include "Grab/GrabSocketSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "Player/CharacterPlayer.h"
 #include "Systems/CharacterSettings.h"
@@ -18,6 +19,9 @@ void ACubeGameMode::BeginPlay()
 	FindMainCharacterSpawners(MainCharacterSpawners);
 	FindMainTeleporterOut(MainTeleportersOut);
 	SpawnCharacterAtBeginPlay();
+
+	if (UGrabSocketSubsystem* GrabSocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>())
+		GrabSocketSubsystem->InitLevelDatas();
 
 }
 
