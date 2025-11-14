@@ -24,12 +24,100 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/MI_QTE_Radial.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/M_QTE_Radial.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_BG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_BG.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_Cursor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_Cursor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_Fill.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_Fill.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_FillAlpha.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_FillAlpha.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputDown.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputDown.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputUp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputUp.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_TriggerZone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_TriggerZone.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/WBP_Tampon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor.modules" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor.modules" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Balle/BP_Balle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Balle/BP_Balle.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Materials/MA_UIMinimap.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Materials/MA_UIMinimap.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CouchGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/CouchGame.uproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame.Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame.Target.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/CouchGame.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/CouchGame.Build.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/CouchGame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/CouchGame.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/CouchGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/CouchGame.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/Grabbable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/Grabbable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/Interactable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/Interactable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/LevelStreamerActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/LevelStreamerActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/CharacterPlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/CharacterPlayer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/InputID.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/InputID.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/PlayerBaseState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/PlayerBaseState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/PlayerStateMachine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/PlayerStateMachine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerFallState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerFallState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerGrabState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerGrabState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerIdleState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerIdleState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerInteractState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerInteractState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerJumpState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerJumpState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerRunState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerRunState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerTeleportState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerTeleportState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerWalkState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerWalkState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/SoundDataAsset.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/SoundDataAsset.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/SoundManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/SoundManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/ArrowHelper.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/ArrowHelper.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CharacterSettings.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CharacterSettings.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawner.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawners/MainCharacterSpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawners/MainCharacterSpawner.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawners/MainTeleporterOut.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawners/MainTeleporterOut.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawners/StreamedCharacterSpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawners/StreamedCharacterSpawner.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/TPManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/TPManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Grabbable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Grabbable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Interactable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Interactable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/LevelStreamerActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/LevelStreamerActor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/CharacterPlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/CharacterPlayer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/PlayerBaseState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/PlayerBaseState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/PlayerStateID.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/PlayerStateID.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/PlayerStateMachine.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/PlayerStateMachine.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerFallState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerFallState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerGrabState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerGrabState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerIdleState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerIdleState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerInteractState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerInteractState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerJumpState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerJumpState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerRunState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerRunState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerTeleportState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerTeleportState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerWalkState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Player/States/PlayerWalkState.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/SoundDataAsset.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/SoundDataAsset.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/SoundManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/SoundManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/ArrowHelper.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/ArrowHelper.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/CharacterSettings.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/CharacterSettings.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/CubeController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/CubeController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/CubeGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/CubeGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawner.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawners/MainCharacterSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawners/MainCharacterSpawner.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawners/MainTeleporterOut.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawners/MainTeleporterOut.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawners/StreamedCharacterSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawners/StreamedCharacterSpawner.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/TPManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/TPManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGameEditor.Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGameEditor.Target.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,27 +131,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://2" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Plugins/Animation/RigLogic/Source/RigLogicLib/Public/pma/utils/ManagedInstance.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/Blutility/Public/EditorUtilitySubsystem.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/Kismet/Private/UserDefinedEnumEditor.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/CoreUObject/Private/UObject/ScriptCore.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/CoreUObject/Private/UObject/WeakObjectPtr.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/CoreUObject/Public/UObject/Class.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/CoreUObject/Public/UObject/Object.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/Engine/GameEngine.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/GameFramework/GameModeBase.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/Kismet/GameplayStatics.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/Kismet/KismetSystemLibrary.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/GameplayTasks/Classes/GameplayTask.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/UMG/Private/Components/Widget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/CouchGame/UHT/Interactable.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/CouchGame/UHT/LevelStreamerActor.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Private/Systems/ArrowHelper.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -92,7 +160,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Interaction-Tampon",
     "last_opened_file_path": "E:/IIM/Game/A3/Unreal/CouchGame/CouchGame.sln",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -153,10 +221,10 @@
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
       <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Programs/AutomationTool/AutomationTool.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
@@ -176,10 +244,10 @@
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
       <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
@@ -201,6 +269,7 @@
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
