@@ -28,7 +28,7 @@ public:
     UPlayerBaseState* GetStateFromID(EPlayerStateID ID) const;
 
     UFUNCTION(BlueprintPure, Category="State")
-    ACharacterPlayer* GetPlayer() const { return CachedPlayer.Get(); }
+    ACharacterPlayer* GetPlayer() const { return CachedPlayer; }
 
     UFUNCTION(BlueprintPure, Category="State")
     EPlayerStateID GetCurrentStateID_BP() const { return CurrentStateID; }
@@ -36,7 +36,8 @@ public:
     UPROPERTY(EditAnywhere, Category="States")
     EPlayerStateID InitialState = EPlayerStateID::Idle;
 
-
+    UFUNCTION(BlueprintCallable)
+    UPlayerBaseState* GetCurrentPlayerState();
 
     // debug
     UPROPERTY(EditAnywhere, Category="Debug")
@@ -48,7 +49,8 @@ public:
 private:
     void CacheStatesOnOwner();
 
-    TWeakObjectPtr<ACharacterPlayer> CachedPlayer;
+    UPROPERTY()
+    TObjectPtr<ACharacterPlayer> CachedPlayer;
 
     UPROPERTY() UPlayerBaseState* CurrentState = nullptr;
     EPlayerStateID CurrentStateID = EPlayerStateID::Idle;
