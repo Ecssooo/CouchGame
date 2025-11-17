@@ -121,6 +121,7 @@ void ALevelStreamerActor::OnLevelLoaded()
 	if (UGrabSocketSubsystem* SocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>())
 	{
 		AGrabSocketManager* SocketManager = Cast<AGrabSocketManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AGrabSocketManager::StaticClass()));
+		if (!SocketManager) return;
 		SocketSubsystem->AddLevelData(SocketManager->LevelId, SocketManager);
 	}
 }
