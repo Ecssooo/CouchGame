@@ -19,10 +19,12 @@ void ACubeGameMode::BeginPlay()
 	FindMainCharacterSpawners(MainCharacterSpawners);
 	FindMainTeleporterOut(MainTeleportersOut);
 	SpawnCharacterAtBeginPlay();
-
-	if (UGrabSocketSubsystem* GrabSocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>())
-		GrabSocketSubsystem->InitLevelDatas();
-
+	//
+	// UGrabSocketSubsystem* GrabSocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>();
+	// if (GrabSocketSubsystem)
+	// {
+	// 	GrabSocketSubsystem->InitLevelDatas();
+	// }
 }
 
 

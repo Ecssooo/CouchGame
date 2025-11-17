@@ -44,7 +44,7 @@ void ALevelStreamerActor::UnloadActualLevel()
 	LatentInfo.ExecutionFunction = FName("OnLevelUnloaded"); // callback
 	LatentInfo.Linkage = 0;
 	LatentInfo.UUID = __LINE__;
-
+	
 	UGameplayStatics::UnloadStreamLevel(this, CurrentLevel, LatentInfo, false);
 }
 

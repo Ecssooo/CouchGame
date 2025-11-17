@@ -24,12 +24,18 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Grab")
+	UPROPERTY(BlueprintReadWrite)
 	bool IsGrabbed;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Grab")
+	UPROPERTY(BlueprintReadWrite)
 	bool IsInSocket;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int SocketID;
+
+	UPROPERTY(EditAnywhere)
+	int ObjectID;
+	
 	UFUNCTION()
 	virtual void OnGrab_Implementation(ACharacterPlayer* Player) override;
 

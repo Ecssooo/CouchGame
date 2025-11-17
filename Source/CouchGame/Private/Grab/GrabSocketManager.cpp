@@ -19,7 +19,10 @@ void AGrabSocketManager::BeginPlay()
 {
 	Super::BeginPlay();
 	if (UGrabSocketSubsystem* SocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>())
+	{
 		SocketSubsystem->SocketManager = this;
+		SocketSubsystem->InitLevelDatas();
+	}
 }
 
 // Called every frame
@@ -48,3 +51,9 @@ void AGrabSocketManager::SaveSocketState()
 	}
 }
 
+void AGrabSocketManager::LoadAllSocket()
+{
+	UGrabSocketSubsystem* subsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>();
+	if (!subsystem) return;
+	subsystem->LoadLevelDataInSocket(1,this);
+}

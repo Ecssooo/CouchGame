@@ -13,6 +13,7 @@ void UGrabSocketSubsystem::InitLevelDatas()
 		FGrabSocketLevelData newLevel = {i};
 		AllLevelDatas.Add(newLevel);		
 	}
+	
 }
 
 bool UGrabSocketSubsystem::AddLevelData(int levelId, AGrabSocketManager* InSocketManager)
@@ -28,27 +29,28 @@ bool UGrabSocketSubsystem::AddLevelData(int levelId, AGrabSocketManager* InSocke
 		FGrabSocketData NewSocketData = {socket->id, false};
 		AllLevelDatas[levelId].GrabSocketDatas.Add(NewSocketData);
 	}
-	
+	AllLevelDatas[levelId].IsDiscovered = true;
+	LoadLevelDataInSocket(levelId, InSocketManager);
 	return true;
 }
 
 void UGrabSocketSubsystem::SaveSocketData(int LevelId, int SocketId)
 {
-	for (FGrabSocketData socketData : AllLevelDatas[LevelId].GrabSocketDatas)
+	for (FGrabSocketData& socketData : AllLevelDatas[LevelId].GrabSocketDatas)
 	{
-		if (socketData.Id == SocketId) socketData.HasObjectInSocket = true;
+		if (socketData.Id == SocketId)
+		{
+			socketData.HasObjectInSocket = true;
+		}
 	}
 }
 
 void UGrabSocketSubsystem::LoadLevelDataInSocket(int levelId, AGrabSocketManager* InSocketManager)
 {
-	for (FGrabSocketData socketData : AllLevelDatas[levelId].GrabSocketDatas)
+	for (FGrabSocketData& socketData : AllLevelDatas[levelId].GrabSocketDatas)
 	{
-		if (!socketData.HasObjectInSocket) continue;
-
 		AGrabSocketActor* socketActor = InSocketManager->FindSocketFromId(socketData.Id);
 		if (!socketActor) continue;
-
-		socketActor->SpawnObjectInSocket();
+		socketActor->SpawnObject(socketData.HasObjectInSocket);
 	}
 }

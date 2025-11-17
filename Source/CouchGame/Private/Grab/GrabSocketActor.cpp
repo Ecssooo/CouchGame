@@ -3,11 +3,17 @@
 
 #include "Grab/GrabSocketActor.h"
 
+#include "LevelStreamerActor.h"
 #include "Grab/GrabActor.h"
+#include "Grab/GrabActorSpawner.h"
+#include "Grab/GrabSocketManager.h"
+#include "Grab/GrabSocketSubsystem.h"
 #include "Interfaces/Grabbable.h"
-#include "Interfaces/IPluginManager.h"
+#include "Kismet/GameplayStatics.h"
 
 
+class AGrabSocketManager;
+class UGrabSocketSubsystem;
 // Sets default values
 AGrabSocketActor::AGrabSocketActor()
 {
@@ -45,21 +51,87 @@ void AGrabSocketActor::AttachObjectToSocket(AGrabActor* GrabActor)
 	GrabActor->AttachToActor(this,FAttachmentTransformRules::SnapToTargetIncludingScale);
 	GrabActor->IsInSocket = true;
 	HasObjectInSocket = true;
+	SaveState();
 }
 
 void AGrabSocketActor::SaveState()
 {
-	
+	if (UGrabSocketSubsystem* SocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>())
+	{
+		AGrabSocketManager* SocketManager = Cast<AGrabSocketManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AGrabSocketManager::StaticClass()));
+		SocketSubsystem->SaveSocketData(SocketManager->LevelId, id);
+	}	
+}
+
+void AGrabSocketActor::SpawnObject(bool IsInSocket)
+{
+	if (IsInSocket)
+	{
+		SpawnObjectInSocket();
+	}else
+	{
+		SpawnObjectInSpawners();
+	}
 }
 
 void AGrabSocketActor::SpawnObjectInSocket()
 {
 	if (!ObjectType) return;
-	auto actor = GetWorld()->SpawnActor(ObjectType);
-	if (!actor) return;
-	ActorInSocket = Cast<AGrabActor>(actor);
-	AttachObjectToSocket(ActorInSocket);
+
+	ALevelStreamerActor* LSA = Cast<ALevelStreamerActor>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelStreamerActor::StaticClass()));
+
+	ULevelStreaming* MyStreamedLevel =
+		UGameplayStatics::GetStreamingLevel(GetWorld(), LSA->CurrentLevel);
+	ULevel* LoadedLevel = MyStreamedLevel ? MyStreamedLevel->GetLoadedLevel() : nullptr;
+
+	if (LoadedLevel)
+	{
+		FActorSpawnParameters Params;
+		Params.OverrideLevel = LoadedLevel;
+
+		AGrabActor* Actor = GetWorld()->SpawnActor<AGrabActor>(
+			ObjectType.Get(),
+			GetActorLocation(),
+			GetActorRotation(),
+			Params
+		);
+		if (!Actor) return;
+
+		ActorInSocket = Actor;
+		AttachObjectToSocket(ActorInSocket);
+	}
 }
+
+void AGrabSocketActor::SpawnObjectInSpawners()
+{
+	if (!ObjectType) return;
+
+	ALevelStreamerActor* LSA = Cast<ALevelStreamerActor>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelStreamerActor::StaticClass()));
+	
+	ULevelStreaming* MyStreamedLevel =
+		UGameplayStatics::GetStreamingLevel(GetWorld(), LSA->CurrentLevel);
+	ULevel* LoadedLevel = MyStreamedLevel ? MyStreamedLevel->GetLoadedLevel() : nullptr;
+
+	if (LoadedLevel)
+	{
+		FActorSpawnParameters Params;
+		Params.OverrideLevel = LoadedLevel;
+
+		AGrabActor* Actor = GetWorld()->SpawnActor<AGrabActor>(
+			ObjectType.Get(),
+			GetActorLocation(),
+			GetActorRotation(),
+			Params
+		);
+		if (!Actor) return;
+
+		ActorInSocket = Actor;
+		Actor->SetActorLocation(ActorSpawner->GetActorLocation());	
+	}
+
+	
+}
+
 
 void AGrabSocketActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)

@@ -25,10 +25,10 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	int LevelId;
 	
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<AGrabSocketActor*> AllGrabSocketActors;
 
 	// UFUNCTION()
@@ -36,4 +36,5 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SaveSocketState();
+	void LoadAllSocket();
 };
