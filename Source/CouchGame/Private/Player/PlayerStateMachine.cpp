@@ -40,6 +40,11 @@ void UPlayerStateMachine::TickComponent(float DeltaTime, ELevelTick TickType,
 	}
 }
 
+UPlayerBaseState* UPlayerStateMachine::GetCurrentPlayerState()
+{
+	return CurrentState;
+}
+
 void UPlayerStateMachine::CacheStatesOnOwner()
 {
 	StateMap.Empty();

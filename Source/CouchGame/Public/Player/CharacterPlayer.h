@@ -2,9 +2,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
-#include "PlayerStateID.h"
 #include "CharacterPlayer.generated.h"
 
+class IInteractable;
 class UInputMappingContext;
 class UInputAction;
 class UPlayerStateMachine;
@@ -42,6 +42,26 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Input")
 	void OnJumpInput();
 
+
+	//Interact / Grab Interface
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TObjectPtr<AActor> InteractableActor;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TObjectPtr<AActor> GrabbableActor;
+
+	UPROPERTY(BlueprintReadWrite)
+	UStaticMeshComponent* GrabParent;
+	
+	UFUNCTION(BlueprintCallable)
+	void SetGrabParent(UStaticMeshComponent* StaticMesh);
+
+	UFUNCTION(BlueprintCallable)
+	UStaticMeshComponent* GetGrabParent();
+	
+	UFUNCTION()
+	void StopVelocity();
+	
 protected:
 
 	void OnJumpTriggered(const FInputActionValue&);

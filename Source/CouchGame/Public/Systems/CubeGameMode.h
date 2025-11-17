@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "InputMappingContext.h"
 #include "GameFramework/GameModeBase.h"
 #include "CubeGameMode.generated.h"
 
@@ -45,4 +46,5 @@ protected:
 
 	UFUNCTION()
 	TSubclassOf<ACharacterPlayer> GetCharacterClass(int PlayerIndex);
+	UInputMappingContext* GetKeyboardProfile(int PlayerIndex);
 };

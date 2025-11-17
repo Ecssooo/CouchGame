@@ -29,7 +29,7 @@ void UTPManager::UnloadLevel()
 }
 
 
-void UTPManager::TrySwitch(ELevelDir Dir)
+void UTPManager::TrySwitch(ELevelDir DirectionDir, ELevelDir EndDirection)
 {
 	if (!LevelStreamer)
 	{
@@ -38,19 +38,21 @@ void UTPManager::TrySwitch(ELevelDir Dir)
 	}
 
 	const FName From = LevelStreamer->CurrentLevel;
-	const FName Target = LevelStreamer->GetNeighborLevel(From, Dir);
+	const FName Target = LevelStreamer->GetNeighborLevel(From, DirectionDir);
 
 	if (Target.IsNone())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("TPManager: pas de voisin %d pour le level %s"), (int32)Dir, *From.ToString());
+		UE_LOG(LogTemp, Warning, TEXT("TPManager: pas de voisin %d pour le level %s"), (int32)DirectionDir,
+		       *From.ToString());
 		return;
 	}
 
-	LevelStreamer->CubeBasis.Turn(Dir);
-	LevelStreamer->SwitchToSpecificLevel(Target);
+	// LevelStreamer->CubeBasis.Turn(Dir);
+	LevelStreamer->SwitchToSpecificLevel(Target, EndDirection);
 }
 
-void UTPManager::OnUpPressed() { TrySwitch(ELevelDir::Up); }
-void UTPManager::OnDownPressed() { TrySwitch(ELevelDir::Down); }
-void UTPManager::OnLeftPressed() { TrySwitch(ELevelDir::Left); }
-void UTPManager::OnRightPressed() { TrySwitch(ELevelDir::Right); }
+//
+// void UTPManager::OnUpPressed() { TrySwitch(ELevelDir::Up); }
+// void UTPManager::OnDownPressed() { TrySwitch(ELevelDir::Down); }
+// void UTPManager::OnLeftPressed() { TrySwitch(ELevelDir::Left); }
+// void UTPManager::OnRightPressed() { TrySwitch(ELevelDir::Right); }
