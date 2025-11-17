@@ -7,6 +7,9 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "GrabSocketSubsystem.generated.h"
 
+
+class AGrabSocketManager;
+
 #pragma region Structs
 
 USTRUCT()
@@ -39,14 +42,17 @@ public:
 	UPROPERTY()
 	TArray<FGrabSocketLevelData> AllLevelDatas;
 
+	UPROPERTY()
+	TObjectPtr<AGrabSocketManager> SocketManager;
+	
 	UFUNCTION()
 	void InitLevelDatas();
+	
+	UFUNCTION(BlueprintCallable)
+	bool AddLevelData(int levelId, AGrabSocketManager* InSocketManager);
 
 	UFUNCTION(BlueprintCallable)
-	bool AddLevelData(int levelId, AGrabSocketManager* SocketManager);
-
-	UFUNCTION(BlueprintCallable)
-	void LoadLevelDataInSocket(int levelId, AGrabSocketManager* SocketManager);
+	void LoadLevelDataInSocket(int levelId, AGrabSocketManager* InSocketManager);
 
 	UFUNCTION(BlueprintCallable)
 	void SaveSocketData(int LevelId, int SocketId);
