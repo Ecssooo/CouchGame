@@ -13,7 +13,6 @@ void UGrabSocketSubsystem::InitLevelDatas()
 		FGrabSocketLevelData newLevel = {i};
 		AllLevelDatas.Add(newLevel);		
 	}
-	
 }
 
 bool UGrabSocketSubsystem::AddLevelData(int levelId, AGrabSocketManager* InSocketManager)

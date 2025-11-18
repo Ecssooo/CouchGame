@@ -4,18 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "GrabSocketManager.generated.h"
+#include "GrabMultiSocket.generated.h"
 
 class AGrabSocketActor;
 
 UCLASS(Blueprintable)
-class COUCHGAME_API AGrabSocketManager : public AActor
+class COUCHGAME_API AGrabMultiSocket : public AActor
 {
 	GENERATED_BODY()
 #pragma region UE
 public:
 	// Sets default values for this actor's properties
-	AGrabSocketManager();
+	AGrabMultiSocket();
 
 protected:
 	// Called when the game starts or when spawned
@@ -27,20 +27,16 @@ public:
 #pragma endregion
 
 #pragma region CG
+
 public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	int LevelId;
-	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	TArray<AGrabSocketActor*> AllGrabSocketActors;
+	TArray<AGrabSocketActor*> GrabSockets;
 
-	// UFUNCTION()
-	TObjectPtr<AGrabSocketActor> FindSocketFromId(int socketId);
+private:
+	UFUNCTION()
+	void InitEvent();
 
-	UFUNCTION(BlueprintCallable)
-	void SaveSocketState();
-
-	UFUNCTION(BlueprintCallable)
-	void LoadAllSocket();
+	UFUNCTION()
+	void GrabActorPlacedInSocket(AGrabSocketActor* socket);
 #pragma endregion
 };

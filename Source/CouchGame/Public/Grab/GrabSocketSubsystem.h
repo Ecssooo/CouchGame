@@ -37,6 +37,7 @@ UCLASS(Blueprintable)
 class COUCHGAME_API UGrabSocketSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
+#pragma region CG
 public:
 	//BlueprintReadOnly
 	UPROPERTY()
@@ -56,4 +57,5 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SaveSocketData(int LevelId, int SocketId);
+#pragma endregion
 };

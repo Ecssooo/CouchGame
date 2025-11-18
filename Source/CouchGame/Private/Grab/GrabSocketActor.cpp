@@ -11,9 +11,7 @@
 #include "Interfaces/Grabbable.h"
 #include "Kismet/GameplayStatics.h"
 
-
-class AGrabSocketManager;
-class UGrabSocketSubsystem;
+#pragma region UE
 // Sets default values
 AGrabSocketActor::AGrabSocketActor()
 {
@@ -44,6 +42,7 @@ void AGrabSocketActor::Tick(float DeltaTime)
 		}
 	}
 }
+#pragma endregion
 
 void AGrabSocketActor::AttachObjectToSocket(AGrabActor* GrabActor)
 {
@@ -51,6 +50,7 @@ void AGrabSocketActor::AttachObjectToSocket(AGrabActor* GrabActor)
 	GrabActor->AttachToActor(this,FAttachmentTransformRules::SnapToTargetIncludingScale);
 	GrabActor->IsInSocket = true;
 	HasObjectInSocket = true;
+	OnObjectPlaced.Broadcast(this);
 	SaveState();
 }
 
@@ -63,6 +63,7 @@ void AGrabSocketActor::SaveState()
 	}	
 }
 
+#pragma region Spawn GrabActor
 void AGrabSocketActor::SpawnObject(bool IsInSocket)
 {
 	if (IsInSocket)
@@ -128,11 +129,10 @@ void AGrabSocketActor::SpawnObjectInSpawners()
 		ActorInSocket = Actor;
 		Actor->SetActorLocation(ActorSpawner->GetActorLocation());	
 	}
-
-	
 }
+#pragma endregion
 
-
+#pragma region Collision
 void AGrabSocketActor::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
@@ -151,3 +151,4 @@ void AGrabSocketActor::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AA
 	
 	if (OtherActor->IsA(ObjectType)) ActorInOverlap = nullptr;
 }
+#pragma endregion
