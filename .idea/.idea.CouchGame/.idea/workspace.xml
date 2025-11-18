@@ -28,6 +28,8 @@
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Cuisine.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Cuisine.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Frigo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Frigo.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Planche.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Planche.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
