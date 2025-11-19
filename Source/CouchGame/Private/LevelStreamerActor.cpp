@@ -11,8 +11,10 @@
 #include "Components/ArrowComponent.h"
 #include "Grab/GrabSocketSubsystem.h"
 #include "Containers/UnrealString.h"
+#include "Systems/LevelComunicationSubsystem.h"
 
 
+class ULevelComunicationSubsystem;
 class UGrabSocketSubsystem;
 // Sets default values
 ALevelStreamerActor::ALevelStreamerActor()
@@ -123,6 +125,12 @@ void ALevelStreamerActor::OnLevelLoaded()
 		AGrabSocketManager* SocketManager = Cast<AGrabSocketManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AGrabSocketManager::StaticClass()));
 		if (!SocketManager) return;
 		SocketSubsystem->AddLevelData(SocketManager->LevelId, SocketManager);
+	}
+	if (ULevelComunicationSubsystem* ComunicationSubsystem = GetGameInstance()->GetSubsystem<ULevelComunicationSubsystem>())
+	{
+		ComunicationSubsystem->GetPartitionLevelsInWorld();
+		FString string = CurrentLevel.ToString();
+		ComunicationSubsystem->LevelLoaded((int)string[5]);
 	}
 }
 

@@ -10,6 +10,7 @@
 #include "Player/CharacterPlayer.h"
 #include "Player/PlayerStateMachine.h"
 #include "Systems/CharacterSettings.h"
+#include "Systems/LevelComunicationSubsystem.h"
 #include "Systems/PlayerSpawners/MainCharacterSpawner.h"
 #include "Systems/PlayerSpawners/MainTeleporterOut.h"
 #include "Systems/PlayerSpawners/StreamedCharacterSpawner.h"
@@ -21,6 +22,11 @@ void ACubeGameMode::BeginPlay()
 	FindMainCharacterSpawners(MainCharacterSpawners);
 	FindMainTeleporterOut(MainTeleportersOut);
 	SpawnCharacterAtBeginPlay();
+
+	ULevelComunicationSubsystem* ComunicationSubsystem = GetGameInstance()->GetSubsystem<ULevelComunicationSubsystem>();
+	if (!ComunicationSubsystem) return;
+
+	ComunicationSubsystem->InitLevelData();
 }
 
 
@@ -123,6 +129,10 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 			UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to CharacterSpawner : %d"), CharacterSpawner->PlayerIndex, CharacterSpawner->PlayerIndex);
 		}
 	}
+	ULevelComunicationSubsystem* ComunicationSubsystem = GetGameInstance()->GetSubsystem<ULevelComunicationSubsystem>();
+	if (!ComunicationSubsystem) return;
+
+	ComunicationSubsystem->GetPartitionLevelsInWorld();
 }
 #pragma endregion
 

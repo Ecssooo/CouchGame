@@ -17,7 +17,6 @@ void ULevelComunicationSubsystem::InitLevelData()
 			sublevel.isDiscover = false;
 			level.Sublevels.Add(sublevel);
 		}
-
 		AllLevels.Add(level);
 	}
 }
@@ -31,13 +30,17 @@ void ULevelComunicationSubsystem::DiscoveredSubLevel(int IdFace, int IdSubLevel)
 {
 	FSubCubeLevel& SubLevel = FindSubLevel(IdFace, IdSubLevel);
 	SubLevel.isDiscover = true;
+	//Si c'est la même ID Face
+	
+	
+	AriseSubLevel(IdSubLevel);
 }
 
 void ULevelComunicationSubsystem::GetPartitionLevelsInWorld()
 {
 	TArray<AActor*> FoundActor;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APartitionLevel::StaticClass(), FoundActor);
-
+	AllPartitionLevels.Empty();
 	for (int i = 0; i < FoundActor.Num(); i++)
 	{
 		APartitionLevel* PartitionLevel = Cast<APartitionLevel>(FoundActor[i]);
@@ -61,8 +64,20 @@ APartitionLevel* ULevelComunicationSubsystem::FindPartitionLevel(int Id)
 
 void ULevelComunicationSubsystem::AriseSubLevel(int id)
 {
-	FindPartitionLevel(id)->DiscoverSubLevel();
+	APartitionLevel* PL = FindPartitionLevel(id);
+	if (!PL) return;
+	PL->DiscoverSubLevel();
 }
 
-
-
+void ULevelComunicationSubsystem::LevelLoaded(int idFace)
+{
+	for (int i = 0; i < AllLevels[idFace].Sublevels.Num(); i++)
+	{
+		if (AllLevels[idFace].Sublevels[i].isDiscover)
+		{
+			APartitionLevel* PL = FindPartitionLevel(i);
+			if (!PL) continue;
+			PL->DiscoverSubLevel();
+		}
+	}
+}
