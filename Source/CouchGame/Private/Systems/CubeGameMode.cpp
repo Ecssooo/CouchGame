@@ -5,8 +5,10 @@
 
 #include "EnhancedInputSubsystems.h"
 #include "Grab/GrabSocketSubsystem.h"
+#include "Grab/GrabSwitchFaceSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "Player/CharacterPlayer.h"
+#include "Player/PlayerStateMachine.h"
 #include "Systems/CharacterSettings.h"
 #include "Systems/PlayerSpawners/MainCharacterSpawner.h"
 #include "Systems/PlayerSpawners/MainTeleporterOut.h"
@@ -19,12 +21,6 @@ void ACubeGameMode::BeginPlay()
 	FindMainCharacterSpawners(MainCharacterSpawners);
 	FindMainTeleporterOut(MainTeleportersOut);
 	SpawnCharacterAtBeginPlay();
-	//
-	// UGrabSocketSubsystem* GrabSocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>();
-	// if (GrabSocketSubsystem)
-	// {
-	// 	GrabSocketSubsystem->InitLevelDatas();
-	// }
 }
 
 
@@ -102,6 +98,9 @@ void ACubeGameMode::TeleportCharacterOut()
 		}
 		ACharacterPlayer* CharacterToTP = Players[Teleporter->PlayerIndex];
 		CharacterToTP->SetActorLocation(Teleporter->GetActorLocation());
+
+		GetGameInstance()->GetSubsystem<UGrabSwitchFaceSubsystem>()->SaveGrabObject(Teleporter->PlayerIndex, CharacterToTP->GrabbableActor.GetClass());
+		CharacterToTP->StateMachine->ChangeState(EPlayerStateID::Idle);
 		UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to Teleporter : %d"), Teleporter->PlayerIndex,Teleporter->PlayerIndex);
 	}
 }
@@ -120,6 +119,7 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 		{
 			ACharacterPlayer* CharacterToSpawn = Players[CharacterSpawner->PlayerIndex];
 			CharacterToSpawn->SetActorLocation(CharacterSpawner->GetActorLocation());
+			GetGameInstance()->GetSubsystem<UGrabSwitchFaceSubsystem>()->LoadGrabObject(CharacterSpawner->PlayerIndex, CharacterToSpawn);
 			UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to CharacterSpawner : %d"), CharacterSpawner->PlayerIndex, CharacterSpawner->PlayerIndex);
 		}
 	}

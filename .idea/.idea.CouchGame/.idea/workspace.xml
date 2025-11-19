@@ -24,18 +24,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabMultiSocket.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabMultiSocket.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabSwitchFaceSubsystem.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabSwitchFaceSubsystem.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Player/BP_CharacterPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Player/BP_CharacterPlayer.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/GP/Alex_Test.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/GP/Alex_Test.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabSocketActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabSocketActor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabSocketSubsystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabSocketSubsystem.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabSocketActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabSocketActor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabSocketManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabSocketManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabSocketSubsystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabSocketSubsystem.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +153,33 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://2" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://6" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Plugins/Animation/RigLogic/Source/RigLogicLib/Public/pma/utils/ManagedInstance.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/Blutility/Public/EditorUtilitySubsystem.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/Kismet/Private/UserDefinedEnumEditor.h" root0="FORCE_HIGHLIGHTING" />
@@ -378,7 +398,7 @@
       <workItem from="1762465273677" duration="282000" />
       <workItem from="1762465971207" duration="2854000" />
       <workItem from="1763391928828" duration="599000" />
-      <workItem from="1763452706936" duration="13643000" />
+      <workItem from="1763452706936" duration="25588000" />
     </task>
     <servers />
   </component>
@@ -402,15 +422,6 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabSocketActor.cpp</url>
-          <line>66</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CppProject">
         <watch expression="IInteractable::Execute_IsPlayerLocked(InteractableActor)" />
