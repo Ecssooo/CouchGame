@@ -35,7 +35,7 @@ void AGrabMultiSocket::InitEvent()
 	}
 }
 
-void AGrabMultiSocket::GrabActorPlacedInSocket(AGrabSocketActor* socket)
+void AGrabMultiSocket::GrabActorPlacedInSocket(AGrabSocketActor* InSocket)
 {
 	for (AGrabSocketActor* socket  : GrabSockets)
 	{

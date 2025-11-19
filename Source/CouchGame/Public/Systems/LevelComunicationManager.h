@@ -4,18 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "GrabMultiSocket.generated.h"
+#include "LevelComunicationManager.generated.h"
 
-class AGrabSocketActor;
+class APartitionLevel;
 
 UCLASS(Blueprintable)
-class COUCHGAME_API AGrabMultiSocket : public AActor
+class COUCHGAME_API ALevelComunicationManager : public AActor
 {
 	GENERATED_BODY()
 #pragma region UE
 public:
 	// Sets default values for this actor's properties
-	AGrabMultiSocket();
+	ALevelComunicationManager();
 
 protected:
 	// Called when the game starts or when spawned
@@ -26,17 +26,20 @@ public:
 	virtual void Tick(float DeltaTime) override;
 #pragma endregion
 
-#pragma region CG
-
 public:
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	TArray<AGrabSocketActor*> GrabSockets;
+	UPROPERTY(EditAnywhere)
+	int LevelID;
+	
+	UPROPERTY(EditAnywhere)
+	TArray<APartitionLevel*> PartitionLevels;
 
-private:
 	UFUNCTION()
-	void InitEvent();
-
+	void LoadDiscoveredLevelPartition();
 	UFUNCTION()
-	void GrabActorPlacedInSocket(AGrabSocketActor* InSocket);
-#pragma endregion
+	void LoadSpecificPartition(int idSub);
+	UFUNCTION()
+	void GetPartitionLevelsInWorld();
+	UFUNCTION()
+	APartitionLevel* FindPartitionLevel(int Id);
+	
 };

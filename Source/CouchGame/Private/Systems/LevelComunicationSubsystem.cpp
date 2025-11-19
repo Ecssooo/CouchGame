@@ -1,7 +1,9 @@
 #include "Systems/LevelComunicationSubsystem.h"
 #include "Kismet/GameplayStatics.h"
-#include "Systems/PartitionLevel.h"
+#include "Systems/LevelComunicationManager.h"
 
+
+class ALevelComunicationManager;
 
 void ULevelComunicationSubsystem::InitLevelData()
 {
@@ -30,54 +32,21 @@ void ULevelComunicationSubsystem::DiscoveredSubLevel(int IdFace, int IdSubLevel)
 {
 	FSubCubeLevel& SubLevel = FindSubLevel(IdFace, IdSubLevel);
 	SubLevel.isDiscover = true;
-	//Si c'est la même ID Face
 	
-	
-	AriseSubLevel(IdSubLevel);
-}
+	ALevelComunicationManager* ComManager = Cast<ALevelComunicationManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelComunicationManager::StaticClass()));
+	if (!ComManager) return;
 
-void ULevelComunicationSubsystem::GetPartitionLevelsInWorld()
-{
-	TArray<AActor*> FoundActor;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APartitionLevel::StaticClass(), FoundActor);
-	AllPartitionLevels.Empty();
-	for (int i = 0; i < FoundActor.Num(); i++)
+	if (ComManager->LevelID == IdFace)
 	{
-		APartitionLevel* PartitionLevel = Cast<APartitionLevel>(FoundActor[i]);
-		if (!PartitionLevel) continue;
-		AllPartitionLevels.Add(PartitionLevel);
+		ComManager->LoadSpecificPartition(IdSubLevel);
 	}
 }
 
-APartitionLevel* ULevelComunicationSubsystem::FindPartitionLevel(int Id)
-{
-	for (int i = 0; i < AllPartitionLevels.Num(); i++ )
-	{
-		if (Id == AllPartitionLevels[i]->IdSublevel)
-		{
-			return AllPartitionLevels[i];
-		}
-	}
-	
-	return nullptr;
-}
 
-void ULevelComunicationSubsystem::AriseSubLevel(int id)
-{
-	APartitionLevel* PL = FindPartitionLevel(id);
-	if (!PL) return;
-	PL->DiscoverSubLevel();
-}
 
-void ULevelComunicationSubsystem::LevelLoaded(int idFace)
-{
-	for (int i = 0; i < AllLevels[idFace].Sublevels.Num(); i++)
-	{
-		if (AllLevels[idFace].Sublevels[i].isDiscover)
-		{
-			APartitionLevel* PL = FindPartitionLevel(i);
-			if (!PL) continue;
-			PL->DiscoverSubLevel();
-		}
-	}
-}
+// void ULevelComunicationSubsystem::AriseSubLevel(int id)
+// {
+// 	APartitionLevel* PL = FindPartitionLevel(id);
+// 	if (!PL) return;
+// 	PL->DiscoverSubLevel();
+// }

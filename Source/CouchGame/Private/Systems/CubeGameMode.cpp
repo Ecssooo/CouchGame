@@ -4,12 +4,12 @@
 #include "Systems/CubeGameMode.h"
 
 #include "EnhancedInputSubsystems.h"
-#include "Grab/GrabSocketSubsystem.h"
 #include "Grab/GrabSwitchFaceSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "Player/CharacterPlayer.h"
 #include "Player/PlayerStateMachine.h"
 #include "Systems/CharacterSettings.h"
+#include "Systems/LevelComunicationManager.h"
 #include "Systems/LevelComunicationSubsystem.h"
 #include "Systems/PlayerSpawners/MainCharacterSpawner.h"
 #include "Systems/PlayerSpawners/MainTeleporterOut.h"
@@ -23,10 +23,7 @@ void ACubeGameMode::BeginPlay()
 	FindMainTeleporterOut(MainTeleportersOut);
 	SpawnCharacterAtBeginPlay();
 
-	ULevelComunicationSubsystem* ComunicationSubsystem = GetGameInstance()->GetSubsystem<ULevelComunicationSubsystem>();
-	if (!ComunicationSubsystem) return;
 
-	ComunicationSubsystem->InitLevelData();
 }
 
 
@@ -129,10 +126,15 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 			UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to CharacterSpawner : %d"), CharacterSpawner->PlayerIndex, CharacterSpawner->PlayerIndex);
 		}
 	}
-	ULevelComunicationSubsystem* ComunicationSubsystem = GetGameInstance()->GetSubsystem<ULevelComunicationSubsystem>();
-	if (!ComunicationSubsystem) return;
+	ALevelComunicationManager* ComManager = Cast<ALevelComunicationManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelComunicationManager::StaticClass()));
+	if (!ComManager) return;
 
-	ComunicationSubsystem->GetPartitionLevelsInWorld();
+	ComManager->GetPartitionLevelsInWorld();
+
+	ULevelComunicationSubsystem* ComSubsystem = GetGameInstance()->GetSubsystem<ULevelComunicationSubsystem>();
+	if (!ComSubsystem) return;
+	//ComSubsystem->DiscoveredSubLevel(1,0);
+	
 }
 #pragma endregion
 
