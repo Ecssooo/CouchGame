@@ -24,17 +24,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LevelComunicationManager.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LevelComunicationManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabSocketActor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabSocketActor.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Toupie/BP_NewSpin.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Toupie/BP_NewSpin.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabMultiSocket.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabMultiSocket.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/LevelStreamerActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/LevelStreamerActor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LevelComunicationSubsystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LevelComunicationSubsystem.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabMultiSocket.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabMultiSocket.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LevelComunicationSubsystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LevelComunicationSubsystem.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +95,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "C/C++ Project.CouchGame.executor": "Debug",
+    "C/C++ Project.CouchGame.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
@@ -286,6 +280,7 @@
       <workItem from="1763391928828" duration="599000" />
       <workItem from="1763452706936" duration="32821000" />
       <workItem from="1763563336093" duration="3584000" />
+      <workItem from="1763628323614" duration="880000" />
     </task>
     <servers />
   </component>
