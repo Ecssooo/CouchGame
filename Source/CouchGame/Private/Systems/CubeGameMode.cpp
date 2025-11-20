@@ -122,7 +122,10 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 		{
 			ACharacterPlayer* CharacterToSpawn = Players[CharacterSpawner->PlayerIndex];
 			CharacterToSpawn->SetActorLocation(CharacterSpawner->GetActorLocation());
-			GetGameInstance()->GetSubsystem<UGrabSwitchFaceSubsystem>()->LoadGrabObject(CharacterSpawner->PlayerIndex, CharacterToSpawn);
+			UGrabSwitchFaceSubsystem* sub = GetGameInstance()->GetSubsystem<UGrabSwitchFaceSubsystem>();
+			sub->LoadGrabObject(CharacterSpawner->PlayerIndex, CharacterToSpawn);
+			sub->ClearSubclass(0);
+			sub->ClearSubclass(1);
 			UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to CharacterSpawner : %d"), CharacterSpawner->PlayerIndex, CharacterSpawner->PlayerIndex);
 		}
 	}

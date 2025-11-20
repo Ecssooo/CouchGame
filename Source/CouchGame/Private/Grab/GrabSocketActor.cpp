@@ -128,7 +128,7 @@ void AGrabSocketActor::SpawnObjectInSpawners()
 
 		ActorInSocket = Actor;
 		Actor->AttachToActor(ActorSpawner, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-		Actor->SetActorLocation(ActorSpawner->GetActorLocation());	
+		// Actor->SetActorLocation(ActorSpawner->GetActorLocation());	
 	}
 }
 #pragma endregion

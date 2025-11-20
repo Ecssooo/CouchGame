@@ -28,6 +28,6 @@ public:
 
 	TSubclassOf<AGrabActor> GetGrabActorSubclass(int playerIndex);
 
-	void ClearSubclass();
+	void ClearSubclass(int playerIndex);
 	
 };

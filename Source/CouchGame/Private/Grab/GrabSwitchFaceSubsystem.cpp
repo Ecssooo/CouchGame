@@ -44,7 +44,6 @@ void UGrabSwitchFaceSubsystem::LoadGrabObject(int playerIndex, ACharacterPlayer*
 			Params
 		);
 	}
-	ClearSubclass();
 	Player->StateMachine->ChangeState(EPlayerStateID::Grab);
 }
 
@@ -61,8 +60,17 @@ TSubclassOf<AGrabActor> UGrabSwitchFaceSubsystem::GetGrabActorSubclass(int playe
 	}
 }
 
-void UGrabSwitchFaceSubsystem::ClearSubclass()
+void UGrabSwitchFaceSubsystem::ClearSubclass(int playerIndex)
 {
-	GrabActorInPlayer1 = nullptr;
-	GrabActorInPlayer2 = nullptr;
+	switch (playerIndex)
+	{
+		case(0):
+			GrabActorInPlayer1 = nullptr;
+			break;
+		case(1):
+			GrabActorInPlayer2 = nullptr;
+			break;
+		default:
+			break;
+	}
 }
