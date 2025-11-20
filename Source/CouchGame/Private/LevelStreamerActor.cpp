@@ -2,14 +2,21 @@
 
 
 #include "LevelStreamerActor.h"
+
 #include "Kismet/GameplayStatics.h"
 #include "Engine/LevelStreaming.h"
 #include "Systems/ArrowHelper.h"
 #include "Systems/CubeGameMode.h"
 #include "Systems/CubeController.h"
 #include "Components/ArrowComponent.h"
+#include "Grab/GrabSocketSubsystem.h"
+#include "Containers/UnrealString.h"
+#include "Systems/LevelComunicationManager.h"
+#include "Systems/LevelComunicationSubsystem.h"
 
 
+class ULevelComunicationSubsystem;
+class UGrabSocketSubsystem;
 // Sets default values
 ALevelStreamerActor::ALevelStreamerActor()
 {
@@ -40,7 +47,7 @@ void ALevelStreamerActor::UnloadActualLevel()
 	LatentInfo.ExecutionFunction = FName("OnLevelUnloaded"); // callback
 	LatentInfo.Linkage = 0;
 	LatentInfo.UUID = __LINE__;
-
+	
 	UGameplayStatics::UnloadStreamLevel(this, CurrentLevel, LatentInfo, false);
 }
 
@@ -114,6 +121,16 @@ void ALevelStreamerActor::OnLevelLoaded()
 	RotateLevel();
 	if (TmpLevelDir != ELevelDir::None)
 		GameMode->SpawnCharacterInStreamedLevel(TmpLevelDir);
+	if (UGrabSocketSubsystem* SocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>())
+	{
+		AGrabSocketManager* SocketManager = Cast<AGrabSocketManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AGrabSocketManager::StaticClass()));
+		if (!SocketManager) return;
+		SocketSubsystem->AddLevelData(SocketManager->LevelId, SocketManager);
+
+		ALevelComunicationManager* ComManager = Cast<ALevelComunicationManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelComunicationManager::StaticClass()));
+		if (!ComManager) return;
+		ComManager->LoadDiscoveredLevelPartition();
+	}
 }
 
 FName ALevelStreamerActor::GetNeighborLevel(FName FromLevel, ELevelDir Dir) const

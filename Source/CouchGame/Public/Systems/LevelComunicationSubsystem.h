@@ -23,7 +23,7 @@ struct FSubCubeLevel
 	bool isDiscover;
 };
 
-UCLASS()
+UCLASS(Blueprintable)
 class COUCHGAME_API ULevelComunicationSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
@@ -32,25 +32,16 @@ class COUCHGAME_API ULevelComunicationSubsystem : public UGameInstanceSubsystem
 public:
 
 	TArray<FCubeLevel> AllLevels;
-
-	TArray<APartitionLevel*> AllPartitionLevels; 
-
+	
 	UFUNCTION()
 	void InitLevelData();
 
 	UFUNCTION()
 	FSubCubeLevel& FindSubLevel(int IdFace, int IdSubLevel);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void DiscoveredSubLevel(int IdFace, int IdSubLevel);
-
-	UFUNCTION()
-	void GetPartitionLevelsInWorld();
-
-	UFUNCTION()
-	APartitionLevel* FindPartitionLevel(int Id);
 	
-	UFUNCTION()
-	void AriseSubLevel(int id);
-	
+	// UFUNCTION(BlueprintCallable)
+	// void AriseSubLevel(int id);
 };

@@ -1,7 +1,9 @@
 #include "Systems/LevelComunicationSubsystem.h"
 #include "Kismet/GameplayStatics.h"
-#include "Systems/PartitionLevel.h"
+#include "Systems/LevelComunicationManager.h"
 
+
+class ALevelComunicationManager;
 
 void ULevelComunicationSubsystem::InitLevelData()
 {
@@ -17,7 +19,6 @@ void ULevelComunicationSubsystem::InitLevelData()
 			sublevel.isDiscover = false;
 			level.Sublevels.Add(sublevel);
 		}
-
 		AllLevels.Add(level);
 	}
 }
@@ -31,38 +32,21 @@ void ULevelComunicationSubsystem::DiscoveredSubLevel(int IdFace, int IdSubLevel)
 {
 	FSubCubeLevel& SubLevel = FindSubLevel(IdFace, IdSubLevel);
 	SubLevel.isDiscover = true;
-}
-
-void ULevelComunicationSubsystem::GetPartitionLevelsInWorld()
-{
-	TArray<AActor*> FoundActor;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APartitionLevel::StaticClass(), FoundActor);
-
-	for (int i = 0; i < FoundActor.Num(); i++)
-	{
-		APartitionLevel* PartitionLevel = Cast<APartitionLevel>(FoundActor[i]);
-		if (!PartitionLevel) continue;
-		AllPartitionLevels.Add(PartitionLevel);
-	}
-}
-
-APartitionLevel* ULevelComunicationSubsystem::FindPartitionLevel(int Id)
-{
-	for (int i = 0; i < AllPartitionLevels.Num(); i++ )
-	{
-		if (Id == AllPartitionLevels[i]->IdSublevel)
-		{
-			return AllPartitionLevels[i];
-		}
-	}
 	
-	return nullptr;
+	ALevelComunicationManager* ComManager = Cast<ALevelComunicationManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelComunicationManager::StaticClass()));
+	if (!ComManager) return;
+
+	if (ComManager->LevelID == IdFace)
+	{
+		ComManager->LoadSpecificPartition(IdSubLevel);
+	}
 }
 
-void ULevelComunicationSubsystem::AriseSubLevel(int id)
-{
-	FindPartitionLevel(id)->DiscoverSubLevel();
-}
 
 
-
+// void ULevelComunicationSubsystem::AriseSubLevel(int id)
+// {
+// 	APartitionLevel* PL = FindPartitionLevel(id);
+// 	if (!PL) return;
+// 	PL->DiscoverSubLevel();
+// }
