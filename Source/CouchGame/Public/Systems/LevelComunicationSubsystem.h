@@ -35,7 +35,10 @@ public:
 	
 	UFUNCTION()
 	void InitLevelData();
-
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsTPVisible;
+	
 	UFUNCTION()
 	FSubCubeLevel& FindSubLevel(int IdFace, int IdSubLevel);
 

@@ -31,12 +31,16 @@ public:
 public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<AGrabSocketActor*> GrabSockets;
-
+	UFUNCTION(BlueprintNativeEvent)
+	void QuestValid();
+	
 private:
 	UFUNCTION()
 	void InitEvent();
 
 	UFUNCTION()
 	void GrabActorPlacedInSocket(AGrabSocketActor* InSocket);
+
+	
 #pragma endregion
 };

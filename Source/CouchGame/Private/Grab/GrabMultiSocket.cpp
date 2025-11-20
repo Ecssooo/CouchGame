@@ -41,6 +41,10 @@ void AGrabMultiSocket::GrabActorPlacedInSocket(AGrabSocketActor* InSocket)
 	{
 		if (!socket->HasObjectInSocket) return;
 	}
-	
+	QuestValid();
 	UE_LOG(LogTemp, Warning, TEXT("All Socket quest are completed"))
+}
+
+void AGrabMultiSocket::QuestValid_Implementation()
+{
 }

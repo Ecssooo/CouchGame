@@ -27,15 +27,16 @@ public:
 #pragma endregion
 
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int LevelID;
 	
 	UPROPERTY(EditAnywhere)
 	TArray<APartitionLevel*> PartitionLevels;
 
+
 	UFUNCTION()
 	void LoadDiscoveredLevelPartition();
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void LoadSpecificPartition(int idSub);
 	UFUNCTION()
 	void GetPartitionLevelsInWorld();
