@@ -26,24 +26,23 @@
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Cube/BP_TP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Cube/BP_TP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabMultiSocket.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/BP_GrabMultiSocket.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets3D/1ere_face/Mesh/Zone_de_chantier/SM_Small_plot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets3D/1ere_face/Mesh/Zone_de_chantier/SM_Small_plot.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Balançoire/BP_NewSwing_Mesh_Version.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Balançoire/BP_NewSwing_Mesh_Version.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Balle/BP_Balle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Balle/BP_Balle.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_Cursor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_Cursor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_Fill.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_Fill.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputDown.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputDown.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputLeft.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputLeft.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputRight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputRight.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputUp.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_InputUp.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_TriggerZone.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/QTE_TriggerZone.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/WBP_QTE.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/WBP_QTE.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/PartitionLevel/BP_LevelComManager.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/PartitionLevel/BP_LevelComManager.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Player/BP_CharacterPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Player/BP_CharacterPlayer.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Player/BP_Player1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Player/BP_Player1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Widget/WBP_Interact.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Widget/WBP_Interact.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Input/IMC_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Input/IMC_Player.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_2.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_2.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabMultiSocket.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabMultiSocket.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabMultiSocket.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabMultiSocket.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LevelComunicationManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LevelComunicationManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LevelComunicationSubsystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LevelComunicationSubsystem.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_3.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_3.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabSocketActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabSocketActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerGrabState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Player/States/PlayerGrabState.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LevelComunicationManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LevelComunicationManager.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,22 +56,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://8" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Plugins/Animation/RigLogic/Source/RigLogicLib/Public/pma/utils/ManagedInstance.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/Blutility/Public/EditorUtilitySubsystem.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/Kismet/Private/UserDefinedEnumEditor.h" root0="FORCE_HIGHLIGHTING" />
@@ -87,6 +70,7 @@
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/Kismet/KismetSystemLibrary.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Public/Subsystems/SubsystemCollection.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/GameplayTasks/Classes/GameplayTask.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Renderer/Private/Nanite/NaniteVisibility.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/CouchGame/UHT/Interactable.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/CouchGame/UHT/LevelStreamerActor.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Private/Systems/ArrowHelper.cpp" root0="FORCE_HIGHLIGHTING" />

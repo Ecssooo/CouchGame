@@ -127,6 +127,7 @@ void AGrabSocketActor::SpawnObjectInSpawners()
 		if (!Actor) return;
 
 		ActorInSocket = Actor;
+		Actor->AttachToActor(ActorSpawner, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 		Actor->SetActorLocation(ActorSpawner->GetActorLocation());	
 	}
 }

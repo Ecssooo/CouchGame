@@ -27,6 +27,11 @@ void ALevelComunicationManager::BeginPlay()
 	ComunicationSubsystem->DiscoveredSubLevel(1,0);	
 	ComunicationSubsystem->DiscoveredSubLevel(1,3);	
 	ComunicationSubsystem->DiscoveredSubLevel(1,4);	
+	ComunicationSubsystem->DiscoveredSubLevel(2,1);	
+	ComunicationSubsystem->DiscoveredSubLevel(2,4);	
+	ComunicationSubsystem->DiscoveredSubLevel(2,6);	
+	ComunicationSubsystem->DiscoveredSubLevel(2,7);	
+	ComunicationSubsystem->DiscoveredSubLevel(3,7);	
 	LoadDiscoveredLevelPartition();
 }
 

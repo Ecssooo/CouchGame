@@ -40,9 +40,10 @@ void UPlayerGrabState::OnExit(UPlayerStateMachine* InSM)
 	AActor* GrabbableActor = Player->GrabbableActor;
 	if (!GrabbableActor) return;
 	if (!GrabbableActor->Implements<UGrabbable>()) return;
-
+	
 	IGrabbable::Execute_OnDrop(GrabbableActor, Player);
 	GrabbableActor->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+	GrabbableActor = nullptr;
 }
 
 
