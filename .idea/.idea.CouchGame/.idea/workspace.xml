@@ -25,8 +25,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Cuisine.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Cuisine.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Frigo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Frigo.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Planche.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Planche.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,6 +263,7 @@
       <workItem from="1762465971207" duration="2854000" />
       <workItem from="1763372247731" duration="899000" />
       <workItem from="1763453386716" duration="782000" />
+      <workItem from="1763623748115" duration="1564000" />
     </task>
     <servers />
   </component>
