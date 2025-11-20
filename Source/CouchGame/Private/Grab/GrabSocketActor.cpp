@@ -106,7 +106,7 @@ void AGrabSocketActor::SpawnObjectInSocket()
 void AGrabSocketActor::SpawnObjectInSpawners()
 {
 	if (!ObjectType) return;
-
+	if (!ActorSpawner) return;
 	ALevelStreamerActor* LSA = Cast<ALevelStreamerActor>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelStreamerActor::StaticClass()));
 	
 	ULevelStreaming* MyStreamedLevel =

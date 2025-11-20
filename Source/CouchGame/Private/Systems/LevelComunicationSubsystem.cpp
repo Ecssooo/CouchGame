@@ -36,10 +36,10 @@ void ULevelComunicationSubsystem::DiscoveredSubLevel(int IdFace, int IdSubLevel)
 	ALevelComunicationManager* ComManager = Cast<ALevelComunicationManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelComunicationManager::StaticClass()));
 	if (!ComManager) return;
 
-	if (ComManager->LevelID == IdFace)
-	{
-		ComManager->LoadSpecificPartition(IdSubLevel);
-	}
+	// if (ComManager->LevelID == IdFace)
+	// {
+	// 	ComManager->LoadSpecificPartition(IdSubLevel);
+	// }
 }
 
 

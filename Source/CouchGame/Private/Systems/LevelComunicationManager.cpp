@@ -25,7 +25,9 @@ void ALevelComunicationManager::BeginPlay()
 
 	ComunicationSubsystem->InitLevelData();
 	ComunicationSubsystem->DiscoveredSubLevel(1,0);	
-	// LoadDiscoveredLevelPartition();
+	ComunicationSubsystem->DiscoveredSubLevel(1,3);	
+	ComunicationSubsystem->DiscoveredSubLevel(1,4);	
+	LoadDiscoveredLevelPartition();
 }
 
 // Called every frame
