@@ -59,7 +59,7 @@ void ACubeGameMode::SpawnCharacterAtBeginPlay()
 		
 		if (!NewCharacter) continue;
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, TEXT("Character Created"));
-
+		NewCharacter->PlayerIndex = CharacterSpawner->PlayerIndex;
 		LocalPlayer->Possess(NewCharacter);
 		Players.Add(NewCharacter);
 
@@ -104,7 +104,6 @@ void ACubeGameMode::TeleportCharacterOut()
 		ACharacterPlayer* CharacterToTP = Players[Teleporter->PlayerIndex];
 		CharacterToTP->SetActorLocation(Teleporter->GetActorLocation());
 
-		CharacterToTP->StateMachine->ChangeState(EPlayerStateID::Idle);
 		UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to Teleporter : %d"), Teleporter->PlayerIndex,Teleporter->PlayerIndex);
 	}
 }
@@ -126,8 +125,9 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 			UGrabSwitchFaceSubsystem* sub = GetGameInstance()->GetSubsystem<UGrabSwitchFaceSubsystem>();
 			sub->LoadGrabObject(CharacterSpawner->PlayerIndex, CharacterToSpawn);
 			UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to CharacterSpawner : %d"), CharacterSpawner->PlayerIndex, CharacterSpawner->PlayerIndex);
+			// CharacterToSpawn->StateMachine->ChangeState(EPlayerStateID::Idle);
 		}
-	}
+	}	
 	ALevelComunicationManager* ComManager = Cast<ALevelComunicationManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelComunicationManager::StaticClass()));
 	if (!ComManager) return;
 

@@ -18,6 +18,9 @@ public:
 	ACharacterPlayer();
 	virtual void BeginPlay() override;
 
+	UPROPERTY()
+	int PlayerIndex;
+	
 	UPROPERTY(BlueprintReadWrite, Category="Input")
 	FVector2D PlayerMoveInput = FVector2D::ZeroVector;
 
