@@ -1,6 +1,5 @@
 #include "Player/States/PlayerGrabState.h"
 
-#include "Android/AndroidJavaEnv.h"
 #include "Grab/GrabSwitchFaceSubsystem.h"
 #include "Interfaces/Grabbable.h"
 #include "Kismet/GameplayStatics.h"
