@@ -22,7 +22,7 @@ void ACubeGameMode::BeginPlay()
 	FindMainCharacterSpawners(MainCharacterSpawners);
 	FindMainTeleporterOut(MainTeleportersOut);
 	SpawnCharacterAtBeginPlay();
-
+	
 
 }
 
@@ -69,6 +69,8 @@ void ACubeGameMode::SpawnCharacterAtBeginPlay()
 			UE_LOG(LogTemp, Warning, TEXT("Local player not found : %d"), CharacterSpawner->PlayerIndex);
 		};
 		
+		UGrabSwitchFaceSubsystem* GrabSubsystem = GetGameInstance()->GetSubsystem<UGrabSwitchFaceSubsystem>();
+		GrabSubsystem->InitPlayer(NewCharacter, CharacterSpawner->PlayerIndex);
 		
 		UEnhancedInputLocalPlayerSubsystem* InputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(LocalPlayer->GetLocalPlayer());
 		if (!InputSubsystem)
@@ -102,7 +104,6 @@ void ACubeGameMode::TeleportCharacterOut()
 		ACharacterPlayer* CharacterToTP = Players[Teleporter->PlayerIndex];
 		CharacterToTP->SetActorLocation(Teleporter->GetActorLocation());
 
-		GetGameInstance()->GetSubsystem<UGrabSwitchFaceSubsystem>()->SaveGrabObject(Teleporter->PlayerIndex, CharacterToTP->GrabbableActor.GetClass());
 		CharacterToTP->StateMachine->ChangeState(EPlayerStateID::Idle);
 		UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to Teleporter : %d"), Teleporter->PlayerIndex,Teleporter->PlayerIndex);
 	}
@@ -124,8 +125,6 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 			CharacterToSpawn->SetActorLocation(CharacterSpawner->GetActorLocation());
 			UGrabSwitchFaceSubsystem* sub = GetGameInstance()->GetSubsystem<UGrabSwitchFaceSubsystem>();
 			sub->LoadGrabObject(CharacterSpawner->PlayerIndex, CharacterToSpawn);
-			sub->ClearSubclass(0);
-			sub->ClearSubclass(1);
 			UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to CharacterSpawner : %d"), CharacterSpawner->PlayerIndex, CharacterSpawner->PlayerIndex);
 		}
 	}

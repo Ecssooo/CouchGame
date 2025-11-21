@@ -20,14 +20,21 @@ public:
 	UPROPERTY()
 	TSubclassOf<AGrabActor> GrabActorInPlayer2;
 
+	UPROPERTY()
+	ACharacterPlayer* Player1;
+	
+	UPROPERTY()
+	ACharacterPlayer* Player2;
+
+	void InitPlayer(ACharacterPlayer* InPlayer, int PlayerIndex);
 	UFUNCTION()
-	void SaveGrabObject(int playerIndex, TSubclassOf<AGrabActor> grabActorClass);
+	void SaveGrabObject(ACharacterPlayer* player, TSubclassOf<AGrabActor> grabActorClass);
 
 	UFUNCTION()
 	void LoadGrabObject(int playerIndex, ACharacterPlayer* Player);
 
 	TSubclassOf<AGrabActor> GetGrabActorSubclass(int playerIndex);
 
-	void ClearSubclass(int playerIndex);
+	void ClearSubclass(ACharacterPlayer* player);
 	
 };

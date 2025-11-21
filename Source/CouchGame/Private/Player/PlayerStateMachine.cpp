@@ -14,7 +14,7 @@ void UPlayerStateMachine::BeginPlay()
 	CachedPlayer = Cast<ACharacterPlayer>(GetOwner());
 	CacheStatesOnOwner();
 	ChangeState(InitialState);
-
+	
 	if (IsVerboseLogs)
 	{
 		const UEnum* Enum = StaticEnum<EPlayerStateID>();

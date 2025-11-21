@@ -9,19 +9,28 @@
 #include "Player/CharacterPlayer.h"
 #include "Player/PlayerStateMachine.h"
 
-void UGrabSwitchFaceSubsystem::SaveGrabObject(int playerIndex, TSubclassOf<AGrabActor> grabActorClass)
+
+void UGrabSwitchFaceSubsystem::InitPlayer(ACharacterPlayer* InPlayer, int PlayerIndex)
 {
-	switch (playerIndex)
+	switch (PlayerIndex)
 	{
 		case(0):
-			GrabActorInPlayer1 = grabActorClass;
+			Player1 = InPlayer;
 			break;
 		case(1):
-			GrabActorInPlayer2 = grabActorClass;
+			Player2 = InPlayer;
 			break;
 		default:
 			break;
 	}
+}
+
+
+
+void UGrabSwitchFaceSubsystem::SaveGrabObject(ACharacterPlayer* player, TSubclassOf<AGrabActor> grabActorClass)
+{
+	if (player == Player1) GrabActorInPlayer1 = grabActorClass;
+	else if (player == Player2) GrabActorInPlayer2 = grabActorClass;
 }
 
 void UGrabSwitchFaceSubsystem::LoadGrabObject(int playerIndex, ACharacterPlayer* Player)
@@ -60,17 +69,8 @@ TSubclassOf<AGrabActor> UGrabSwitchFaceSubsystem::GetGrabActorSubclass(int playe
 	}
 }
 
-void UGrabSwitchFaceSubsystem::ClearSubclass(int playerIndex)
+void UGrabSwitchFaceSubsystem::ClearSubclass(ACharacterPlayer* player)
 {
-	switch (playerIndex)
-	{
-		case(0):
-			GrabActorInPlayer1 = nullptr;
-			break;
-		case(1):
-			GrabActorInPlayer2 = nullptr;
-			break;
-		default:
-			break;
-	}
+	if (player == Player1) GrabActorInPlayer1 = nullptr;
+	else if (player == Player2) GrabActorInPlayer2 = nullptr;
 }

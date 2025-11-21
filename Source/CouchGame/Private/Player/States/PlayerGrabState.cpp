@@ -1,6 +1,9 @@
 #include "Player/States/PlayerGrabState.h"
 
+#include "Android/AndroidJavaEnv.h"
+#include "Grab/GrabSwitchFaceSubsystem.h"
 #include "Interfaces/Grabbable.h"
+#include "Kismet/GameplayStatics.h"
 #include "Player/CharacterPlayer.h"
 #include "Player/PlayerStateMachine.h"
 
@@ -23,6 +26,8 @@ void UPlayerGrabState::OnEnter(UPlayerStateMachine* InSM)
 	{
 		if (!Player->GetGrabParent()) return;
 		IGrabbable::Execute_OnGrab(GrabbableActor, Player);
+		UGrabSwitchFaceSubsystem* sub = UGameplayStatics::GetGameInstance(GetWorld())->GetSubsystem<UGrabSwitchFaceSubsystem>(); 
+		sub->SaveGrabObject(Player,GrabbableActor->GetClass());
 		GrabbableActor->AttachToComponent(Player->GetGrabParent(), FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 		//GrabbableActor->SetActorLocation(Player->GetGrabParent()->GetRelativeLocation());
 		Player->GrabbableActor = GrabbableActor;
@@ -44,6 +49,8 @@ void UPlayerGrabState::OnExit(UPlayerStateMachine* InSM)
 	IGrabbable::Execute_OnDrop(GrabbableActor, Player);
 	GrabbableActor->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 	GrabbableActor = nullptr;
+	UGrabSwitchFaceSubsystem* sub = UGameplayStatics::GetGameInstance(GetWorld())->GetSubsystem<UGrabSwitchFaceSubsystem>(); 
+	sub->ClearSubclass(Player);
 }
 
 
