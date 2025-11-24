@@ -8,6 +8,7 @@
 UENUM(BlueprintType)
 enum class EInteractionsID : uint8
 {
+	None,
 	Swing,
 	Fishing,
 	Ball,

@@ -5,18 +5,18 @@
 #include "LevelComunicationSubsystem.generated.h"
 
 class APartitionLevel;
-struct FSubCubeLevel;
+struct FSubCubeLevelOld;
 
 USTRUCT(BlueprintType)
-struct FCubeLevel
+struct FCubeLevelOld
 {
 	GENERATED_BODY()
 	int IdLevel;
-	TArray<FSubCubeLevel> Sublevels;
+	TArray<FSubCubeLevelOld> Sublevels;
 };
 
 USTRUCT(BlueprintType)
-struct FSubCubeLevel
+struct FSubCubeLevelOld
 {
 	GENERATED_BODY()
 	int IdSublevel;
@@ -31,7 +31,7 @@ class COUCHGAME_API ULevelComunicationSubsystem : public UGameInstanceSubsystem
 	
 public:
 
-	TArray<FCubeLevel> AllLevels;
+	TArray<FCubeLevelOld> AllLevels;
 	
 	UFUNCTION()
 	void InitLevelData();
@@ -40,7 +40,7 @@ public:
 	bool IsTPVisible;
 	
 	UFUNCTION()
-	FSubCubeLevel& FindSubLevel(int IdFace, int IdSubLevel);
+	FSubCubeLevelOld& FindSubLevel(int IdFace, int IdSubLevel);
 
 	UFUNCTION(BlueprintCallable)
 	void DiscoveredSubLevel(int IdFace, int IdSubLevel);

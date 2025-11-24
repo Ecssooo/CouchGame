@@ -4,10 +4,3 @@
 #include "Systems/InteractionID.h"
 
 
-InteractionID::InteractionID()
-{
-}
-
-InteractionID::~InteractionID()
-{
-}

@@ -9,12 +9,12 @@ void ULevelComunicationSubsystem::InitLevelData()
 {
 	for (int i = 0; i < 6; i++)
 	{
-		FCubeLevel level;
+		FCubeLevelOld level;
 		level.IdLevel = i;
 
 		for (int j = 0; j < 9; j++)
 		{
-			FSubCubeLevel sublevel;
+			FSubCubeLevelOld sublevel;
 			sublevel.IdSublevel = j;
 			sublevel.isDiscover = false;
 			level.Sublevels.Add(sublevel);
@@ -23,14 +23,14 @@ void ULevelComunicationSubsystem::InitLevelData()
 	}
 }
 
-FSubCubeLevel& ULevelComunicationSubsystem::FindSubLevel(int IdFace, int IdSubLevel)
+FSubCubeLevelOld& ULevelComunicationSubsystem::FindSubLevel(int IdFace, int IdSubLevel)
 {
 	return AllLevels[IdFace].Sublevels[IdSubLevel];	
 }
 
 void ULevelComunicationSubsystem::DiscoveredSubLevel(int IdFace, int IdSubLevel)
 {
-	FSubCubeLevel& SubLevel = FindSubLevel(IdFace, IdSubLevel);
+	FSubCubeLevelOld& SubLevel = FindSubLevel(IdFace, IdSubLevel);
 	SubLevel.isDiscover = true;
 	
 	ALevelComunicationManager* ComManager = Cast<ALevelComunicationManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelComunicationManager::StaticClass()));
