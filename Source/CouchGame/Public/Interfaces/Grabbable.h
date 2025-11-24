@@ -30,4 +30,7 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	bool GetIsGrabbed();
+	
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	bool GetIsInSocket();
 };
