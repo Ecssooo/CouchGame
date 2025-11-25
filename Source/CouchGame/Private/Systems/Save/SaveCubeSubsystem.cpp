@@ -34,9 +34,9 @@ void USaveCubeSubsystem::SaveLevelData(int idFace, int idSubLevel, bool isUnlock
 
 FSublevelCube& USaveCubeSubsystem::GetSublevelDatas(int idFace, int idSubLevel)
 {
-	if (LevelsDatas.IsValidIndex(idFace))
-		if (LevelsDatas[idFace].SubLevels.IsValidIndex(idSubLevel))
-			return LevelsDatas[idFace].SubLevels[idSubLevel];
+	if (LevelsDatas.IsValidIndex(idFace-1))
+		if (LevelsDatas[idFace-1].SubLevels.IsValidIndex(idSubLevel-1))
+			return LevelsDatas[idFace-1].SubLevels[idSubLevel-1];
 	return nullSubLevelDatas;
 }
 
@@ -73,5 +73,62 @@ FInteractionsDatas& USaveCubeSubsystem::GetInteractionsDatasFromID(int InInterac
 	return nullInteractionsDatas;
 }
 
+
 #pragma endregion
 
+#pragma region Objects
+
+void USaveCubeSubsystem::InitObjectsDatas(TArray<FGrabObject> InObjectsDatas)
+{
+	AllObjectsDatas = InObjectsDatas;
+	UE_LOG(LogTemp, Log, TEXT("Object datas are initialize"))
+}
+
+bool USaveCubeSubsystem::SetObjectInSocket(int InObjectID, bool InSocket)
+{
+	FGrabObject* Data = GetGrabObjectFromID(InObjectID);
+	if (Data)
+	{
+		Data->IsInSocket = InSocket;
+		if (InSocket) SetObjectInGrab(InObjectID, -1, false);
+		return true;
+	}
+	return false;
+}
+
+bool USaveCubeSubsystem::SetObjectInGrab(int InObjectID, int InPlayerID, bool InGrab)
+{
+	FGrabObject* Data = GetGrabObjectFromID(InObjectID);
+	if (Data)
+	{
+		Data->IsGrabbed = InGrab;
+		if (InGrab) Data->PlayerID = InPlayerID;
+		else Data->PlayerID = -1;
+		return true;
+	}
+	return false;
+}
+
+bool USaveCubeSubsystem::SetObjectNewPosition(int InObjectID, FVector InPosition, int idFace)
+{
+	FGrabObject* Data = GetGrabObjectFromID(InObjectID);
+	if (Data)
+	{
+		Data->Position = InPosition;
+		Data->FaceID = idFace;
+		return true;
+	}
+	return false;
+}
+
+FGrabObject* USaveCubeSubsystem::GetGrabObjectFromID(int InObjectID)
+{
+	for (FGrabObject& data : AllObjectsDatas)
+	{
+		if (data.ObjectID == InObjectID) return &data;
+	}
+	return nullptr;
+}
+
+
+#pragma endregion

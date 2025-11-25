@@ -7,11 +7,13 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "SaveCubeSubsystem.generated.h"
 
+class ASaveCubeManager;
+
 UCLASS()
 class COUCHGAME_API USaveCubeSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
-
+	
 #pragma region Level
 public:
 	UPROPERTY()
@@ -44,5 +46,25 @@ public:
 
 	UFUNCTION()
 	FInteractionsDatas& GetInteractionsDatasFromID(int InInteractionID);
+#pragma endregion
+
+#pragma region Object
+
+public:
+	UPROPERTY()
+	TArray<FGrabObject> AllObjectsDatas;
+	
+	UFUNCTION()
+	void InitObjectsDatas(TArray<FGrabObject> InObjectsDatas);
+
+	UFUNCTION()
+	bool SetObjectInSocket(int InObjectID, bool InSocket);
+	UFUNCTION()
+	bool SetObjectInGrab(int InObjectID, int InPlayerID, bool InGrab);
+	UFUNCTION()
+	bool SetObjectNewPosition(int InObjectID, FVector InPosition, int idFace);
+
+private:
+	FGrabObject* GetGrabObjectFromID(int InObjectID);
 #pragma endregion
 };

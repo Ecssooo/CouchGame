@@ -3,7 +3,9 @@
 
 #include "Systems/Save/SaveCubeManager.h"
 
+#include "Kismet/GameplayStatics.h"
 #include "Systems/Save/SaveCubeSubsystem.h"
+#include "Systems/Save/SaveSubLevelManager.h"
 
 #pragma region UE
 // Sets default values
@@ -28,13 +30,27 @@ void ASaveCubeManager::Tick(float DeltaTime)
 #pragma endregion
 
 
-void ASaveCubeManager::InitSaveSubsystem()
+void ASaveCubeManager::InitSaveSubsystem() const
 {
-	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
-	if (SaveSubsystem)
+	if (USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>())
 	{
-		SaveSubsystem->InitInteractionsDatas(InteractionsDatas);
 		SaveSubsystem->InitLevelData();
+		SaveSubsystem->InitInteractionsDatas(InteractionsDatas);
+		SaveSubsystem->InitObjectsDatas(ObjectsDatas);
+	}
+}
+
+void ASaveCubeManager::GetSaveSublevelManager()
+{
+	SubLevelManager = Cast<ASaveSubLevelManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveSubLevelManager::StaticClass()));
+}
+
+void ASaveCubeManager::UpdateLevelData(int idFace, int idSubFace, bool IsUnlocked)
+{
+	if (USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>())
+	{
+		SaveSubsystem->SaveLevelData(idFace, idSubFace, IsUnlocked);
+		if (idFace == SubLevelManager->FaceID) SubLevelManager->UpdateSublevelState(idSubFace, IsUnlocked);
 	}
 }
 
