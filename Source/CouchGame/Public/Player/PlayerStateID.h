@@ -11,5 +11,5 @@ enum class EPlayerStateID : uint8
 	Fall       UMETA(DisplayName="Fall"),
 	Interact   UMETA(DisplayName="Interact"),
 	Teleport   UMETA(DisplayName="Teleport"),
-	Grab       UMETA(DisplayName="Grab")
+	//Grab       UMETA(DisplayName="Grab")
 };

@@ -10,7 +10,7 @@
 #include "Player/PlayerStateMachine.h"
 
 
-void UGrabSwitchFaceSubsystem::InitPlayer(ACharacterPlayer* InPlayer, int PlayerIndex)
+/*void UGrabSwitchFaceSubsystem::InitPlayer(ACharacterPlayer* InPlayer, int PlayerIndex)
 {
 	switch (PlayerIndex)
 	{
@@ -73,4 +73,4 @@ void UGrabSwitchFaceSubsystem::ClearSubclass(ACharacterPlayer* player)
 {
 	if (player == Player1) GrabActorInPlayer1 = nullptr;
 	else if (player == Player2) GrabActorInPlayer2 = nullptr;
-}
+}*/

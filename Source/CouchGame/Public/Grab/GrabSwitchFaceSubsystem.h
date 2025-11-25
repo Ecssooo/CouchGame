@@ -14,7 +14,7 @@ class COUCHGAME_API UGrabSwitchFaceSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 
-public:
+/*public:
 	UPROPERTY()
 	TSubclassOf<AGrabActor> GrabActorInPlayer1; 
 	UPROPERTY()
@@ -35,6 +35,6 @@ public:
 
 	TSubclassOf<AGrabActor> GetGrabActorSubclass(int playerIndex);
 
-	void ClearSubclass(ACharacterPlayer* player);
+	void ClearSubclass(ACharacterPlayer* player);*/
 	
 };
