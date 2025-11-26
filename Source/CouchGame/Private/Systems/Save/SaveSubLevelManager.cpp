@@ -18,6 +18,7 @@ ASaveSubLevelManager::ASaveSubLevelManager()
 void ASaveSubLevelManager::BeginPlay()
 {
 	Super::BeginPlay();
+	UpdateAllPartitionLevelState();
 }
 
 // Called every frame
@@ -37,7 +38,9 @@ APartitionLevel* ASaveSubLevelManager::GetPartitionLevelFromID(int idSubLevel)
 
 void ASaveSubLevelManager::UpdateSublevelState(int idSubLevel, bool IsUnlocked)
 {
-	GetPartitionLevelFromID(idSubLevel)->DiscoverSubLevel();
+	APartitionLevel* PL = GetPartitionLevelFromID(idSubLevel);
+	if (!PL) return;
+	PL->DiscoverSubLevel();
 }
 
 void ASaveSubLevelManager::UpdateAllPartitionLevelState()
@@ -53,6 +56,3 @@ void ASaveSubLevelManager::UpdateAllPartitionLevelState()
 		}
 	}
 }
-
-
-
