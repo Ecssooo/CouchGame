@@ -24,3 +24,18 @@ void AGrabActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
+void AGrabActor::OnGrab_Implementation(ACharacterPlayer* Player)
+{
+	IGrabbable::OnGrab_Implementation(Player);
+}
+
+void AGrabActor::OnDrop_Implementation(ACharacterPlayer* Player)
+{
+	IGrabbable::OnDrop_Implementation(Player);
+}
+
+FGrabObject AGrabActor::GetData_Implementation()
+{
+	return ObjectData;
+}
+

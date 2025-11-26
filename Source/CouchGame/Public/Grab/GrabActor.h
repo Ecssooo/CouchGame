@@ -4,13 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Interfaces/Grabbable.h"
+#include "Systems/Save/SaveCubeStruct.h"
 #include "GrabActor.generated.h"
 
+struct FGrabObject;
+
 UCLASS()
-class COUCHGAME_API AGrabActor : public AActor
+class COUCHGAME_API AGrabActor : public AActor, public IGrabbable
 {
 	GENERATED_BODY()
-
+#pragma region UE
 public:
 	// Sets default values for this actor's properties
 	AGrabActor();
@@ -22,4 +26,15 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+#pragma endregion
+
+public:
+	UPROPERTY(BlueprintReadWrite)
+	FGrabObject ObjectData;
+
+	virtual void OnGrab_Implementation(ACharacterPlayer* Player) override;
+
+	virtual void OnDrop_Implementation(ACharacterPlayer* Player) override;
+
+	virtual FGrabObject GetData_Implementation() override;
 };

@@ -4,10 +4,8 @@
 #include "Systems/CubeGameMode.h"
 
 #include "EnhancedInputSubsystems.h"
-#include "Grab/GrabSwitchFaceSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "Player/CharacterPlayer.h"
-#include "Player/PlayerStateMachine.h"
 #include "Systems/CharacterSettings.h"
 #include "Systems/LevelComunicationManager.h"
 #include "Systems/LevelComunicationSubsystem.h"
@@ -69,9 +67,6 @@ void ACubeGameMode::SpawnCharacterAtBeginPlay()
 			UE_LOG(LogTemp, Warning, TEXT("Local player not found : %d"), CharacterSpawner->PlayerIndex);
 		};
 		
-		UGrabSwitchFaceSubsystem* GrabSubsystem = GetGameInstance()->GetSubsystem<UGrabSwitchFaceSubsystem>();
-		GrabSubsystem->InitPlayer(NewCharacter, CharacterSpawner->PlayerIndex);
-		
 		UEnhancedInputLocalPlayerSubsystem* InputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(LocalPlayer->GetLocalPlayer());
 		if (!InputSubsystem)
 		{
@@ -123,8 +118,6 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 			ACharacterPlayer* CharacterToSpawn = Players[CharacterSpawner->PlayerIndex];
 			CharacterToSpawn->SetActorLocation(CharacterSpawner->GetActorLocation());
 			// CharacterToSpawn->StateMachine->ChangeState(EPlayerStateID::Idle);
-			UGrabSwitchFaceSubsystem* sub = GetGameInstance()->GetSubsystem<UGrabSwitchFaceSubsystem>();
-			sub->LoadGrabObject(CharacterSpawner->PlayerIndex, CharacterToSpawn);
 			UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to CharacterSpawner : %d"), CharacterSpawner->PlayerIndex, CharacterSpawner->PlayerIndex);
 		}
 	}	

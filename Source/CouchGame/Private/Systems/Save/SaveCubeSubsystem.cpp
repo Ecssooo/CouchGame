@@ -89,7 +89,6 @@ bool USaveCubeSubsystem::SetObjectInSocket(int InObjectID, bool InSocket)
 	FGrabObject* Data = GetGrabObjectFromID(InObjectID);
 	if (Data)
 	{
-		Data->IsInSocket = InSocket;
 		if (InSocket) SetObjectInGrab(InObjectID, -1, false);
 		return true;
 	}
@@ -101,7 +100,6 @@ bool USaveCubeSubsystem::SetObjectInGrab(int InObjectID, int InPlayerID, bool In
 	FGrabObject* Data = GetGrabObjectFromID(InObjectID);
 	if (Data)
 	{
-		Data->IsGrabbed = InGrab;
 		if (InGrab) Data->PlayerID = InPlayerID;
 		else Data->PlayerID = -1;
 		return true;

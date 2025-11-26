@@ -10,7 +10,7 @@ UCLASS()
 class COUCHGAME_API AGrabActorSocket : public AActor
 {
 	GENERATED_BODY()
-
+#pragma region UE
 public:
 	// Sets default values for this actor's properties
 	AGrabActorSocket();
@@ -22,4 +22,10 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+#pragma endregion
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int SocketID;
+	
 };

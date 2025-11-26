@@ -3,6 +3,11 @@
 
 #include "Systems/Save/SaveObjectManager.h"
 
+#include "Grab/GrabActor.h"
+#include "Grab/GrabActorSocket.h"
+#include "Grab/GrabActorSpawner.h"
+#include "Systems/Save/SaveCubeSubsystem.h"
+
 
 // Sets default values
 ASaveObjectManager::ASaveObjectManager()
@@ -15,12 +20,90 @@ ASaveObjectManager::ASaveObjectManager()
 void ASaveObjectManager::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	LoadObjectData();
 }
 
 // Called every frame
 void ASaveObjectManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void ASaveObjectManager::LoadObjectData()
+{
+	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
+	if (!SaveSubsystem) return;
+
+	for (FGrabObject ObjectData : SaveSubsystem->AllObjectsDatas)
+	{
+		switch (ObjectData.ObjectState)
+		{
+			case(EObjectState::InSocket):
+				{
+					AGrabActorSocket* socket = GetActorSocketFromID(ObjectData.SocketID);
+					if (socket)
+					{
+						FActorSpawnParameters Params;
+						AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
+							socket->GetActorLocation(),
+							socket->GetActorRotation(),
+							Params);
+						if (actor) actor->ObjectData = ObjectData;
+					}
+					break;
+				}
+			case(EObjectState::InSpawner):
+				{
+					AGrabActorSpawner* spawner = GetActorSpawnerFromID(ObjectData.SpawnerID);
+					if (spawner)
+					{
+						FActorSpawnParameters Params;
+						AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
+							spawner->GetActorLocation(),
+							spawner->GetActorRotation(),
+							Params);
+						if (actor) actor->ObjectData = ObjectData;
+					}
+					break;
+				}
+			case(EObjectState::InPlayer):
+				{
+					break;
+				}
+			case(EObjectState::InWorld):
+				{
+					if (ObjectData.FaceID == LevelID)
+					{
+						FActorSpawnParameters Params;
+						AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
+							ObjectData.Position,
+							FRotator::ZeroRotator,
+							Params);
+						if (actor) actor->ObjectData = ObjectData;
+					}
+					break;
+				}
+			default:
+				break;
+		}
+	}
+}
+
+AGrabActorSocket* ASaveObjectManager::GetActorSocketFromID(int socketID)
+{
+	for (AGrabActorSocket* socket : SocketActors)
+	{
+		if (socket->SocketID == socketID) return socket;
+	}
+	return nullptr;
+}
+
+AGrabActorSpawner* ASaveObjectManager::GetActorSpawnerFromID(int socketID)
+{
+	for (AGrabActorSpawner* spawner : SpawnersActors)
+	{
+		if (spawner->SpawnerID == socketID) return spawner;
+	}
+	return nullptr;
 }
 
