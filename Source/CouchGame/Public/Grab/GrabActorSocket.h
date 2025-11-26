@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "GrabActor.generated.h"
+#include "GrabActorSocket.generated.h"
 
 UCLASS()
-class COUCHGAME_API AGrabActor : public AActor
+class COUCHGAME_API AGrabActorSocket : public AActor
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AGrabActor();
+	AGrabActorSocket();
 
 protected:
 	// Called when the game starts or when spawned

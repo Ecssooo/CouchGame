@@ -63,6 +63,15 @@ struct FInteractionsDatas
 
 #pragma region Struct | Object
 
+UENUM()
+enum EObjectState
+{
+	InSocket	UMETA(DisplayName="InSocket"),
+	InSpawner	UMETA(DisplayName="InSpawner"),
+	InPlayer	UMETA(DisplayName="InPlayer"),
+	InWorld		UMETA(DisplayName="InWorld")
+};
+
 USTRUCT(Blueprintable)
 struct FGrabObject
 {
@@ -71,18 +80,25 @@ struct FGrabObject
 	int ObjectID;
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AGrabActor> ObjectType;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TEnumAsByte<EObjectState> ObjectState;
 
 	//Cube Position
+	UPROPERTY(BlueprintReadWrite)
 	int FaceID;
+	
+	UPROPERTY(BlueprintReadWrite)
 	FVector Position;
-
+	
 	//Socket
 	UPROPERTY(EditAnywhere)
 	int SocketID;
-	bool IsInSocket;
 
-	//Grabbed
-	bool IsGrabbed;
+	UPROPERTY(EditAnywhere)
+	int SpawnerID;
+	
+	UPROPERTY(BlueprintReadWrite)
 	int PlayerID;
 };
 #pragma endregion 
