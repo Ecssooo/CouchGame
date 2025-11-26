@@ -3,6 +3,10 @@
 
 #include "Grab/GrabActor.h"
 
+#include "Components/BoxComponent.h"
+#include "Player/CharacterPlayer.h"
+#include "Systems/Save/SaveCubeSubsystem.h"
+
 
 // Sets default values
 AGrabActor::AGrabActor()
@@ -15,7 +19,9 @@ AGrabActor::AGrabActor()
 void AGrabActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	BoxComponent->OnComponentBeginOverlap.AddDynamic(this, OnBoxBeginOverlap);
+	BoxComponent->OnComponentEndOverlap.AddDynamic(this, OnBoxEndOverlap);
 }
 
 // Called every frame
@@ -26,6 +32,12 @@ void AGrabActor::Tick(float DeltaTime)
 
 void AGrabActor::OnGrab_Implementation(ACharacterPlayer* Player)
 {
+	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
+	if (!SaveSubsystem) return;
+	
+	SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InPlayer, Player->PlayerIndex);
+	ObjectData.ObjectState = EObjectState::InPlayer;
+
 	IGrabbable::OnGrab_Implementation(Player);
 }
 
@@ -38,4 +50,5 @@ FGrabObject AGrabActor::GetData_Implementation()
 {
 	return ObjectData;
 }
+
 

@@ -8,6 +8,8 @@
 #include "Systems/Save/SaveCubeStruct.h"
 #include "GrabActor.generated.h"
 
+class AGrabActorSocket;
+class UBoxComponent;
 struct FGrabObject;
 
 UCLASS()
@@ -37,4 +39,27 @@ public:
 	virtual void OnDrop_Implementation(ACharacterPlayer* Player) override;
 
 	virtual FGrabObject GetData_Implementation() override;
+
+	
+	
+	UPROPERTY()
+	UBoxComponent* BoxComponent;
+
+	UFUNCTION()
+	void OnBoxBeginOverlap(
+		UPrimitiveComponent* OverlappedComp,
+		AActor* OtherActor,
+		UPrimitiveComponent* OtherComp,
+		int32 OtherBodyIndex,
+		bool bFromSweep,
+		const FHitResult& SweepResult
+	);
+
+	UFUNCTION()
+	void OnBoxEndOverlap(
+		UPrimitiveComponent* OverlappedComp,
+		AActor* OtherActor,
+		UPrimitiveComponent* OtherComp,
+		int32 OtherBodyIndex
+	);
 };
