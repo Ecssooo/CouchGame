@@ -36,6 +36,9 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	TArray<APartitionLevel*> SubLevelsActor;
+	
+	UPROPERTY(EditAnywhere)
+	TArray<AActor*> TeleporterReferences;
 
 	UFUNCTION()
 	APartitionLevel* GetPartitionLevelFromID(int idSubLevel);
@@ -45,9 +48,7 @@ public:
 
 	UFUNCTION()
 	void UpdateAllPartitionLevelState();
+
 	
 #pragma endregion
-
-	float delay;
-	bool finish = false;
 };
