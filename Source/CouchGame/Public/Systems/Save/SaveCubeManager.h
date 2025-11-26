@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "SaveCubeManager.generated.h"
 
+class ASaveSubLevelManager;
+struct FGrabObject;
 struct FInteractionsDatas;
 
 UCLASS(Blueprintable)
@@ -31,7 +33,27 @@ public:
 	UPROPERTY(EditAnywhere)
 	TArray<FInteractionsDatas> InteractionsDatas;
 
+	UPROPERTY(EditAnywhere)
+	TArray<FGrabObject> ObjectsDatas;
+	
 	UFUNCTION()
-	void InitSaveSubsystem();
+	void InitSaveSubsystem() const;
+
+#pragma region Levels
+
+	UPROPERTY()
+	ASaveSubLevelManager* SubLevelManager;
+	
+	UFUNCTION()
+	void GetSaveSublevelManager();
+	
+	UFUNCTION()
+	void UpdateLevelData(int idFace, int idSubFace, bool IsUnlocked);
+	
+
 #pragma endregion
+
+
+	
+	#pragma endregion
 };

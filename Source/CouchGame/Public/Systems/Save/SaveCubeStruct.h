@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "SaveCubeStruct.generated.h"
 
+
+class AGrabActor;
+
 #pragma region Struct
 
 #pragma region Struct | Level
@@ -60,5 +63,27 @@ struct FInteractionsDatas
 
 #pragma region Struct | Object
 
+USTRUCT(Blueprintable)
+struct FGrabObject
+{
+	GENERATED_BODY()
+	UPROPERTY(EditAnywhere)
+	int ObjectID;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AGrabActor> ObjectType;
+
+	//Cube Position
+	int FaceID;
+	FVector Position;
+
+	//Socket
+	UPROPERTY(EditAnywhere)
+	int SocketID;
+	bool IsInSocket;
+
+	//Grabbed
+	bool IsGrabbed;
+	int PlayerID;
+};
 #pragma endregion 
 #pragma endregion 
