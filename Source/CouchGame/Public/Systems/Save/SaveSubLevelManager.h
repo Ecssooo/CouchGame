@@ -37,7 +37,7 @@ public:
 	UPROPERTY(EditAnywhere)
 	TArray<APartitionLevel*> SubLevelsActor;
 	
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<AActor*> TeleporterReferences;
 
 	UFUNCTION()
