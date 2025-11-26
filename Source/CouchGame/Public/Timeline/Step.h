@@ -26,8 +26,14 @@ public:
 	TObjectPtr<AStepManager> StepManager;
 
 	UFUNCTION(BlueprintImplementableEvent, Category="Step", meta=(DisplayName="Start Step"))
+	void OnStartStep();
+
+	UFUNCTION(BlueprintCallable, Category="Step")
 	void StartStep();
 
 	UFUNCTION(BlueprintImplementableEvent, Category="Step", meta=(DisplayName="End Step"))
+	void OnEndStep();
+
+	UFUNCTION(BlueprintCallable, Category="Step")
 	void EndStep();
 };

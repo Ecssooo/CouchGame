@@ -7,6 +7,7 @@
 #include "StepManager.generated.h"
 
 class AStep;
+class ASaveCubeManager;
 
 UCLASS()
 class COUCHGAME_API AStepManager : public AActor
@@ -42,4 +43,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="StepManager")
 	void FirstStep();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<ASaveCubeManager> SaveCubeManager;
 };

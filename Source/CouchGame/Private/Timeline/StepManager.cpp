@@ -2,7 +2,10 @@
 
 
 #include "Timeline/StepManager.h"
+
+#include "Kismet/GameplayStatics.h"
 #include "Timeline/Step.h"
+#include "Systems/Save/SaveCubeManager.h"
 
 
 // Sets default values
@@ -16,6 +19,8 @@ AStepManager::AStepManager()
 void AStepManager::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SaveCubeManager = Cast<ASaveCubeManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveCubeManager::StaticClass()));
 
 	for (int i = 0; i < ListStep.Num(); i++)
 	{
