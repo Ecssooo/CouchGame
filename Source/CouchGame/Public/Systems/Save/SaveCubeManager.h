@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "SaveCubeManager.generated.h"
 
+struct FSubLevel;
 class ASaveSubLevelManager;
 struct FGrabObject;
 struct FInteractionsDatas;
@@ -30,6 +31,9 @@ public:
 #pragma region CG
 
 public:
+	UPROPERTY(EditAnywhere)
+	TArray<FSubLevel> StartingSubLevel;
+	
 	UPROPERTY(EditAnywhere)
 	TArray<FInteractionsDatas> InteractionsDatas;
 
