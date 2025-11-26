@@ -53,6 +53,7 @@ void ASaveCubeManager::UpdateLevelData(int idFace, int idSubFace, bool IsUnlocke
 {
 	if (USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>())
 	{
+		GetSaveSublevelManager();
 		SaveSubsystem->SaveLevelData(idFace, idSubFace, IsUnlocked);
 		if (!SubLevelManager) return;
 		if (idFace == SubLevelManager->FaceID) SubLevelManager->UpdateSublevelState(idSubFace, IsUnlocked);
