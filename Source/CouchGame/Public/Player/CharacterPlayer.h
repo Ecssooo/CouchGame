@@ -61,7 +61,14 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	UStaticMeshComponent* GetGrabParent();
-	
+
+	UPROPERTY()
+	UAnimInstance* AnimBlueprint;
+	UFUNCTION(BlueprintCallable)
+	UAnimInstance* GetBlueprintAnim();
+	UFUNCTION(BlueprintCallable)
+	void SetBlueprintAnim(UAnimInstance* BP);
+
 	UFUNCTION()
 	void StopVelocity();
 	

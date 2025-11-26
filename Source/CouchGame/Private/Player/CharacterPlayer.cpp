@@ -33,6 +33,17 @@ UStaticMeshComponent* ACharacterPlayer::GetGrabParent()
 	return GrabParent;
 }
 
+
+UAnimInstance* ACharacterPlayer::GetBlueprintAnim()
+{
+	return AnimBlueprint;
+}
+
+void ACharacterPlayer::SetBlueprintAnim(UAnimInstance* BP)
+{
+	AnimBlueprint = BP;
+}
+
 void ACharacterPlayer::StopVelocity()
 {
 	this->GetMovementComponent()->Velocity = FVector::Zero();
