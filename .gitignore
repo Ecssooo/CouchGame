@@ -83,3 +83,6 @@ Binaries/Win64/*
 CouchGame.sln.DotSettings.user
 
 .idea/
+!.idea/.name
+!.idea/modules.xml
+!.idea/*.iml
