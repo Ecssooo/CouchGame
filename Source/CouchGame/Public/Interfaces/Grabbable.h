@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Systems/Save/SaveCubeStruct.h"
 #include "UObject/Interface.h"
 #include "Grabbable.generated.h"
 
@@ -29,8 +30,5 @@ public:
 	void OnDrop(ACharacterPlayer* Player);
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	bool GetIsGrabbed();
-	
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	bool GetIsInSocket();
+	FGrabObject GetData();
 };

@@ -11,9 +11,9 @@ class COUCHGAME_API UPlayerGrabState : public UPlayerBaseState
 {
 	GENERATED_BODY()
 
-public:
+/*public:
 	virtual EPlayerStateID GetStateID() const override;
 	virtual void OnEnter(UPlayerStateMachine* InSM) override;
-	virtual void OnExit(UPlayerStateMachine* InSM) override;
+	virtual void OnExit(UPlayerStateMachine* InSM) override;*/
 
 };

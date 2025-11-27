@@ -5,9 +5,14 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interfaces/Grabbable.h"
+#include "Systems/Save/SaveCubeStruct.h"
 #include "GrabActor.generated.h"
 
-UCLASS(Blueprintable)
+class AGrabActorSocket;
+class UBoxComponent;
+struct FGrabObject;
+
+UCLASS()
 class COUCHGAME_API AGrabActor : public AActor, public IGrabbable
 {
 	GENERATED_BODY()
@@ -25,27 +30,37 @@ public:
 	virtual void Tick(float DeltaTime) override;
 #pragma endregion
 
-#pragma region CG
 public:
 	UPROPERTY(BlueprintReadWrite)
-	bool IsGrabbed;
+	FGrabObject ObjectData;
 
-	UPROPERTY(BlueprintReadWrite)
-	bool IsInSocket;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	int SocketID;
-
-	UPROPERTY(EditAnywhere)
-	int ObjectID;
-	
-	UFUNCTION()
 	virtual void OnGrab_Implementation(ACharacterPlayer* Player) override;
 
-	UFUNCTION()
 	virtual void OnDrop_Implementation(ACharacterPlayer* Player) override;
 
+	virtual FGrabObject GetData_Implementation() override;
+
+	UPROPERTY()
+	TObjectPtr<AGrabActorSocket> GrabSocketInOverlap;
+	
+	UPROPERTY()
+	UBoxComponent* BoxComponent;
+
 	UFUNCTION()
-	virtual bool GetIsInSocket_Implementation() override;
-#pragma endregion
+	void OnBoxBeginOverlap(
+		UPrimitiveComponent* OverlappedComp,
+		AActor* OtherActor,
+		UPrimitiveComponent* OtherComp,
+		int32 OtherBodyIndex,
+		bool bFromSweep,
+		const FHitResult& SweepResult
+	);
+
+	UFUNCTION()
+	void OnBoxEndOverlap(
+		UPrimitiveComponent* OverlappedComp,
+		AActor* OtherActor,
+		UPrimitiveComponent* OtherComp,
+		int32 OtherBodyIndex
+	);
 };

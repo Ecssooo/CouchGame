@@ -84,42 +84,49 @@ void USaveCubeSubsystem::InitObjectsDatas(TArray<FGrabObject> InObjectsDatas)
 	UE_LOG(LogTemp, Log, TEXT("Object datas are initialize"))
 }
 
-bool USaveCubeSubsystem::SetObjectInSocket(int InObjectID, bool InSocket)
+void USaveCubeSubsystem::SetObjectState(int ObjectID, EObjectState InObjectState, int Id)
 {
-	FGrabObject* Data = GetGrabObjectFromID(InObjectID);
-	if (Data)
+	FGrabObject* data = GetGrabObjectFromID(ObjectID);
+	if (!data) return;
+
+	switch (InObjectState)
 	{
-		Data->IsInSocket = InSocket;
-		if (InSocket) SetObjectInGrab(InObjectID, -1, false);
-		return true;
+		case(EObjectState::InSocket):
+			{
+				data->ObjectState = EObjectState::InSocket;
+				data->SocketID = Id;
+				break;
+			}
+		case(EObjectState::InSpawner):
+			{
+				data->ObjectState = EObjectState::InSpawner;
+				data->SpawnerID = Id;
+				break;
+			}
+		case(EObjectState::InPlayer):
+			{
+				data->ObjectState = EObjectState::InPlayer;
+				data->PlayerID = Id;
+				break;
+			}
+		default:
+			break;
 	}
-	return false;
 }
 
-bool USaveCubeSubsystem::SetObjectInGrab(int InObjectID, int InPlayerID, bool InGrab)
+void USaveCubeSubsystem::SetObjectState(int ObjectID, EObjectState InObjectState, int FaceID, FVector Position)
 {
-	FGrabObject* Data = GetGrabObjectFromID(InObjectID);
-	if (Data)
+	FGrabObject* data = GetGrabObjectFromID(ObjectID);
+	if (!data) return;
+
+	if (InObjectState == EObjectState::InWorld)
 	{
-		Data->IsGrabbed = InGrab;
-		if (InGrab) Data->PlayerID = InPlayerID;
-		else Data->PlayerID = -1;
-		return true;
+		data->ObjectState = EObjectState::InWorld;
+		data->FaceID = FaceID;
+		data->Position = Position;
 	}
-	return false;
 }
 
-bool USaveCubeSubsystem::SetObjectNewPosition(int InObjectID, FVector InPosition, int idFace)
-{
-	FGrabObject* Data = GetGrabObjectFromID(InObjectID);
-	if (Data)
-	{
-		Data->Position = InPosition;
-		Data->FaceID = idFace;
-		return true;
-	}
-	return false;
-}
 
 FGrabObject* USaveCubeSubsystem::GetGrabObjectFromID(int InObjectID)
 {

@@ -10,7 +10,7 @@ UCLASS()
 class COUCHGAME_API AGrabActorSpawner : public AActor
 {
 	GENERATED_BODY()
-
+#pragma region UE
 public:
 	// Sets default values for this actor's properties
 	AGrabActorSpawner();
@@ -22,4 +22,9 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+#pragma endregion
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int SpawnerID;
 };

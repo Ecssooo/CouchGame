@@ -56,12 +56,24 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	UStaticMeshComponent* GrabParent;
 	
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void GrabObject(AActor* actorToGrab);
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void DropObject(AActor* actorToGrab);
+	
 	UFUNCTION(BlueprintCallable)
 	void SetGrabParent(UStaticMeshComponent* StaticMesh);
 
 	UFUNCTION(BlueprintCallable)
 	UStaticMeshComponent* GetGrabParent();
-	
+
+	UPROPERTY()
+	UAnimInstance* AnimBlueprint;
+	UFUNCTION(BlueprintCallable)
+	UAnimInstance* GetBlueprintAnim();
+	UFUNCTION(BlueprintCallable)
+	void SetBlueprintAnim(UAnimInstance* BP);
+
 	UFUNCTION()
 	void StopVelocity();
 	

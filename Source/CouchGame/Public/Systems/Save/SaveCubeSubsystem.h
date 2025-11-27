@@ -56,14 +56,9 @@ public:
 	
 	UFUNCTION()
 	void InitObjectsDatas(TArray<FGrabObject> InObjectsDatas);
-
-	UFUNCTION()
-	bool SetObjectInSocket(int InObjectID, bool InSocket);
-	UFUNCTION()
-	bool SetObjectInGrab(int InObjectID, int InPlayerID, bool InGrab);
-	UFUNCTION()
-	bool SetObjectNewPosition(int InObjectID, FVector InPosition, int idFace);
-
+	UFUNCTION(BlueprintCallable)
+	void SetObjectState(int ObjectID, EObjectState InObjectState, int Id);
+	void SetObjectState(int ObjectID, EObjectState InObjectState, int FaceID, FVector Position);
 private:
 	FGrabObject* GetGrabObjectFromID(int InObjectID);
 #pragma endregion
