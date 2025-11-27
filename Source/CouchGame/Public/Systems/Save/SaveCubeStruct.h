@@ -63,7 +63,7 @@ struct FInteractionsDatas
 
 #pragma region Struct | Object
 
-UENUM()
+UENUM(Blueprintable)
 enum EObjectState
 {
 	InSocket	UMETA(DisplayName="InSocket"),

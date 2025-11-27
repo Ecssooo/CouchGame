@@ -34,10 +34,12 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	FGrabObject ObjectData;
 
-	virtual void OnGrab_Implementation(ACharacterPlayer* Player) override;
+	UFUNCTION(BlueprintCallable)
+	void Grab(ACharacterPlayer* Player);
 
-	virtual void OnDrop_Implementation(ACharacterPlayer* Player) override;
-
+	UFUNCTION(BlueprintCallable)
+	void Drop(ACharacterPlayer* Player); 
+	
 	virtual FGrabObject GetData_Implementation() override;
 
 	UPROPERTY()

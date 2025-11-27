@@ -34,7 +34,7 @@ void AGrabActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-void AGrabActor::OnGrab_Implementation(ACharacterPlayer* Player)
+void AGrabActor::Grab(ACharacterPlayer* Player)
 {
 	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
 	if (!SaveSubsystem) return;
@@ -44,10 +44,12 @@ void AGrabActor::OnGrab_Implementation(ACharacterPlayer* Player)
 	SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InPlayer, Player->PlayerIndex);
 	ObjectData.ObjectState = EObjectState::InPlayer;
 
-	IGrabbable::OnGrab_Implementation(Player);
+	UE_LOG(LogTemp, Log, TEXT("Grab CPP"))
+
+	IGrabbable::Execute_OnGrab(this, Player);
 }
 
-void AGrabActor::OnDrop_Implementation(ACharacterPlayer* Player)
+void AGrabActor::Drop(ACharacterPlayer* Player)
 {
 	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
 	if (!SaveSubsystem) return;
@@ -64,7 +66,8 @@ void AGrabActor::OnDrop_Implementation(ACharacterPlayer* Player)
 		SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InWorld, ObjectManager->LevelID, GetActorLocation());
 		ObjectData.ObjectState = EObjectState::InWorld;
 	}
-	IGrabbable::OnDrop_Implementation(Player);
+
+	IGrabbable::Execute_OnDrop(this, Player);
 }
 
 FGrabObject AGrabActor::GetData_Implementation()

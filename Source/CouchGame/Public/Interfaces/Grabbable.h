@@ -23,12 +23,12 @@ class COUCHGAME_API IGrabbable
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void OnGrab(ACharacterPlayer* Player);
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void OnDrop(ACharacterPlayer* Player);
-
+	
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	FGrabObject GetData();
 };
