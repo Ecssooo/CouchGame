@@ -56,6 +56,7 @@ void AGrabActor::OnDrop_Implementation(ACharacterPlayer* Player)
 	{
 		SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InSocket, GrabSocketInOverlap->SocketID);
 		ObjectData.ObjectState = EObjectState::InSocket;
+		AttachToActor(GrabSocketInOverlap, FAttachmentTransformRules::SnapToTargetIncludingScale);
 	}else
 	{
 		ASaveObjectManager* ObjectManager = Cast<ASaveObjectManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveObjectManager::StaticClass()));

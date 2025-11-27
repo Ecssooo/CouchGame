@@ -3,6 +3,7 @@
 
 #include "Systems/Save/SaveObjectManager.h"
 
+#include "LevelStreamerActor.h"
 #include "Grab/GrabActor.h"
 #include "Grab/GrabActorSocket.h"
 #include "Grab/GrabActorSpawner.h"
@@ -37,75 +38,83 @@ void ASaveObjectManager::LoadObjectData()
 	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
 	if (!SaveSubsystem) return;
 
-	for (FGrabObject ObjectData : SaveSubsystem->AllObjectsDatas)
+	ALevelStreamerActor* LSA = Cast<ALevelStreamerActor>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelStreamerActor::StaticClass()));
+	ULevelStreaming* MyStreamedLevel =
+		UGameplayStatics::GetStreamingLevel(GetWorld(), LSA->CurrentLevel);
+	ULevel* LoadedLevel = MyStreamedLevel ? MyStreamedLevel->GetLoadedLevel() : nullptr;
+
+	if (LoadedLevel)
 	{
-		switch (ObjectData.ObjectState)
+		FActorSpawnParameters Params;
+		Params.OverrideLevel = LoadedLevel;
+	
+		for (FGrabObject ObjectData : SaveSubsystem->AllObjectsDatas)
 		{
-			case(EObjectState::InSocket):
-				{
-					AGrabActorSocket* socket = GetActorSocketFromID(ObjectData.SocketID);
-					if (socket)
+			switch (ObjectData.ObjectState)
+			{
+				case(EObjectState::InSocket):
 					{
-						FActorSpawnParameters Params;
-						AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
-							socket->GetActorLocation(),
-							socket->GetActorRotation(),
-							Params);
-						if (actor) actor->ObjectData = ObjectData;
-					}
-					break;
-				}
-			case(EObjectState::InSpawner):
-				{
-					AGrabActorSpawner* spawner = GetActorSpawnerFromID(ObjectData.SpawnerID);
-					if (spawner)
-					{
-						FActorSpawnParameters Params;
-						AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
-							spawner->GetActorLocation(),
-							spawner->GetActorRotation(),
-							Params);
-						if (actor) actor->ObjectData = ObjectData;
-					}
-					break;
-				}
-			case(EObjectState::InPlayer):
-				{
-					if (ObjectData.PlayerID == -1) break;
- 					ACubeGameMode* CGM = Cast<ACubeGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
-					if (CGM)
-					{
-						ACharacterPlayer* Player = CGM->GetPlayerFromID(ObjectData.PlayerID);
-						FActorSpawnParameters Params;
-						AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
-							Player->GetGrabParent()->GetComponentLocation(),
-							Player->GetGrabParent()->GetComponentRotation(),
-							Params);
-						if (actor)
+						AGrabActorSocket* socket = GetActorSocketFromID(ObjectData.SocketID);
+						if (socket)
 						{
-							actor->ObjectData = ObjectData;
-							Player->GrabObject(actor);
+							AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
+								socket->GetActorLocation(),
+								socket->GetActorRotation(),
+								Params);
+							if (actor) actor->ObjectData = ObjectData;
 						}
+						break;
 					}
-					break;
-				}
-			case(EObjectState::InWorld):
-				{
-					if (ObjectData.FaceID == LevelID)
+				case(EObjectState::InSpawner):
 					{
-						FActorSpawnParameters Params;
-						AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
-							ObjectData.Position,
-							FRotator::ZeroRotator,
-							Params);
-						if (actor) actor->ObjectData = ObjectData;
+						AGrabActorSpawner* spawner = GetActorSpawnerFromID(ObjectData.SpawnerID);
+						if (spawner)
+						{
+							AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
+								spawner->GetActorLocation(),
+								spawner->GetActorRotation(),
+								Params);
+							if (actor) actor->ObjectData = ObjectData;
+						}
+						break;
 					}
+				case(EObjectState::InPlayer):
+					{
+						if (ObjectData.PlayerID == -1) break;
+ 						ACubeGameMode* CGM = Cast<ACubeGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+						if (CGM)
+						{
+							ACharacterPlayer* Player = CGM->GetPlayerFromID(ObjectData.PlayerID);
+							AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
+								Player->GetGrabParent()->GetComponentLocation(),
+								Player->GetGrabParent()->GetComponentRotation(),
+								Params);
+							if (actor)
+							{
+								actor->ObjectData = ObjectData;
+								Player->GrabObject(actor);
+							}
+						}
+						break;
+					}
+				case(EObjectState::InWorld):
+					{
+						if (ObjectData.FaceID == LevelID)
+						{
+							AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
+								ObjectData.Position,
+								FRotator::ZeroRotator,
+								Params);
+							if (actor) actor->ObjectData = ObjectData;
+						}
+						break;
+					}
+				default:
 					break;
-				}
-			default:
-				break;
+			}
 		}
 	}
+		
 }
 
 AGrabActorSocket* ASaveObjectManager::GetActorSocketFromID(int socketID)
