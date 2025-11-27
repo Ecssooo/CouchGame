@@ -97,6 +97,7 @@ void ACubeGameMode::TeleportCharacterOut()
 			continue;
 		}
 		ACharacterPlayer* CharacterToTP = Players[Teleporter->PlayerIndex];
+		CharacterToTP->DropObject(nullptr);
 		CharacterToTP->SetActorLocation(Teleporter->GetActorLocation());
 
 		UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to Teleporter : %d"), Teleporter->PlayerIndex,Teleporter->PlayerIndex);

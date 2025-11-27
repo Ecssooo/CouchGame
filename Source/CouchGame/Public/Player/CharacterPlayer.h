@@ -58,6 +58,8 @@ public:
 	
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void GrabObject(AActor* actorToGrab);
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void DropObject(AActor* actorToGrab);
 	
 	UFUNCTION(BlueprintCallable)
 	void SetGrabParent(UStaticMeshComponent* StaticMesh);
