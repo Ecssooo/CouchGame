@@ -6,7 +6,7 @@
 #include "Player/PlayerStateMachine.h"
 
 
-EPlayerStateID UPlayerGrabState::GetStateID() const
+/*EPlayerStateID UPlayerGrabState::GetStateID() const
 {
 	return EPlayerStateID::Grab;
 	
@@ -49,6 +49,6 @@ void UPlayerGrabState::OnExit(UPlayerStateMachine* InSM)
 // 	GrabbableActor = nullptr;
 // 	UGrabSwitchFaceSubsystem* sub = UGameplayStatics::GetGameInstance(GetWorld())->GetSubsystem<UGrabSwitchFaceSubsystem>(); 
 // 	sub->ClearSubclass(Player);
-}
+}*/
 
 
