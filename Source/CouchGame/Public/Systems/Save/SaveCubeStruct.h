@@ -101,5 +101,23 @@ struct FGrabObject
 	UPROPERTY(BlueprintReadWrite)
 	int PlayerID;
 };
-#pragma endregion 
+#pragma endregion
+
+#pragma region Struct | TP
+
+
+USTRUCT(Blueprintable)
+struct FTeleporterData
+{
+	GENERATED_BODY()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int TeleporterID;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsHighlight;
+};
+
+
+
+#pragma endregion
+
 #pragma endregion 

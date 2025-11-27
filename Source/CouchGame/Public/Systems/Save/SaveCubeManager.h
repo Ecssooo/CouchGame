@@ -53,11 +53,10 @@ public:
 	
 	UFUNCTION()
 	void UpdateLevelData(int idFace, int idSubFace, bool IsUnlocked);
-	
 
 #pragma endregion
 
-
+	
 	
 	#pragma endregion
 };
