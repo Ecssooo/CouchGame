@@ -6,6 +6,9 @@
 #include "Grab/GrabActor.h"
 #include "Grab/GrabActorSocket.h"
 #include "Grab/GrabActorSpawner.h"
+#include "Kismet/GameplayStatics.h"
+#include "Player/CharacterPlayer.h"
+#include "Systems/CubeGameMode.h"
 #include "Systems/Save/SaveCubeSubsystem.h"
 
 
@@ -68,6 +71,22 @@ void ASaveObjectManager::LoadObjectData()
 				}
 			case(EObjectState::InPlayer):
 				{
+					if (ObjectData.PlayerID == -1) break;
+ 					ACubeGameMode* CGM = Cast<ACubeGameMode>(UGameplayStatics::GetGameMode(GetWorld()));
+					if (CGM)
+					{
+						ACharacterPlayer* Player = CGM->GetPlayerFromID(ObjectData.PlayerID);
+						FActorSpawnParameters Params;
+						AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
+							Player->GetGrabParent()->GetComponentLocation(),
+							Player->GetGrabParent()->GetComponentRotation(),
+							Params);
+						if (actor)
+						{
+							actor->ObjectData = ObjectData;
+							Player->GrabObject(actor);
+						}
+					}
 					break;
 				}
 			case(EObjectState::InWorld):

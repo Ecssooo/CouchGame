@@ -56,6 +56,9 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	UStaticMeshComponent* GrabParent;
 	
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void GrabObject(AActor* actorToGrab);
+	
 	UFUNCTION(BlueprintCallable)
 	void SetGrabParent(UStaticMeshComponent* StaticMesh);
 

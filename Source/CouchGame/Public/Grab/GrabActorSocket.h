@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Interfaces/GrabSocket.h"
 #include "GrabActorSocket.generated.h"
 
 UCLASS()
-class COUCHGAME_API AGrabActorSocket : public AActor
+class COUCHGAME_API AGrabActorSocket : public AActor, public IGrabSocket
 {
 	GENERATED_BODY()
 #pragma region UE

@@ -40,7 +40,8 @@ public:
 
 	virtual FGrabObject GetData_Implementation() override;
 
-	
+	UPROPERTY()
+	TObjectPtr<AGrabActorSocket> GrabSocketInOverlap;
 	
 	UPROPERTY()
 	UBoxComponent* BoxComponent;

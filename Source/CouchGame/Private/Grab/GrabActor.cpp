@@ -4,8 +4,12 @@
 #include "Grab/GrabActor.h"
 
 #include "Components/BoxComponent.h"
+#include "Grab/GrabActorSocket.h"
+#include "Interfaces/GrabSocket.h"
+#include "Kismet/GameplayStatics.h"
 #include "Player/CharacterPlayer.h"
 #include "Systems/Save/SaveCubeSubsystem.h"
+#include "Systems/Save/SaveObjectManager.h"
 
 
 // Sets default values
@@ -19,9 +23,9 @@ AGrabActor::AGrabActor()
 void AGrabActor::BeginPlay()
 {
 	Super::BeginPlay();
-
-	BoxComponent->OnComponentBeginOverlap.AddDynamic(this, OnBoxBeginOverlap);
-	BoxComponent->OnComponentEndOverlap.AddDynamic(this, OnBoxEndOverlap);
+	BoxComponent = FindComponentByClass<UBoxComponent>();
+	BoxComponent->OnComponentBeginOverlap.AddDynamic(this, &AGrabActor::OnBoxBeginOverlap);
+	BoxComponent->OnComponentEndOverlap.AddDynamic(this, &AGrabActor::OnBoxEndOverlap);
 }
 
 // Called every frame
@@ -34,6 +38,8 @@ void AGrabActor::OnGrab_Implementation(ACharacterPlayer* Player)
 {
 	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
 	if (!SaveSubsystem) return;
+
+	if (ObjectData.ObjectState == InPlayer || ObjectData.ObjectState == InSocket) return;
 	
 	SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InPlayer, Player->PlayerIndex);
 	ObjectData.ObjectState = EObjectState::InPlayer;
@@ -43,6 +49,20 @@ void AGrabActor::OnGrab_Implementation(ACharacterPlayer* Player)
 
 void AGrabActor::OnDrop_Implementation(ACharacterPlayer* Player)
 {
+	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
+	if (!SaveSubsystem) return;
+	
+	if (GrabSocketInOverlap)
+	{
+		SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InSocket, GrabSocketInOverlap->SocketID);
+		ObjectData.ObjectState = EObjectState::InSocket;
+	}else
+	{
+		ASaveObjectManager* ObjectManager = Cast<ASaveObjectManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveObjectManager::StaticClass()));
+		if (!ObjectManager) return;
+		SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InWorld, ObjectManager->LevelID, GetActorLocation());
+		ObjectData.ObjectState = EObjectState::InWorld;
+	}
 	IGrabbable::OnDrop_Implementation(Player);
 }
 
@@ -51,4 +71,28 @@ FGrabObject AGrabActor::GetData_Implementation()
 	return ObjectData;
 }
 
+void AGrabActor::OnBoxBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (OtherActor->Implements<UGrabSocket>())
+	{
+		AGrabActorSocket* socket = Cast<AGrabActorSocket>(OtherActor);
+		if (socket->SocketID == ObjectData.SocketID)
+		{
+			GrabSocketInOverlap = socket;
+		}
+	}
+}
 
+void AGrabActor::OnBoxEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
+	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	if (OtherActor->Implements<UGrabSocket>())
+	{
+		AGrabActorSocket* socket = Cast<AGrabActorSocket>(OtherActor);
+		if (socket->SocketID == ObjectData.SocketID)
+		{
+			GrabSocketInOverlap = nullptr;
+		}
+	}
+}

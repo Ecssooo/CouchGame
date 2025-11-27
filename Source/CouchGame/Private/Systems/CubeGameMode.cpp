@@ -131,6 +131,15 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 	//ComSubsystem->DiscoveredSubLevel(1,0);
 	
 }
+
+ACharacterPlayer* ACubeGameMode::GetPlayerFromID(int PlayerID)
+{
+	for (ACharacterPlayer* player : Players)
+	{
+		if (player->PlayerIndex == PlayerID) return player;
+	}
+	return nullptr;
+}
 #pragma endregion
 
 #pragma region Find Spawners
