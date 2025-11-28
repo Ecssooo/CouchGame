@@ -12,6 +12,7 @@
 #include "Containers/UnrealString.h"
 #include "Systems/LevelComunicationManager.h"
 #include "Systems/LevelComunicationSubsystem.h"
+#include "Systems/Save/SaveSubLevelManager.h"
 
 
 class ULevelComunicationSubsystem;
@@ -119,6 +120,11 @@ void ALevelStreamerActor::OnLevelLoaded()
 	RotateLevel();
 	if (TmpLevelDir != ELevelDir::None)
 		GameMode->SpawnCharacterInStreamedLevel(TmpLevelDir);
+
+	ASaveSubLevelManager* SaveSubLevelManager = Cast<ASaveSubLevelManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveSubLevelManager::StaticClass()));
+	if (!SaveSubLevelManager) return;
+	SaveSubLevelManager->UpdateAllTeleporterState();
+	
 	// // if (UGrabSocketSubsystem* SocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>())
 	// {
 	// 	// AGrabSocketManager* SocketManager = Cast<AGrabSocketManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AGrabSocketManager::StaticClass()));

@@ -10,7 +10,7 @@
 class ATeleporterActor;
 class ASaveCubeManager;
 
-UCLASS()
+UCLASS(Blueprintable)
 class COUCHGAME_API USaveCubeSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
@@ -74,5 +74,8 @@ public:
 	void SetTeleporterDatas(int TeleporterID, bool InIsHighlight);
 
 	FTeleporterData* GetTeleporterDatas(int TeleporterID);
+
+	UFUNCTION(BlueprintCallable)
+	void InitTeleporterDatas(TArray<FTeleporterData> InTeleporterDatas);
 #pragma endregion
 };

@@ -10,6 +10,7 @@ struct FSubLevel;
 class ASaveSubLevelManager;
 struct FGrabObject;
 struct FInteractionsDatas;
+struct FTeleporterData;
 
 UCLASS(Blueprintable)
 class COUCHGAME_API ASaveCubeManager : public AActor
@@ -42,6 +43,9 @@ public:
 	
 	UFUNCTION()
 	void InitSaveSubsystem() const;
+
+	UPROPERTY(EditAnywhere)
+	TArray<FTeleporterData> TelporterDatas;
 
 #pragma region Levels
 

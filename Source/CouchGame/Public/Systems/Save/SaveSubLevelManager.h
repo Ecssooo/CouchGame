@@ -44,13 +44,13 @@ public:
 	UFUNCTION()
 	APartitionLevel* GetPartitionLevelFromID(int idSubLevel);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void UpdateSublevelState(int idSubLevel, bool IsUnlocked);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void UpdateAllPartitionLevelState();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void UpdateAllTeleporterState();
 
 	UFUNCTION()

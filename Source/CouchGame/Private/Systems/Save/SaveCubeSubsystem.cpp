@@ -144,9 +144,14 @@ FGrabObject* USaveCubeSubsystem::GetGrabObjectFromID(int InObjectID)
 void USaveCubeSubsystem::SetTeleporterDatas(int TeleporterID, bool InIsHighlight)
 {
 	FTeleporterData* data = GetTeleporterDatas(TeleporterID);
-	if (!data) return;
+	if (!data)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Data is null in SetTeleporterDatas"));
+		return;
+	}
 
 	data->IsHighlight = InIsHighlight;
+	UE_LOG(LogTemp, Log, TEXT("Teleporter number %d : IsHighlight is %d"), TeleporterID, data->IsHighlight);
 }
 
 FTeleporterData* USaveCubeSubsystem::GetTeleporterDatas(int TeleporterID)
@@ -155,5 +160,12 @@ FTeleporterData* USaveCubeSubsystem::GetTeleporterDatas(int TeleporterID)
 	{
 		if (data.TeleporterID == TeleporterID) return &data;
 	}
+	
 	return nullptr;
+}
+
+void USaveCubeSubsystem::InitTeleporterDatas(TArray<FTeleporterData> InTeleporterDatas)
+{
+	TeleporterDatas = InTeleporterDatas;
+	UE_LOG(LogTemp, Log, TEXT("Telepoter Datas are initialized"))
 }

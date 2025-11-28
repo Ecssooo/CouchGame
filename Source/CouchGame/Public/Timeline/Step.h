@@ -23,6 +23,9 @@ public:
 	TArray<FSubLevel> SubLevels;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName StepName;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<AStepManager> StepManager;
 
 	UFUNCTION(BlueprintImplementableEvent, Category="Step", meta=(DisplayName="Start Step"))

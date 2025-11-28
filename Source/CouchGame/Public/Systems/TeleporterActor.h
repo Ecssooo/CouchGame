@@ -25,7 +25,7 @@ public:
 #pragma endregion
 
 public:
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	int TeleporterID;
 
 	UFUNCTION(BlueprintImplementableEvent)

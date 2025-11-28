@@ -41,6 +41,7 @@ void ASaveCubeManager::InitSaveSubsystem() const
 		SaveSubsystem->InitLevelData();
 		SaveSubsystem->InitInteractionsDatas(InteractionsDatas);
 		SaveSubsystem->InitObjectsDatas(ObjectsDatas);
+		SaveSubsystem->InitTeleporterDatas(TelporterDatas);
 	}
 }
 
