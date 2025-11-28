@@ -24,8 +24,11 @@ void AGrabActor::BeginPlay()
 {
 	Super::BeginPlay();
 	BoxComponent = FindComponentByClass<UBoxComponent>();
-	BoxComponent->OnComponentBeginOverlap.AddDynamic(this, &AGrabActor::OnBoxBeginOverlap);
-	BoxComponent->OnComponentEndOverlap.AddDynamic(this, &AGrabActor::OnBoxEndOverlap);
+	if (BoxComponent)
+	{
+		BoxComponent->OnComponentBeginOverlap.AddDynamic(this, &AGrabActor::OnBoxBeginOverlap);
+		BoxComponent->OnComponentEndOverlap.AddDynamic(this, &AGrabActor::OnBoxEndOverlap);
+	}
 }
 
 // Called every frame
@@ -43,9 +46,7 @@ void AGrabActor::Grab(ACharacterPlayer* Player)
 	
 	SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InPlayer, Player->PlayerIndex);
 	ObjectData.ObjectState = EObjectState::InPlayer;
-
-	UE_LOG(LogTemp, Log, TEXT("Grab CPP"))
-
+	
 	IGrabbable::Execute_OnGrab(this, Player);
 }
 

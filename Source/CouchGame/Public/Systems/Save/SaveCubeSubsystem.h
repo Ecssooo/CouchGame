@@ -72,9 +72,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SetTeleporterDatas(int TeleporterID, bool InIsHighlight);
-	UFUNCTION(BlueprintCallable)
+
 	FTeleporterData* GetTeleporterDatas(int TeleporterID);
-	UFUNCTION()
-	ATeleporterActor* GetTeleporterFromID(int TeleporterID);
 #pragma endregion
 };

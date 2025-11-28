@@ -42,7 +42,7 @@ FSublevelCube& USaveCubeSubsystem::GetSublevelDatas(int idFace, int idSubLevel)
 
 #pragma endregion
 
-#pragma region Interactions
+ #pragma region Interactions
 
 void USaveCubeSubsystem::InitInteractionsDatas(TArray<FInteractionsDatas> InInteractionsDatas)
 {
@@ -151,7 +151,7 @@ void USaveCubeSubsystem::SetTeleporterDatas(int TeleporterID, bool InIsHighlight
 
 FTeleporterData* USaveCubeSubsystem::GetTeleporterDatas(int TeleporterID)
 {
-	for (FTeleporterData data : TeleporterDatas)
+	for (FTeleporterData& data : TeleporterDatas)
 	{
 		if (data.TeleporterID == TeleporterID) return &data;
 	}
