@@ -137,5 +137,23 @@ FGrabObject* USaveCubeSubsystem::GetGrabObjectFromID(int InObjectID)
 	return nullptr;
 }
 
-
 #pragma endregion
+
+
+
+void USaveCubeSubsystem::SetTeleporterDatas(int TeleporterID, bool InIsHighlight)
+{
+	FTeleporterData* data = GetTeleporterDatas(TeleporterID);
+	if (!data) return;
+
+	data->IsHighlight = InIsHighlight;
+}
+
+FTeleporterData* USaveCubeSubsystem::GetTeleporterDatas(int TeleporterID)
+{
+	for (FTeleporterData data : TeleporterDatas)
+	{
+		if (data.TeleporterID == TeleporterID) return &data;
+	}
+	return nullptr;
+}

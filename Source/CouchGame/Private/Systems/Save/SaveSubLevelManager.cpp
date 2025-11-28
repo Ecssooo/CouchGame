@@ -4,6 +4,7 @@
 #include "Systems/Save/SaveSubLevelManager.h"
 
 #include "Systems/PartitionLevel.h"
+#include "Systems/TeleporterActor.h"
 #include "Systems/Save/SaveCubeSubsystem.h"
 
 
@@ -55,4 +56,27 @@ void ASaveSubLevelManager::UpdateAllPartitionLevelState()
 			}
 		}
 	}
+}
+
+void ASaveSubLevelManager::UpdateAllTeleporterState()
+{
+	if (USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>())
+	{
+		for (FTeleporterData TPData : SaveSubsystem->TeleporterDatas)
+		{
+			if (ATeleporterActor* TP = GetTeleporterFromID(TPData.TeleporterID))
+			{
+				TP->HighlightTeleporter(TPData.IsHighlight);
+			}
+		}
+	}
+}
+
+ATeleporterActor* ASaveSubLevelManager::GetTeleporterFromID(int TeleporterID)
+{
+	for (ATeleporterActor* TP : TeleporterReferences)
+	{
+		if (TP->TeleporterID == TeleporterID) return TP;
+	}
+	return nullptr;
 }

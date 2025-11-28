@@ -7,6 +7,7 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "SaveCubeSubsystem.generated.h"
 
+class ATeleporterActor;
 class ASaveCubeManager;
 
 UCLASS()
@@ -61,5 +62,19 @@ public:
 	void SetObjectState(int ObjectID, EObjectState InObjectState, int FaceID, FVector Position);
 private:
 	FGrabObject* GetGrabObjectFromID(int InObjectID);
+#pragma endregion
+
+#pragma region Teleporter
+
+public:
+	UPROPERTY()
+	TArray<FTeleporterData> TeleporterDatas;
+
+	UFUNCTION(BlueprintCallable)
+	void SetTeleporterDatas(int TeleporterID, bool InIsHighlight);
+	UFUNCTION(BlueprintCallable)
+	FTeleporterData* GetTeleporterDatas(int TeleporterID);
+	UFUNCTION()
+	ATeleporterActor* GetTeleporterFromID(int TeleporterID);
 #pragma endregion
 };

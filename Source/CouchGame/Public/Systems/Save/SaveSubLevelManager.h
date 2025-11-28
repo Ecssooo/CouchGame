@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "SaveSubLevelManager.generated.h"
 
+class ATeleporterActor;
 class APartitionLevel;
 
 UCLASS()
@@ -38,7 +39,7 @@ public:
 	TArray<APartitionLevel*> SubLevelsActor;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<AActor*> TeleporterReferences;
+	TArray<ATeleporterActor*> TeleporterReferences;
 
 	UFUNCTION()
 	APartitionLevel* GetPartitionLevelFromID(int idSubLevel);
@@ -49,6 +50,11 @@ public:
 	UFUNCTION()
 	void UpdateAllPartitionLevelState();
 
+	UFUNCTION()
+	void UpdateAllTeleporterState();
+
+	UFUNCTION()
+	ATeleporterActor* GetTeleporterFromID(int TeleporterID);
 	
 #pragma endregion
 };
