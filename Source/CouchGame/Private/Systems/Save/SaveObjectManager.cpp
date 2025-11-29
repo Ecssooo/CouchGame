@@ -63,6 +63,7 @@ void ASaveObjectManager::LoadObjectData()
 								Params);
 							if (actor)
 							{
+								actor->AttachToActor(socket, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 								actor->ObjectData = ObjectData;
 								GrabActors.Add(actor);
 							}
@@ -80,6 +81,7 @@ void ASaveObjectManager::LoadObjectData()
 								Params);
 							if (actor)
 							{
+								actor->AttachToActor(spawner, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 								actor->ObjectData = ObjectData;
 								GrabActors.Add(actor);
 							}
