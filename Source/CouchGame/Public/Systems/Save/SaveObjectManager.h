@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "SaveObjectManager.generated.h"
 
+class AGrabActor;
 class AGrabActorSpawner;
 class AGrabActorSocket;
 
@@ -39,9 +40,15 @@ public:
 	UPROPERTY(EditAnywhere)
 	TArray<AGrabActorSpawner*> SpawnersActors;
 
+	UPROPERTY(BlueprintReadWrite)
+	TArray<AGrabActor*> GrabActors;
+	
 	UFUNCTION()
 	void LoadObjectData();
 
+	UFUNCTION(BlueprintCallable)
+	void UpdateAllObjectHighlight();	
+		
 	UFUNCTION()
 	AGrabActorSocket* GetActorSocketFromID(int socketID);
 	AGrabActorSpawner* GetActorSpawnerFromID(int socketID);

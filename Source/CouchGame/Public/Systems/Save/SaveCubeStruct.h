@@ -56,6 +56,9 @@ struct FInteractionsDatas
 	UPROPERTY(EditAnywhere)
 	EInteractionsID InteractionsID;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsHighlight;
+	
 	bool IsCompleted;
 };
 
@@ -100,6 +103,12 @@ struct FGrabObject
 	
 	UPROPERTY(BlueprintReadWrite)
 	int PlayerID;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool IsHighlight;
+	
+	UPROPERTY(BlueprintReadWrite)
+	bool IsSocketHighlight;
 };
 #pragma endregion
 

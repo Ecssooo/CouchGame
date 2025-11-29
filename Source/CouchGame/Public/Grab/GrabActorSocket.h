@@ -28,5 +28,7 @@ public:
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int SocketID;
-	
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void HighlightSocket(bool IsHighlight);
 };

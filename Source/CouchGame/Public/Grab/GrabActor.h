@@ -48,6 +48,9 @@ public:
 	UPROPERTY()
 	UBoxComponent* BoxComponent;
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void HighlightObject(bool IsHighlight);
+
 	UFUNCTION()
 	void OnBoxBeginOverlap(
 		UPrimitiveComponent* OverlappedComp,
