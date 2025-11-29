@@ -39,4 +39,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Step")
 	void EndStep();
+
+	UFUNCTION(BlueprintImplementableEvent, Category="Step", meta=(DisplayName="Auto Step"))
+	void OnAutoStep();
+
+	UFUNCTION(BlueprintCallable, Category="Step")
+	void AutoStep();
 };

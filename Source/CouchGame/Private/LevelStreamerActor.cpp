@@ -124,6 +124,7 @@ void ALevelStreamerActor::OnLevelLoaded()
 	ASaveSubLevelManager* SaveSubLevelManager = Cast<ASaveSubLevelManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveSubLevelManager::StaticClass()));
 	if (!SaveSubLevelManager) return;
 	SaveSubLevelManager->UpdateAllTeleporterState();
+	SaveSubLevelManager->UpdateAllPartitionLevelState();
 	
 	// // if (UGrabSocketSubsystem* SocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>())
 	// {

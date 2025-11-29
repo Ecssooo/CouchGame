@@ -36,3 +36,12 @@ void AStep::EndStep()
 	OnEndStep();
 }
 
+void AStep::AutoStep()
+{
+	for (FSubLevel SubLevel : SubLevels)
+	{
+		StepManager->SaveCubeManager->UpdateLevelData(SubLevel.FaceID, SubLevel.SubLevelID, true);
+	}
+	OnAutoStep();
+}
+

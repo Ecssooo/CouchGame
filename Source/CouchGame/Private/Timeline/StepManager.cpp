@@ -26,6 +26,17 @@ void AStepManager::BeginPlay()
 	{
 		ListStep[i]->StepManager = this;
 	}
+
+	// AutoStep jusqu'au IndexStep
+	if (IndexStep >= ListStep.Num() || IndexStep < 0)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Step index out of range"));
+	}
+
+	for (int i = 0; i < IndexStep; i++)
+	{
+		ListStep[i]->AutoStep();
+	}
 	
 	FirstStep();
 	
