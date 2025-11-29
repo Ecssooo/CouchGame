@@ -12,6 +12,8 @@
 #include "Containers/UnrealString.h"
 #include "Systems/LevelComunicationManager.h"
 #include "Systems/LevelComunicationSubsystem.h"
+#include "Systems/Save/SaveInteractionManager.h"
+#include "Systems/Save/SaveObjectManager.h"
 #include "Systems/Save/SaveSubLevelManager.h"
 
 
@@ -125,6 +127,14 @@ void ALevelStreamerActor::OnLevelLoaded()
 	if (!SaveSubLevelManager) return;
 	SaveSubLevelManager->UpdateAllTeleporterState();
 	SaveSubLevelManager->UpdateAllPartitionLevelState();
+
+	ASaveInteractionManager* SaveInteractionManager = Cast<ASaveInteractionManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveInteractionManager::StaticClass()));
+	if (!SaveInteractionManager) return;
+	SaveInteractionManager->UpdateInteractionHighlight();
+
+	ASaveObjectManager* SaveObjectManager = Cast<ASaveObjectManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveObjectManager::StaticClass()));
+	if (!SaveObjectManager) return;
+	SaveObjectManager->UpdateAllObjectHighlight();
 	
 	// // if (UGrabSocketSubsystem* SocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>())
 	// {

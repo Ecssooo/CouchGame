@@ -42,10 +42,13 @@ public:
 	UFUNCTION()
 	void InitInteractionsDatas(TArray<FInteractionsDatas> InInteractionsDatas);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void SaveInteractionData(int InInteractionID, bool InIsCompleted);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
+	void SetInteractionHighlight(int InInteractionID, bool InIsHighlight);
+
+	UFUNCTION(BlueprintCallable)
 	FInteractionsDatas& GetInteractionsDatasFromID(int InInteractionID);
 #pragma endregion
 

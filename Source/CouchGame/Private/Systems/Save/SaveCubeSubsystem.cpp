@@ -3,7 +3,9 @@
 
 #include "Systems/Save/SaveCubeSubsystem.h"
 
+#include "Kismet/GameplayStatics.h"
 #include "Systems/InteractionID.h"
+#include "Systems/Save/SaveInteractionManager.h"
 
 #pragma region Levels
 
@@ -71,6 +73,19 @@ FInteractionsDatas& USaveCubeSubsystem::GetInteractionsDatasFromID(int InInterac
 	}
 
 	return nullInteractionsDatas;
+}
+
+void USaveCubeSubsystem::SetInteractionHighlight(int InInteractionID, bool InIsHighlight)
+{
+	FInteractionsDatas& data = GetInteractionsDatasFromID(InInteractionID);
+
+	data.IsHighlight = InIsHighlight;
+	
+	ASaveInteractionManager* SaveInteractionManager = Cast<ASaveInteractionManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveInteractionManager::StaticClass()));
+	if (!SaveInteractionManager) return;
+	SaveInteractionManager->UpdateInteractionHighlight();
+	
+	UE_LOG(LogTemp, Log, TEXT("Interaction number %d : IsHighlight is %d"), InInteractionID, data.IsHighlight);
 }
 
 

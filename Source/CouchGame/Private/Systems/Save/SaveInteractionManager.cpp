@@ -37,9 +37,13 @@ void ASaveInteractionManager::UpdateInteractionDatas(int idInteraction, bool InI
 
 void ASaveInteractionManager::UpdateInteractionHighlight()
 {
+	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
+	if (!SaveSubsystem) return;
+	
 	for (AInteraction* interaction : LevelInteractions)
 	{
-		interaction->HighlightInteraction(interaction->InteractionData.IsHighlight);
+		UE_LOG(LogTemp, Log, TEXT("Interaction %d is %d."), interaction->InteractionData.InteractionIndex, interaction->InteractionData.IsHighlight);
+		interaction->HighlightInteraction(SaveSubsystem->GetInteractionsDatasFromID(interaction->InteractionData.InteractionIndex).IsHighlight);
 	}
 }
 

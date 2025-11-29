@@ -58,7 +58,8 @@ struct FInteractionsDatas
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool IsHighlight;
-	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool IsCompleted;
 };
 
