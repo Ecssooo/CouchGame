@@ -3,6 +3,7 @@
 
 #include "Systems/Save/SaveInteractionManager.h"
 
+#include "Interactions/Interaction.h"
 #include "Systems/Save/SaveCubeSubsystem.h"
 
 
@@ -31,6 +32,14 @@ void ASaveInteractionManager::UpdateInteractionDatas(int idInteraction, bool InI
 	if (USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>())
 	{
 		SaveSubsystem->SaveInteractionData(idInteraction, InIsCompleted);
+	}
+}
+
+void ASaveInteractionManager::UpdateInteractionHighlight()
+{
+	for (AInteraction* interaction : LevelInteractions)
+	{
+		interaction->HighlightInteraction(interaction->InteractionData.IsHighlight);
 	}
 }
 

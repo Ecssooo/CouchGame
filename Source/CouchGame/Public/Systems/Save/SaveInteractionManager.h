@@ -35,5 +35,8 @@ public:
 
 	UFUNCTION()
 	void UpdateInteractionDatas(int idInteraction, bool InIsCompleted) const;
+
+	UFUNCTION()
+	void UpdateInteractionHighlight();
 #pragma endregion
 };

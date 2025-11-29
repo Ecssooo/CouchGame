@@ -30,4 +30,7 @@ public:
 public:
 	UPROPERTY(EditAnywhere)
 	FInteractionsDatas InteractionData;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void HighlightInteraction(bool IsHighlight);
 };

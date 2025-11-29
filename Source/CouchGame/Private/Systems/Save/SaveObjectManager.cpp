@@ -61,7 +61,11 @@ void ASaveObjectManager::LoadObjectData()
 								socket->GetActorLocation(),
 								socket->GetActorRotation(),
 								Params);
-							if (actor) actor->ObjectData = ObjectData;
+							if (actor)
+							{
+								actor->ObjectData = ObjectData;
+								GrabActors.Add(actor);
+							}
 						}
 						break;
 					}
@@ -74,7 +78,11 @@ void ASaveObjectManager::LoadObjectData()
 								spawner->GetActorLocation(),
 								spawner->GetActorRotation(),
 								Params);
-							if (actor) actor->ObjectData = ObjectData;
+							if (actor)
+							{
+								actor->ObjectData = ObjectData;
+								GrabActors.Add(actor);
+							}
 						}
 						break;
 					}
@@ -93,6 +101,7 @@ void ASaveObjectManager::LoadObjectData()
 							{
 								actor->ObjectData = ObjectData;
 								Player->GrabObject(actor);
+								GrabActors.Add(actor);
 							}
 						}
 						break;
@@ -105,7 +114,11 @@ void ASaveObjectManager::LoadObjectData()
 								ObjectData.Position,
 								FRotator::ZeroRotator,
 								Params);
-							if (actor) actor->ObjectData = ObjectData;
+							if (actor)
+							{
+								actor->ObjectData = ObjectData;
+								GrabActors.Add(actor);
+							}
 						}
 						break;
 					}
@@ -114,7 +127,19 @@ void ASaveObjectManager::LoadObjectData()
 			}
 		}
 	}
-		
+	UpdateAllObjectHighlight();	
+}
+
+void ASaveObjectManager::UpdateAllObjectHighlight()
+{
+	for (AGrabActor* object : GrabActors)
+	{
+		object->HighlightObject(object->ObjectData.IsHighlight);
+		if (object->ObjectData.IsSocketHighlight)
+		{
+			if (AGrabActorSocket* socket = GetActorSocketFromID(object->ObjectData.SocketID)) socket->HighlightSocket(true); 
+		}
+	}
 }
 
 AGrabActorSocket* ASaveObjectManager::GetActorSocketFromID(int socketID)
