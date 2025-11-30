@@ -6,6 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Systems/InteractionID.h"
 #include "Systems/Save/SaveInteractionManager.h"
+#include "Systems/Save/SaveObjectManager.h"
 
 #pragma region Levels
 
@@ -95,33 +96,35 @@ void USaveCubeSubsystem::SetInteractionHighlight(int InInteractionID, bool InIsH
 
 void USaveCubeSubsystem::InitObjectsDatas(TArray<FGrabObject> InObjectsDatas)
 {
+	nullGrabObject = {-1};
+	
 	AllObjectsDatas = InObjectsDatas;
 	UE_LOG(LogTemp, Log, TEXT("Object datas are initialize"))
 }
 
 void USaveCubeSubsystem::SetObjectState(int ObjectID, EObjectState InObjectState, int Id)
 {
-	FGrabObject* data = GetGrabObjectFromID(ObjectID);
-	if (!data) return;
+	FGrabObject& data = GetGrabObjectFromID(ObjectID);
+	if (data.ObjectID == -1) return;
 
 	switch (InObjectState)
 	{
 		case(EObjectState::InSocket):
 			{
-				data->ObjectState = EObjectState::InSocket;
-				data->SocketID = Id;
+				data.ObjectState = EObjectState::InSocket;
+				data.SocketID = Id;
 				break;
 			}
 		case(EObjectState::InSpawner):
 			{
-				data->ObjectState = EObjectState::InSpawner;
-				data->SpawnerID = Id;
+				data.ObjectState = EObjectState::InSpawner;
+				data.SpawnerID = Id;
 				break;
 			}
 		case(EObjectState::InPlayer):
 			{
-				data->ObjectState = EObjectState::InPlayer;
-				data->PlayerID = Id;
+				data.ObjectState = EObjectState::InPlayer;
+				data.PlayerID = Id;
 				break;
 			}
 		default:
@@ -131,25 +134,37 @@ void USaveCubeSubsystem::SetObjectState(int ObjectID, EObjectState InObjectState
 
 void USaveCubeSubsystem::SetObjectState(int ObjectID, EObjectState InObjectState, int FaceID, FVector Position)
 {
-	FGrabObject* data = GetGrabObjectFromID(ObjectID);
-	if (!data) return;
+	FGrabObject& data = GetGrabObjectFromID(ObjectID);
+	if (data.ObjectID == -1) return;
 
 	if (InObjectState == EObjectState::InWorld)
 	{
-		data->ObjectState = EObjectState::InWorld;
-		data->FaceID = FaceID;
-		data->Position = Position;
+		data.ObjectState = EObjectState::InWorld;
+		data.FaceID = FaceID;
+		data.Position = Position;
 	}
 }
 
+void USaveCubeSubsystem::SetObjectHighlight(int ObjectID, bool InIsHighlight)
+{
+	FGrabObject& data = GetGrabObjectFromID(ObjectID);
+	if (data.ObjectID == -1) return;
 
-FGrabObject* USaveCubeSubsystem::GetGrabObjectFromID(int InObjectID)
+	data.IsHighlight = InIsHighlight;
+	data.IsSocketHighlight = InIsHighlight;
+
+	ASaveObjectManager* SaveObjectManager = Cast<ASaveObjectManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveObjectManager::StaticClass()));
+	if (!SaveObjectManager) return;
+	SaveObjectManager->UpdateAllObjectHighlight();
+}
+
+FGrabObject& USaveCubeSubsystem::GetGrabObjectFromID(int InObjectID)
 {
 	for (FGrabObject& data : AllObjectsDatas)
 	{
-		if (data.ObjectID == InObjectID) return &data;
+		if (data.ObjectID == InObjectID) return data;
 	}
-	return nullptr;
+	return nullGrabObject;
 }
 
 #pragma endregion
@@ -167,6 +182,87 @@ void USaveCubeSubsystem::SetTeleporterDatas(int TeleporterID, bool InIsHighlight
 
 	data->IsHighlight = InIsHighlight;
 	UE_LOG(LogTemp, Log, TEXT("Teleporter number %d : IsHighlight is %d"), TeleporterID, data->IsHighlight);
+}
+
+void USaveCubeSubsystem::SetTeleporterHighlightForFace(int NumFace)
+{
+	switch (NumFace)
+	{
+		case(1):
+			SetTeleporterDatas(601, true);
+			SetTeleporterDatas(602, true);
+			SetTeleporterDatas(603, true);
+			SetTeleporterDatas(604, true);
+			SetTeleporterDatas(502, true);
+			SetTeleporterDatas(404, true);
+			SetTeleporterDatas(303, true);
+			SetTeleporterDatas(201, true);
+			return;
+		case (2):
+			SetTeleporterDatas(501, true);
+			SetTeleporterDatas(502, true);
+			SetTeleporterDatas(503, true);
+			SetTeleporterDatas(504, true);
+			SetTeleporterDatas(102, true);
+			SetTeleporterDatas(402, true);
+			SetTeleporterDatas(302, true);
+			SetTeleporterDatas(602, true);
+			return;
+		case (3):
+			SetTeleporterDatas(401, true);
+			SetTeleporterDatas(402, true);
+			SetTeleporterDatas(403, true);
+			SetTeleporterDatas(404, true);
+			SetTeleporterDatas(104, true);
+			SetTeleporterDatas(204, true);
+			SetTeleporterDatas(504, true);
+			SetTeleporterDatas(603, true);
+			return;
+		case (4):
+			SetTeleporterDatas(301, true);
+			SetTeleporterDatas(302, true);
+			SetTeleporterDatas(303, true);
+			SetTeleporterDatas(304, true);
+			SetTeleporterDatas(604, true);
+			SetTeleporterDatas(203, true);
+			SetTeleporterDatas(503, true);
+			SetTeleporterDatas(103, true);
+			return;
+		case (5):
+			SetTeleporterDatas(201, true);
+			SetTeleporterDatas(202, true);
+			SetTeleporterDatas(203, true);
+			SetTeleporterDatas(204, true);
+			SetTeleporterDatas(602, true);
+			SetTeleporterDatas(302, true);
+			SetTeleporterDatas(102, true);
+			SetTeleporterDatas(402, true);
+			return;
+		case (6):
+			SetTeleporterDatas(101, true);
+			SetTeleporterDatas(102, true);
+			SetTeleporterDatas(103, true);
+			SetTeleporterDatas(104, true);
+			SetTeleporterDatas(504, true);
+			SetTeleporterDatas(403, true);
+			SetTeleporterDatas(304, true);
+			SetTeleporterDatas(204, true);
+			return;
+		default:
+			return;
+	}
+}
+
+void USaveCubeSubsystem::ResetAllTeleporterHighlight()
+{
+	for (int i = 1; i < 5; i++)
+	{
+		for (int j = 1; j < 5; j++)
+		{
+			int TpID = i * 100 + j;
+			SetTeleporterDatas(TpID, false);
+		}
+	}
 }
 
 FTeleporterData* USaveCubeSubsystem::GetTeleporterDatas(int TeleporterID)

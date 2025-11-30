@@ -134,13 +134,14 @@ void ASaveObjectManager::LoadObjectData()
 
 void ASaveObjectManager::UpdateAllObjectHighlight()
 {
+	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
+	if (!SaveSubsystem) return;
+	
 	for (AGrabActor* object : GrabActors)
 	{
-		object->HighlightObject(object->ObjectData.IsHighlight);
-		if (object->ObjectData.IsSocketHighlight)
-		{
-			if (AGrabActorSocket* socket = GetActorSocketFromID(object->ObjectData.SocketID)) socket->HighlightSocket(true); 
-		}
+		object->HighlightObject(SaveSubsystem->GetGrabObjectFromID(object->ObjectData.ObjectID).IsHighlight);
+
+		if (AGrabActorSocket* socket = GetActorSocketFromID(object->ObjectData.SocketID)) socket->HighlightSocket(SaveSubsystem->GetGrabObjectFromID(object->ObjectData.ObjectID).IsSocketHighlight); 
 	}
 }
 

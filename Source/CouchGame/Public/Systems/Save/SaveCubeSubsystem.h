@@ -57,14 +57,21 @@ public:
 public:
 	UPROPERTY()
 	TArray<FGrabObject> AllObjectsDatas;
+
+	FGrabObject nullGrabObject;
 	
 	UFUNCTION()
 	void InitObjectsDatas(TArray<FGrabObject> InObjectsDatas);
 	UFUNCTION(BlueprintCallable)
 	void SetObjectState(int ObjectID, EObjectState InObjectState, int Id);
 	void SetObjectState(int ObjectID, EObjectState InObjectState, int FaceID, FVector Position);
-private:
-	FGrabObject* GetGrabObjectFromID(int InObjectID);
+
+	UFUNCTION(BlueprintCallable)
+	void SetObjectHighlight(int ObjectID, bool InIsHighlight);
+
+	UFUNCTION(BlueprintCallable)
+	FGrabObject& GetGrabObjectFromID(int InObjectID);
+
 #pragma endregion
 
 #pragma region Teleporter
@@ -75,6 +82,12 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SetTeleporterDatas(int TeleporterID, bool InIsHighlight);
+
+	UFUNCTION(BlueprintCallable)
+	void SetTeleporterHighlightForFace(int NumFace);
+
+	UFUNCTION(BlueprintCallable)
+	void ResetAllTeleporterHighlight();
 
 	FTeleporterData* GetTeleporterDatas(int TeleporterID);
 
