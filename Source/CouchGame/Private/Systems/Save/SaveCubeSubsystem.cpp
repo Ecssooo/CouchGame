@@ -233,10 +233,10 @@ void USaveCubeSubsystem::SetTeleporterHighlightForFace(int NumFace)
 			SetTeleporterDatas(202, true);
 			SetTeleporterDatas(203, true);
 			SetTeleporterDatas(204, true);
-			SetTeleporterDatas(602, true);
-			SetTeleporterDatas(302, true);
-			SetTeleporterDatas(102, true);
-			SetTeleporterDatas(402, true);
+			SetTeleporterDatas(601, true);
+			SetTeleporterDatas(301, true);
+			SetTeleporterDatas(101, true);
+			SetTeleporterDatas(401, true);
 			return;
 		case (6):
 			SetTeleporterDatas(101, true);
@@ -255,7 +255,7 @@ void USaveCubeSubsystem::SetTeleporterHighlightForFace(int NumFace)
 
 void USaveCubeSubsystem::ResetAllTeleporterHighlight()
 {
-	for (int i = 1; i < 5; i++)
+	for (int i = 1; i < 7; i++)
 	{
 		for (int j = 1; j < 5; j++)
 		{
