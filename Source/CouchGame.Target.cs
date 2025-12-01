@@ -10,7 +10,7 @@ public class CouchGameTarget : TargetRules
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_5;
-		ExtraModuleNames.AddRange(new string[] { "CouchGame" });
+		ExtraModuleNames.AddRange(new string[] { "CouchGame", "CouchGame_Tools" });
 		RegisterModulesCreatedByRider();
 	}
 
