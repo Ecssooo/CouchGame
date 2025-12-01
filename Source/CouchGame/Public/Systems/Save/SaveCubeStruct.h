@@ -56,12 +56,25 @@ struct FInteractionsDatas
 	UPROPERTY(EditAnywhere)
 	EInteractionsID InteractionsID;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsHighlight;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool IsCompleted;
 };
 
 #pragma endregion
 
 #pragma region Struct | Object
+
+UENUM(Blueprintable)
+enum EObjectState
+{
+	InSocket	UMETA(DisplayName="InSocket"),
+	InSpawner	UMETA(DisplayName="InSpawner"),
+	InPlayer	UMETA(DisplayName="InPlayer"),
+	InWorld		UMETA(DisplayName="InWorld")
+};
 
 USTRUCT(Blueprintable)
 struct FGrabObject
@@ -71,19 +84,50 @@ struct FGrabObject
 	int ObjectID;
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AGrabActor> ObjectType;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TEnumAsByte<EObjectState> ObjectState;
 
 	//Cube Position
+	UPROPERTY(BlueprintReadWrite)
 	int FaceID;
+	
+	UPROPERTY(BlueprintReadWrite)
 	FVector Position;
-
+	
 	//Socket
 	UPROPERTY(EditAnywhere)
 	int SocketID;
-	bool IsInSocket;
 
-	//Grabbed
-	bool IsGrabbed;
+	UPROPERTY(EditAnywhere)
+	int SpawnerID;
+	
+	UPROPERTY(BlueprintReadWrite)
 	int PlayerID;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool IsHighlight;
+	
+	UPROPERTY(BlueprintReadWrite)
+	bool IsSocketHighlight;
 };
-#pragma endregion 
+#pragma endregion
+
+#pragma region Struct | TP
+
+
+USTRUCT(Blueprintable)
+struct FTeleporterData
+{
+	GENERATED_BODY()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int TeleporterID;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsHighlight;
+};
+
+
+
+#pragma endregion
+
 #pragma endregion 

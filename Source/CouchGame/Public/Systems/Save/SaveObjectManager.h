@@ -6,6 +6,10 @@
 #include "GameFramework/Actor.h"
 #include "SaveObjectManager.generated.h"
 
+class AGrabActor;
+class AGrabActorSpawner;
+class AGrabActorSocket;
+
 UCLASS()
 class COUCHGAME_API ASaveObjectManager : public AActor
 {
@@ -26,10 +30,28 @@ public:
 
 #pragma region CG
 
-
-
-
+public:
+	UPROPERTY(EditAnywhere)
+	int LevelID;
 	
+	UPROPERTY(EditAnywhere)
+	TArray<AGrabActorSocket*> SocketActors;
+	
+	UPROPERTY(EditAnywhere)
+	TArray<AGrabActorSpawner*> SpawnersActors;
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<AGrabActor*> GrabActors;
+	
+	UFUNCTION()
+	void LoadObjectData();
+
+	UFUNCTION(BlueprintCallable)
+	void UpdateAllObjectHighlight();	
+		
+	UFUNCTION()
+	AGrabActorSocket* GetActorSocketFromID(int socketID);
+	AGrabActorSpawner* GetActorSpawnerFromID(int socketID);
 #pragma endregion
 };
 

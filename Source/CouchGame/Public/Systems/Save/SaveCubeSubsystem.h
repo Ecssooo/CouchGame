@@ -7,9 +7,10 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "SaveCubeSubsystem.generated.h"
 
+class ATeleporterActor;
 class ASaveCubeManager;
 
-UCLASS()
+UCLASS(Blueprintable)
 class COUCHGAME_API USaveCubeSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
@@ -41,10 +42,13 @@ public:
 	UFUNCTION()
 	void InitInteractionsDatas(TArray<FInteractionsDatas> InInteractionsDatas);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void SaveInteractionData(int InInteractionID, bool InIsCompleted);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
+	void SetInteractionHighlight(int InInteractionID, bool InIsHighlight);
+
+	UFUNCTION(BlueprintCallable)
 	FInteractionsDatas& GetInteractionsDatasFromID(int InInteractionID);
 #pragma endregion
 
@@ -53,18 +57,41 @@ public:
 public:
 	UPROPERTY()
 	TArray<FGrabObject> AllObjectsDatas;
+
+	FGrabObject nullGrabObject;
 	
 	UFUNCTION()
 	void InitObjectsDatas(TArray<FGrabObject> InObjectsDatas);
+	UFUNCTION(BlueprintCallable)
+	void SetObjectState(int ObjectID, EObjectState InObjectState, int Id);
+	void SetObjectState(int ObjectID, EObjectState InObjectState, int FaceID, FVector Position);
 
-	UFUNCTION()
-	bool SetObjectInSocket(int InObjectID, bool InSocket);
-	UFUNCTION()
-	bool SetObjectInGrab(int InObjectID, int InPlayerID, bool InGrab);
-	UFUNCTION()
-	bool SetObjectNewPosition(int InObjectID, FVector InPosition, int idFace);
+	UFUNCTION(BlueprintCallable)
+	void SetObjectHighlight(int ObjectID, bool InIsHighlight);
 
-private:
-	FGrabObject* GetGrabObjectFromID(int InObjectID);
+	UFUNCTION(BlueprintCallable)
+	FGrabObject& GetGrabObjectFromID(int InObjectID);
+
+#pragma endregion
+
+#pragma region Teleporter
+
+public:
+	UPROPERTY()
+	TArray<FTeleporterData> TeleporterDatas;
+
+	UFUNCTION(BlueprintCallable)
+	void SetTeleporterDatas(int TeleporterID, bool InIsHighlight);
+
+	UFUNCTION(BlueprintCallable)
+	void SetTeleporterHighlightForFace(int NumFace);
+
+	UFUNCTION(BlueprintCallable)
+	void ResetAllTeleporterHighlight();
+
+	FTeleporterData* GetTeleporterDatas(int TeleporterID);
+
+	UFUNCTION(BlueprintCallable)
+	void InitTeleporterDatas(TArray<FTeleporterData> InTeleporterDatas);
 #pragma endregion
 };

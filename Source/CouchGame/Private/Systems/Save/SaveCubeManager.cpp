@@ -20,6 +20,10 @@ void ASaveCubeManager::BeginPlay()
 {
 	Super::BeginPlay();
 	InitSaveSubsystem();
+	for (FSubLevel SubLevel : StartingSubLevel)
+	{
+		UpdateLevelData(SubLevel.FaceID, SubLevel.SubLevelID, true);
+	}
 }
 
 // Called every frame
@@ -37,6 +41,7 @@ void ASaveCubeManager::InitSaveSubsystem() const
 		SaveSubsystem->InitLevelData();
 		SaveSubsystem->InitInteractionsDatas(InteractionsDatas);
 		SaveSubsystem->InitObjectsDatas(ObjectsDatas);
+		SaveSubsystem->InitTeleporterDatas(TelporterDatas);
 	}
 }
 
@@ -49,7 +54,9 @@ void ASaveCubeManager::UpdateLevelData(int idFace, int idSubFace, bool IsUnlocke
 {
 	if (USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>())
 	{
+		GetSaveSublevelManager();
 		SaveSubsystem->SaveLevelData(idFace, idSubFace, IsUnlocked);
+		if (!SubLevelManager) return;
 		if (idFace == SubLevelManager->FaceID) SubLevelManager->UpdateSublevelState(idSubFace, IsUnlocked);
 	}
 }

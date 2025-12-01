@@ -3,7 +3,10 @@
 
 #include "Systems/Save/SaveCubeSubsystem.h"
 
+#include "Kismet/GameplayStatics.h"
 #include "Systems/InteractionID.h"
+#include "Systems/Save/SaveInteractionManager.h"
+#include "Systems/Save/SaveObjectManager.h"
 
 #pragma region Levels
 
@@ -42,7 +45,7 @@ FSublevelCube& USaveCubeSubsystem::GetSublevelDatas(int idFace, int idSubLevel)
 
 #pragma endregion
 
-#pragma region Interactions
+ #pragma region Interactions
 
 void USaveCubeSubsystem::InitInteractionsDatas(TArray<FInteractionsDatas> InInteractionsDatas)
 {
@@ -73,6 +76,19 @@ FInteractionsDatas& USaveCubeSubsystem::GetInteractionsDatasFromID(int InInterac
 	return nullInteractionsDatas;
 }
 
+void USaveCubeSubsystem::SetInteractionHighlight(int InInteractionID, bool InIsHighlight)
+{
+	FInteractionsDatas& data = GetInteractionsDatasFromID(InInteractionID);
+
+	data.IsHighlight = InIsHighlight;
+	
+	ASaveInteractionManager* SaveInteractionManager = Cast<ASaveInteractionManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveInteractionManager::StaticClass()));
+	if (!SaveInteractionManager) return;
+	SaveInteractionManager->UpdateInteractionHighlight();
+	
+	UE_LOG(LogTemp, Log, TEXT("Interaction number %d : IsHighlight is %d"), InInteractionID, data.IsHighlight);
+}
+
 
 #pragma endregion
 
@@ -80,55 +96,187 @@ FInteractionsDatas& USaveCubeSubsystem::GetInteractionsDatasFromID(int InInterac
 
 void USaveCubeSubsystem::InitObjectsDatas(TArray<FGrabObject> InObjectsDatas)
 {
+	nullGrabObject = {-1};
+	
 	AllObjectsDatas = InObjectsDatas;
 	UE_LOG(LogTemp, Log, TEXT("Object datas are initialize"))
 }
 
-bool USaveCubeSubsystem::SetObjectInSocket(int InObjectID, bool InSocket)
+void USaveCubeSubsystem::SetObjectState(int ObjectID, EObjectState InObjectState, int Id)
 {
-	FGrabObject* Data = GetGrabObjectFromID(InObjectID);
-	if (Data)
+	FGrabObject& data = GetGrabObjectFromID(ObjectID);
+	if (data.ObjectID == -1) return;
+
+	switch (InObjectState)
 	{
-		Data->IsInSocket = InSocket;
-		if (InSocket) SetObjectInGrab(InObjectID, -1, false);
-		return true;
+		case(EObjectState::InSocket):
+			{
+				data.ObjectState = EObjectState::InSocket;
+				data.SocketID = Id;
+				break;
+			}
+		case(EObjectState::InSpawner):
+			{
+				data.ObjectState = EObjectState::InSpawner;
+				data.SpawnerID = Id;
+				break;
+			}
+		case(EObjectState::InPlayer):
+			{
+				data.ObjectState = EObjectState::InPlayer;
+				data.PlayerID = Id;
+				break;
+			}
+		default:
+			break;
 	}
-	return false;
 }
 
-bool USaveCubeSubsystem::SetObjectInGrab(int InObjectID, int InPlayerID, bool InGrab)
+void USaveCubeSubsystem::SetObjectState(int ObjectID, EObjectState InObjectState, int FaceID, FVector Position)
 {
-	FGrabObject* Data = GetGrabObjectFromID(InObjectID);
-	if (Data)
+	FGrabObject& data = GetGrabObjectFromID(ObjectID);
+	if (data.ObjectID == -1) return;
+
+	if (InObjectState == EObjectState::InWorld)
 	{
-		Data->IsGrabbed = InGrab;
-		if (InGrab) Data->PlayerID = InPlayerID;
-		else Data->PlayerID = -1;
-		return true;
+		data.ObjectState = EObjectState::InWorld;
+		data.FaceID = FaceID;
+		data.Position = Position;
 	}
-	return false;
 }
 
-bool USaveCubeSubsystem::SetObjectNewPosition(int InObjectID, FVector InPosition, int idFace)
+void USaveCubeSubsystem::SetObjectHighlight(int ObjectID, bool InIsHighlight)
 {
-	FGrabObject* Data = GetGrabObjectFromID(InObjectID);
-	if (Data)
-	{
-		Data->Position = InPosition;
-		Data->FaceID = idFace;
-		return true;
-	}
-	return false;
+	FGrabObject& data = GetGrabObjectFromID(ObjectID);
+	if (data.ObjectID == -1) return;
+
+	data.IsHighlight = InIsHighlight;
+	data.IsSocketHighlight = InIsHighlight;
+
+	ASaveObjectManager* SaveObjectManager = Cast<ASaveObjectManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveObjectManager::StaticClass()));
+	if (!SaveObjectManager) return;
+	SaveObjectManager->UpdateAllObjectHighlight();
 }
 
-FGrabObject* USaveCubeSubsystem::GetGrabObjectFromID(int InObjectID)
+FGrabObject& USaveCubeSubsystem::GetGrabObjectFromID(int InObjectID)
 {
 	for (FGrabObject& data : AllObjectsDatas)
 	{
-		if (data.ObjectID == InObjectID) return &data;
+		if (data.ObjectID == InObjectID) return data;
 	}
+	return nullGrabObject;
+}
+
+#pragma endregion
+
+
+
+void USaveCubeSubsystem::SetTeleporterDatas(int TeleporterID, bool InIsHighlight)
+{
+	FTeleporterData* data = GetTeleporterDatas(TeleporterID);
+	if (!data)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Data is null in SetTeleporterDatas"));
+		return;
+	}
+
+	data->IsHighlight = InIsHighlight;
+	UE_LOG(LogTemp, Log, TEXT("Teleporter number %d : IsHighlight is %d"), TeleporterID, data->IsHighlight);
+}
+
+void USaveCubeSubsystem::SetTeleporterHighlightForFace(int NumFace)
+{
+	switch (NumFace)
+	{
+		case(1):
+			SetTeleporterDatas(601, true);
+			SetTeleporterDatas(602, true);
+			SetTeleporterDatas(603, true);
+			SetTeleporterDatas(604, true);
+			SetTeleporterDatas(502, true);
+			SetTeleporterDatas(404, true);
+			SetTeleporterDatas(303, true);
+			SetTeleporterDatas(201, true);
+			return;
+		case (2):
+			SetTeleporterDatas(501, true);
+			SetTeleporterDatas(502, true);
+			SetTeleporterDatas(503, true);
+			SetTeleporterDatas(504, true);
+			SetTeleporterDatas(102, true);
+			SetTeleporterDatas(402, true);
+			SetTeleporterDatas(302, true);
+			SetTeleporterDatas(602, true);
+			return;
+		case (3):
+			SetTeleporterDatas(401, true);
+			SetTeleporterDatas(402, true);
+			SetTeleporterDatas(403, true);
+			SetTeleporterDatas(404, true);
+			SetTeleporterDatas(104, true);
+			SetTeleporterDatas(204, true);
+			SetTeleporterDatas(504, true);
+			SetTeleporterDatas(603, true);
+			return;
+		case (4):
+			SetTeleporterDatas(301, true);
+			SetTeleporterDatas(302, true);
+			SetTeleporterDatas(303, true);
+			SetTeleporterDatas(304, true);
+			SetTeleporterDatas(604, true);
+			SetTeleporterDatas(203, true);
+			SetTeleporterDatas(503, true);
+			SetTeleporterDatas(103, true);
+			return;
+		case (5):
+			SetTeleporterDatas(201, true);
+			SetTeleporterDatas(202, true);
+			SetTeleporterDatas(203, true);
+			SetTeleporterDatas(204, true);
+			SetTeleporterDatas(601, true);
+			SetTeleporterDatas(301, true);
+			SetTeleporterDatas(101, true);
+			SetTeleporterDatas(401, true);
+			return;
+		case (6):
+			SetTeleporterDatas(101, true);
+			SetTeleporterDatas(102, true);
+			SetTeleporterDatas(103, true);
+			SetTeleporterDatas(104, true);
+			SetTeleporterDatas(504, true);
+			SetTeleporterDatas(403, true);
+			SetTeleporterDatas(304, true);
+			SetTeleporterDatas(204, true);
+			return;
+		default:
+			return;
+	}
+}
+
+void USaveCubeSubsystem::ResetAllTeleporterHighlight()
+{
+	for (int i = 1; i < 7; i++)
+	{
+		for (int j = 1; j < 5; j++)
+		{
+			int TpID = i * 100 + j;
+			SetTeleporterDatas(TpID, false);
+		}
+	}
+}
+
+FTeleporterData* USaveCubeSubsystem::GetTeleporterDatas(int TeleporterID)
+{
+	for (FTeleporterData& data : TeleporterDatas)
+	{
+		if (data.TeleporterID == TeleporterID) return &data;
+	}
+	
 	return nullptr;
 }
 
-
-#pragma endregion
+void USaveCubeSubsystem::InitTeleporterDatas(TArray<FTeleporterData> InTeleporterDatas)
+{
+	TeleporterDatas = InTeleporterDatas;
+	UE_LOG(LogTemp, Log, TEXT("Telepoter Datas are initialized"))
+}

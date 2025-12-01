@@ -38,6 +38,8 @@ public:
 	void TeleportCharacterOut();
 	UFUNCTION(BlueprintCallable)
 	void SpawnCharacterInStreamedLevel(ELevelDir dir);
+	UFUNCTION(BlueprintCallable)
+	ACharacterPlayer* GetPlayerFromID(int PlayerID);
 
 protected:
 	void FindMainCharacterSpawners(TArray<AMainCharacterSpawner*>& MainCharacterSpawners);

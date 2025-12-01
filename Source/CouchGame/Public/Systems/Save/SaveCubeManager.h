@@ -6,9 +6,11 @@
 #include "GameFramework/Actor.h"
 #include "SaveCubeManager.generated.h"
 
+struct FSubLevel;
 class ASaveSubLevelManager;
 struct FGrabObject;
 struct FInteractionsDatas;
+struct FTeleporterData;
 
 UCLASS(Blueprintable)
 class COUCHGAME_API ASaveCubeManager : public AActor
@@ -31,6 +33,9 @@ public:
 
 public:
 	UPROPERTY(EditAnywhere)
+	TArray<FSubLevel> StartingSubLevel;
+	
+	UPROPERTY(EditAnywhere)
 	TArray<FInteractionsDatas> InteractionsDatas;
 
 	UPROPERTY(EditAnywhere)
@@ -38,6 +43,9 @@ public:
 	
 	UFUNCTION()
 	void InitSaveSubsystem() const;
+
+	UPROPERTY(EditAnywhere)
+	TArray<FTeleporterData> TelporterDatas;
 
 #pragma region Levels
 
@@ -49,11 +57,10 @@ public:
 	
 	UFUNCTION()
 	void UpdateLevelData(int idFace, int idSubFace, bool IsUnlocked);
-	
 
 #pragma endregion
 
-
+	
 	
 	#pragma endregion
 };

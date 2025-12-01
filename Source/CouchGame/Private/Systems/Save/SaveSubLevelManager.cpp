@@ -4,6 +4,7 @@
 #include "Systems/Save/SaveSubLevelManager.h"
 
 #include "Systems/PartitionLevel.h"
+#include "Systems/TeleporterActor.h"
 #include "Systems/Save/SaveCubeSubsystem.h"
 
 
@@ -18,6 +19,7 @@ ASaveSubLevelManager::ASaveSubLevelManager()
 void ASaveSubLevelManager::BeginPlay()
 {
 	Super::BeginPlay();
+	UpdateAllPartitionLevelState();
 }
 
 // Called every frame
@@ -37,7 +39,9 @@ APartitionLevel* ASaveSubLevelManager::GetPartitionLevelFromID(int idSubLevel)
 
 void ASaveSubLevelManager::UpdateSublevelState(int idSubLevel, bool IsUnlocked)
 {
-	GetPartitionLevelFromID(idSubLevel)->DiscoverSubLevel();
+	APartitionLevel* PL = GetPartitionLevelFromID(idSubLevel);
+	if (!PL) return;
+	PL->DiscoverSubLevel();
 }
 
 void ASaveSubLevelManager::UpdateAllPartitionLevelState()
@@ -54,5 +58,25 @@ void ASaveSubLevelManager::UpdateAllPartitionLevelState()
 	}
 }
 
+void ASaveSubLevelManager::UpdateAllTeleporterState()
+{
+	if (USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>())
+	{
+		for (FTeleporterData TPData : SaveSubsystem->TeleporterDatas)
+		{
+			if (ATeleporterActor* TP = GetTeleporterFromID(TPData.TeleporterID))
+			{
+				TP->HighlightTeleporter(TPData.IsHighlight);
+			}
+		}
+	}
+}
 
-
+ATeleporterActor* ASaveSubLevelManager::GetTeleporterFromID(int TeleporterID)
+{
+	for (ATeleporterActor* TP : TeleporterReferences)
+	{
+		if (TP->TeleporterID == TeleporterID) return TP;
+	}
+	return nullptr;
+}
