@@ -32,37 +32,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor.modules" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor.modules" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditorPerProjectUserSettings.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Cube/BP_TP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Cube/BP_TP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Cube/M_Portal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Cube/M_Portal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Cube/NS_Portal_Bleue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Cube/NS_Portal_Bleue.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_CannePeche1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_CannePeche1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_CannePeche2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_CannePeche2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_PotPeinture.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_PotPeinture.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_TrousseOutils.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_TrousseOutils.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Balançoire/BP_NewSwing_Mesh_Version.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Balançoire/BP_NewSwing_Mesh_Version.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/SoundSystem/DA_SoundLibrary.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/SoundSystem/DA_SoundLibrary.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Steps/BP_Step_Intro.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/BP_Step_Intro.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Steps/BP_Step_SwingFace1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/BP_Step_SwingFace1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_2.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_2.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_3.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_3.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_4.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_4.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_6.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_6.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Sounds/Voices/VOC_Narrator_Start.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Sounds/Voices/VOC_Narrator_Start.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Splash/EdSplash.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Splash/EdSplash.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/WBP_Naration.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/WBP_Naration.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CouchGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/CouchGame.uproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame.Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame.Target.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/CouchGame.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/CouchGame.Build.cs" afterDir="false" />
@@ -186,24 +161,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C/C++ Project.CouchGame.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Timeline&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/IIM/Game/A3/Unreal/CouchGame/CouchGame.sln&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ Project.CouchGame.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "E:/IIM/Game/A3/Unreal/CouchGame/CouchGame.sln",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "SolutionBuilderGeneralOptionsPage",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C/C++ Project.CouchGame">
     <configuration name="CouchGame" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -396,7 +371,7 @@
       <workItem from="1764169625455" duration="1157000" />
       <workItem from="1764578569983" duration="756000" />
       <workItem from="1764584127363" duration="3561000" />
-      <workItem from="1764608178574" duration="3116000" />
+      <workItem from="1764608178574" duration="3727000" />
     </task>
     <servers />
   </component>
