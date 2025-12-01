@@ -37,24 +37,25 @@ void AGrabActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-void AGrabActor::Grab(ACharacterPlayer* Player)
+bool AGrabActor::Grab(ACharacterPlayer* Player)
 {
 	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
-	if (!SaveSubsystem) return;
+	if (!SaveSubsystem) return false;
 
-	if (ObjectData.ObjectState == InPlayer || ObjectData.ObjectState == InSocket) return;
+	if (ObjectData.ObjectState == InSocket) return false;
 	
 	SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InPlayer, Player->PlayerIndex);
 	ObjectData.ObjectState = EObjectState::InPlayer;
 	
 	IGrabbable::Execute_OnGrab(this, Player);
+	return true;
 }
 
-void AGrabActor::Drop(ACharacterPlayer* Player)
+bool AGrabActor::Drop(ACharacterPlayer* Player)
 {
 	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
-	if (!SaveSubsystem) return;
-	
+	if (!SaveSubsystem) return false;
+	if (ObjectData.ObjectState == InSocket) return false;
 	if (GrabSocketInOverlap)
 	{
 		SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InSocket, GrabSocketInOverlap->SocketID);
@@ -63,12 +64,13 @@ void AGrabActor::Drop(ACharacterPlayer* Player)
 	}else
 	{
 		ASaveObjectManager* ObjectManager = Cast<ASaveObjectManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveObjectManager::StaticClass()));
-		if (!ObjectManager) return;
+		if (!ObjectManager) return false;
 		SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InWorld, ObjectManager->LevelID, GetActorLocation());
 		ObjectData.ObjectState = EObjectState::InWorld;
 	}
 
 	IGrabbable::Execute_OnDrop(this, Player);
+	return true;
 }
 
 FGrabObject AGrabActor::GetData_Implementation()
