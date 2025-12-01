@@ -26,12 +26,21 @@
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabActors/BP_Grab_CannePeche1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabActors/BP_Grab_CannePeche1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Player/BP_CharacterPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Player/BP_CharacterPlayer.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Balle/BP_Balle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Balle/BP_Balle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Toupie/BP_NewSpin.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Toupie/BP_NewSpin.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/PartitionLevel/BP_LevelComManager.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/PartitionLevel/SubLevel.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/PartitionLevel/SubLevel.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/GrabSocket.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/GrabSocket.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/GrabSocket.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/GrabSocket.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/LevelStreamerActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/LevelStreamerActor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LevelComunicationManager.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LevelComunicationSubsystem.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LevelComunicationManager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LevelComunicationSubsystem.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,21 +54,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://1" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/ViewportInteraction/ViewportInteraction.Build.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/ViewportSnapping/ViewportSnapping.Build.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/WorldPartitionEditor/Public/WorldPartition/SWorldPartitionEditorGrid.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/Particles/ParticleSystemComponent.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Experimental/IoStore/OnDemand/Private/OnDemandHttpClient.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/UMG/Public/Blueprint/DragDropOperation.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/CouchGame/UHT/Interactable.gen.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -281,6 +279,7 @@
       <workItem from="1764169625455" duration="1157000" />
       <workItem from="1764578569983" duration="756000" />
       <workItem from="1764590123515" duration="3117000" />
+      <workItem from="1764597856165" duration="2465000" />
     </task>
     <servers />
   </component>

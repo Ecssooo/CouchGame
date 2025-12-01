@@ -25,7 +25,7 @@ bool ULocalMultiplayerViewPort::InputKey(const FInputKeyEventArgs& EventArgs)
 	{
 		//GetPlayerIndexFromKey
 		int PlayerIndex = CharacterSettings->IMCInGame.GetPlayerIndexFromKey(EventArgs.Key);
-		// UE_LOG(LogTemp, Log, TEXT("Input Player index : %d"), PlayerIndex);
+		
 		if (PlayerIndex == -1) return false;
 		
 		//GetPlayer
@@ -42,21 +42,16 @@ bool ULocalMultiplayerViewPort::InputKey(const FInputKeyEventArgs& EventArgs)
 
 bool ULocalMultiplayerViewPort::InputAxis(const FInputKeyEventArgs& Args)
 {
-	//GetCharaSettings
 	const UCharacterSettings* CharacterSettings = GetDefault<UCharacterSettings>();
 	if (!CharacterSettings) return false;
 	if (CharacterSettings->UsKeyboardControl)
 	{
-		//GetPlayerIndexFromKey
 		int PlayerIndex = CharacterSettings->IMCInGame.GetPlayerIndexFromKey(Args.Key);
-		// UE_LOG(LogTemp, Log, TEXT("Axis Input Player index : %d"), PlayerIndex);
 		if (PlayerIndex == -1) return false;
 		
-		//GetPlayer
 		APlayerController* LocalPlayer = UGameplayStatics::GetPlayerControllerFromID(GetWorld(), PlayerIndex);
 		if (!LocalPlayer) return false;
 		
-		//Use input
 		FInputKeyParams params = FInputKeyParams(Args.Key, Args.Event, Args.AmountDepressed);
 		return LocalPlayer->InputKey(params);
 	}
