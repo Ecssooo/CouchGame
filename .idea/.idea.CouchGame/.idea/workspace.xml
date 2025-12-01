@@ -8,14 +8,15 @@
     <projectFile kind="Docker">../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
     <projectFile>../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
     <projectFile kind="Docker">../../CodeEngine/UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
-    <projectFile>$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/AutomationTool/AutomationTool.csproj</projectFile>
-    <projectFile profileName="EpicGames.AspNet">$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj</projectFile>
-    <projectFile kind="Docker">$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
-    <projectFile>$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
+    <projectFile kind="Docker">../../UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
     <projectFile>D:/Games/Epic Games/UE_5.5/Engine/Source/Programs/AutomationTool/AutomationTool.csproj</projectFile>
     <projectFile profileName="EpicGames.AspNet">D:/Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj</projectFile>
     <projectFile kind="Docker">D:/Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
     <projectFile>D:/Games/Epic Games/UE_5.5/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
+    <projectFile>$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/AutomationTool/AutomationTool.csproj</projectFile>
+    <projectFile profileName="EpicGames.AspNet">$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj</projectFile>
+    <projectFile kind="Docker">$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
+    <projectFile>$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
     <projectFile>Intermediate/ProjectFiles/CouchGame.vcxproj</projectFile>
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
@@ -39,11 +40,17 @@
       <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Cube/BP_TP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Cube/BP_TP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Cube/M_Portal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Cube/M_Portal.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Cube/NS_Portal_Bleue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Cube/NS_Portal_Bleue.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_CannePeche1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_CannePeche1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_CannePeche2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_CannePeche2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_PotPeinture.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_PotPeinture.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_TrousseOutils.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_TrousseOutils.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Balançoire/BP_NewSwing_Mesh_Version.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Balançoire/BP_NewSwing_Mesh_Version.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_1.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Peche/WBP_QTEPECHE.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Peche/WBP_QTEPECHE.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Steps/BP_Step_DisableTPFace1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/BP_Step_DisableTPFace1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/SoundSystem/DA_SoundLibrary.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/SoundSystem/DA_SoundLibrary.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Steps/BP_Step_Intro.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/BP_Step_Intro.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/BP/Steps/BP_Step_SwingFace1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/BP_Step_SwingFace1.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
@@ -53,7 +60,7 @@
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_6.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_6.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Splash/EdSplash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Sounds/Voices/VOC_Narrator_Start.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Sounds/Voices/VOC_Narrator_Start.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Splash/EdSplash.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Splash/EdSplash.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/UI/WBP_Naration.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/WBP_Naration.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CouchGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/CouchGame.uproject" afterDir="false" />
@@ -66,7 +73,6 @@
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabActorSpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabActorSpawner.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Interactions/Interaction.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Interactions/Interaction.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/GrabSocket.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/GrabSocket.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/GrabSocket.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/GrabSocket.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/Grabbable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/Grabbable.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/Interactable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Interfaces/Interactable.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/LevelStreamerActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/LevelStreamerActor.cpp" afterDir="false" />
@@ -89,7 +95,6 @@
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeController.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/InteractionID.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/InteractionID.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LevelComunicationManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LevelComunicationManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawner.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawners/MainCharacterSpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/PlayerSpawners/MainCharacterSpawner.cpp" afterDir="false" />
@@ -106,6 +111,7 @@
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActorSocket.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActorSocket.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActorSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActorSpawner.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Interactions/Interaction.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Interactions/Interaction.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/GrabSocket.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/GrabSocket.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Grabbable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Grabbable.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Interactable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Interactable.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/LevelStreamerActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/LevelStreamerActor.h" afterDir="false" />
@@ -128,7 +134,6 @@
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/CubeController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/CubeController.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/CubeGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/CubeGameMode.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/InteractionID.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/InteractionID.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LevelComunicationManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LevelComunicationManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/LocalMultiplayerViewport/LocalMultiplayerViewPort.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawner.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawners/MainCharacterSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/PlayerSpawners/MainCharacterSpawner.h" afterDir="false" />
@@ -324,6 +329,17 @@
       <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
+    <configuration name="EpicGames.Perforce.Fixture/Dockerfile (3)" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="containerName" value="epicgames.perforce.fixture" />
+          <option name="contextFolderPath" value="F:\Unreal\Projets\CouchGame" />
+          <option name="sourceFilePath" value="../../UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/Dockerfile" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
     <configuration name="EpicGames.Perforce.Fixture/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
       <deployment type="dockerfile">
         <settings>
@@ -380,6 +396,7 @@
       <workItem from="1764169625455" duration="1157000" />
       <workItem from="1764578569983" duration="756000" />
       <workItem from="1764584127363" duration="3561000" />
+      <workItem from="1764608178574" duration="3116000" />
     </task>
     <servers />
   </component>
