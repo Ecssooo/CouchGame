@@ -7,8 +7,6 @@
 #include "Kismet/GameplayStatics.h"
 #include "Player/CharacterPlayer.h"
 #include "Systems/CharacterSettings.h"
-#include "Systems/LevelComunicationManager.h"
-#include "Systems/LevelComunicationSubsystem.h"
 #include "Systems/PlayerSpawners/MainCharacterSpawner.h"
 #include "Systems/PlayerSpawners/MainTeleporterOut.h"
 #include "Systems/PlayerSpawners/StreamedCharacterSpawner.h"
@@ -20,8 +18,6 @@ void ACubeGameMode::BeginPlay()
 	FindMainCharacterSpawners(MainCharacterSpawners);
 	FindMainTeleporterOut(MainTeleportersOut);
 	SpawnCharacterAtBeginPlay();
-	
-
 }
 
 
@@ -56,12 +52,11 @@ void ACubeGameMode::SpawnCharacterAtBeginPlay()
 		);
 		
 		if (!NewCharacter) continue;
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, TEXT("Character Created"));
+		UE_LOG(LogTemp, Log, TEXT("Character Created"))
 		NewCharacter->PlayerIndex = CharacterSpawner->PlayerIndex;
 		LocalPlayer->Possess(NewCharacter);
 		Players.Add(NewCharacter);
-
-
+		
 		if (!LocalPlayer)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Local player not found : %d"), CharacterSpawner->PlayerIndex);
@@ -97,9 +92,8 @@ void ACubeGameMode::TeleportCharacterOut()
 			continue;
 		}
 		ACharacterPlayer* CharacterToTP = Players[Teleporter->PlayerIndex];
-		CharacterToTP->DropObject(nullptr);
 		CharacterToTP->SetActorLocation(Teleporter->GetActorLocation());
-
+		
 		UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to Teleporter : %d"), Teleporter->PlayerIndex,Teleporter->PlayerIndex);
 	}
 }
@@ -121,16 +115,7 @@ void ACubeGameMode::SpawnCharacterInStreamedLevel(ELevelDir dir)
 			// CharacterToSpawn->StateMachine->ChangeState(EPlayerStateID::Idle);
 			UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to CharacterSpawner : %d"), CharacterSpawner->PlayerIndex, CharacterSpawner->PlayerIndex);
 		}
-	}	
-	ALevelComunicationManager* ComManager = Cast<ALevelComunicationManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelComunicationManager::StaticClass()));
-	if (!ComManager) return;
-
-	ComManager->GetPartitionLevelsInWorld();
-
-	ULevelComunicationSubsystem* ComSubsystem = GetGameInstance()->GetSubsystem<ULevelComunicationSubsystem>();
-	if (!ComSubsystem) return;
-	//ComSubsystem->DiscoveredSubLevel(1,0);
-	
+	}		
 }
 
 ACharacterPlayer* ACubeGameMode::GetPlayerFromID(int PlayerID)
@@ -154,7 +139,6 @@ void ACubeGameMode::FindMainCharacterSpawners(TArray<AMainCharacterSpawner*>& In
 	{
 		if (actor)
 		{
-			// UE_LOG(LogTemp, Warning, TEXT("Actor find : %s"), *actor->GetName());
 			InMainCharacterSpawners.Add(Cast<AMainCharacterSpawner>(actor));
 		}
 	}
