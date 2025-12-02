@@ -62,7 +62,8 @@ void USaveCubeSubsystem::SaveInteractionData(int InInteractionID, bool InIsCompl
 		interactDatas.IsCompleted = InIsCompleted;
 		UE_LOG(LogTemp, Log, TEXT("Interactions %d; completed %d"), InInteractionID, InIsCompleted);
 	}
-	UE_LOG(LogTemp, Log, TEXT("Interactions %d not found"), InInteractionID);
+	else
+		UE_LOG(LogTemp, Log, TEXT("Interactions %d not found"), InInteractionID);
 }
 
 FInteractionsDatas& USaveCubeSubsystem::GetInteractionsDatasFromID(int InInteractionID)

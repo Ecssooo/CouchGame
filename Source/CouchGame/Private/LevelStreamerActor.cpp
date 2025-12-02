@@ -10,8 +10,6 @@
 #include "Systems/CubeController.h"
 #include "Components/ArrowComponent.h"
 #include "Containers/UnrealString.h"
-#include "Systems/LevelComunicationManager.h"
-#include "Systems/LevelComunicationSubsystem.h"
 #include "Systems/Save/SaveInteractionManager.h"
 #include "Systems/Save/SaveObjectManager.h"
 #include "Systems/Save/SaveSubLevelManager.h"
@@ -135,17 +133,6 @@ void ALevelStreamerActor::OnLevelLoaded()
 	ASaveObjectManager* SaveObjectManager = Cast<ASaveObjectManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveObjectManager::StaticClass()));
 	if (!SaveObjectManager) return;
 	SaveObjectManager->UpdateAllObjectHighlight();
-	
-	// // if (UGrabSocketSubsystem* SocketSubsystem = GetGameInstance()->GetSubsystem<UGrabSocketSubsystem>())
-	// {
-	// 	// AGrabSocketManager* SocketManager = Cast<AGrabSocketManager>(UGameplayStatics::GetActorOfClass(GetWorld(), AGrabSocketManager::StaticClass()));
-	// 	// if (!SocketManager) return;
-	// 	// SocketSubsystem->AddLevelData(SocketManager->LevelId, SocketManager);
-	//
-	// 	ALevelComunicationManager* ComManager = Cast<ALevelComunicationManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelComunicationManager::StaticClass()));
-	// 	if (!ComManager) return;
-	// 	ComManager->LoadDiscoveredLevelPartition();
-	// }
 }
 
 FName ALevelStreamerActor::GetNeighborLevel(FName FromLevel, ELevelDir Dir) const

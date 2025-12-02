@@ -45,7 +45,7 @@ bool AGrabActor::Grab(ACharacterPlayer* Player)
 	if (ObjectData.ObjectState == InSocket) return false;
 	
 	SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InPlayer, Player->PlayerIndex);
-	ObjectData.ObjectState = EObjectState::InPlayer;
+	ObjectData = SaveSubsystem->GetGrabObjectFromID(ObjectData.ObjectID);
 	
 	IGrabbable::Execute_OnGrab(this, Player);
 	return true;
@@ -56,17 +56,20 @@ bool AGrabActor::Drop(ACharacterPlayer* Player)
 	USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>();
 	if (!SaveSubsystem) return false;
 	if (ObjectData.ObjectState == InSocket) return false;
+	
+
 	if (GrabSocketInOverlap)
 	{
 		SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InSocket, GrabSocketInOverlap->SocketID);
-		ObjectData.ObjectState = EObjectState::InSocket;
+		ObjectData = SaveSubsystem->GetGrabObjectFromID(ObjectData.ObjectID);
 		AttachToActor(GrabSocketInOverlap, FAttachmentTransformRules::SnapToTargetIncludingScale);
 	}else
 	{
 		ASaveObjectManager* ObjectManager = Cast<ASaveObjectManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveObjectManager::StaticClass()));
 		if (!ObjectManager) return false;
+		UE_LOG(LogTemp, Log, TEXT("Object Manager find"))
 		SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InWorld, ObjectManager->LevelID, GetActorLocation());
-		ObjectData.ObjectState = EObjectState::InWorld;
+		ObjectData = SaveSubsystem->GetGrabObjectFromID(ObjectData.ObjectID);
 	}
 
 	IGrabbable::Execute_OnDrop(this, Player);
@@ -87,6 +90,7 @@ void AGrabActor::OnBoxBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* 
 		if (socket->SocketID == ObjectData.SocketID)
 		{
 			GrabSocketInOverlap = socket;
+			UE_LOG(LogTemp, Warning, TEXT("Socket is save"))
 		}
 	}
 }
