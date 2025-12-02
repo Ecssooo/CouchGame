@@ -42,7 +42,7 @@ class COUCHGAME_API UCharacterSettings : public UDeveloperSettings
 	
 public:
 	UPROPERTY(Config, EditAnywhere, Category="LocalMultiplayer")
-	bool UsKeyboardControl;
+	bool UsKeyboardControl = false;
 	
 	UPROPERTY(Config, EditAnywhere, Category="LocalMultiplayer")
 	FLocalMultiplayerProfile IMCInGame;
