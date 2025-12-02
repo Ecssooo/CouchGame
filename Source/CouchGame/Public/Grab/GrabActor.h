@@ -35,10 +35,10 @@ public:
 	FGrabObject ObjectData;
 
 	UFUNCTION(BlueprintCallable)
-	void Grab(ACharacterPlayer* Player);
+	bool Grab(ACharacterPlayer* Player);
 
 	UFUNCTION(BlueprintCallable)
-	void Drop(ACharacterPlayer* Player); 
+	bool Drop(ACharacterPlayer* Player); 
 	
 	virtual FGrabObject GetData_Implementation() override;
 
