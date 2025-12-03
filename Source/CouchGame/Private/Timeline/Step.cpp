@@ -32,6 +32,10 @@ void AStep::EndStep()
 	{
 		StepManager->SaveCubeManager->UpdateLevelData(SubLevel.FaceID, SubLevel.SubLevelID, true);
 	}
+	for (FSubLevel SubLevel : SubLevelsToLock)
+	{
+		StepManager->SaveCubeManager->UpdateLevelData(SubLevel.FaceID, SubLevel.SubLevelID, false);
+	}
 	UE_LOG(LogTemp, Log, TEXT("EndStep Implementation"));
 	OnEndStep();
 }

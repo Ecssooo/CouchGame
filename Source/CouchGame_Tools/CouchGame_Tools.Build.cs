@@ -10,6 +10,7 @@ public class CouchGame_Tools : ModuleRules
             new string[]
             {
                 "Core",
+                "CouchGame"
             }
         );
 
@@ -20,7 +21,11 @@ public class CouchGame_Tools : ModuleRules
                 "Engine",
                 "Slate",
                 "SlateCore",
-                "ToolMenus"
+                "ToolMenus",
+                "UnrealEd",         
+                "KismetCompiler",    
+                "Kismet",            
+                "AssetRegistry"
             }
         );
     }
