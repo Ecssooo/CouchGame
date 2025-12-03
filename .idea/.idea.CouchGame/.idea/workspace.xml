@@ -8,15 +8,14 @@
     <projectFile kind="Docker">../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
     <projectFile>../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
     <projectFile kind="Docker">../../CodeEngine/UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
-    <projectFile kind="Docker">../../UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
-    <projectFile>$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/AutomationTool/AutomationTool.csproj</projectFile>
-    <projectFile profileName="EpicGames.AspNet">$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj</projectFile>
-    <projectFile kind="Docker">$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
-    <projectFile>$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
     <projectFile>D:/Games/Epic Games/UE_5.5/Engine/Source/Programs/AutomationTool/AutomationTool.csproj</projectFile>
     <projectFile profileName="EpicGames.AspNet">D:/Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj</projectFile>
     <projectFile kind="Docker">D:/Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
     <projectFile>D:/Games/Epic Games/UE_5.5/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
+    <projectFile>$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/AutomationTool/AutomationTool.csproj</projectFile>
+    <projectFile profileName="EpicGames.AspNet">$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj</projectFile>
+    <projectFile kind="Docker">$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
+    <projectFile>$PROJECT_DIR$/../../Games/Epic Games/UE_5.5/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
     <projectFile>Intermediate/ProjectFiles/CouchGame.vcxproj</projectFile>
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
@@ -26,8 +25,39 @@
   <component name="ChangeListManager">
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Cut_Int.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Cut_Int.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Faint.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Faint.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_FishingRodPull_Int.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_FishingRodPull_Int.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_FishingRodThrow_Int.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_FishingRodThrow_Int.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Hammer_Int.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Hammer_Int.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Idle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Idle_Object.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Idle_Object.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Jump.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Jump.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_JumpObject.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_JumpObject.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_PickUpObject.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_PickUpObject.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Run.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Run.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_RunObject.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_RunObject.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Sit.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Sit.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Sit_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Sit_Idle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Stamp_Int.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Stamp_Int.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Steak_Throw_Int.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Steak_Throw_Int.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Walk.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_Walk.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_WalkObject.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Crow/Crow_WalkObject.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Anim_Deer/Deer_Sit_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Anim_Deer/Deer_Sit_Idle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Animation_Montage/AM_Crow_Interact.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Animation_Montage/AM_Deer_Interact.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Animation_Montage/AM_Deer_Interact.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/BPA_Crow.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/BPA_Crow.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/BPA_Deer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/BPA_Deer.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Squeletal_Crow/Rig_Chara_Crow_Object_v03.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Squeletal_Crow/Rig_Chara_Crow_Object_v03_PhysicsAsset.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Squeletal_Crow/Rig_Chara_Crow_Object_v03_Skeleton.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animation/Squeletal_Deer/Rig_Chara_Deer_Object.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animation/Squeletal_Deer/Rig_Chara_Deer_Object.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/BPI/BPI_Anim.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/BPI/BPI_Anim.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/BPI/E_AnimInteract.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/BPI/E_AnimInteract.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Toupie/BP_NewSpin.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Toupie/BP_NewSpin.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Player/BP_Player1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Player/BP_Player1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,31 +71,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://1" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Plugins/Experimental/DynamicMaterial/Source/DynamicMaterialEditor/Private/UI/Widgets/Visualizers/SDMTextureUVVisualizerProperty.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/ViewportInteraction/ViewportInteraction.Build.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/ViewportSnapping/ViewportSnapping.Build.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Editor/WorldPartitionEditor/Public/WorldPartition/SWorldPartitionEditorGrid.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/Particles/ParticleSystemComponent.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/Experimental/IoStore/OnDemand/Private/OnDemandHttpClient.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Runtime/UMG/Public/Blueprint/DragDropOperation.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Games/Epic Games/UE_5.5/Engine/Source/Programs/UnrealBuildTool/Platform/Windows/PVSToolChain.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Games/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Classes/Kismet/KismetMathLibrary.inl" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Games/Epic Games/UE_5.5/Engine/Source/Runtime/Engine/Private/Components/SkinnedMeshComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/CouchGame/UHT/Interactable.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/CouchGame/UHT/LevelStreamerActor.gen.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/CouchGame/Private/Grab/GrabSwitchFaceSubsystem.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Private/Systems/ArrowHelper.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/CouchGame/Private/Systems/CubeGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -92,14 +103,14 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;SaveSystem&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Animation-Maxime&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/IIM/Game/A3/Unreal/CouchGame/CouchGame.sln&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -150,13 +161,8 @@
       <option name="WORKING_DIRECTORY" value="" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Programs/AutomationTool/AutomationTool.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
@@ -173,13 +179,8 @@
       <option name="WORKING_DIRECTORY" value="" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.5/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
@@ -222,17 +223,6 @@
           <option name="containerName" value="epicgames.perforce.fixture" />
           <option name="contextFolderPath" value="D:\CodeProject\CouchGame" />
           <option name="sourceFilePath" value="../../CodeEngine/UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/Dockerfile" />
-        </settings>
-      </deployment>
-      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
-      <method v="2" />
-    </configuration>
-    <configuration name="EpicGames.Perforce.Fixture/Dockerfile (3)" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="containerName" value="epicgames.perforce.fixture" />
-          <option name="contextFolderPath" value="F:\Unreal\Projets\CouchGame" />
-          <option name="sourceFilePath" value="../../UE_5.5/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/Dockerfile" />
         </settings>
       </deployment>
       <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
@@ -292,11 +282,7 @@
       <workItem from="1764062947093" duration="3317000" />
       <workItem from="1764144537707" duration="1996000" />
       <workItem from="1764169625455" duration="1157000" />
-      <workItem from="1764578569983" duration="756000" />
-      <workItem from="1764584127363" duration="3561000" />
-      <workItem from="1764608178574" duration="3727000" />
-      <workItem from="1764662461657" duration="776000" />
-      <workItem from="1764749502341" duration="1298000" />
+      <workItem from="1764687169187" duration="994000" />
     </task>
     <servers />
   </component>
