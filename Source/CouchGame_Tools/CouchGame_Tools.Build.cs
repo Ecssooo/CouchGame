@@ -5,7 +5,8 @@ public class CouchGame_Tools : ModuleRules
     public CouchGame_Tools(ReadOnlyTargetRules Target) : base(Target)
     {
         PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
-
+        OptimizeCode = CodeOptimization.Never;
+        bUseUnity = false;
         PublicDependencyModuleNames.AddRange(
             new string[]
             {
