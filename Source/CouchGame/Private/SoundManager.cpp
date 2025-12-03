@@ -34,19 +34,19 @@ void USoundManager::Initialize(FSubsystemCollectionBase& Collection)
 	//lien en hard code
 	FSoftObjectPath DebugPath(TEXT("/Game/BP/SoundSystem/DA_SoundLibrary.DA_SoundLibrary"));
 
-	// CORRECTION ICI : On utilise TryLoad() au lieu de LoadSynchronous()
+	//On utilise TryLoad() au lieu de LoadSynchronous()
 	UObject* LoadedObject = DebugPath.TryLoad();
 
-	// On cast l'objet générique vers ton type spécifique
+	// On cast l objet générique vers le type specifique
 	LoadedSoundLibrary = Cast<USoundDataAsset>(LoadedObject);
 
 	if (LoadedSoundLibrary)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("VICTOIRE : Le chargement Hardcodé fonctionne ! Le fichier est bien dans le build."));
+		UE_LOG(LogTemp, Warning, TEXT("Le chargement fonctionne de la library de son ! Le fichier est bien dans le build."));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("ÉCHEC TOTAL : Même TryLoad ne trouve pas le fichier. Il est absent du .pak."));
+		UE_LOG(LogTemp, Error, TEXT("ERREUR Le fichier n'est pas dans le build"));
 	}
 }
 
@@ -54,7 +54,7 @@ bool USoundManager::PlaySound(FName SoundName, UAudioComponent* AudioComponent) 
 {
 	//verifie si l audio component n est pas null
 	if (AudioComponent == nullptr) {
-		UE_LOG(LogTemp, Warning, TEXT("Impossible l'audiocomponent est NULL."));
+		UE_LOG(LogTemp, Warning, TEXT("Impossible l audiocomponent est NULL."));
 		return false;
 	}
 
@@ -76,10 +76,10 @@ bool USoundManager::PlaySound(FName SoundName, UAudioComponent* AudioComponent) 
 	// Jouer le son si on l a trouver
 	if (FoundSound && FoundSound->SoundFile)
 	{
-		float FinalVolume = 1.0f; // Le volume de la catégorie
+		float FinalVolume = 1.0f; // Le volume de la categorie
 		//
 
-		// --- On détermine le volume de la catégorie ---
+		// --- On determine le volume de la categorie ---
 		switch (FoundSound->SoundType)
 		{
 		case ESoundType::SFX:
