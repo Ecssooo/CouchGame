@@ -54,6 +54,7 @@ void ACubeGameMode::SpawnCharacterAtBeginPlay()
 		if (!NewCharacter) continue;
 		UE_LOG(LogTemp, Log, TEXT("Character Created"))
 		NewCharacter->PlayerIndex = CharacterSpawner->PlayerIndex;
+		UE_LOG(LogTemp, Log, TEXT("%i"), NewCharacter->PlayerIndex);
 		LocalPlayer->Possess(NewCharacter);
 		Players.Add(NewCharacter);
 		
