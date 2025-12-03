@@ -51,6 +51,7 @@ void FCouchGame_ToolsModule::OnToggleKeyboardController()
 	UCharacterSettings* CharacterSettings = GetMutableDefault<UCharacterSettings>();
 	CharacterSettings->UsKeyboardControl = !CharacterSettings->UsKeyboardControl;
 	CharacterSettings->SaveConfig();
+	CharacterSettings->TryUpdateDefaultConfigFile();
 }
 
 bool FCouchGame_ToolsModule::GetUseKeyboardController()

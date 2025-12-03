@@ -7,22 +7,46 @@ USoundManager::USoundManager()
 {
 }
 
+//version lien dans le init
+//void USoundManager::Initialize(FSubsystemCollectionBase& Collection)
+//{
+//	Super::Initialize(Collection);
+//
+//	if (SoundLibraryPath.IsValid())
+//	{
+//		LoadedSoundLibrary = SoundLibraryPath.LoadSynchronous();
+//	}
+//
+//	if (LoadedSoundLibrary == nullptr)
+//	{
+//		UE_LOG(LogTemp, Error, TEXT("LoadedSoundLibrary est NULL. ERREUR dans le chemin DefaultGame.ini : %s"), *SoundLibraryPath.ToString());
+//	}
+//	else
+//	{
+//		UE_LOG(LogTemp, Log, TEXT("Sound Library chargée avec succès."));
+//	}
+//}
+
 void USoundManager::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 
-	if (SoundLibraryPath.IsValid())
-	{
-		LoadedSoundLibrary = SoundLibraryPath.LoadSynchronous();
-	}
+	//lien en hard code
+	FSoftObjectPath DebugPath(TEXT("/Game/BP/SoundSystem/DA_SoundLibrary.DA_SoundLibrary"));
 
-	if (LoadedSoundLibrary == nullptr)
+	// CORRECTION ICI : On utilise TryLoad() au lieu de LoadSynchronous()
+	UObject* LoadedObject = DebugPath.TryLoad();
+
+	// On cast l'objet générique vers ton type spécifique
+	LoadedSoundLibrary = Cast<USoundDataAsset>(LoadedObject);
+
+	if (LoadedSoundLibrary)
 	{
-		UE_LOG(LogTemp, Error, TEXT("LoadedSoundLibrary est NULL. ERREUR dans le chemin DefaultGame.ini : %s"), *SoundLibraryPath.ToString());
+		UE_LOG(LogTemp, Warning, TEXT("VICTOIRE : Le chargement Hardcodé fonctionne ! Le fichier est bien dans le build."));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Log, TEXT("Sound Library chargée avec succès."));
+		UE_LOG(LogTemp, Error, TEXT("ÉCHEC TOTAL : Même TryLoad ne trouve pas le fichier. Il est absent du .pak."));
 	}
 }
 

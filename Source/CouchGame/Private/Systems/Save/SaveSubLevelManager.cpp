@@ -41,7 +41,8 @@ void ASaveSubLevelManager::UpdateSublevelState(int idSubLevel, bool IsUnlocked)
 {
 	APartitionLevel* PL = GetPartitionLevelFromID(idSubLevel);
 	if (!PL) return;
-	PL->DiscoverSubLevel();
+	if (IsUnlocked) PL->DiscoverSubLevel();
+	else PL->UndiscoverSubLevel();
 }
 
 void ASaveSubLevelManager::UpdateAllPartitionLevelState()
@@ -50,10 +51,9 @@ void ASaveSubLevelManager::UpdateAllPartitionLevelState()
 	{
 		for (FSublevelCube sublevelData : SaveSubsystem->LevelsDatas[FaceID-1].SubLevels)
 		{
-			if (sublevelData.IsUnlocked)
-			{
-				GetPartitionLevelFromID(sublevelData.SubLevelId)->DiscoverSubLevel();
-			}
+			APartitionLevel* PL = GetPartitionLevelFromID(sublevelData.SubLevelId);
+			if (sublevelData.IsUnlocked) PL->DiscoverSubLevel();
+			else PL->UndiscoverSubLevel();
 		}
 	}
 }
