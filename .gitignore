@@ -81,8 +81,3 @@ Binaries/Win64/*
 !Binaries/Win64/UnrealEditor-CouchGame.dll
 !Binaries/Win64/UnrealEditor-CouchGame_Tools.dll
 CouchGame.sln.DotSettings.user
-
-.idea/
-!.idea/.name
-!.idea/modules.xml
-!.idea/*.iml

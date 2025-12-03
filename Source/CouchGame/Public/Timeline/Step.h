@@ -21,6 +21,8 @@ protected:
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<FSubLevel> SubLevels;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FSubLevel> SubLevelsToLock;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName StepName;
