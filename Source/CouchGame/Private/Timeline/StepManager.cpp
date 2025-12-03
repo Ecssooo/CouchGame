@@ -35,7 +35,12 @@ void AStepManager::BeginPlay()
 
 	for (int i = 0; i < IndexStep; i++)
 	{
-		ListStep[i]->AutoStep();
+		TObjectPtr<AActor> CurrentStep = ListStep[i];
+		AStep* Step = Cast<AStep>(CurrentStep);
+
+		Step->StartStep();
+		Step->AutoStep();
+		Step->EndStep();
 	}
 	
 	FirstStep();
