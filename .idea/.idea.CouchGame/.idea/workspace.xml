@@ -40,9 +40,7 @@
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Cube/BP_TP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Cube/BP_TP.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Player/BP_Player1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Player/BP_Player1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_6.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_6.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/MainMenu.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/MainMenu.umap" afterDir="false" />
@@ -178,7 +176,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Timeline",
     "last_opened_file_path": "E:/IIM/Game/A3/Unreal/CouchGame/CouchGame.sln",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

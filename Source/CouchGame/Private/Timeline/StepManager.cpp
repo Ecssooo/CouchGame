@@ -89,3 +89,9 @@ void AStepManager::FirstStep()
 	StartStep();
 }
 
+void AStepManager::AutoCompleteStep()
+{
+	ListStep[IndexStep]->AutoStep();
+	NextStep();
+}
+
