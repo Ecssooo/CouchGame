@@ -57,6 +57,7 @@ void ASaveSubLevelManager::UpdateAllPartitionLevelState()
 {
 	if (USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>())
 	{
+		if (SaveSubsystem->LevelsDatas.IsEmpty()) return;
 		for (FSublevelCube sublevelData : SaveSubsystem->LevelsDatas[FaceID-1].SubLevels)
 		{
 			APartitionLevel* PL = GetPartitionLevelFromID(sublevelData.SubLevelId);
