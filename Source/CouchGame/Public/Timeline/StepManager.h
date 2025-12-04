@@ -44,6 +44,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category="StepManager")
 	void FirstStep();
 
+	UFUNCTION(BlueprintCallable, Category="StepManager")
+	void AutoCompleteStep();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<ASaveCubeManager> SaveCubeManager;
 };

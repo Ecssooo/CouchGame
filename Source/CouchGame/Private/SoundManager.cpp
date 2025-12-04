@@ -7,22 +7,46 @@ USoundManager::USoundManager()
 {
 }
 
+//version lien dans le init
+//void USoundManager::Initialize(FSubsystemCollectionBase& Collection)
+//{
+//	Super::Initialize(Collection);
+//
+//	if (SoundLibraryPath.IsValid())
+//	{
+//		LoadedSoundLibrary = SoundLibraryPath.LoadSynchronous();
+//	}
+//
+//	if (LoadedSoundLibrary == nullptr)
+//	{
+//		UE_LOG(LogTemp, Error, TEXT("LoadedSoundLibrary est NULL. ERREUR dans le chemin DefaultGame.ini : %s"), *SoundLibraryPath.ToString());
+//	}
+//	else
+//	{
+//		UE_LOG(LogTemp, Log, TEXT("Sound Library chargée avec succès."));
+//	}
+//}
+
 void USoundManager::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 
-	if (SoundLibraryPath.IsValid())
-	{
-		LoadedSoundLibrary = SoundLibraryPath.LoadSynchronous();
-	}
+	//lien en hard code
+	FSoftObjectPath DebugPath(TEXT("/Game/BP/SoundSystem/DA_SoundLibrary.DA_SoundLibrary"));
 
-	if (LoadedSoundLibrary == nullptr)
+	//On utilise TryLoad() au lieu de LoadSynchronous()
+	UObject* LoadedObject = DebugPath.TryLoad();
+
+	// On cast l objet générique vers le type specifique
+	LoadedSoundLibrary = Cast<USoundDataAsset>(LoadedObject);
+
+	if (LoadedSoundLibrary)
 	{
-		UE_LOG(LogTemp, Error, TEXT("LoadedSoundLibrary est NULL. ERREUR dans le chemin DefaultGame.ini : %s"), *SoundLibraryPath.ToString());
+		UE_LOG(LogTemp, Warning, TEXT("Le chargement fonctionne de la library de son ! Le fichier est bien dans le build."));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Log, TEXT("Sound Library chargée avec succès."));
+		UE_LOG(LogTemp, Error, TEXT("ERREUR Le fichier n'est pas dans le build"));
 	}
 }
 
@@ -30,7 +54,7 @@ bool USoundManager::PlaySound(FName SoundName, UAudioComponent* AudioComponent) 
 {
 	//verifie si l audio component n est pas null
 	if (AudioComponent == nullptr) {
-		UE_LOG(LogTemp, Warning, TEXT("Impossible l'audiocomponent est NULL."));
+		UE_LOG(LogTemp, Warning, TEXT("Impossible l audiocomponent est NULL."));
 		return false;
 	}
 
@@ -52,10 +76,10 @@ bool USoundManager::PlaySound(FName SoundName, UAudioComponent* AudioComponent) 
 	// Jouer le son si on l a trouver
 	if (FoundSound && FoundSound->SoundFile)
 	{
-		float FinalVolume = 1.0f; // Le volume de la catégorie
+		float FinalVolume = 1.0f; // Le volume de la categorie
 		//
 
-		// --- On détermine le volume de la catégorie ---
+		// --- On determine le volume de la categorie ---
 		switch (FoundSound->SoundType)
 		{
 		case ESoundType::SFX:

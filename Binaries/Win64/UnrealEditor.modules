@@ -3,7 +3,6 @@
 	"Modules": 
 	{
 		"CouchGame": "UnrealEditor-CouchGame.dll",
-		"CouchGame_Tools": "UnrealEditor-CouchGame_Tools.dll",
-		"LocalMultiplayer": "UnrealEditor-LocalMultiplayer.dll"
+		"CouchGame_Tools": "UnrealEditor-CouchGame_Tools.dll"
 	}
 }

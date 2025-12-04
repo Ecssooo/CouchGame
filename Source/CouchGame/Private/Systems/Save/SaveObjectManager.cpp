@@ -140,7 +140,7 @@ void ASaveObjectManager::UpdateAllObjectHighlight()
 	for (AGrabActor* object : GrabActors)
 	{
 		object->HighlightObject(SaveSubsystem->GetGrabObjectFromID(object->ObjectData.ObjectID).IsHighlight);
-
+		if (!object) return;
 		if (AGrabActorSocket* socket = GetActorSocketFromID(object->ObjectData.SocketID)) socket->HighlightSocket(SaveSubsystem->GetGrabObjectFromID(object->ObjectData.ObjectID).IsSocketHighlight); 
 	}
 }
