@@ -45,6 +45,14 @@ void ASaveSubLevelManager::UpdateSublevelState(int idSubLevel, bool IsUnlocked)
 	else PL->UndiscoverSubLevel();
 }
 
+void ASaveSubLevelManager::UndiscoverAllSubLevel()
+{
+	for (APartitionLevel* PL : SubLevelsActor)
+	{
+		if (PL) PL->UndiscoverSubLevel();
+	}
+}
+
 void ASaveSubLevelManager::UpdateAllPartitionLevelState()
 {
 	if (USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>())

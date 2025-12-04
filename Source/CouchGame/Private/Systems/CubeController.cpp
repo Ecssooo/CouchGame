@@ -7,7 +7,6 @@
 #include "TPManager.h"
 #include "Components/ArrowComponent.h"
 
-
 // Sets default values
 ACubeController::ACubeController()
 {
@@ -53,6 +52,7 @@ void ACubeController::RotateStepAxis(float DeltaTime)
 		SetActorRotation(CurrentRotationQuat);
 
 		TPManager->TrySwitch(CurrentStartLevelDir, CurrentEndLevelDir);
+		OnRotationEnd.Broadcast();
 	}
 }
 
