@@ -25,7 +25,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Material/Mi_Electric_Pole.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Material/Mi_Vase_Empty.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Electric_Pole_Metallic.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Electric_Pole_RGB.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Electric_Pole_Roughness.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Vase_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Vase_Metallic.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Vase_Roughness.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/mesh/SM_Electric_Pole.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/mesh/SM_Vase.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/FX/FX_Water_Splash/M_Splash.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/FX/FX_Water_Splash/M_Water_Ripple.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/FX/FX_Water_Splash/NS_Water.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/FX/FX_Water_Splash/T_Splash.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Assets3D/FX/FX_Water_Splash/T_Water_Ripple.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
@@ -33,31 +51,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor.modules" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor.modules" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditorPerProjectUserSettings.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabActors/BP_Grab_PileLivres.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabActors/BP_Grab_PileLivres.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_Mallette.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_Mallette.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_Ordinateur.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_Ordinateur.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_PileLivres.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Grab/GrabSocketActors/BP_GrabSocket_PileLivres.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Balle/BP_Balle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Balle/BP_Balle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Simon/BP_Simon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Simon/BP_Simon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/SoundSystem/DA_SoundLibrary.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/SoundSystem/DA_SoundLibrary.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Steps/Face1/BP_Step_GetCannesPeche.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/Face1/BP_Step_GetCannesPeche.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Steps/Face1/BP_Step_TrousseOutils_et_PotPeinture.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/Face1/BP_Step_TrousseOutils_et_PotPeinture.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Steps/Face2/BP_Step_Balle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/Face2/BP_Step_Balle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Steps/Face2/BP_Step_GetOrdinateurMallette.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/Face2/BP_Step_GetOrdinateurMallette.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Steps/Face2/BP_Step_GetPileLivres.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/Face2/BP_Step_GetPileLivres.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Steps/Face2/BP_Step_SimonTampon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/Face2/BP_Step_SimonTampon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Input/IMC_KeyboardP1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Input/IMC_KeyboardP1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Input/IMC_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Input/IMC_Player.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_2.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_2.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets3D/6e_face/mesh/SM_Wagon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/mesh/SM_Wagon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_6_Integrer.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_6_Integrer.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CouchGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/CouchGame.uproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame.Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame.Target.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/CouchGame.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/CouchGame.Build.cs" afterDir="false" />
@@ -102,8 +103,6 @@
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/Save/SaveSubLevelManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/Save/SaveSubLevelManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/TeleporterActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Systems/TeleporterActor.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/TPManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/TPManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Timeline/Step.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Timeline/Step.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Private/Timeline/StepManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Private/Timeline/StepManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActorSocket.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActorSocket.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActorSpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Grab/GrabActorSpawner.h" afterDir="false" />
@@ -144,7 +143,6 @@
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/Save/SaveSubLevelManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/Save/SaveSubLevelManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/TeleporterActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Systems/TeleporterActor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/TPManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/TPManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Timeline/StepManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Timeline/StepManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGameEditor.Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGameEditor.Target.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame_Tools/CouchGame_Tools.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame_Tools/CouchGame_Tools.Build.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame_Tools/Private/CouchGame_Tools.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame_Tools/Private/CouchGame_Tools.cpp" afterDir="false" />
