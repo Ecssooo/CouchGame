@@ -22,12 +22,15 @@
   <component name="ChangeListManager">
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets3D/Ground/Texture_sol_face_1_fusionnée.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets3D/Ground/Texture_sol_face_1_fusionnée.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets3D/Groundv1/Material_Ground1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets3D/Groundv1/Material_Ground1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Cube/BP_Cube.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Cube/BP_Cube.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Balançoire/BP_NewSwing_Mesh_Version.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Balançoire/BP_NewSwing_Mesh_Version.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Balançoire/BalancoireCurve.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Balançoire/BalancoireCurve.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cabane/BP_Cabane0.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cabane/BP_Cabane0.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Frigo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Frigo.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Planche.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Planche.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_Peche_Pos_2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Simon/BP_Simon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Simon/BP_Simon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/SoundSystem/DA_SoundLibrary.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/SoundSystem/DA_SoundLibrary.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_2.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_2.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_3.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_3.umap" afterDir="false" />
@@ -35,6 +38,7 @@
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_6.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_6.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Sounds/Musics/MUS_face_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Sounds/Musics/MUS_face_2.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +84,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "SaveSystem",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "E:/IIM/Game/A3/Unreal/CouchGame/CouchGame.sln",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
