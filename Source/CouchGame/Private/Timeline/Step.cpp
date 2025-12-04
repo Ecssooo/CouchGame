@@ -16,6 +16,7 @@ void AStep::BeginPlay()
 
 void AStep::StartStep()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, FString::Printf(TEXT("Step : [%s] is Start"), *StepName.ToString()));
 	OnStartStep();
 }
 
