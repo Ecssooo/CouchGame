@@ -25,21 +25,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Material/Mi_Electric_Pole.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Material/Mi_Vase_Empty.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Electric_Pole_Metallic.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Electric_Pole_RGB.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Electric_Pole_Roughness.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Vase_BaseColor.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Vase_Metallic.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/Texture/T_Vase_Roughness.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/mesh/SM_Electric_Pole.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/mesh/SM_Vase.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/FX/FX_Water_Splash/M_Splash.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/FX/FX_Water_Splash/M_Water_Ripple.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/FX/FX_Water_Splash/NS_Water.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/FX/FX_Water_Splash/T_Splash.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Assets3D/FX/FX_Water_Splash/T_Water_Ripple.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame.dir/.idea/indexLayout.xml" afterDir="false" />
@@ -57,8 +42,6 @@
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets3D/6e_face/mesh/SM_Wagon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets3D/6e_face/mesh/SM_Wagon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_6_Integrer.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_6_Integrer.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CouchGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/CouchGame.uproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame.Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame.Target.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/CouchGame.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/CouchGame.Build.cs" afterDir="false" />
@@ -193,7 +176,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "E:/IIM/Game/A3/Unreal/CouchGame/CouchGame.sln",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
