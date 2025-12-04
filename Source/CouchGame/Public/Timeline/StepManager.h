@@ -35,8 +35,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<AStep*> ListStep;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY()
 	int IndexStep;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int NumStartStep;
 
 	UFUNCTION(BlueprintCallable, Category="StepManager")
 	void NextStep();
