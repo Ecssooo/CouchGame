@@ -7,9 +7,6 @@ APartitionLevel::APartitionLevel()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-void APartitionLevel::DiscoverSubLevel_Implementation()
-{
-}
 
 
 void APartitionLevel::BeginPlay()

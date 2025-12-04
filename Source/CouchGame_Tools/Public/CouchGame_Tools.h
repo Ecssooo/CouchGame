@@ -10,7 +10,22 @@ public:
     virtual void ShutdownModule() override;
 
 private:
- 
-    void RegisterMenuExtensions();
+#pragma region Use Keyboard 
+    void CreateUseKeyboardToggle();
+
+    void OnToggleKeyboardController();
+    bool GetUseKeyboardController();
+#pragma endregion
+
+#pragma region Recompile blueprint
+
+    void CreateRecompileButton();
+
+    void RecompileAllBlueprint();
+
+
+    
+#pragma endregion
+    
 };
 IMPLEMENT_MODULE(FCouchGame_ToolsModule, MyEditorModule)

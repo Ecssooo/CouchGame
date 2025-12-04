@@ -11,6 +11,10 @@ class UTPManager;
 class AArrowHelper;
 class ALevelStreamerActor;
 
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnRotationEnd);
+
+
 UCLASS()
 class COUCHGAME_API ACubeController : public AActor
 {
@@ -55,6 +59,9 @@ public:
 	UFUNCTION()
 	ELevelDir GetNewStartDir(ELevelDir StartDir, ELevelDir ArrowDir);
 
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnRotationEnd OnRotationEnd;
+	
 private :
 	bool IsRotating = false;
 	float Elapsed;

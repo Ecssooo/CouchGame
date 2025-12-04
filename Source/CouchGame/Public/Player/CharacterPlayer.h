@@ -18,7 +18,7 @@ public:
 	ACharacterPlayer();
 	virtual void BeginPlay() override;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	int PlayerIndex;
 	
 	UPROPERTY(BlueprintReadWrite, Category="Input")

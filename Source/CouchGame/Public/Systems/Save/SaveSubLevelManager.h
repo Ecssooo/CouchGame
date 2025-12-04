@@ -46,6 +46,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void UpdateSublevelState(int idSubLevel, bool IsUnlocked);
+	UFUNCTION(BlueprintCallable)
+	void UndiscoverAllSubLevel();
 
 	UFUNCTION(BlueprintCallable)
 	void UpdateAllPartitionLevelState();

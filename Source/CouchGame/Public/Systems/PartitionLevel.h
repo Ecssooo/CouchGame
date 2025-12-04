@@ -13,9 +13,11 @@ public:
 
 	APartitionLevel();
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void DiscoverSubLevel();
-
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void UndiscoverSubLevel();
+	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	int IdSublevel;
 
