@@ -79,5 +79,5 @@ Binaries/Win64/*
 !Binaries/Win64/CouchGameEditor.target
 !Binaries/Win64/UnrealEditor.modules
 !Binaries/Win64/UnrealEditor-CouchGame.dll
-!Binaries/Win64/UnrealEditor-LocalMultiplayer.dll
+!Binaries/Win64/UnrealEditor-CouchGame_Tools.dll
 CouchGame.sln.DotSettings.user

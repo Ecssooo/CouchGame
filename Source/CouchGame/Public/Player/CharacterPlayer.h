@@ -18,7 +18,7 @@ public:
 	ACharacterPlayer();
 	virtual void BeginPlay() override;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	int PlayerIndex;
 	
 	UPROPERTY(BlueprintReadWrite, Category="Input")
@@ -55,6 +55,11 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	UStaticMeshComponent* GrabParent;
+	
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void GrabObject(AActor* actorToGrab);
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void DropObject(AActor* actorToGrab);
 	
 	UFUNCTION(BlueprintCallable)
 	void SetGrabParent(UStaticMeshComponent* StaticMesh);

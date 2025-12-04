@@ -1,5 +1,3 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 using UnrealBuildTool;
 using System.Collections.Generic;
 
@@ -10,7 +8,7 @@ public class CouchGameTarget : TargetRules
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_5;
-		ExtraModuleNames.AddRange(new string[] { "CouchGame" });
 
+		ExtraModuleNames.AddRange(new string[] { "CouchGame" });
 	}
 }

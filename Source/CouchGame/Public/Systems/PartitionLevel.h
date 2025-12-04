@@ -15,7 +15,9 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void DiscoverSubLevel();
-
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void UndiscoverSubLevel();
+	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	int IdSublevel;
 

@@ -41,8 +41,8 @@ class COUCHGAME_API UCharacterSettings : public UDeveloperSettings
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(Config, EditAnywhere, Category="LocalMultiplayer")
-	bool UsKeyboardControl;
+	UPROPERTY(Config, EditAnywhere, Category="LocalMultiplayer", BlueprintReadOnly)
+	bool UsKeyboardControl = false;
 	
 	UPROPERTY(Config, EditAnywhere, Category="LocalMultiplayer")
 	FLocalMultiplayerProfile IMCInGame;

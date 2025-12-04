@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Systems/Save/SaveCubeStruct.h"
 #include "UObject/Interface.h"
 #include "Grabbable.generated.h"
 
@@ -22,15 +23,12 @@ class COUCHGAME_API IGrabbable
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void OnGrab(ACharacterPlayer* Player);
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void OnDrop(ACharacterPlayer* Player);
-
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	bool GetIsGrabbed();
 	
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	bool GetIsInSocket();
+	FGrabObject GetData();
 };
