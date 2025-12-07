@@ -25,7 +25,8 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Sound")
     bool SoundPlaylist(const TArray<FName>& SoundNameList,UAudioComponent* AudioComponent); // pas besoin du sound name car je vais stop l audio component
 
-    
+    UFUNCTION(BlueprintCallable, Category = "Sound Settings")
+    void SetMusicVolume(); //pour mettre a jour en direct
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "0.0", ClampMax = "1.0"))
     float VolumeMultiplierGlobal = 1.0f; // le volume du son global

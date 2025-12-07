@@ -177,6 +177,50 @@ bool USoundManager::SoundPlaylist(const TArray<FName>& SoundNameList, UAudioComp
 	return true;
 }
 
+void USoundManager::SetMusicVolume()
+{
+	// On parcourt notre le dictionnaire pour retrouver tous les composants actifs
+	for (auto& Elem : PlaylistMap)
+	{
+		UAudioComponent* ActiveComponent = Elem.Key; // La cler est le composant
+		TArray<FName>& List = Elem.Value;           // La valeur est la liste
+
+		// On vérifie qu'il est valide et qu'il joue
+		if (ActiveComponent && ActiveComponent->IsPlaying())
+		{
+			// On a besoin de retrouver l'index actuel pour savoir quel son joue
+			if (PlaylistIndexMap.Contains(ActiveComponent))
+			{
+				int32 CurrentIndex = PlaylistIndexMap[ActiveComponent];
+
+				// Sécurité index
+				if (List.IsValidIndex(CurrentIndex))
+				{
+					FName CurrentSoundName = List[CurrentIndex];
+
+					// On retourne chercher les infos du son dans le DataAsset
+					if (LoadedSoundLibrary)
+					{
+						FSoundDataStruct* FoundSound = LoadedSoundLibrary->SoundList.FindByPredicate(
+							[&CurrentSoundName](const FSoundDataStruct& Entry) { return Entry.SoundName == CurrentSoundName; }
+						);
+
+						// verifie le type
+						if (FoundSound && FoundSound->SoundType == ESoundType::Music)
+						{
+
+							float NewFinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierMusic * VolumeMultiplierGlobal;
+
+							//ensuite je change le volume meme si le son est en cours
+							ActiveComponent->SetVolumeMultiplier(NewFinalVolume);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 void USoundManager::PlaySoundPlaylist(TArray<FName> SoundList, UAudioComponent* AudioComponent) //enregistre le resultat
 {
 
