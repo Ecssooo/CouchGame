@@ -13,9 +13,9 @@ void UPlayerWalkState::OnEnter(UPlayerStateMachine* InSM)
 	{
 		float WalkSmooth = Settings->RunSmoothedMaxSpeed;
 		WalkSmooth = P->GetCharacterMovement()->GetLastUpdateVelocity().Size2D();
-		P->GetCharacterMovement()->GroundFriction = Settings->WalkGroundFriction;
-		P->GetCharacterMovement()->BrakingFriction = Settings->WalkBrakingFriction;
-		P->GetCharacterMovement()->BrakingDecelerationWalking = Settings->WalkBrakingDecelerationWalking;
+		// P->GetCharacterMovement()->GroundFriction = Settings->WalkGroundFriction;
+		// P->GetCharacterMovement()->BrakingFriction = Settings->WalkBrakingFriction;
+		// P->GetCharacterMovement()->BrakingDecelerationWalking = Settings->WalkBrakingDecelerationWalking;
 	}
 }
 

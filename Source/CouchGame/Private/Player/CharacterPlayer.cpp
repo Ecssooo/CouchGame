@@ -19,6 +19,10 @@ void ACharacterPlayer::BeginPlay()
 	Move->bOrientRotationToMovement = true;
 	Move->bUseControllerDesiredRotation = false;
 	Move->RotationRate = FRotator(0.f, 720.f, 0.f);
+
+	GetCharacterMovement()->GroundFriction = Settings->WalkGroundFriction;
+	GetCharacterMovement()->BrakingFriction = Settings->WalkBrakingFriction;
+	GetCharacterMovement()->BrakingDecelerationWalking = Settings->WalkBrakingDecelerationWalking;
 }
 
 

@@ -39,6 +39,7 @@ void ASaveObjectManager::LoadObjectData()
 	if (!SaveSubsystem) return;
 
 	ALevelStreamerActor* LSA = Cast<ALevelStreamerActor>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelStreamerActor::StaticClass()));
+	if (!LSA) return;
 	ULevelStreaming* MyStreamedLevel =
 		UGameplayStatics::GetStreamingLevel(GetWorld(), LSA->CurrentLevel);
 	ULevel* LoadedLevel = MyStreamedLevel ? MyStreamedLevel->GetLoadedLevel() : nullptr;
@@ -47,7 +48,7 @@ void ASaveObjectManager::LoadObjectData()
 	{
 		FActorSpawnParameters Params;
 		Params.OverrideLevel = LoadedLevel;
-	
+		if(SaveSubsystem->AllObjectsDatas.IsEmpty()) return;
 		for (FGrabObject ObjectData : SaveSubsystem->AllObjectsDatas)
 		{
 			switch (ObjectData.ObjectState)

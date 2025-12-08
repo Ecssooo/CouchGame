@@ -28,19 +28,15 @@ void AStepManager::BeginPlay()
 	}
 
 	// AutoStep jusqu'au IndexStep
-	if (IndexStep >= ListStep.Num() || IndexStep < 0)
+	if (NumStartStep > ListStep.Num() || IndexStep < 1)
 	{
-		UE_LOG(LogTemp, Error, TEXT("Step index out of range"));
+		UE_LOG(LogTemp, Error, TEXT("NumStartStep out of range"));
 	}
 
-	for (int i = 0; i < IndexStep; i++)
+	for (int i = 0; i < NumStartStep-1; i++)
 	{
-		TObjectPtr<AActor> CurrentStep = ListStep[i];
-		AStep* Step = Cast<AStep>(CurrentStep);
-
-		Step->StartStep();
-		Step->AutoStep();
-		Step->EndStep();
+		StartStep();
+		AutoCompleteStep();
 	}
 	
 	FirstStep();

@@ -22,6 +22,12 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Sound")
     bool StopSound(UAudioComponent* AudioComponent); // pas besoin du sound name car je vais stop l audio component
 
+    UFUNCTION(BlueprintCallable, Category = "Sound")
+    bool SoundPlaylist(const TArray<FName>& SoundNameList,UAudioComponent* AudioComponent); // pas besoin du sound name car je vais stop l audio component
+
+    UFUNCTION(BlueprintCallable, Category = "Sound Settings")
+    void SetMusicVolume(); //pour mettre a jour en direct
+
     UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "0.0", ClampMax = "1.0"))
     float VolumeMultiplierGlobal = 1.0f; // le volume du son global
 
@@ -40,5 +46,25 @@ protected:
 
     UPROPERTY(Transient) 
     TObjectPtr<USoundDataAsset> LoadedSoundLibrary;   //stock l'asset apres load
+
+private:
+    // --- NOUVEAU : LOGIQUE INTERNE DE PLAYLIST ---
+
+    // 1. Stockage : Quelle liste de sons joue cet AudioComponent ?
+    TMap<UAudioComponent*, TArray<FName>> PlaylistMap;
+
+    // 2. Stockage : A quel numéro (index) est rendu cet AudioComponent ?
+    TMap<UAudioComponent*, int32> PlaylistIndexMap;
+
+    // 3. Fonction interne pour initialiser les variables (Maps)
+    void PlaySoundPlaylist(TArray<FName> SoundList, UAudioComponent* AudioComponent);
+
+    // 4. Fonction interne qui joue le son précis à l'instant T
+    void PlayNextSoundInPlaylist(UAudioComponent* AudioComponent);
+
+    // 5. L'écouteur (Delegate) appelé automatiquement quand un son finit
+    // UFUNCTION() est OBLIGATOIRE ici pour que l'Unreal puisse appeler la fonction
+    void OnPlaylistAudioFinished(UAudioComponent* FinishedComponent);
+
 };
 

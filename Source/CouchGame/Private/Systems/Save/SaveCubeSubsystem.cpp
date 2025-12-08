@@ -231,7 +231,7 @@ void USaveCubeSubsystem::SetTeleporterHighlightForFace(int NumFace)
 			return;
 		case (5):
 			SetTeleporterDatas(201, true);
-			SetTeleporterDatas(202, true);
+			SetTeleporterDatas(205, true);
 			SetTeleporterDatas(203, true);
 			SetTeleporterDatas(204, true);
 			SetTeleporterDatas(601, true);
@@ -247,7 +247,7 @@ void USaveCubeSubsystem::SetTeleporterHighlightForFace(int NumFace)
 			SetTeleporterDatas(504, true);
 			SetTeleporterDatas(403, true);
 			SetTeleporterDatas(304, true);
-			SetTeleporterDatas(204, true);
+			SetTeleporterDatas(205, true);
 			return;
 		default:
 			return;
@@ -256,14 +256,39 @@ void USaveCubeSubsystem::SetTeleporterHighlightForFace(int NumFace)
 
 void USaveCubeSubsystem::ResetAllTeleporterHighlight()
 {
-	for (int i = 1; i < 7; i++)
-	{
-		for (int j = 1; j < 5; j++)
-		{
-			int TpID = i * 100 + j;
-			SetTeleporterDatas(TpID, false);
-		}
-	}
+	// for (int i = 1; i < 7; i++)
+	// {
+	// 	for (int j = 1; j < 5; j++)
+	// 	{
+	// 		int TpID = i * 100 + j;
+	// 		SetTeleporterDatas(TpID, false);
+	// 	}
+	// }
+	
+	SetTeleporterDatas(101, false);
+	SetTeleporterDatas(102, false);
+	SetTeleporterDatas(103, false);
+	SetTeleporterDatas(104, false);
+	SetTeleporterDatas(201, false);
+	SetTeleporterDatas(205, false);
+	SetTeleporterDatas(203, false);
+	SetTeleporterDatas(204, false);
+	SetTeleporterDatas(301, false);
+	SetTeleporterDatas(302, false);
+	SetTeleporterDatas(303, false);
+	SetTeleporterDatas(304, false);
+	SetTeleporterDatas(401, false);
+	SetTeleporterDatas(402, false);
+	SetTeleporterDatas(403, false);
+	SetTeleporterDatas(404, false);
+	SetTeleporterDatas(501, false);
+	SetTeleporterDatas(502, false);
+	SetTeleporterDatas(503, false);
+	SetTeleporterDatas(504, false);
+	SetTeleporterDatas(601, false);
+	SetTeleporterDatas(602, false);
+	SetTeleporterDatas(603, false);
+	SetTeleporterDatas(604, false);
 }
 
 FTeleporterData* USaveCubeSubsystem::GetTeleporterDatas(int TeleporterID)
