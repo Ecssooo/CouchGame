@@ -28,7 +28,7 @@ public:
 #pragma endregion
 
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FInteractionsDatas InteractionData;
 
 	UFUNCTION(BlueprintImplementableEvent)
