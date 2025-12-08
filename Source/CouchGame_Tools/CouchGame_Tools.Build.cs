@@ -26,7 +26,10 @@ public class CouchGame_Tools : ModuleRules
                 "UnrealEd",         
                 "KismetCompiler",    
                 "Kismet",            
-                "AssetRegistry"
+                "AssetRegistry", 
+                "EditorFramework",
+                "UnrealEd",              
+                "LevelEditor"
             }
         );
     }

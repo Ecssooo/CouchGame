@@ -26,6 +26,14 @@ private:
 
     
 #pragma endregion
+
+#pragma region Load level
+
+    void CreateMainLevelButton();
+    void LoadLevelButton();
+    void LoadSpecificLevel(int level);
+    void CreateLoadLevelButton();
     
+#pragma endregion
 };
 IMPLEMENT_MODULE(FCouchGame_ToolsModule, MyEditorModule)
