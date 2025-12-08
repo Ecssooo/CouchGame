@@ -22,10 +22,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_2.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_2.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_4.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_4.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame_Tools.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame_Tools.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame_Tools/Private/CouchGame_Tools.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame_Tools/Private/CouchGame_Tools.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/CouchGame_Tools/Public/CouchGame_Tools.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame_Tools/Public/CouchGame_Tools.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

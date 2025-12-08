@@ -31,6 +31,7 @@ private:
 
     void CreateMainLevelButton();
     void LoadLevelButton();
+    void UpdateMenuLabel();
     void LoadSpecificLevel(int level);
     void CreateLoadLevelButton();
     
