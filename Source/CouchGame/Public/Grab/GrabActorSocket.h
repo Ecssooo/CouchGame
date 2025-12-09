@@ -39,7 +39,7 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void EnableSocketVisibility(bool IsVisible);
-
+	
 	UFUNCTION()
 	void SpawnObjectInSocket(UClass* ActorToSpawn);
 };
