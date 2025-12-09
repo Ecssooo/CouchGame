@@ -7,6 +7,8 @@
 #include "Interfaces/GrabSocket.h"
 #include "GrabActorSocket.generated.h"
 
+class AGrabActor;
+
 UCLASS()
 class COUCHGAME_API AGrabActorSocket : public AActor, public IGrabSocket
 {
@@ -31,4 +33,13 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void HighlightSocket(bool IsHighlight);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	UStaticMeshComponent* GetSocketParent();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void EnableSocketVisibility(bool IsVisible);
+
+	UFUNCTION()
+	void SpawnObjectInSocket(UClass* ActorToSpawn);
 };
