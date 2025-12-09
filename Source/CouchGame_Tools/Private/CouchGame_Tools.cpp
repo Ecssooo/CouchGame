@@ -4,6 +4,7 @@
 #include "AssetRegistry/AssetRegistryModule.h"
 #include "Kismet2/KismetEditorUtilities.h"
 #include "Systems/CharacterSettings.h"
+#include "LevelEditorSubsystem.h"
 
 #define LOCTEXT_NAMESPACE "FCouchGame_ToolsModule"
 
@@ -12,6 +13,8 @@ void FCouchGame_ToolsModule::StartupModule()
 	FToolsEditorStyle::Initialize();
 	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FCouchGame_ToolsModule::CreateUseKeyboardToggle));
 	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FCouchGame_ToolsModule::CreateRecompileButton));
+	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FCouchGame_ToolsModule::CreateMainLevelButton));
+	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FCouchGame_ToolsModule::CreateLoadLevelButton));
 }
 
 void FCouchGame_ToolsModule::ShutdownModule()
@@ -102,7 +105,7 @@ void FCouchGame_ToolsModule::RecompileAllBlueprint()
 		UBlueprint* Blueprint = Cast<UBlueprint>(Asset.GetAsset());
 		if (!Blueprint)
 		{
-			Blueprint = Cast<UBlueprint>(StaticLoadObject(UBlueprint::StaticClass(), nullptr, *Asset.ObjectPath.ToString()));
+			// Blueprint = Cast<UBlueprint>(StaticLoadObject(UBlueprint::StaticClass(), nullptr, *Asset.ObjectPath.ToString()));
 		}
 
 		if (Blueprint)
@@ -117,7 +120,69 @@ void FCouchGame_ToolsModule::RecompileAllBlueprint()
 
 	UE_LOG(LogTemp, Warning, TEXT("Recompiled %d Blueprints"), RecompileCount);
 }
+#pragma endregion
 
+#pragma region Load Level
+void FCouchGame_ToolsModule::CreateMainLevelButton()
+{
+	UToolMenu* Toolbar = UToolMenus::Get()->ExtendMenu("LevelEditor.LevelEditorToolBar.PlayToolBar");
+
+	FToolMenuSection& Section = Toolbar->FindOrAddSection("LevelSection");
+
+	Section.AddEntry(
+		FToolMenuEntry::InitToolBarButton("LoadMainLevel",
+			
+		FUIAction(FExecuteAction::CreateRaw(this,&FCouchGame_ToolsModule::LoadLevelButton)),
+	LOCTEXT("LoadMainLevel_Label", "MainLevel"),
+	LOCTEXT("LoadMainLevel_ToolTip", "Use Keyboard controller for debug"),
+
+	FSlateIcon(FToolsEditorStyle::GetStyleSetName(), "GameTools.MainLevel")
+	)
+	);
+}
+
+void FCouchGame_ToolsModule::LoadLevelButton()
+{
+	ULevelEditorSubsystem* LevelSubsystem =
+		GEditor->GetEditorSubsystem<ULevelEditorSubsystem>();
+
+	if (LevelSubsystem)
+	{
+		LevelSubsystem->LoadLevel(TEXT("/Game/Levels/Cube/Main.Main"));
+	}
+}
+
+void FCouchGame_ToolsModule::CreateLoadLevelButton()
+{
+	FToolMenuOwnerScoped OwnerScoped(this);
+
+	UToolMenu* Toolbar = UToolMenus::Get()->ExtendMenu("LevelEditor.LevelEditorToolBar.PlayToolBar");
+
+	FToolMenuSection& Section = Toolbar->FindOrAddSection("LevelSection");
+
+	Section.AddSubMenu(
+		"FacesDropDown",
+		LOCTEXT("CouchGameDropdownLabel", "FaceDropDown"),
+		LOCTEXT("CouchGameDropdownTooltip", "FaceDropDown"),
+		FNewToolMenuDelegate::CreateLambda([](UToolMenu* SubMenu)
+		{
+			FToolMenuSection& SubSection = SubMenu->AddSection("CouchGameSection", LOCTEXT("SubsectionLabel", "Load Face"));
+			for (int i = 1; i<=6; i++)
+			{
+				SubSection.AddMenuEntry(
+				*FString::Printf(TEXT("Face%i"), i),
+				FText::Format(LOCTEXT("OptionALabel", "Face {index}"), i),
+				FText::Format(LOCTEXT("OptionALabel", "Face {index}"), i),
+				FSlateIcon(),
+				FUIAction(FExecuteAction::CreateLambda([i] {
+					ULevelEditorSubsystem* LevelSubsystem = GEditor->GetEditorSubsystem<ULevelEditorSubsystem>();
+					LevelSubsystem->LoadLevel(FString::Printf(TEXT("/Game/Levels/Cube/Face_%d"), i));
+				})
+				));
+			}
+		}),
+		false);
+}
 
 
 #pragma endregion

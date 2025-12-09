@@ -67,6 +67,7 @@ void ASaveObjectManager::LoadObjectData()
 								actor->AttachToActor(socket, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 								actor->ObjectData = ObjectData;
 								GrabActors.Add(actor);
+								socket->EnableSocketVisibility(false);
 							}
 						}
 						break;
