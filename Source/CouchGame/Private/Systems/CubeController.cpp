@@ -6,7 +6,9 @@
 #include "LevelStreamerActor.h"
 #include "TPManager.h"
 #include "Components/ArrowComponent.h"
+#include "Timeline/TimelineSettings.h"
 
+class UTimelineSettings;
 // Sets default values
 ACubeController::ACubeController()
 {
@@ -20,8 +22,11 @@ void ACubeController::BeginPlay()
 {
 	Super::BeginPlay();
 	CollectArrowHelpers();
-
 	CurrentRotationQuat = FQuat::Identity;
+
+	const UTimelineSettings* Settings = GetDefault<UTimelineSettings>();
+	if (!Settings) return;
+	AnimationDuration = Settings->RotationDuration;
 }
 
 // Called every frame

@@ -33,15 +33,18 @@ public:
 public:
 	UPROPERTY(BlueprintReadWrite)
 	FGrabObject ObjectData;
-
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TSubclassOf<UUserWidget> GrabWidget;
+	
 	UFUNCTION(BlueprintCallable)
 	bool Grab(ACharacterPlayer* Player);
 
+	
 	UFUNCTION(BlueprintCallable)
 	bool Drop(ACharacterPlayer* Player); 
 	
 	virtual FGrabObject GetData_Implementation() override;
-
+		
 	UPROPERTY()
 	TObjectPtr<AGrabActorSocket> GrabSocketInOverlap;
 	
@@ -51,6 +54,10 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void HighlightObject(bool IsHighlight);
 
+	UFUNCTION(BlueprintImplementableEvent)
+	TSubclassOf<UUserWidget> GetGrabWidget();
+
+	
 	UFUNCTION()
 	void OnBoxBeginOverlap(
 		UPrimitiveComponent* OverlappedComp,

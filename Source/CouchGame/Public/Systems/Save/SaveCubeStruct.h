@@ -50,10 +50,10 @@ struct FInteractionsDatas
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int InteractionIndex;
 	
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EInteractionsID InteractionsID;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
