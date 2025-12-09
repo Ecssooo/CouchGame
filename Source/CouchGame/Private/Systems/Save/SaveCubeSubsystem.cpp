@@ -17,7 +17,7 @@ void USaveCubeSubsystem::InitLevelData()
 	{
 		FLevelCube NewLevel {i};
 
-		for (int j = 1; j <= 9; j++)
+		for (int j = 1; j <= 11; j++)
 		{
 			FSublevelCube NewSubLevel {j, false};
 			NewLevel.SubLevels.Add(NewSubLevel);
