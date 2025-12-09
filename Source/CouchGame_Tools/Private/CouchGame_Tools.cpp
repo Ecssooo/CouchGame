@@ -171,9 +171,9 @@ void FCouchGame_ToolsModule::CreateLoadLevelButton()
 			{
 				SubSection.AddMenuEntry(
 				*FString::Printf(TEXT("Face%i"), i),
-				FText::Format(LOCTEXT("OptionALabel", "Face {index}"), i),
-				FText::Format(LOCTEXT("OptionALabel", "Face {index}"), i),
-				FSlateIcon(),
+				FText::Format(LOCTEXT("OptionALabel", "Face {0}"), i),
+				FText::Format(LOCTEXT("OptionALabel", "Face {0}"), i),
+				FSlateIcon(FToolsEditorStyle::GetStyleSetName(), "GameTools.Level"),
 				FUIAction(FExecuteAction::CreateLambda([i] {
 					ULevelEditorSubsystem* LevelSubsystem = GEditor->GetEditorSubsystem<ULevelEditorSubsystem>();
 					LevelSubsystem->LoadLevel(FString::Printf(TEXT("/Game/Levels/Cube/Face_%d"), i));
@@ -181,7 +181,9 @@ void FCouchGame_ToolsModule::CreateLoadLevelButton()
 				));
 			}
 		}),
-		false);
+		false,
+			FSlateIcon(FToolsEditorStyle::GetStyleSetName(),"GameTools.Level")
+		);
 }
 
 
