@@ -120,7 +120,9 @@ void FCouchGame_ToolsModule::RecompileAllBlueprint()
 
 	UE_LOG(LogTemp, Warning, TEXT("Recompiled %d Blueprints"), RecompileCount);
 }
+#pragma endregion
 
+#pragma region Load Level
 void FCouchGame_ToolsModule::CreateMainLevelButton()
 {
 	UToolMenu* Toolbar = UToolMenus::Get()->ExtendMenu("LevelEditor.LevelEditorToolBar.PlayToolBar");
@@ -148,11 +150,6 @@ void FCouchGame_ToolsModule::LoadLevelButton()
 	{
 		LevelSubsystem->LoadLevel(TEXT("/Game/Levels/Cube/Main.Main"));
 	}
-}
-
-void FCouchGame_ToolsModule::UpdateMenuLabel()
-{
-	
 }
 
 void FCouchGame_ToolsModule::CreateLoadLevelButton()
