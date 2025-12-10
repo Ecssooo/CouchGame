@@ -32,13 +32,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame_Tools.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame_Tools.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor.modules" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor.modules" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditorPerProjectUserSettings.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Steps/Face1/BP_Step_SwingFace1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Steps/Face1/BP_Step_SwingFace1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cabane/BP_Cabane.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cabane/BP_Cabane.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cabane/BP_Cabane0.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cabane/BP_Cabane0.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_5.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CouchGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/CouchGame.uproject" afterDir="false" />
@@ -375,7 +378,7 @@
       <workItem from="1765180729431" duration="2207000" />
       <workItem from="1765183073352" duration="5825000" />
       <workItem from="1765267043897" duration="11940000" />
-      <workItem from="1765353258777" duration="2421000" />
+      <workItem from="1765353258777" duration="3622000" />
     </task>
     <servers />
   </component>
