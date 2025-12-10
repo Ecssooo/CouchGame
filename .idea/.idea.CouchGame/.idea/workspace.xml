@@ -20,7 +20,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="" />
+    <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Camera/BP_BlendCameraForTransition.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Camera/BP_BlendCameraForTransition.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/PartitionLevel/SubLevel.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/PartitionLevel/SubLevel.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Player/BP_Player2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Player/BP_Player2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Curves/BlendCameraInCurve.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Curves/BlendCameraInCurve.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Curves/SkyboxFadeCurve.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Curves/SkyboxFadeCurve.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Materials/PP_Hlsl.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Materials/PP_Hlsl.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Materials/PP_Outline.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Materials/PP_Outline_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Materials/PP_Outline_Player.uasset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
