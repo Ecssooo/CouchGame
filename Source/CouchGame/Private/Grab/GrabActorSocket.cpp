@@ -6,6 +6,7 @@
 #include "LevelStreamerActor.h"
 #include "Grab/GrabActor.h"
 #include "Kismet/GameplayStatics.h"
+#include "Systems/Save/SaveObjectManager.h"
 
 
 // Sets default values
@@ -38,7 +39,7 @@ void AGrabActorSocket::SpawnObjectInSocket(UClass* ActorToSpawn)
 	ULevelStreaming* MyStreamedLevel =
 		UGameplayStatics::GetStreamingLevel(GetWorld(), LSA->CurrentLevel);
 	ULevel* LoadedLevel = MyStreamedLevel ? MyStreamedLevel->GetLoadedLevel() : nullptr;
-
+	ASaveObjectManager* ObjectManager = Cast<ASaveObjectManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveObjectManager::StaticClass())); 
 	if (LoadedLevel)
 	{
 		FActorSpawnParameters Params;
@@ -49,6 +50,7 @@ void AGrabActorSocket::SpawnObjectInSocket(UClass* ActorToSpawn)
 								socket->GetComponentRotation(),
 								Params);
 		actor->AttachToComponent(socket, FAttachmentTransformRules::SnapToTargetIncludingScale);
+		ObjectManager->GrabActors.Add(actor);
 	}
 }
 

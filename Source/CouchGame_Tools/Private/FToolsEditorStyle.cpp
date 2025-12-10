@@ -25,6 +25,7 @@ void FToolsEditorStyle::Initialize()
 	StyleInstance->Set("GameTools.KeyboardIcon", new IMAGE_BRUSH(TEXT("clavier"), FVector2D(20,20)));
 	StyleInstance->Set("GameTools.RecompileIcon", new IMAGE_BRUSH(TEXT("tools"), FVector2D(20,20)));
 	StyleInstance->Set("GameTools.MainLevel", new IMAGE_BRUSH(TEXT("lettre-m"), FVector2D(20,20)));
+	StyleInstance->Set("GameTools.Level", new IMAGE_BRUSH(TEXT("Level"), FVector2D(20,20)));
 
 	FSlateStyleRegistry::RegisterSlateStyle(*StyleInstance.Get());
 }

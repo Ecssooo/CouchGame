@@ -71,6 +71,8 @@ bool AGrabActor::Drop(ACharacterPlayer* Player)
 		UE_LOG(LogTemp, Log, TEXT("Object Manager find"))
 		SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InWorld, ObjectManager->LevelID, GetActorLocation());
 		ObjectData = SaveSubsystem->GetGrabObjectFromID(ObjectData.ObjectID);
+		IGrabbable::Execute_OnDrop(this, Player);
+		return true;
 	}
 
 	IGrabbable::Execute_OnDrop(this, Player);
