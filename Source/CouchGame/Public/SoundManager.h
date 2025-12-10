@@ -15,6 +15,7 @@ public:
     USoundManager();
 
     virtual void Initialize(FSubsystemCollectionBase& Library) override; // charge la biblioteque de son soundatalibrary
+    virtual void Deinitialize() override;
 
     UFUNCTION(BlueprintCallable, Category = "Sound")
     bool PlaySound(FName SoundName, UAudioComponent* AudioComponent);
@@ -46,6 +47,9 @@ protected:
 
     UPROPERTY(Transient) 
     TObjectPtr<USoundDataAsset> LoadedSoundLibrary;   //stock l'asset apres load
+
+    UPROPERTY(VisibleAnywhere, Category = "Sound Storage")
+    TArray<FSoundDataStruct> CachedSoundList;
 
 private:
     // --- NOUVEAU : LOGIQUE INTERNE DE PLAYLIST ---

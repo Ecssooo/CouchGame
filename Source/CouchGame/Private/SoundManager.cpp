@@ -31,85 +31,75 @@ void USoundManager::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 
-	//lien en hard code
 	FSoftObjectPath DebugPath(TEXT("/Game/BP/SoundSystem/DA_SoundLibrary.DA_SoundLibrary"));
-
-	//On utilise TryLoad() au lieu de LoadSynchronous()
 	UObject* LoadedObject = DebugPath.TryLoad();
+	USoundDataAsset* TempLibrary = Cast<USoundDataAsset>(LoadedObject);
 
-	// On cast l objet générique vers le type specifique
-	LoadedSoundLibrary = Cast<USoundDataAsset>(LoadedObject);
-
-	if (LoadedSoundLibrary)
+	if (TempLibrary)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Le chargement fonctionne de la library de son ! Le fichier est bien dans le build."));
+		CachedSoundList = TempLibrary->SoundList; //copie des donnees dans le tableau
+
+		UE_LOG(LogTemp, Warning, TEXT("Succès : %d sons copiés dans le Cache du SoundManager."), CachedSoundList.Num());
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("ERREUR Le fichier n'est pas dans le build"));
+		UE_LOG(LogTemp, Error, TEXT("CRITICAL : Impossible de charger DA_SoundLibrary pour la copie !"));
 	}
 }
 
 bool USoundManager::PlaySound(FName SoundName, UAudioComponent* AudioComponent)      //play sound par rapport a un audiocomponent fait pour sfx
 {
-	//verifie si l audio component n est pas null
 	if (AudioComponent == nullptr) {
 		UE_LOG(LogTemp, Warning, TEXT("Impossible l audiocomponent est NULL."));
 		return false;
 	}
 
-	// verifie si la bibliotheque est charge
-	if (LoadedSoundLibrary == nullptr)
+	// MODIFICATION ICI : On vérifie si notre cache est vide, plus le pointeur
+	if (CachedSoundList.Num() == 0)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("SetupAndPlaySound: LoadedSoundLibrary est NUL."));
+		UE_LOG(LogTemp, Warning, TEXT("PlaySound: La liste de sons (Cache) est VIDE."));
 		return false;
 	}
 
-	//Trouver le son dans le TArray
-	FSoundDataStruct* FoundSound = LoadedSoundLibrary->SoundList.FindByPredicate(
+	// MODIFICATION ICI : On cherche dans CachedSoundList
+	FSoundDataStruct* FoundSound = CachedSoundList.FindByPredicate(
 		[&SoundName](const FSoundDataStruct& Entry)
 		{
 			return Entry.SoundName == SoundName;
 		}
 	);
 
-	// Jouer le son si on l a trouver
 	if (FoundSound && FoundSound->SoundFile)
 	{
-		float FinalVolume = 1.0f; // Le volume de la categorie
-		//
+		float FinalVolume = 1.0f;
 
-		// --- On determine le volume de la categorie ---
 		switch (FoundSound->SoundType)
 		{
 		case ESoundType::SFX:
-			FinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierSFX * VolumeMultiplierGlobal;  //je multiple pour avoir le bon volume
+			FinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierSFX * VolumeMultiplierGlobal;
 			break;
-
 		case ESoundType::Music:
-			FinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierMusic * VolumeMultiplierGlobal;  //je multiple pour avoir le bon volume
+			FinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierMusic * VolumeMultiplierGlobal;
 			break;
-
 		case ESoundType::Voice:
-			FinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierVoice * VolumeMultiplierGlobal;  //je multiple pour avoir le bon volume
+			FinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierVoice * VolumeMultiplierGlobal;
 			break;
 		}
 
-		AudioComponent->SetSound(FoundSound->SoundFile); //recupere le son et le met dans le audiocomponent
+		AudioComponent->SetSound(FoundSound->SoundFile);
 
-		if (USoundWave* SoundWave = Cast<USoundWave>(FoundSound->SoundFile)) //creer une variable de type soundwave pour ensuite mettre le fichier en question en loop
+		if (USoundWave* SoundWave = Cast<USoundWave>(FoundSound->SoundFile))
 		{
-			SoundWave->bLooping = FoundSound->SoundLoop; //  modifie l asset en memoire mais le met en loop
+			SoundWave->bLooping = FoundSound->SoundLoop;
 		}
 		AudioComponent->SetVolumeMultiplier(FinalVolume);
-		AudioComponent->Play(); // start son
-		UE_LOG(LogTemp, Warning, TEXT("La valeur FinalVolume est de : %f "), FinalVolume);  // pour dire ou afficher le float %f
+		AudioComponent->Play();
+		// UE_LOG(LogTemp, Warning, TEXT("La valeur FinalVolume est de : %f "), FinalVolume);
 		return true;
 	}
 	else
 	{
-		//erreur
-		UE_LOG(LogTemp, Warning, TEXT("Son null ou erreur nom"), *SoundName.ToString());
+		UE_LOG(LogTemp, Warning, TEXT("Son null ou erreur nom : %s"), *SoundName.ToString());
 		return false;
 	}
 }
@@ -140,55 +130,47 @@ bool USoundManager::StopSound(UAudioComponent* AudioComponent)     //stop sound 
 
 bool USoundManager::SoundPlaylist(const TArray<FName>& SoundNameList, UAudioComponent* AudioComponent) //check les données reçu et est appelé en blueprint
 {
-	// 1. Sécurité
-	if (AudioComponent == nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("ArraySound: AudioComponent est NULL."));
-		return false;
-	}
+	if (AudioComponent == nullptr) return false;
+	if (SoundNameList.Num() == 0) return false;
 
-	if (SoundNameList.Num() == 0)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("ArraySound: Array vide, rien à jouer."));
-		return false;
-	}
+	// MODIFICATION ICI : Sécurité sur le cache
+	if (CachedSoundList.Num() == 0) return false;
 
-	// On boucle sur chaque nom demandé pour voir s'il existe dans la database
 	for (const FName& NameToCheck : SoundNameList)
 	{
-		// On cherche le nom dans la liste (meme methode que PlaySound)
-		FSoundDataStruct* FoundSound = LoadedSoundLibrary->SoundList.FindByPredicate(
+		// MODIFICATION ICI : On cherche dans CachedSoundList
+		FSoundDataStruct* FoundSound = CachedSoundList.FindByPredicate(
 			[&NameToCheck](const FSoundDataStruct& Entry)
 			{
 				return Entry.SoundName == NameToCheck;
 			}
 		);
 
-		// Si le pointeur est null, c est que le son n existe pas
 		if (FoundSound == nullptr)
 		{
-			UE_LOG(LogTemp, Error, TEXT("SoundPlaylist ERREUR: Le son '%s' n'existe pas dans la Database ! Playlist annulée."), *NameToCheck.ToString());
-			return false; 
+			UE_LOG(LogTemp, Error, TEXT("SoundPlaylist ERREUR: Le son '%s' n'existe pas !"), *NameToCheck.ToString());
+			return false;
 		}
 	}
 
-	PlaySoundPlaylist(SoundNameList,AudioComponent);
-
+	PlaySoundPlaylist(SoundNameList, AudioComponent);
 	return true;
 }
 
 void USoundManager::SetMusicVolume()
 {
-	// On prepare une liste pour nettoyer les composants morts
+	if (CachedSoundList.Num() == 0)
+	{
+		return;
+	}
+
 	TArray<UAudioComponent*> ComponentsToRemove;
 
-	// On parcourt le dictionnaire
 	for (auto& Elem : PlaylistMap)
 	{
 		UAudioComponent* ActiveComponent = Elem.Key;
 		TArray<FName>& List = Elem.Value;
 
-		// Remplace "if (ActiveComponent && ...)" par "IsValid(ActiveComponent)"
 		if (IsValid(ActiveComponent))
 		{
 			if (ActiveComponent->IsPlaying())
@@ -201,17 +183,14 @@ void USoundManager::SetMusicVolume()
 					{
 						FName CurrentSoundName = List[CurrentIndex];
 
-						if (LoadedSoundLibrary)
-						{
-							FSoundDataStruct* FoundSound = LoadedSoundLibrary->SoundList.FindByPredicate(
-								[&CurrentSoundName](const FSoundDataStruct& Entry) { return Entry.SoundName == CurrentSoundName; }
-							);
+						FSoundDataStruct* FoundSound = CachedSoundList.FindByPredicate(
+							[&CurrentSoundName](const FSoundDataStruct& Entry) { return Entry.SoundName == CurrentSoundName; }
+						);
 
-							if (FoundSound && FoundSound->SoundType == ESoundType::Music)
-							{
-								float NewFinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierMusic * VolumeMultiplierGlobal;
-								ActiveComponent->SetVolumeMultiplier(NewFinalVolume);
-							}
+						if (FoundSound && FoundSound->SoundType == ESoundType::Music)
+						{
+							float NewFinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierMusic * VolumeMultiplierGlobal;
+							ActiveComponent->SetVolumeMultiplier(NewFinalVolume);
 						}
 					}
 				}
@@ -219,18 +198,18 @@ void USoundManager::SetMusicVolume()
 		}
 		else
 		{
-			// Si le composant n'est plus valide (detruit), on l ajoute à la liste de suppression
 			ComponentsToRemove.Add(ActiveComponent);
 		}
 	}
 
-	// On retire les entrees mortes pour ne pas garder des déchets dans la Map
 	for (UAudioComponent* CompToRemove : ComponentsToRemove)
 	{
 		PlaylistMap.Remove(CompToRemove);
 		PlaylistIndexMap.Remove(CompToRemove);
 	}
 }
+
+
 
 void USoundManager::PlaySoundPlaylist(TArray<FName> SoundList, UAudioComponent* AudioComponent) //enregistre le resultat
 {
@@ -255,19 +234,19 @@ void USoundManager::PlayNextSoundInPlaylist(UAudioComponent* AudioComponent) //j
 {
 
 	if (!PlaylistMap.Contains(AudioComponent) || !PlaylistIndexMap.Contains(AudioComponent)) return;
-	if (LoadedSoundLibrary == nullptr) return;
 
-	// Récuperer le nom du son actuel grace a l index stocker
+	// MODIFICATION ICI : On vérifie le cache local
+	if (CachedSoundList.Num() == 0) return;
+
 	int32 CurrentIndex = PlaylistIndexMap[AudioComponent];
 	TArray<FName>& CurrentList = PlaylistMap[AudioComponent];
 
-	// Petite securiter si l index est hors limites
 	if (!CurrentList.IsValidIndex(CurrentIndex)) return;
 
 	FName CurrentSoundName = CurrentList[CurrentIndex];
 
-	// Trouver le son dans le TArray
-	FSoundDataStruct* FoundSound = LoadedSoundLibrary->SoundList.FindByPredicate(
+	// MODIFICATION ICI : On cherche dans CachedSoundList
+	FSoundDataStruct* FoundSound = CachedSoundList.FindByPredicate(
 		[&CurrentSoundName](const FSoundDataStruct& Entry)
 		{
 			return Entry.SoundName == CurrentSoundName;
@@ -278,17 +257,14 @@ void USoundManager::PlayNextSoundInPlaylist(UAudioComponent* AudioComponent) //j
 	{
 		float FinalVolume = 1.0f;
 
-		// --- On determine le volume de la categorie ---
 		switch (FoundSound->SoundType)
 		{
 		case ESoundType::SFX:
 			FinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierSFX * VolumeMultiplierGlobal;
 			break;
-
 		case ESoundType::Music:
 			FinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierMusic * VolumeMultiplierGlobal;
 			break;
-
 		case ESoundType::Voice:
 			FinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierVoice * VolumeMultiplierGlobal;
 			break;
@@ -296,22 +272,19 @@ void USoundManager::PlayNextSoundInPlaylist(UAudioComponent* AudioComponent) //j
 
 		AudioComponent->SetSound(FoundSound->SoundFile);
 
-		
-		// Si le son boucle, il ne se finit jamais, et on ne passe jamais au suivant !
 		if (USoundWave* SoundWave = Cast<USoundWave>(FoundSound->SoundFile))
 		{
-			SoundWave->bLooping = false; // Forcer a false pour permettre l enchaînement
+			SoundWave->bLooping = false;
 		}
 
 		AudioComponent->SetVolumeMultiplier(FinalVolume);
-		AudioComponent->Play(); // Start son
+		AudioComponent->Play();
 
 		UE_LOG(LogTemp, Log, TEXT("Playlist joue index %d : %s"), CurrentIndex, *CurrentSoundName.ToString());
 	}
 	else
 	{
-		// Si le son est introuvable, on simule sa fin pour passer au suivant immédiatement
-		UE_LOG(LogTemp, Warning, TEXT("Son introuvable dans la playlist, passage au suivant."));
+		UE_LOG(LogTemp, Warning, TEXT("Son introuvable, suivant."));
 		OnPlaylistAudioFinished(AudioComponent);
 	}
 }
@@ -339,3 +312,12 @@ void USoundManager::OnPlaylistAudioFinished(UAudioComponent* FinishedComponent)
 		PlayNextSoundInPlaylist(FinishedComponent);
 	}
 }
+
+void USoundManager::Deinitialize()
+{
+	// On vide le tableau local a la fin
+	CachedSoundList.Empty();
+
+	Super::Deinitialize();
+}
+
