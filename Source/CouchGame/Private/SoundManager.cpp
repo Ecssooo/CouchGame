@@ -179,45 +179,56 @@ bool USoundManager::SoundPlaylist(const TArray<FName>& SoundNameList, UAudioComp
 
 void USoundManager::SetMusicVolume()
 {
-	// On parcourt notre le dictionnaire pour retrouver tous les composants actifs
+	// On prepare une liste pour nettoyer les composants morts
+	TArray<UAudioComponent*> ComponentsToRemove;
+
+	// On parcourt le dictionnaire
 	for (auto& Elem : PlaylistMap)
 	{
-		UAudioComponent* ActiveComponent = Elem.Key; // La cler est le composant
-		TArray<FName>& List = Elem.Value;           // La valeur est la liste
+		UAudioComponent* ActiveComponent = Elem.Key;
+		TArray<FName>& List = Elem.Value;
 
-		// On vérifie qu'il est valide et qu'il joue
-		if (ActiveComponent && ActiveComponent->IsPlaying())
+		// Remplace "if (ActiveComponent && ...)" par "IsValid(ActiveComponent)"
+		if (IsValid(ActiveComponent))
 		{
-			// On a besoin de retrouver l'index actuel pour savoir quel son joue
-			if (PlaylistIndexMap.Contains(ActiveComponent))
+			if (ActiveComponent->IsPlaying())
 			{
-				int32 CurrentIndex = PlaylistIndexMap[ActiveComponent];
-
-				// Sécurité index
-				if (List.IsValidIndex(CurrentIndex))
+				if (PlaylistIndexMap.Contains(ActiveComponent))
 				{
-					FName CurrentSoundName = List[CurrentIndex];
+					int32 CurrentIndex = PlaylistIndexMap[ActiveComponent];
 
-					// On retourne chercher les infos du son dans le DataAsset
-					if (LoadedSoundLibrary)
+					if (List.IsValidIndex(CurrentIndex))
 					{
-						FSoundDataStruct* FoundSound = LoadedSoundLibrary->SoundList.FindByPredicate(
-							[&CurrentSoundName](const FSoundDataStruct& Entry) { return Entry.SoundName == CurrentSoundName; }
-						);
+						FName CurrentSoundName = List[CurrentIndex];
 
-						// verifie le type
-						if (FoundSound && FoundSound->SoundType == ESoundType::Music)
+						if (LoadedSoundLibrary)
 						{
+							FSoundDataStruct* FoundSound = LoadedSoundLibrary->SoundList.FindByPredicate(
+								[&CurrentSoundName](const FSoundDataStruct& Entry) { return Entry.SoundName == CurrentSoundName; }
+							);
 
-							float NewFinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierMusic * VolumeMultiplierGlobal;
-
-							//ensuite je change le volume meme si le son est en cours
-							ActiveComponent->SetVolumeMultiplier(NewFinalVolume);
+							if (FoundSound && FoundSound->SoundType == ESoundType::Music)
+							{
+								float NewFinalVolume = FoundSound->VolumeMultiplier * VolumeMultiplierMusic * VolumeMultiplierGlobal;
+								ActiveComponent->SetVolumeMultiplier(NewFinalVolume);
+							}
 						}
 					}
 				}
 			}
 		}
+		else
+		{
+			// Si le composant n'est plus valide (detruit), on l ajoute à la liste de suppression
+			ComponentsToRemove.Add(ActiveComponent);
+		}
+	}
+
+	// On retire les entrees mortes pour ne pas garder des déchets dans la Map
+	for (UAudioComponent* CompToRemove : ComponentsToRemove)
+	{
+		PlaylistMap.Remove(CompToRemove);
+		PlaylistIndexMap.Remove(CompToRemove);
 	}
 }
 
