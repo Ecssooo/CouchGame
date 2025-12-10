@@ -6,7 +6,7 @@
 #include "UObject/SoftObjectPtr.h"
 #include "SoundManager.generated.h"
 
-UCLASS(Config=Game) //pour lire le fichier game ini
+UCLASS(Config=Game)
 class COUCHGAME_API USoundManager : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
@@ -46,29 +46,27 @@ protected:
     TSoftObjectPtr<USoundDataAsset> SoundLibraryPath;  //stock le chemin vers mon DA_Soundlibrary
 
     UPROPERTY(Transient) 
-    TObjectPtr<USoundDataAsset> LoadedSoundLibrary;   //stock l'asset apres load
+    TObjectPtr<USoundDataAsset> LoadedSoundLibrary;   //stock l asset apres load
 
     UPROPERTY(VisibleAnywhere, Category = "Sound Storage")
     TArray<FSoundDataStruct> CachedSoundList;
 
 private:
-    // --- NOUVEAU : LOGIQUE INTERNE DE PLAYLIST ---
 
-    // 1. Stockage : Quelle liste de sons joue cet AudioComponent ?
     TMap<UAudioComponent*, TArray<FName>> PlaylistMap;
 
-    // 2. Stockage : A quel numéro (index) est rendu cet AudioComponent ?
+    //index AudioComponent 
     TMap<UAudioComponent*, int32> PlaylistIndexMap;
 
-    // 3. Fonction interne pour initialiser les variables (Maps)
     void PlaySoundPlaylist(TArray<FName> SoundList, UAudioComponent* AudioComponent);
 
-    // 4. Fonction interne qui joue le son précis à l'instant T
     void PlayNextSoundInPlaylist(UAudioComponent* AudioComponent);
 
-    // 5. L'écouteur (Delegate) appelé automatiquement quand un son finit
-    // UFUNCTION() est OBLIGATOIRE ici pour que l'Unreal puisse appeler la fonction
     void OnPlaylistAudioFinished(UAudioComponent* FinishedComponent);
 
+    UFUNCTION()
+    void OnComponentDeactivated(UActorComponent* Component);
+
+    void HandlePreLoadMap(const FString& MapName);
 };
 

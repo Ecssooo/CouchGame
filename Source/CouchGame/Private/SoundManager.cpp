@@ -7,26 +7,6 @@ USoundManager::USoundManager()
 {
 }
 
-//version lien dans le init
-//void USoundManager::Initialize(FSubsystemCollectionBase& Collection)
-//{
-//	Super::Initialize(Collection);
-//
-//	if (SoundLibraryPath.IsValid())
-//	{
-//		LoadedSoundLibrary = SoundLibraryPath.LoadSynchronous();
-//	}
-//
-//	if (LoadedSoundLibrary == nullptr)
-//	{
-//		UE_LOG(LogTemp, Error, TEXT("LoadedSoundLibrary est NULL. ERREUR dans le chemin DefaultGame.ini : %s"), *SoundLibraryPath.ToString());
-//	}
-//	else
-//	{
-//		UE_LOG(LogTemp, Log, TEXT("Sound Library chargée avec succès."));
-//	}
-//}
-
 void USoundManager::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
@@ -45,23 +25,25 @@ void USoundManager::Initialize(FSubsystemCollectionBase& Collection)
 	{
 		UE_LOG(LogTemp, Error, TEXT("CRITICAL : Impossible de charger DA_SoundLibrary pour la copie !"));
 	}
+
+	FCoreUObjectDelegates::PreLoadMap.AddUObject(this, &USoundManager::HandlePreLoadMap);
 }
 
-bool USoundManager::PlaySound(FName SoundName, UAudioComponent* AudioComponent)      //play sound par rapport a un audiocomponent fait pour sfx
+bool USoundManager::PlaySound(FName SoundName, UAudioComponent* AudioComponent)      //play sound par rapport a un audiocomponent
 {
 	if (AudioComponent == nullptr) {
 		UE_LOG(LogTemp, Warning, TEXT("Impossible l audiocomponent est NULL."));
 		return false;
 	}
 
-	// MODIFICATION ICI : On vérifie si notre cache est vide, plus le pointeur
+	// On verifie si le cache est vide
 	if (CachedSoundList.Num() == 0)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("PlaySound: La liste de sons (Cache) est VIDE."));
 		return false;
 	}
 
-	// MODIFICATION ICI : On cherche dans CachedSoundList
+	//On cherche dans CachedSoundList
 	FSoundDataStruct* FoundSound = CachedSoundList.FindByPredicate(
 		[&SoundName](const FSoundDataStruct& Entry)
 		{
@@ -94,7 +76,6 @@ bool USoundManager::PlaySound(FName SoundName, UAudioComponent* AudioComponent) 
 		}
 		AudioComponent->SetVolumeMultiplier(FinalVolume);
 		AudioComponent->Play();
-		// UE_LOG(LogTemp, Warning, TEXT("La valeur FinalVolume est de : %f "), FinalVolume);
 		return true;
 	}
 	else
@@ -110,10 +91,9 @@ bool USoundManager::StopSound(UAudioComponent* AudioComponent)     //stop sound 
 	{
 		AudioComponent->Stop();
 
-		// Si c'était une playlist
 		if (PlaylistMap.Contains(AudioComponent))
 		{
-			// On utilise RemoveAll sur le Natif
+			AudioComponent->OnComponentDeactivated.RemoveDynamic(this, &USoundManager::OnComponentDeactivated);
 			AudioComponent->OnAudioFinishedNative.RemoveAll(this);
 
 			PlaylistMap.Remove(AudioComponent);
@@ -121,24 +101,23 @@ bool USoundManager::StopSound(UAudioComponent* AudioComponent)     //stop sound 
 		}
 		return true;
 	}
-	// ...
 	return false;
 }
 
 
 //new
 
-bool USoundManager::SoundPlaylist(const TArray<FName>& SoundNameList, UAudioComponent* AudioComponent) //check les données reçu et est appelé en blueprint
+bool USoundManager::SoundPlaylist(const TArray<FName>& SoundNameList, UAudioComponent* AudioComponent) //check les donnees recu et est appeler en blueprint
 {
 	if (AudioComponent == nullptr) return false;
 	if (SoundNameList.Num() == 0) return false;
 
-	// MODIFICATION ICI : Sécurité sur le cache
+	//Securiter sur le cache
 	if (CachedSoundList.Num() == 0) return false;
 
 	for (const FName& NameToCheck : SoundNameList)
 	{
-		// MODIFICATION ICI : On cherche dans CachedSoundList
+		//On cherche dans CachedSoundList
 		FSoundDataStruct* FoundSound = CachedSoundList.FindByPredicate(
 			[&NameToCheck](const FSoundDataStruct& Entry)
 			{
@@ -148,7 +127,7 @@ bool USoundManager::SoundPlaylist(const TArray<FName>& SoundNameList, UAudioComp
 
 		if (FoundSound == nullptr)
 		{
-			UE_LOG(LogTemp, Error, TEXT("SoundPlaylist ERREUR: Le son '%s' n'existe pas !"), *NameToCheck.ToString());
+			UE_LOG(LogTemp, Error, TEXT("SoundPlaylist ERREUR: Le son '%s' n existe pas !"), *NameToCheck.ToString());
 			return false;
 		}
 	}
@@ -159,17 +138,21 @@ bool USoundManager::SoundPlaylist(const TArray<FName>& SoundNameList, UAudioComp
 
 void USoundManager::SetMusicVolume()
 {
-	if (CachedSoundList.Num() == 0)
+	if (CachedSoundList.Num() == 0) return;
+
+	// Si la liste est vide (grace a HandlePreLoadMap), on ne fait rien -> Pas de crash possible
+	if (PlaylistMap.Num() == 0) return;
+
+	//Si le monde est en destruction, on arrete tout
+	if (UWorld* World = GetWorld())
 	{
-		return;
+		if (World->bIsTearingDown) return;
 	}
 
-	TArray<UAudioComponent*> ComponentsToRemove;
-
-	for (auto& Elem : PlaylistMap)
+	//Ta boucle avec iterateur (que tu avais deja bien mise)
+	for (auto It = PlaylistMap.CreateIterator(); It; ++It)
 	{
-		UAudioComponent* ActiveComponent = Elem.Key;
-		TArray<FName>& List = Elem.Value;
+		UAudioComponent* ActiveComponent = It.Key();
 
 		if (IsValid(ActiveComponent))
 		{
@@ -178,6 +161,7 @@ void USoundManager::SetMusicVolume()
 				if (PlaylistIndexMap.Contains(ActiveComponent))
 				{
 					int32 CurrentIndex = PlaylistIndexMap[ActiveComponent];
+					TArray<FName>& List = It.Value();
 
 					if (List.IsValidIndex(CurrentIndex))
 					{
@@ -198,14 +182,12 @@ void USoundManager::SetMusicVolume()
 		}
 		else
 		{
-			ComponentsToRemove.Add(ActiveComponent);
+			It.RemoveCurrent();
+			if (ActiveComponent)
+			{
+				PlaylistIndexMap.Remove(ActiveComponent);
+			}
 		}
-	}
-
-	for (UAudioComponent* CompToRemove : ComponentsToRemove)
-	{
-		PlaylistMap.Remove(CompToRemove);
-		PlaylistIndexMap.Remove(CompToRemove);
 	}
 }
 
@@ -213,20 +195,28 @@ void USoundManager::SetMusicVolume()
 
 void USoundManager::PlaySoundPlaylist(TArray<FName> SoundList, UAudioComponent* AudioComponent) //enregistre le resultat
 {
+	if (AudioComponent == nullptr) return;
 
-	// On associe cet AudioComponent a la liste de sons fournie
+	// Si le component est deja suivi, on se desabonne pour eviter les doublons
+	if (PlaylistMap.Contains(AudioComponent))
+	{
+		//On utilise OnComponentDeactivated
+		AudioComponent->OnComponentDeactivated.RemoveDynamic(this, &USoundManager::OnComponentDeactivated);
+		AudioComponent->OnAudioFinishedNative.RemoveAll(this);
+	}
+
 	PlaylistMap.Add(AudioComponent, SoundList);
-
-	// On initialise son compteur a 0 (le début de la liste)
 	PlaylistIndexMap.Add(AudioComponent, 0);
 
-
-	AudioComponent->OnAudioFinishedNative.RemoveAll(this);
-
-
+	//Bindings
 	AudioComponent->OnAudioFinishedNative.AddUObject(this, &USoundManager::OnPlaylistAudioFinished);
 
-	// 3. Lecture
+	//On s abonne a la desactivation (qui arrive lors de la destruction/changement de niveau)
+	if (!AudioComponent->OnComponentDeactivated.IsAlreadyBound(this, &USoundManager::OnComponentDeactivated))
+	{
+		AudioComponent->OnComponentDeactivated.AddDynamic(this, &USoundManager::OnComponentDeactivated);
+	}
+
 	PlayNextSoundInPlaylist(AudioComponent);
 }
 
@@ -235,7 +225,7 @@ void USoundManager::PlayNextSoundInPlaylist(UAudioComponent* AudioComponent) //j
 
 	if (!PlaylistMap.Contains(AudioComponent) || !PlaylistIndexMap.Contains(AudioComponent)) return;
 
-	// MODIFICATION ICI : On vérifie le cache local
+	//On verifie le cache local
 	if (CachedSoundList.Num() == 0) return;
 
 	int32 CurrentIndex = PlaylistIndexMap[AudioComponent];
@@ -245,7 +235,7 @@ void USoundManager::PlayNextSoundInPlaylist(UAudioComponent* AudioComponent) //j
 
 	FName CurrentSoundName = CurrentList[CurrentIndex];
 
-	// MODIFICATION ICI : On cherche dans CachedSoundList
+	//On cherche dans CachedSoundList
 	FSoundDataStruct* FoundSound = CachedSoundList.FindByPredicate(
 		[&CurrentSoundName](const FSoundDataStruct& Entry)
 		{
@@ -305,12 +295,43 @@ void USoundManager::OnPlaylistAudioFinished(UAudioComponent* FinishedComponent)
 		if (Index >= List.Num())
 		{
 			Index = 0;
-			UE_LOG(LogTemp, Log, TEXT("Playlist terminée, on reboucle au début."));
+			UE_LOG(LogTemp, Log, TEXT("Playlist terminee, on reboucle au début."));
 		}
 
 		// On joue le nouveau son
 		PlayNextSoundInPlaylist(FinishedComponent);
 	}
+}
+
+void USoundManager::OnComponentDeactivated(UActorComponent* Component)
+{
+	// On cast en AudioComponent
+	UAudioComponent* AudioComp = Cast<UAudioComponent>(Component);
+
+	if (AudioComp)
+	{
+		// Si ce composant etait dans notre playlist, on le retire
+		if (PlaylistMap.Contains(AudioComp))
+		{
+			// Nettoyage final
+			AudioComp->OnComponentDeactivated.RemoveDynamic(this, &USoundManager::OnComponentDeactivated);
+			AudioComp->OnAudioFinishedNative.RemoveAll(this);
+
+			PlaylistMap.Remove(AudioComp);
+			PlaylistIndexMap.Remove(AudioComp);
+
+			UE_LOG(LogTemp, Log, TEXT("SoundManager: AudioComponent desactive/detruit, retire de la PlaylistMap."));
+		}
+	}
+}
+
+void USoundManager::HandlePreLoadMap(const FString& MapName)
+{
+	// C est ici que la magie opere : On vide tout AVANT que le crash ne puisse arriver
+	UE_LOG(LogTemp, Warning, TEXT("SoundManager: Changement de map detecter (%s). Nettoyage forcer."), *MapName);
+
+	PlaylistMap.Empty();
+	PlaylistIndexMap.Empty();
 }
 
 void USoundManager::Deinitialize()
