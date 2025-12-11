@@ -4,6 +4,7 @@
 #include "Systems/Save/SaveCubeManager.h"
 
 #include "SoundManager.h"
+#include "Components/AudioComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Systems/Save/SaveCubeSubsystem.h"
 #include "Systems/Save/SaveSubLevelManager.h"
@@ -25,6 +26,8 @@ void ASaveCubeManager::BeginPlay()
 	{
 		UpdateLevelData(SubLevel.FaceID, SubLevel.SubLevelID, true);
 	}
+
+	AudioComponent = Cast<UAudioComponent>(AddComponentByClass(UAudioComponent::StaticClass(), false, this->GetActorTransform(), false));
 }
 
 // Called every frame
