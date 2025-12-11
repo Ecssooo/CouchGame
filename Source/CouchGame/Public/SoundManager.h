@@ -6,7 +6,7 @@
 #include "UObject/SoftObjectPtr.h"
 #include "SoundManager.generated.h"
 
-UCLASS(Config=Game) //pour lire le fichier game ini
+UCLASS(Config=Game)
 class COUCHGAME_API USoundManager : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
@@ -15,12 +15,19 @@ public:
     USoundManager();
 
     virtual void Initialize(FSubsystemCollectionBase& Library) override; // charge la biblioteque de son soundatalibrary
+    virtual void Deinitialize() override;
 
     UFUNCTION(BlueprintCallable, Category = "Sound")
     bool PlaySound(FName SoundName, UAudioComponent* AudioComponent);
 
     UFUNCTION(BlueprintCallable, Category = "Sound")
     bool StopSound(UAudioComponent* AudioComponent); // pas besoin du sound name car je vais stop l audio component
+
+    UFUNCTION(BlueprintCallable, Category = "Sound")
+    bool SoundPlaylist(const TArray<FName>& SoundNameList,UAudioComponent* AudioComponent); // pas besoin du sound name car je vais stop l audio component
+
+    UFUNCTION(BlueprintCallable, Category = "Sound Settings")
+    void SetMusicVolume(); //pour mettre a jour en direct
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "0.0", ClampMax = "1.0"))
     float VolumeMultiplierGlobal = 1.0f; // le volume du son global
@@ -39,6 +46,27 @@ protected:
     TSoftObjectPtr<USoundDataAsset> SoundLibraryPath;  //stock le chemin vers mon DA_Soundlibrary
 
     UPROPERTY(Transient) 
-    TObjectPtr<USoundDataAsset> LoadedSoundLibrary;   //stock l'asset apres load
+    TObjectPtr<USoundDataAsset> LoadedSoundLibrary;   //stock l asset apres load
+
+    UPROPERTY(VisibleAnywhere, Category = "Sound Storage")
+    TArray<FSoundDataStruct> CachedSoundList;
+
+private:
+
+    TMap<UAudioComponent*, TArray<FName>> PlaylistMap;
+
+    //index AudioComponent 
+    TMap<UAudioComponent*, int32> PlaylistIndexMap;
+
+    void PlaySoundPlaylist(TArray<FName> SoundList, UAudioComponent* AudioComponent);
+
+    void PlayNextSoundInPlaylist(UAudioComponent* AudioComponent);
+
+    void OnPlaylistAudioFinished(UAudioComponent* FinishedComponent);
+
+    UFUNCTION()
+    void OnComponentDeactivated(UActorComponent* Component);
+
+    void HandlePreLoadMap(const FString& MapName);
 };
 

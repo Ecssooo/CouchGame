@@ -14,7 +14,8 @@ void FCouchGame_ToolsModule::StartupModule()
 	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FCouchGame_ToolsModule::CreateUseKeyboardToggle));
 	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FCouchGame_ToolsModule::CreateRecompileButton));
 	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FCouchGame_ToolsModule::CreateMainLevelButton));
-	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FCouchGame_ToolsModule::CreateLoadLevelButton));
+	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FCouchGame_ToolsModule::CreateLoadFaceButton));
+	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FCouchGame_ToolsModule::CreateLoadFaceInteButton));
 }
 
 void FCouchGame_ToolsModule::ShutdownModule()
@@ -105,7 +106,7 @@ void FCouchGame_ToolsModule::RecompileAllBlueprint()
 		UBlueprint* Blueprint = Cast<UBlueprint>(Asset.GetAsset());
 		if (!Blueprint)
 		{
-			Blueprint = Cast<UBlueprint>(StaticLoadObject(UBlueprint::StaticClass(), nullptr, *Asset.ObjectPath.ToString()));
+			// Blueprint = Cast<UBlueprint>(StaticLoadObject(UBlueprint::StaticClass(), nullptr, *Asset.ObjectPath.ToString()));
 		}
 
 		if (Blueprint)
@@ -120,12 +121,14 @@ void FCouchGame_ToolsModule::RecompileAllBlueprint()
 
 	UE_LOG(LogTemp, Warning, TEXT("Recompiled %d Blueprints"), RecompileCount);
 }
+#pragma endregion
 
+#pragma region Load Level
 void FCouchGame_ToolsModule::CreateMainLevelButton()
 {
 	UToolMenu* Toolbar = UToolMenus::Get()->ExtendMenu("LevelEditor.LevelEditorToolBar.PlayToolBar");
 
-	FToolMenuSection& Section = Toolbar->FindOrAddSection("PluginTools");
+	FToolMenuSection& Section = Toolbar->FindOrAddSection("LevelSection");
 
 	Section.AddEntry(
 		FToolMenuEntry::InitToolBarButton("LoadMainLevel",
@@ -150,90 +153,71 @@ void FCouchGame_ToolsModule::LoadLevelButton()
 	}
 }
 
-void FCouchGame_ToolsModule::CreateLoadLevelButton()
+void FCouchGame_ToolsModule::CreateLoadFaceButton()
 {
 	FToolMenuOwnerScoped OwnerScoped(this);
 
 	UToolMenu* Toolbar = UToolMenus::Get()->ExtendMenu("LevelEditor.LevelEditorToolBar.PlayToolBar");
 
-	FToolMenuSection& Section = Toolbar->FindOrAddSection("PluginTools");
+	FToolMenuSection& Section = Toolbar->FindOrAddSection("LevelSection");
 
 	Section.AddSubMenu(
 		"FacesDropDown",
-		LOCTEXT("CouchGameDropdownLabel", "Couch Tools"),
-		LOCTEXT("CouchGameDropdownTooltip", "Options de CouchGame"),
+		LOCTEXT("CouchGameDropdownLabel", "FaceDropDown"),
+		LOCTEXT("CouchGameDropdownTooltip", "FaceDropDown"),
 		FNewToolMenuDelegate::CreateLambda([](UToolMenu* SubMenu)
 		{
-			FToolMenuSection& SubSection = SubMenu->AddSection("CouchGameSection", LOCTEXT("SubsectionLabel", "Options"));
-
-			SubSection.AddMenuEntry(
-				"Face1",
-				LOCTEXT("OptionALabel", "Load Face 1"),
-				LOCTEXT("OptionATooltip", "Load Face 1"),
-				FSlateIcon(),
-				FUIAction(FExecuteAction::CreateLambda([] {
+			FToolMenuSection& SubSection = SubMenu->AddSection("CouchGameSection", LOCTEXT("SubsectionLabel", "Load Face"));
+			for (int i = 1; i<=6; i++)
+			{
+				SubSection.AddMenuEntry(
+				*FString::Printf(TEXT("Face%i"), i),
+				FText::Format(LOCTEXT("OptionALabel", "Face {0}"), i),
+				FText::Format(LOCTEXT("OptionALabel", "Face {0}"), i),
+				FSlateIcon(FToolsEditorStyle::GetStyleSetName(), "GameTools.Level"),
+				FUIAction(FExecuteAction::CreateLambda([i] {
 					ULevelEditorSubsystem* LevelSubsystem = GEditor->GetEditorSubsystem<ULevelEditorSubsystem>();
-					LevelSubsystem->LoadLevel(TEXT("/Game/Levels/Cube/Face_1"));
-					
-				}))
-			);
-			SubSection.AddMenuEntry(
-							"Face2",
-							LOCTEXT("OptionALabel", "Load Face 2"),
-							LOCTEXT("OptionATooltip", "Load Face 2"),
-							FSlateIcon(),
-							FUIAction(FExecuteAction::CreateLambda([] {
-								ULevelEditorSubsystem* LevelSubsystem = GEditor->GetEditorSubsystem<ULevelEditorSubsystem>();
-								LevelSubsystem->LoadLevel(TEXT("/Game/Levels/Cube/Face_2"));
-					
-							}))
-						);
-			SubSection.AddMenuEntry(
-				"Face3",
-				LOCTEXT("OptionALabel", "Load Face 3"),
-				LOCTEXT("OptionATooltip", "Load Face 3"),
-				FSlateIcon(),
-				FUIAction(FExecuteAction::CreateLambda([] {
-					ULevelEditorSubsystem* LevelSubsystem = GEditor->GetEditorSubsystem<ULevelEditorSubsystem>();
-					LevelSubsystem->LoadLevel(TEXT("/Game/Levels/Cube/Face_3"));
-					
-				}))
-			);
-			SubSection.AddMenuEntry(
-				"Face4",
-				LOCTEXT("OptionALabel", "Load Face 4"),
-				LOCTEXT("OptionATooltip", "Load Face 4"),
-				FSlateIcon(),
-				FUIAction(FExecuteAction::CreateLambda([] {
-					ULevelEditorSubsystem* LevelSubsystem = GEditor->GetEditorSubsystem<ULevelEditorSubsystem>();
-					LevelSubsystem->LoadLevel(TEXT("/Game/Levels/Cube/Face_4"));
-					
-				}))
-			);
-			SubSection.AddMenuEntry(
-				"Face5",
-				LOCTEXT("OptionALabel", "Load Face 5"),
-				LOCTEXT("OptionATooltip", "Load Face 5"),
-				FSlateIcon(),
-				FUIAction(FExecuteAction::CreateLambda([] {
-					ULevelEditorSubsystem* LevelSubsystem = GEditor->GetEditorSubsystem<ULevelEditorSubsystem>();
-					LevelSubsystem->LoadLevel(TEXT("/Game/Levels/Cube/Face_5"));
-					
-				}))
-			);
-			SubSection.AddMenuEntry(
-				"Face6",
-				LOCTEXT("OptionALabel", "Load Face 6"),
-				LOCTEXT("OptionATooltip", "Load Face 6"),
-				FSlateIcon(),
-				FUIAction(FExecuteAction::CreateLambda([] {
-					ULevelEditorSubsystem* LevelSubsystem = GEditor->GetEditorSubsystem<ULevelEditorSubsystem>();
-					LevelSubsystem->LoadLevel(TEXT("/Game/Levels/Cube/Face_6"));
-					
-				}))
-			);
+					LevelSubsystem->LoadLevel(FString::Printf(TEXT("/Game/Levels/Cube/Face_%d"), i));
+				})
+				));
+			}
 		}),
-		false
+		false,
+			FSlateIcon(FToolsEditorStyle::GetStyleSetName(),"GameTools.Level")
+		);
+}
+
+void FCouchGame_ToolsModule::CreateLoadFaceInteButton()
+{
+	FToolMenuOwnerScoped OwnerScoped(this);
+
+	UToolMenu* Toolbar = UToolMenus::Get()->ExtendMenu("LevelEditor.LevelEditorToolBar.PlayToolBar");
+
+	FToolMenuSection& Section = Toolbar->FindOrAddSection("LevelSection");
+
+	Section.AddSubMenu(
+		"FacesInteDropDown",
+		LOCTEXT("CouchGameDropdownLabel", "FacesInteDropDown"),
+		LOCTEXT("CouchGameDropdownTooltip", "FacesInteDropDown"),
+		FNewToolMenuDelegate::CreateLambda([](UToolMenu* SubMenu)
+		{
+			FToolMenuSection& SubSection = SubMenu->AddSection("CouchGameSection", LOCTEXT("SubsectionLabel", "Load Face Inte"));
+			for (int i = 1; i<=6; i++)
+			{
+				SubSection.AddMenuEntry(
+				*FString::Printf(TEXT("Face%i_Inte"), i),
+				FText::Format(LOCTEXT("OptionALabel", "Face {0} Integration"), i),
+				FText::Format(LOCTEXT("OptionALabel", "Face {0} Integration"), i),
+				FSlateIcon(FToolsEditorStyle::GetStyleSetName(), "GameTools.Level"),
+				FUIAction(FExecuteAction::CreateLambda([i] {
+					ULevelEditorSubsystem* LevelSubsystem = GEditor->GetEditorSubsystem<ULevelEditorSubsystem>();
+					LevelSubsystem->LoadLevel(FString::Printf(TEXT("/Game/Levels/Cube/Face_%d_Integration"), i));
+				})
+				));
+			}
+		}),
+		false,
+			FSlateIcon(FToolsEditorStyle::GetStyleSetName(),"GameTools.Level")
 		);
 }
 

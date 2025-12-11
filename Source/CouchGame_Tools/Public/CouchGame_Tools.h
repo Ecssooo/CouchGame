@@ -31,8 +31,8 @@ private:
 
     void CreateMainLevelButton();
     void LoadLevelButton();
-    void LoadSpecificLevel(int level);
-    void CreateLoadLevelButton();
+    void CreateLoadFaceButton();
+    void CreateLoadFaceInteButton();
     
 #pragma endregion
 };

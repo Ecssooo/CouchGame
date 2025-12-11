@@ -67,6 +67,7 @@ void ASaveObjectManager::LoadObjectData()
 								actor->AttachToActor(socket, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 								actor->ObjectData = ObjectData;
 								GrabActors.Add(actor);
+								socket->EnableSocketVisibility(false);
 							}
 						}
 						break;
@@ -140,8 +141,8 @@ void ASaveObjectManager::UpdateAllObjectHighlight()
 	
 	for (AGrabActor* object : GrabActors)
 	{
-		object->HighlightObject(SaveSubsystem->GetGrabObjectFromID(object->ObjectData.ObjectID).IsHighlight);
 		if (!object) return;
+		object->HighlightObject(SaveSubsystem->GetGrabObjectFromID(object->ObjectData.ObjectID).IsHighlight);
 		if (AGrabActorSocket* socket = GetActorSocketFromID(object->ObjectData.SocketID)) socket->HighlightSocket(SaveSubsystem->GetGrabObjectFromID(object->ObjectData.ObjectID).IsSocketHighlight); 
 	}
 }

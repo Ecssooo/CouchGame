@@ -62,7 +62,8 @@ bool AGrabActor::Drop(ACharacterPlayer* Player)
 	{
 		SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InSocket, GrabSocketInOverlap->SocketID);
 		ObjectData = SaveSubsystem->GetGrabObjectFromID(ObjectData.ObjectID);
-		AttachToActor(GrabSocketInOverlap, FAttachmentTransformRules::SnapToTargetIncludingScale);
+		GrabSocketInOverlap->SpawnObjectInSocket(this->GetClass());
+		GrabSocketInOverlap->EnableSocketVisibility(false);
 	}else
 	{
 		ASaveObjectManager* ObjectManager = Cast<ASaveObjectManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveObjectManager::StaticClass()));
@@ -70,9 +71,12 @@ bool AGrabActor::Drop(ACharacterPlayer* Player)
 		UE_LOG(LogTemp, Log, TEXT("Object Manager find"))
 		SaveSubsystem->SetObjectState(ObjectData.ObjectID, EObjectState::InWorld, ObjectManager->LevelID, GetActorLocation());
 		ObjectData = SaveSubsystem->GetGrabObjectFromID(ObjectData.ObjectID);
+		IGrabbable::Execute_OnDrop(this, Player);
+		return true;
 	}
 
 	IGrabbable::Execute_OnDrop(this, Player);
+	this->Destroy();
 	return true;
 }
 
