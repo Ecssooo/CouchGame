@@ -3,6 +3,7 @@
 
 #include "Systems/Save/SaveCubeManager.h"
 
+#include "SoundManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "Systems/Save/SaveCubeSubsystem.h"
 #include "Systems/Save/SaveSubLevelManager.h"
@@ -57,7 +58,12 @@ void ASaveCubeManager::UpdateLevelData(int idFace, int idSubFace, bool IsUnlocke
 		GetSaveSublevelManager();
 		SaveSubsystem->SaveLevelData(idFace, idSubFace, IsUnlocked);
 		if (!SubLevelManager) return;
-		if (idFace == SubLevelManager->FaceID) SubLevelManager->UpdateSublevelState(idSubFace, IsUnlocked);
+		if (idFace == SubLevelManager->FaceID) {
+			SubLevelManager->UpdateSublevelState(idSubFace, IsUnlocked);
+			USoundManager* SoundManager = GetGameInstance()->GetSubsystem<USoundManager>();
+			if (!SoundManager) return;
+			SoundManager->PlaySound("SFX_Revelation", AudioComponent);
+		}
 	}
 }
 
