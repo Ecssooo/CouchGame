@@ -6,6 +6,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "Kismet/GameplayStatics.h"
 #include "Player/CharacterPlayer.h"
+#include "Player/PlayerStateMachine.h"
 #include "Systems/CharacterSettings.h"
 #include "Systems/PlayerSpawners/MainCharacterSpawner.h"
 #include "Systems/PlayerSpawners/MainTeleporterOut.h"
@@ -93,8 +94,8 @@ void ACubeGameMode::TeleportCharacterOut()
 			continue;
 		}
 		ACharacterPlayer* CharacterToTP = Players[Teleporter->PlayerIndex];
+		CharacterToTP->StateMachine->ChangeState(EPlayerStateID::Idle);
 		CharacterToTP->SetActorLocation(Teleporter->GetActorLocation());
-		
 		UE_LOG(LogTemp, Warning, TEXT("Character (%d) teleport to Teleporter : %d"), Teleporter->PlayerIndex,Teleporter->PlayerIndex);
 	}
 }
