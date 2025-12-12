@@ -58,6 +58,8 @@ public:
 	UFUNCTION()
 	void UpdateLevelData(int idFace, int idSubFace, bool IsUnlocked);
 
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UAudioComponent> AudioComponent;
 #pragma endregion
 
 	
