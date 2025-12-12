@@ -49,7 +49,7 @@ void AGrabActorSocket::SpawnObjectInSocket(UClass* ActorToSpawn)
 								socket->GetComponentLocation(),
 								socket->GetComponentRotation(),
 								Params);
-		actor->AttachToComponent(socket, FAttachmentTransformRules::SnapToTargetIncludingScale);
+		actor->AttachToComponent(socket, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 		ObjectManager->GrabActors.Add(actor);
 	}
 }
