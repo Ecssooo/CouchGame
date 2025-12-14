@@ -22,8 +22,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9f5dc0e-eb4e-40ed-8408-f9c7edada84c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Grabbable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/Public/Interfaces/Grabbable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Bench/Bench_for_step/BP_BenchStep_Child.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Bench/Bench_for_step/BP_BenchStep_Child.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cabane/BP_Cabane0.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cabane/BP_Cabane0.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Frigo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Frigo.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Planche.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Cuisine/BP_Planche.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_NewPecheChild.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_NewPecheChild.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Simon/BP_Simon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Simon/BP_Simon.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Tampon/BP_Tampon.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +293,7 @@
       <workItem from="1765267043897" duration="11940000" />
       <workItem from="1765353258777" duration="3622000" />
       <workItem from="1765501036707" duration="3204000" />
-      <workItem from="1765703663232" duration="3826000" />
+      <workItem from="1765703663232" duration="4948000" />
     </task>
     <servers />
   </component>
