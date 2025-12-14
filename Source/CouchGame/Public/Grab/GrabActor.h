@@ -53,11 +53,7 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void HighlightObject(bool IsHighlight);
-
-	UFUNCTION(BlueprintImplementableEvent)
-	TSubclassOf<UUserWidget> GetGrabWidget();
-
-	
+		
 	UFUNCTION()
 	void OnBoxBeginOverlap(
 		UPrimitiveComponent* OverlappedComp,
