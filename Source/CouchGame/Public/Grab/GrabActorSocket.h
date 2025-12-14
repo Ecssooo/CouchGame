@@ -41,5 +41,8 @@ public:
 	void EnableSocketVisibility(bool IsVisible);
 	
 	UFUNCTION()
-	void SpawnObjectInSocket(UClass* ActorToSpawn);
+	AGrabActor* SpawnObjectInSocket(UClass* ActorToSpawn);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnSpawnObjectInSocket(AActor* actorSpawn);
 };

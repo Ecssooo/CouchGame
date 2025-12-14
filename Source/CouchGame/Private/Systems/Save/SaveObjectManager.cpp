@@ -10,7 +10,9 @@
 #include "Kismet/GameplayStatics.h"
 #include "Player/CharacterPlayer.h"
 #include "Systems/CubeGameMode.h"
+#include "Systems/PartitionLevel.h"
 #include "Systems/Save/SaveCubeSubsystem.h"
+#include "Systems/Save/SaveSubLevelManager.h"
 
 
 // Sets default values
@@ -58,13 +60,15 @@ void ASaveObjectManager::LoadObjectData()
 						AGrabActorSocket* socket = GetActorSocketFromID(ObjectData.SocketID);
 						if (socket)
 						{
-							AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
-								socket->GetActorLocation(),
-								socket->GetActorRotation(),
-								Params);
-							if (actor)
+							// AGrabActor* actor = GetWorld()->SpawnActor<AGrabActor>(ObjectData.ObjectType.Get(),
+							// 	socket->GetActorLocation(),
+							// 	socket->GetActorRotation(),
+							// 	Params);
+							// if (actor)
 							{
-								actor->AttachToActor(socket, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+								// actor->AttachToActor(socket, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+								AGrabActor* actor =socket->SpawnObjectInSocket(ObjectData.ObjectType.Get());
+								if (!actor) return;
 								actor->ObjectData = ObjectData;
 								GrabActors.Add(actor);
 								socket->EnableSocketVisibility(false);
@@ -120,6 +124,8 @@ void ASaveObjectManager::LoadObjectData()
 								Params);
 							if (actor)
 							{
+								// ASaveSubLevelManager* SaveSubLevelManager = Cast<ASaveSubLevelManager>(UGameplayStatics::GetActorOfClass(GetWorld(), ASaveSubLevelManager::StaticClass()));
+								// actor->AttachToActor(SaveSubLevelManager->SubLevelsActor[9], FAttachmentTransformRules::KeepWorldTransform);
 								actor->ObjectData = ObjectData;
 								GrabActors.Add(actor);
 							}
