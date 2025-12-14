@@ -29,13 +29,13 @@ void AGrabActorSocket::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-void AGrabActorSocket::SpawnObjectInSocket(UClass* ActorToSpawn)
+AGrabActor* AGrabActorSocket::SpawnObjectInSocket(UClass* ActorToSpawn)
 {
 	UStaticMeshComponent* socket = GetSocketParent();
-	if (!socket) return;
+	if (!socket) return nullptr;
 
 	ALevelStreamerActor* LSA = Cast<ALevelStreamerActor>(UGameplayStatics::GetActorOfClass(GetWorld(), ALevelStreamerActor::StaticClass()));
-	if (!LSA) return;
+	if (!LSA) return nullptr;
 	ULevelStreaming* MyStreamedLevel =
 		UGameplayStatics::GetStreamingLevel(GetWorld(), LSA->CurrentLevel);
 	ULevel* LoadedLevel = MyStreamedLevel ? MyStreamedLevel->GetLoadedLevel() : nullptr;
@@ -49,8 +49,11 @@ void AGrabActorSocket::SpawnObjectInSocket(UClass* ActorToSpawn)
 								socket->GetComponentLocation(),
 								socket->GetComponentRotation(),
 								Params);
-		actor->AttachToComponent(socket, FAttachmentTransformRules::SnapToTargetIncludingScale);
+		actor->AttachToComponent(socket, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 		ObjectManager->GrabActors.Add(actor);
+		OnSpawnObjectInSocket(actor);
+		return actor;
 	}
+	return nullptr;
 }
 

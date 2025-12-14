@@ -31,4 +31,7 @@ public:
 	
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	FGrabObject GetData();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	TSubclassOf<UUserWidget> GetGrabWidget();
 };
