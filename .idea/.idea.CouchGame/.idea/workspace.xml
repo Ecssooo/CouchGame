@@ -33,21 +33,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CouchGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/CouchGameEditor.target" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor-CouchGame.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor.modules" beforeDir="false" afterPath="$PROJECT_DIR$/Binaries/Win64/UnrealEditor.modules" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditorPerProjectUserSettings.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_NewPecheChild.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Interaction/Peche/BP_NewPecheChild.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/BP/Menu/WB_Credits.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BP/Menu/WB_Credits.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_4.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_4.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Face_6.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Face_6.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Cube/Main.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Materials/PP_Outline/PP_Hlsl.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Materials/PP_Outline/PP_Hlsl.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Sounds/SFX/Revelation/SFX_Revelation.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Sounds/SFX/Revelation/SFX_Revelation.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/WBP_Dialogue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UI/WBP_Dialogue.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CouchGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/CouchGame.uproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame.Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame.Target.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/CouchGame/CouchGame.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/CouchGame/CouchGame.Build.cs" afterDir="false" />
