@@ -306,3 +306,12 @@ void USaveCubeSubsystem::InitTeleporterDatas(TArray<FTeleporterData> InTeleporte
 	TeleporterDatas = InTeleporterDatas;
 	UE_LOG(LogTemp, Log, TEXT("Telepoter Datas are initialized"))
 }
+
+void USaveCubeSubsystem::ResetSave()
+{
+	AllObjectsDatas.Empty();
+	InteractionsDatas.Empty();
+	LevelsDatas.Empty();
+	TeleporterDatas.Empty();
+}
+

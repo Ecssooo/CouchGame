@@ -42,6 +42,7 @@ void ASaveCubeManager::InitSaveSubsystem() const
 {
 	if (USaveCubeSubsystem* SaveSubsystem = GetGameInstance()->GetSubsystem<USaveCubeSubsystem>())
 	{
+		SaveSubsystem->ResetSave();
 		SaveSubsystem->InitLevelData();
 		SaveSubsystem->InitInteractionsDatas(InteractionsDatas);
 		SaveSubsystem->InitObjectsDatas(ObjectsDatas);

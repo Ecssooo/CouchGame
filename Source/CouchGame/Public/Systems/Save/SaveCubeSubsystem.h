@@ -94,4 +94,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void InitTeleporterDatas(TArray<FTeleporterData> InTeleporterDatas);
 #pragma endregion
+	UFUNCTION(BlueprintCallable)
+	void ResetSave();
 };
