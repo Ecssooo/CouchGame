@@ -1,6 +1,7 @@
+
+
 [/Script/EngineSettings.GeneralProjectSettings]
 ProjectID=066C1A9648BD5E137F1B80AD956A7487
-ProjectName=OnLifesPath
 
 [/Script/LocalMultiplayer.LocalMultiplayerSettings]
 +KeyboardProfilesData=(ProfileName="",IMCInGame="/Script/EnhancedInput.InputMappingContext'/Game/Input/IMC_KeyboardP1.IMC_KeyboardP1'",IMCMenu=None)
@@ -8,7 +9,7 @@ ProjectName=OnLifesPath
 GamepadProfileData=(ProfileName="",IMCInGame="/Script/EnhancedInput.InputMappingContext'/Game/Input/IMC_Player.IMC_Player'",IMCMenu=None)
 NbMaxGamepads=2
 
-[/Script/OnLifesPath.CharacterSettings]
+[/Script/CouchGame.CharacterSettings]
 UsKeyboardControl=True
 IMCInGame=(IMCGamePad="/Script/EnhancedInput.InputMappingContext'/Game/Input/IMC_Player.IMC_Player'",IMCKeyboardP1="/Script/EnhancedInput.InputMappingContext'/Game/Input/IMC_KeyboardP1.IMC_KeyboardP1'",IMCKeyboardP2="/Script/EnhancedInput.InputMappingContext'/Game/Input/IMC_KeyboardP2.IMC_KeyboardP2'")
 CharacterPlayer1=/Script/Engine.BlueprintGeneratedClass'/Game/BP/Player/BP_Player1.BP_Player1_C'
@@ -138,8 +139,8 @@ bSkipMovies=False
 bRetainStagedDirectory=False
 CustomStageCopyHandler=
 
-[/Script/OnLifesPath.SoundManager]
-SoundLibraryPath="/Script/OnLifesPath.SoundDataAsset'/Game/BP/SoundSystem/DA_SoundLibrary.DA_SoundLibrary'"
+[/Script/CouchGame.SoundManager]
+SoundLibraryPath="/Script/CouchGame.SoundDataAsset'/Game/BP/SoundSystem/DA_SoundLibrary.DA_SoundLibrary'"
 
 [/Script/Engine.AssetManagerSettings]
 -PrimaryAssetTypesToScan=(PrimaryAssetType="Map",AssetBaseClass=/Script/Engine.World,bHasBlueprintClasses=False,bIsEditorOnly=True,Directories=((Path="/Game/Maps")),SpecificAssets=,Rules=(Priority=-1,ChunkId=-1,bApplyRecursively=True,CookRule=Unknown))
@@ -153,7 +154,7 @@ bShouldAcquireMissingChunksOnLoad=False
 bShouldWarnAboutInvalidAssets=True
 MetaDataTagsForAssetRegistry=()
 
-[/Script/OnLifesPath.TimelineSettings]
+[/Script/CouchGame.TimelineSettings]
 SwingCurve=/Game/Curves/BalancoireCurve.BalancoireCurve
 SlideCurve=/Game/Curves/SlideCurve.SlideCurve
 SubLevelUp=/Game/Curves/SublevelUpCurve.SublevelUpCurve
@@ -171,3 +172,4 @@ SkyboxFadeDuration=2.000000
 BlendCameraInDuration=5.000000
 BlendCameraOutDuration=5.000000
 RotationDuration=2.500000
+

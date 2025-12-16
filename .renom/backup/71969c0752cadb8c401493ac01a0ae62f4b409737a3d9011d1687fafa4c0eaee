@@ -16,6 +16,6 @@ public class CouchGameEditorTarget : TargetRules
 
 	private void RegisterModulesCreatedByRider()
 	{
-		ExtraModuleNames.AddRange(new string[] { "OnLifesPath_Tools" });
+		ExtraModuleNames.AddRange(new string[] { "CouchGame_Tools" });
 	}
 }

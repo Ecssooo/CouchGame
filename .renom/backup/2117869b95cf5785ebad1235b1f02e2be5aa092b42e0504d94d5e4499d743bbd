@@ -96,8 +96,6 @@ ManualIPAddress=
 +FunctionRedirects=(OldName="/Script/OnLifesPath.SaveSubLevelManager.UpdateAllSublevelState",NewName="/Script/OnLifesPath.SaveSubLevelManager.UpdateAllPartitionLevelState")
 +FunctionRedirects=(OldName="/Script/OnLifesPath.CharacterPlayer.GrabObjectEvent",NewName="/Script/OnLifesPath.CharacterPlayer.GrabObject")
 +StructRedirects=(OldName="/Script/OnLifesPath.Teleporter",NewName="/Script/OnLifesPath.TeleporterData")
-+PackageRedirects=(OldName="/Script/CouchGame",NewName="/Script/OnLifesPath")
-+PackageRedirects=(OldName="/Script/CouchGame_Tools",NewName="/Script/OnLifesPath_Tools")
 
 [/Script/Engine.CollisionProfile]
 -Profiles=(Name="NoCollision",CollisionEnabled=NoCollision,ObjectTypeName="WorldStatic",CustomResponses=((Channel="Visibility",Response=ECR_Ignore),(Channel="Camera",Response=ECR_Ignore)),HelpMessage="No collision",bCanModify=False)

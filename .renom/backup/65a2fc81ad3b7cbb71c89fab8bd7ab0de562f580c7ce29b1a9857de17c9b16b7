@@ -68,7 +68,7 @@ RenderFocusRule=Never
 [/Script/Engine.Engine]
 +ActiveGameNameRedirects=(OldGameName="TP_Blank",NewGameName="/Script/CouchGame")
 +ActiveGameNameRedirects=(OldGameName="/Script/TP_Blank",NewGameName="/Script/CouchGame")
-GameViewportClientClassName=/Script/OnLifesPath.LocalMultiplayerViewPort
+GameViewportClientClassName=/Script/CouchGame.LocalMultiplayerViewPort
 
 [/Script/AndroidFileServerEditor.AndroidFileServerRuntimeSettings]
 bEnablePlugin=True
@@ -85,19 +85,17 @@ bUseManualIPAddress=False
 ManualIPAddress=
 
 [CoreRedirects]
-+FunctionRedirects=(OldName="/Script/OnLifesPath.IInteractable.CharacterInInteract",NewName="/Script/OnLifesPath.IInteractable.GetCharacterInInteract")
-+FunctionRedirects=(OldName="/Script/OnLifesPath.GrabSocketActor.OverlapBegin",NewName="/Script/OnLifesPath.GrabSocketActor.OnOverlapBegin")
-+PropertyRedirects=(OldName="/Script/OnLifesPath.GrabMultiSocket.GrabSocket",NewName="/Script/OnLifesPath.GrabMultiSocket.GrabSockets")
-+FunctionRedirects=(OldName="/Script/OnLifesPath.GrabMultiSocket.InitSocket",NewName="/Script/OnLifesPath.GrabMultiSocket.InitEvent")
-+StructRedirects=(OldName="/Script/OnLifesPath.CubeLevel",NewName="/Script/OnLifesPath.CubeLevelOld")
-+StructRedirects=(OldName="/Script/OnLifesPath.SubCubeLevel",NewName="/Script/OnLifesPath.SubCubeLevelOld")
-+FunctionRedirects=(OldName="/Script/OnLifesPath.SaveCubeSubsystem.SaveData",NewName="/Script/OnLifesPath.SaveCubeSubsystem.SaveLevelData")
-+FunctionRedirects=(OldName="/Script/OnLifesPath.SaveSubLevelManager.SaveNewDataForSpecificSublevel",NewName="/Script/OnLifesPath.SaveSubLevelManager.UpdateSublevelState")
-+FunctionRedirects=(OldName="/Script/OnLifesPath.SaveSubLevelManager.UpdateAllSublevelState",NewName="/Script/OnLifesPath.SaveSubLevelManager.UpdateAllPartitionLevelState")
-+FunctionRedirects=(OldName="/Script/OnLifesPath.CharacterPlayer.GrabObjectEvent",NewName="/Script/OnLifesPath.CharacterPlayer.GrabObject")
-+StructRedirects=(OldName="/Script/OnLifesPath.Teleporter",NewName="/Script/OnLifesPath.TeleporterData")
-+PackageRedirects=(OldName="/Script/CouchGame",NewName="/Script/OnLifesPath")
-+PackageRedirects=(OldName="/Script/CouchGame_Tools",NewName="/Script/OnLifesPath_Tools")
++FunctionRedirects=(OldName="/Script/CouchGame.IInteractable.CharacterInInteract",NewName="/Script/CouchGame.IInteractable.GetCharacterInInteract")
++FunctionRedirects=(OldName="/Script/CouchGame.GrabSocketActor.OverlapBegin",NewName="/Script/CouchGame.GrabSocketActor.OnOverlapBegin")
++PropertyRedirects=(OldName="/Script/CouchGame.GrabMultiSocket.GrabSocket",NewName="/Script/CouchGame.GrabMultiSocket.GrabSockets")
++FunctionRedirects=(OldName="/Script/CouchGame.GrabMultiSocket.InitSocket",NewName="/Script/CouchGame.GrabMultiSocket.InitEvent")
++StructRedirects=(OldName="/Script/CouchGame.CubeLevel",NewName="/Script/CouchGame.CubeLevelOld")
++StructRedirects=(OldName="/Script/CouchGame.SubCubeLevel",NewName="/Script/CouchGame.SubCubeLevelOld")
++FunctionRedirects=(OldName="/Script/CouchGame.SaveCubeSubsystem.SaveData",NewName="/Script/CouchGame.SaveCubeSubsystem.SaveLevelData")
++FunctionRedirects=(OldName="/Script/CouchGame.SaveSubLevelManager.SaveNewDataForSpecificSublevel",NewName="/Script/CouchGame.SaveSubLevelManager.UpdateSublevelState")
++FunctionRedirects=(OldName="/Script/CouchGame.SaveSubLevelManager.UpdateAllSublevelState",NewName="/Script/CouchGame.SaveSubLevelManager.UpdateAllPartitionLevelState")
++FunctionRedirects=(OldName="/Script/CouchGame.CharacterPlayer.GrabObjectEvent",NewName="/Script/CouchGame.CharacterPlayer.GrabObject")
++StructRedirects=(OldName="/Script/CouchGame.Teleporter",NewName="/Script/CouchGame.TeleporterData")
 
 [/Script/Engine.CollisionProfile]
 -Profiles=(Name="NoCollision",CollisionEnabled=NoCollision,ObjectTypeName="WorldStatic",CustomResponses=((Channel="Visibility",Response=ECR_Ignore),(Channel="Camera",Response=ECR_Ignore)),HelpMessage="No collision",bCanModify=False)
