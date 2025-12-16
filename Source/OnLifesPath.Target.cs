@@ -1,9 +1,9 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class CouchGameTarget : TargetRules
+public class OnLifesPathTarget : TargetRules
 {
-	public CouchGameTarget(TargetInfo Target) : base(Target)
+	public OnLifesPathTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
