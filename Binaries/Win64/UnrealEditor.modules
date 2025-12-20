@@ -3,6 +3,8 @@
 	"Modules": 
 	{
 		"CouchGame": "UnrealEditor-CouchGame.dll",
-		"CouchGame_Tools": "UnrealEditor-CouchGame_Tools.dll"
+		"CouchGame_Tools": "UnrealEditor-CouchGame_Tools.dll",
+		"OnLifesPath": "UnrealEditor-OnLifesPath.dll",
+		"OnLifesPath_Tools": "UnrealEditor-OnLifesPath_Tools.dll"
 	}
 }
