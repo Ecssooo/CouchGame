@@ -140,7 +140,7 @@ void USoundManager::SetMusicVolume()
 {
 	if (CachedSoundList.Num() == 0) return;
 
-	// Si la liste est vide (grace a HandlePreLoadMap), on ne fait rien -> Pas de crash possible
+	// Si la liste est vide (grace a HandlePreLoadMap) (crash)
 	if (PlaylistMap.Num() == 0) return;
 
 	//Si le monde est en destruction, on arrete tout
@@ -149,7 +149,7 @@ void USoundManager::SetMusicVolume()
 		if (World->bIsTearingDown) return;
 	}
 
-	//Ta boucle avec iterateur (que tu avais deja bien mise)
+	//boucle avec iterateur
 	for (auto It = PlaylistMap.CreateIterator(); It; ++It)
 	{
 		UAudioComponent* ActiveComponent = It.Key();
@@ -197,7 +197,7 @@ void USoundManager::PlaySoundPlaylist(TArray<FName> SoundList, UAudioComponent* 
 {
 	if (AudioComponent == nullptr) return;
 
-	// Si le component est deja suivi, on se desabonne pour eviter les doublons
+	// si deja enregistrer evite les doublons
 	if (PlaylistMap.Contains(AudioComponent))
 	{
 		//On utilise OnComponentDeactivated
@@ -208,10 +208,10 @@ void USoundManager::PlaySoundPlaylist(TArray<FName> SoundList, UAudioComponent* 
 	PlaylistMap.Add(AudioComponent, SoundList);
 	PlaylistIndexMap.Add(AudioComponent, 0);
 
-	//Bindings
+	//Bind
 	AudioComponent->OnAudioFinishedNative.AddUObject(this, &USoundManager::OnPlaylistAudioFinished);
 
-	//On s abonne a la desactivation (qui arrive lors de la destruction/changement de niveau)
+	//On s abonne a la desactivation
 	if (!AudioComponent->OnComponentDeactivated.IsAlreadyBound(this, &USoundManager::OnComponentDeactivated))
 	{
 		AudioComponent->OnComponentDeactivated.AddDynamic(this, &USoundManager::OnComponentDeactivated);
@@ -327,7 +327,7 @@ void USoundManager::OnComponentDeactivated(UActorComponent* Component)
 
 void USoundManager::HandlePreLoadMap(const FString& MapName)
 {
-	// C est ici que la magie opere : On vide tout AVANT que le crash ne puisse arriver
+	// nettoyage 
 	UE_LOG(LogTemp, Warning, TEXT("SoundManager: Changement de map detecter (%s). Nettoyage forcer."), *MapName);
 
 	PlaylistMap.Empty();
