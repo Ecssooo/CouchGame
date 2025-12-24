@@ -26,10 +26,10 @@ struct FSoundDataStruct
 	TObjectPtr<USoundBase> SoundFile; //le fichier du son
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	ESoundType SoundType;
+	ESoundType SoundType; //le type du son
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	bool SoundLoop;
+	bool SoundLoop; // si le son est un loop ou pas
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (ClampMin = "0.0", ClampMax = "1.0"))
 	float VolumeMultiplier = 1.0f; // le volume du son souhaitez
@@ -54,5 +54,5 @@ public:
 	USoundDataAsset();
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Sound Library")
-	TArray<FSoundDataStruct> SoundList;
+	TArray<FSoundDataStruct> SoundList;  
 };
